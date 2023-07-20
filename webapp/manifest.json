@@ -1,0 +1,517 @@
+{
+    "_version": "1.48.0",
+    "sap.app": {
+        "id": "project1",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "Gestione Note di Imputazione ",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.8.3",
+            "toolsId": "02a3dfb2-37fb-4c3c-a4da-663b63416c45"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZS4_NOTEIMPUTAZIONI_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZSS4_CA_CONI_VISIBILITA_SRV": {
+                "uri": "/sap/opu/odata/sap/ZSS4_CA_CONI_VISIBILITA_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/ZSS4_CA_CONI_VISIBILITA_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "fullWidth": true,
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.108.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {},
+                "custlinksar.custlinksar": {},
+                "zsap.com.r3.cobi.s4.custposfin.z_s4_zposfin": {},
+                "zsap.com.r3.cobi.s4.custapiuser.z_s4_userlog": {},
+                "zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink":{}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "project1.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            },
+            "ZSS4_CA_CONI_VISIBILITA_SRV": {
+                "dataSource": "ZSS4_CA_CONI_VISIBILITA_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "OneWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                  "uri": "css/style.css",
+                  "id": "stylecss"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "project1.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "View1",
+                    "pattern": "",
+                    "greedy": false,
+                    "target": "Targetview1"
+                },
+                {
+                    "name": "wizard",
+                    "pattern": "wizard",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "Targetwizard"
+                },
+                {
+                    "name": "wizard2",
+                    "pattern": "wizard2",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "Targetwizard2"
+                },
+                {
+                    "name": "wizardInserisciRiga",
+                    "pattern": "wizardInserisciRiga/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetwizardInserisciRiga"
+                },
+                {
+                    "name": "iconTabBar",
+                    "pattern": "iconTabBar/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargeticonTabBar"
+                },
+                {
+                    "name": "inserisciFirma",
+                    "pattern": "inserisciFirma/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetinserisciFirma"
+                },
+                {
+                    "name": "inserisciInvioFirma",
+                    "pattern": "inserisciInvioFirma/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetinserisciInvioFirma"
+                },
+                {
+                    "name": "aImpegno",
+                    "pattern": "aImpegno/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetaImpegno"
+                },
+                {
+                    "name": "aImpegno2",
+                    "pattern": "aImpegno2/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetaImpegno2"
+                },
+                {
+                    "name": "salvaImpegno",
+                    "pattern": "salvaImpegno/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetasalvaImpegno"
+                },
+                {
+                    "name": "modificaDettaglio",
+                    "pattern": "modificaDettaglio/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetmodificaDettaglio"
+                },
+                {
+                    "name": "modificaImporto",
+                    "pattern": "modificaImporto/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetmodificaImporto"
+                },
+                {
+                    "name": "modificaDettaglioInserisci",
+                    "pattern": "modificaImporto/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetmodificaDettaglioInserisci"
+                },
+                {
+                    "name": "RettificaNI",
+                    "pattern": "RettificaNI/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetRettificaNI"
+                },
+                {
+                    "name": "FirmaInserita",
+                    "pattern": "FirmaInserita/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetFirmaInserita"
+                },
+                {
+                    "name": "revocaFirma",
+                    "pattern": "revocaFirma/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetrevocaFirma"
+                },
+                {
+                    "name": "richiamaNI",
+                    "pattern": "richiamaNI/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetrichiamaNI"
+                },
+                {
+                    "name": "passaggioStato",
+                    "pattern": "passaggioStato/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetpassaggioStato"
+                },
+                {
+                    "name": "registrazioneRilievo",
+                    "pattern": "registrazioneRilievo/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetregistrazioneRilievo"
+                },
+                {
+                    "name": "conferma",
+                    "pattern": "conferma/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "Targetconferma"
+                },
+                {
+                    "name": "richiamoNIRGS",
+                    "pattern": "richiamoNIRGS/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetrichiamoNIRGS"
+                },
+                {
+                    "name": "richiamoRilievoRegistrato",
+                    "pattern": "richiamoRilievoRegistrato/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetrichiamoRilievoRegistrato"
+                },
+                {
+                    "name": "annullataNI",
+                    "pattern": "annullataNI/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetannullataNI"
+                },
+                {
+                    "name": "annullataNIRichiamo",
+                    "pattern": "annullataNIRichiamo/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetannullataNIRichiamo"
+                },
+                {
+                    "name": "annullataNIRilievo",
+                    "pattern": "annullataNIRilievo/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetannullataNIRilievo"
+                }
+            ],
+            "targets": {
+                "Targetview1": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "View1",
+                    "viewName": "View1",
+                    "viewLevel": 1
+                },
+                "Targetwizard": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "wizard",
+                    "viewName": "wizard",
+                    "viewLevel": 1
+                },
+                "Targetwizard2": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "wizard2",
+                    "viewName": "wizard2",
+                    "viewLevel": 1
+                },
+                "TargetwizardInserisciRiga": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "wizardInserisciRiga",
+                    "viewName": "wizardInserisciRiga",
+                    "viewLevel": 1
+                },
+                "TargeticonTabBar": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "iconTabBar",
+                    "viewName": "iconTabBar",
+                    "viewLevel": 1
+                },
+                "TargeticonTabBar2": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "iconTabBar2",
+                    "viewName": "iconTabBar2",
+                    "viewLevel": 1
+                },
+                "TargetinserisciFirma": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "inserisciFirma",
+                    "viewName": "inserisciFirma",
+                    "viewLevel": 1
+                },
+                "TargetinserisciInvioFirma": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "inserisciInvioFirma",
+                    "viewName": "inserisciInvioFirma",
+                    "viewLevel": 1
+                },
+                "TargetmodificaDettaglio": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "modificaDettaglio",
+                    "viewName": "modificaDettaglio",
+                    "viewLevel": 1
+                },
+                "TargetmodificaImporto": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "modificaImporto",
+                    "viewName": "modificaImporto",
+                    "viewLevel": 1
+                },
+                "TargetmodificaDettaglioInserisci": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "modificaDettaglioInserisci",
+                    "viewName": "modificaDettaglioInserisci",
+                    "viewLevel": 1
+                },
+                "TargetaImpegno": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "aImpegno",
+                    "viewName": "aImpegno",
+                    "viewLevel": 1
+                },
+                "TargetasalvaImpegno": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "salvaImpegno",
+                    "viewName": "salvaImpegno",
+                    "viewLevel": 1
+                },
+                "TargetaImpegno2": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "aImpegno2",
+                    "viewName": "aImpegno2",
+                    "viewLevel": 1
+                },
+                "TargetRettificaNI": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "RettificaNI",
+                    "viewName": "RettificaNI",
+                    "viewLevel": 1
+                },
+                "TargetFirmaInserita": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "FirmaInserita",
+                    "viewName": "FirmaInserita",
+                    "viewLevel": 1
+                },
+                "TargetrevocaFirma": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "revocaFirma",
+                    "viewName": "revocaFirma",
+                    "viewLevel": 1
+                },
+                "TargetrichiamaNI": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "richiamaNI",
+                    "viewName": "richiamaNI",
+                    "viewLevel": 1
+                },
+                "TargetpassaggioStato": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "passaggioStato",
+                    "viewName": "passaggioStato",
+                    "viewLevel": 1
+                },
+                "TargetregistrazioneRilievo": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "registrazioneRilievo",
+                    "viewName": "registrazioneRilievo",
+                    "viewLevel": 1
+                },
+                "Targetconferma": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "conferma",
+                    "viewName": "conferma",
+                    "viewLevel": 1
+                },
+                "TargetrichiamoNIRGS": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "richiamoNIRGS",
+                    "viewName": "richiamoNIRGS",
+                    "viewLevel": 1
+                },
+                "TargetrichiamoRilievoRegistrato": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "richiamoRilievoRegistrato",
+                    "viewName": "richiamoRilievoRegistrato",
+                    "viewLevel": 1
+                },
+                "TargetannullataNI": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "annullataNI",
+                    "viewName": "annullataNI",
+                    "viewLevel": 1
+                },
+                "TargetannullataNIRichiamo": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "annullataNIRichiamo",
+                    "viewName": "annullataNIRichiamo",
+                    "viewLevel": 1
+                },
+                "TargetannullataNIRilievo": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "annullataNIRilievo",
+                    "viewName": "annullataNIRilievo",
+                    "viewLevel": 1
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "project1.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

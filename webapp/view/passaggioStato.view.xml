@@ -1,0 +1,124 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:u="sap.ui.unified"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:menu="sap.m.MenuItem"
+    xmlns:menBtn="sap.m.Menu"
+    height="100%"
+    controllerName="project1.controller.passaggioStato"
+>
+    <f:DynamicPage id="dynamicPageId" showFooter="true">
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <layout:HorizontalLayout allowWrapping="true">
+                    <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                        <HBox id="idHBox2">
+                            <VBox id="idVBox14" class="sapUiSmallMargin" width="auto">
+                                <Label id="numNI" text="{i18n>ProgressivoNI}" design="Bold"/>
+                                <Text id="numNI1"/>
+                            </VBox>
+                            <VBox id="idVBox15" class="sapUiSmallMargin" width="auto">
+                                <Label id="dataReg" text="{i18n>Data}" design="Bold"/>
+                                <Text id="dataReg1" wrapping="true"/>
+                            </VBox>
+                        </HBox>
+                        <HBox id="idHBox3">
+                            <VBox id="idVBox17" class="sapUiSmallMargin" width="auto">
+                                <Label id="SARW2" text="{i18n>SAR}" design="Bold"/>
+                                <Text id="SARWH2"/>
+                            </VBox>
+                            <VBox id="idVBox18" class="sapUiSmallMargin" width="auto">
+                                <Label id="pos_FinW2" text="{i18n>PF}" design="Bold"/>
+                                <Text id="pos_FinWH2"/>
+                            </VBox>
+                            <VBox id="idVBox19" class="sapUiSmallMargin" width="auto">
+                                <Label id="oggSpesa" text="{i18n>oggSpesa}" design="Bold"/>
+                                <Text id="oggSpesa1"/>
+                            </VBox>
+                        </HBox>
+                        <HBox id="idHBox4">
+                            <VBox id="idVBox20" class="sapUiSmallMargin" width="auto">
+                                <Label id="mese" text="{i18n>Mese}" design="Bold"/>
+                                <Text id="mese1"/>
+                            </VBox>
+                            <VBox id="idVBox22" class="sapUiSmallMargin" width="auto">
+                                <Label id="comp" text="{i18n>comp}" design="Bold"/>
+                                <Text id="comp1"/>
+                            </VBox>
+                            <VBox id="idVBox21" class="sapUiSmallMargin" width="auto">
+                                <Label id="statoNI" text="{i18n>statoNI}" design="Bold"/>
+                                <Text id="statoNI1"/>
+                            </VBox>
+                            <VBox id="idVBox23" class="sapUiSmallMargin" width="auto">
+                                <Label id="importoTot" text="{i18n>importoTot}" design="Bold"/>
+                                <Text id="importoTot1"/>
+                            </VBox>
+                        </HBox>
+                        <HBox id="idHBox5">
+                            <VBox id="idVBox24" class="sapUiSmallMargin" width="auto">
+                                <Label id="Lifnr" text="{i18n>Lifnr}" design="Bold"/>
+                                <Text id="Lifnr1"/>
+                            </VBox>
+                            <VBox id="idVBox25" class="sapUiSmallMargin" width="auto">
+                                <Label id="Nome" text="{i18n>Nome}" design="Bold"/>
+                                <Text id="Nome1"/>
+                            </VBox>
+                            <VBox id="idVBox26" class="sapUiSmallMargin" width="auto">
+                                <Label id="Zwels" text="{i18n>Zwels}" design="Bold"/>
+                                <Text id="Zwels1"/>
+                            </VBox>
+                        </HBox>
+                        <HBox id="idHBox6">
+                            <VBox id="idVBox27" class="sapUiSmallMargin" width="auto">
+                                <Label id="CentroCosto" text="Centro di Costo" design="Bold"/>
+                                <Text id="CentroCosto1"/>
+                            </VBox>
+                            <VBox id="idVBox28" class="sapUiSmallMargin" width="auto">
+                                <Label id="ConCoGe" text="Conto Co.Ge." design="Bold"/>
+                                <Text id="ConCoGe1"/>
+                            </VBox>
+                            <VBox id="idVBox29" class="sapUiSmallMargin" width="auto">
+                                <Label id="ImpLiq" text="Importo Liquidazione" design="Bold"/>
+                                <Text id="ImpLiq1"/>
+                            </VBox>
+                        </HBox>
+                        <HBox>
+                            <VBox id="idVBox31" class="sapUiSmallMargin" width="auto">
+                                <Label id="CodiceGes" text="{i18n>Zcodgest}" design="Bold"/>
+                                <Text id="CodiceGes1"/>
+                            </VBox>
+                            <VBox id="idVBox30" class="sapUiSmallMargin" width="auto">
+                                <Label id="CausalePagamento" text="{i18n>Zcauspag}" design="Bold"/>
+                                <Text id="CausalePagamento1"/>
+                            </VBox>
+                        </HBox>
+                        <HBox>
+                            <VBox id="idVBox33" class="sapUiSmallMargin" width="auto">
+                                <Label id="CodiceUff" text="{i18n>CodiceUff}" design="Bold"/>
+                                <Text id="CodiceUff1"/>
+                            </VBox>
+                            <VBox id="idVBox34" class="sapUiSmallMargin" width="auto">
+                                <Label id="dirigente" text="{i18n>dirigente}" design="Bold"/>
+                                <Text id="dirigente1"/>
+                            </VBox>
+                        </HBox>
+                    </layout:VerticalLayout>
+                </layout:HorizontalLayout>
+
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:footer>
+            <OverflowToolbar>
+                <Button text="Indietro" type="Emphasized" press="onBackButton" />
+                <ToolbarSpacer />
+                <Button type="Emphasized" text="Cambia Stato" press="onChangeStato" id="change" />
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

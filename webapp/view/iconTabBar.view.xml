@@ -1,0 +1,170 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:u="sap.ui.unified"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:menu="sap.m.MenuItem"
+    xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"  
+    xmlns:zcontrollinkSar="custlinksar.custlinksar.controls" 
+    xmlns:menBtn="sap.m.Menu" height="100%" controllerName="project1.controller.iconTabBar">
+    <f:DynamicPage id="dynamicPageId" showFooter="true">
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <layout:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
+                    <!-- 1 riga -->
+                    <HBox>
+                        <Label id="numNI" text="{i18n>ProgressivoNI}:" design="Bold"/>
+                        <Text id="numNI1" wrapping="true"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="dataReg" text="{i18n>DataRegistrazioneNI}:" design="Bold"/>
+                        <Text id="dataReg1" wrapping="true"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <!-- 2 riga -->
+                    <HBox>
+                        <Label id="SARW2" text="{i18n>SAR}:" design="Bold"/>
+                        <zcontrollinkSar:LinkSar id="linkSarBilancio" anno="{temp>/EsercizioGestioneMC}" eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" 
+                            versione="D" bilancio="" fictr="{preimpostazioneModel>/fistl}" datbis="99991231" text="{preimpostazioneModel>/fistl}"/>
+                        <!-- <Text id="SARWH2"/> -->
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true" />
+                        </layoutData>
+                    </HBox>                        
+                    <HBox>
+                        <Label id="pos_FinW2" text="{i18n>PF}:" design="Bold"/>
+                        <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesa" anno="{preimpostazioneModel>/ZgjahrEng}" eos="S" fikrs="S001" fase="GEST" reale="R" 
+                            versione="D" fipex="{preimpostazioneModel>/fipex}" datbis="99991231" text="{preimpostazioneModel>/fipex}" semanticObject="ESAMINAMODIFICA"/>
+                        <!-- <Text id="pos_FinWH2"/> -->
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="oggSpesa" text="{i18n>oggSpesa}:" design="Bold"/>
+                        <Text id="oggSpesa1"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <!-- 3 riga -->
+                    <HBox>
+                        <Label id="mese" text="{i18n>Mese}:" design="Bold"/>
+                        <Text id="mese1"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true" />
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="comp" text="{i18n>comp}:" design="Bold"/>
+                        <Text id="comp1"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="statoNI" text="{i18n>statoNI}:" design="Bold"/>
+                        <Text id="statoNI1"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <!-- 4 riga -->
+                    <HBox>
+                        <Label id="importoTot" text="{i18n>importoTot}:" design="Bold"/>
+                        <Text id="importoTot1"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                        </layoutData>
+                    </HBox>
+                </layout:Grid>
+
+                <!-- <layout:HorizontalLayout allowWrapping="true">
+                    <layout:VerticalLayout class="sapUiMediumMarginEnd"> -->
+                        <!-- <HBox id="idHBox2">
+                            <VBox id="idVBox14" class="sapUiSmallMargin" width="auto">
+                                <Label id="numNI" text="{i18n>ProgressivoNI}" design="Bold"/>
+                                <Text id="numNI1"/>
+                            </VBox>
+                            <VBox id="idVBox15" class="sapUiSmallMargin" width="auto">
+                                <Label id="dataReg" text="{i18n>DataRegistrazioneNI}" design="Bold"/>
+                                <Text id="dataReg1" wrapping="true"/>
+                            </VBox>
+                        </HBox> -->
+                        <!-- <HBox id="idHBox3">
+                            <VBox id="idVBox17" class="sapUiSmallMargin" width="auto">
+                                <Label id="SARW2" text="{i18n>SAR}" design="Bold"/>
+                                <Text id="SARWH2"/>
+                            </VBox>
+                            <VBox id="idVBox18" class="sapUiSmallMargin" width="auto">
+                                <Label id="pos_FinW2" text="{i18n>PF}" design="Bold"/>
+                                <Text id="pos_FinWH2"/>
+                            </VBox>
+                            <VBox id="idVBox19" class="sapUiSmallMargin" width="auto">
+                                <Label id="oggSpesa" text="{i18n>oggSpesa}" design="Bold"/>
+                                <Text id="oggSpesa1"/>
+                            </VBox>
+                        </HBox> -->
+                        <!-- <HBox id="idHBox4">
+                            <VBox id="idVBox20" class="sapUiSmallMargin" width="auto">
+                                <Label id="mese" text="{i18n>Mese}" design="Bold"/>
+                                <Text id="mese1"/>
+                            </VBox>
+                            <VBox id="idVBox22" class="sapUiSmallMargin" width="auto">
+                                <Label id="comp" text="{i18n>comp}" design="Bold"/>
+                                <Text id="comp1"/>
+                            </VBox>
+                            <VBox id="idVBox21" class="sapUiSmallMargin" width="auto">
+                                <Label id="statoNI" text="{i18n>statoNI}" design="Bold"/>
+                                <Text id="statoNI1"/>
+                            </VBox>
+                        </HBox> -->
+                        <!-- <HBox id="idHBox5">
+                            <VBox id="idVBox23" class="sapUiSmallMargin" width="auto">
+                                <Label id="importoTot" text="{i18n>importoTot}" design="Bold"/>
+                                <Text id="importoTot1"/>
+                            </VBox>
+                        </HBox> -->
+                    <!-- </layout:VerticalLayout>
+                </layout:HorizontalLayout> -->
+                <OverflowToolbar>
+                    <ToolbarSpacer />
+                    <Button text="Associa Impegno" type="Emphasized" press="pressAssociaImpegno" enabled="true" id="pressAssImpegno"/>
+                    <Button text="Rettifica NI" id="rettificaNI" type="Emphasized" press="pressRettificaNI" />
+                </OverflowToolbar>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <IconTabBar id="idIconTabBar" class="sapUiResponsiveContentPadding" select="onSelect">
+                <items>
+                    <IconTabFilter icon="sap-icon://detail-view" text="Dettaglio NI" key="dettagliNI">
+                        <core:Fragment fragmentName="project1.fragment.dettagliNI" type="XML" />
+                    </IconTabFilter>
+                    <IconTabFilter icon="sap-icon://history" text="Workflow" key="Workflow">
+                        <core:Fragment fragmentName="project1.fragment.workflow" type="XML"/>
+                    </IconTabFilter>
+                    <IconTabFilter icon="sap-icon://documents" text="Fascicolo" key="Fascicolo">
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                <Button text="Indietro" type="Emphasized" press="onBackButton" />
+                <ToolbarSpacer />
+                <Button type="Emphasized" text="Annulla NI" press="onCancelNI" id="AnnullaNI" />
+                <Button type="Emphasized" text="Completa NI" press="onCompleteNI" id="CompletaNI" enabled="false" />
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+		xmlns="sap.suite.ui.commons"
+		xmlns:core="sap.ui.core">
+	<Timeline
+			id="idTimeline"
+			showHeaderBar="false"
+            alignment="Right"
+            axisOrientation="Vertical"
+			enableDoubleSided="false"
+			growingThreshold="0"
+            showIcons="true"
+			
+			height="100%"
+			content="{temp>/WFStateNI}"
+			>
+		<content>
+			<TimelineItem
+					id="idTemplateItem"
+					dateTime="{temp>DataStato}"
+					title="{temp>ZstatoDescNi}"
+					text="Registrato dall'utente {temp>UtenteDescr}"
+					icon="{= ${temp>IsLast} === 'X' ? 'sap-icon://favorite' : 'sap-icon://person-placeholder' }">
+			</TimelineItem>
+		</content>
+	</Timeline>
+</core:FragmentDefinition>

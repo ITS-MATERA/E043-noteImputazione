@@ -1,0 +1,42 @@
+<!-- <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">   
+<SelectDialog
+        title="Seleziona Centro di Costo"
+        growing="true"
+        growingThreshold="9999"
+        class="sapUiPopupWithPadding"
+        items="{temp>/LtextIcSet}"
+        search="_handleValueHelpSearch"
+        confirm="_handleValueHelpSetValueClose"
+        cancel="_handleValueHelpClose"
+        app:filterTableField="inputCentroCosto"
+        >        
+        <StandardListItem
+            iconDensityAware="false"
+            iconInset="false"
+            title="{temp>Kostl}"
+            app:key="{temp>Kostl}"
+             />    
+</SelectDialog>
+             
+             </core:FragmentDefinition> -->
+               <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">   
+<SelectDialog
+        title="Seleziona Centro di Costo"
+        growing="true"
+        growingThreshold="9999"
+        class="sapUiPopupWithPadding"
+        items="{temp>/ZhfKostlSet}"
+        search="_handleValueHelpSearch"
+        confirm="_handleValueHelpSetValueClose"
+        cancel="_handleValueHelpClose"
+        app:filterTableField="inputCentroCosto"
+        >        
+        <StandardListItem
+            iconDensityAware="false"
+            iconInset="false"
+            title="{temp>Kostl}"
+            app:key="{temp>Kostl}"
+             />    
+</SelectDialog>
+             
+             </core:FragmentDefinition>

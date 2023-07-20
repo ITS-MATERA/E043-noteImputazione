@@ -1,0 +1,24 @@
+{
+    "Beneficiario": [
+        {
+            "Nome": "",
+            "ModalitaPagamento": "",
+            "IBAN": "" 
+        },
+        {
+            "Nome": "",
+            "ModalitaPagamento": "",
+            "IBAN": "" 
+        },
+        {
+            "Nome": "",
+            "ModalitaPagamento": "",
+            "IBAN": "" 
+        },
+        {
+            "Nome": "",
+            "ModalitaPagamento": "",
+            "IBAN": "" 
+        }
+    ]
+}

@@ -1,0 +1,232 @@
+<mvc:View height="100%"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns="sap.m" controllerName="project1.controller.wizardInserisciRiga">
+    <NavContainer id="wizardNavContainer">
+        <f:DynamicPage stickySubheaderProvider="CreateProductWizard" toggleHeaderOnTitleClick="false" class="sapUiNoContentPadding" showFooter="true">
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <Text text="Dati NI" />
+                    </f:heading>
+                </f:DynamicPageTitle>
+            </f:title>
+            <f:header>
+                <f:DynamicPageHeader id="h1" pinnable="false">
+                    <l:HorizontalLayout allowWrapping="true">
+                        <l:VerticalLayout class="sapUiMediumMarginEnd" visible="{/headerVisible}">
+                            <HBox id="idHBox2">
+                                <VBox id="idVBox14" class="sapUiSmallMargin" width="auto">
+                                    <Label id="numNI" text="{i18n>ProgressivoNI}" design="Bold"/>
+                                    <Text id="numNI1"/>
+                                </VBox>
+                                <VBox id="idVBox15" class="sapUiSmallMargin" width="auto">
+                                    <Label id="dataReg" text="{i18n>Data}" design="Bold"/>
+                                    <Text id="dataReg1" wrapping="true"/>
+                                </VBox>
+                            </HBox>
+                            <HBox id="idHBox3">
+                                <VBox id="idVBox17" class="sapUiSmallMargin" width="auto">
+                                    <Label id="SARW2" text="{i18n>SAR}" design="Bold"/>
+                                    <Text id="SARWH2"/>
+                                </VBox>
+                                <VBox id="idVBox18" class="sapUiSmallMargin" width="auto">
+                                    <Label id="pos_FinW2" text="{i18n>PF}" design="Bold"/>
+                                    <Text id="pos_FinWH2"/>
+                                </VBox>
+                                <VBox id="idVBox19" class="sapUiSmallMargin" width="auto">
+                                    <Label id="oggSpesa" text="{i18n>oggSpesa}" design="Bold"/>
+                                    <Text id="oggSpesa1"/>
+                                </VBox>
+                            </HBox>
+                            <HBox id="idHBox4">
+                                <VBox id="idVBox20" class="sapUiSmallMargin" width="auto">
+                                    <Label id="mese1" text="{i18n>Mese}" design="Bold"/>
+                                    <Text id="mese2"/>
+                                </VBox>
+                                <VBox id="idVBox21" class="sapUiSmallMargin" width="auto">
+                                    <Label id="statoNI" text="{i18n>statoNI}" design="Bold"/>
+                                    <Text id="statoNI1"/>
+                                </VBox>
+                                <VBox id="idVBox22" class="sapUiSmallMargin" width="auto">
+                                    <Label id="importoTot" text="{i18n>importoTot}" design="Bold"/>
+                                    <Text id="importoTot1"/>
+                                </VBox>
+                            </HBox>
+                        </l:VerticalLayout>
+                    </l:HorizontalLayout>
+                </f:DynamicPageHeader>
+            </f:header>
+            <f:content>
+                <Wizard id="CreateProductWizard" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" showNextButton="false" navigationChange="handleNavigationChange" renderMode="Page" width="auto">
+                    <WizardStep id="SelezioneTitoliStep" title="Selezione Titoli" validated="true">
+                        <form:SimpleForm editable="true">
+                            <Panel height="100%">
+                                <content>
+                                    <l:Grid>
+                                        <l:content>
+                                            <VBox >
+                                                <Label text="Esercizio di Gestione:" required="true" />
+                                                <ComboBox id="es_gestione" width="100%" items="{path: 'temp>/ZgjahrEngNiSet', sorter: { path: 'ZgjahrEng' }}" editable="false">
+                                                    <core:Item id="es_gestione1" key="{temp>ZgjahrEng}" text="{temp>ZgjahrEng}"/>
+                                                </ComboBox>
+                                                <layoutData>
+                                                    <l:GridData span="L6 M6 S6" />
+                                                </layoutData>
+                                            </VBox>
+                                            <!-- <VBox>
+                                                <Label text="Mese:" required="true" />
+                                                <ComboBox id="mese" width="50%" editable="false">
+                                                    <core:Item text=""/>
+                                                    <core:Item text="1"/>
+                                                    <core:Item text="2"/>
+                                                    <core:Item text="3"/>
+                                                    <core:Item text="4"/>
+                                                    <core:Item text="5"/>
+                                                    <core:Item text="6"/>
+                                                    <core:Item text="7"/>
+                                                    <core:Item text="8"/>
+                                                    <core:Item text="9"/>
+                                                    <core:Item text="10"/>
+                                                    <core:Item text="11"/>
+                                                    <core:Item text="12"/>
+                                                </ComboBox>
+
+                                                <layoutData>
+                                                    <l:GridData span="L6 M6 S6" />
+                                                </layoutData>
+                                            </VBox> -->
+                                            <VBox>
+                                                <Label text="Mese:" required="true" />
+                                                <ComboBox id="mese" width="50%" items="{path: 'temp>/ZmeseSet'}" editable="false">
+                                                    <core:Item key="{temp>Valore}" text="{temp>Descrizione}"/>
+                                                </ComboBox>
+
+                                                <layoutData>
+                                                    <l:GridData span="L6 M6 S6" />
+                                                </layoutData>
+                                            </VBox>
+
+                                            <VBox>
+                                                <Label text="Sottotipologia di primo livello:" />
+                                                <Input value="" id="tipologia" width="100%" showSuggestion="false" showValueHelp="true" showClearIcon="true"
+                                                    suggestionItems="{path: 'temp>/ZhfTipo', sorter: { path: 'ZcodTipo' }}" 
+                                                    valueHelpOnly="true"
+                                                    app:ZhfTipoKey="{temp>/ZhfTipoKey}"
+                                                    valueHelpRequest="handleValueHelpZhfTipo" app:fieldName="tipologia" app:filterTableField="tipologia">
+                                                    <suggestionItems>
+                                                        <core:ListItem key="{temp>ZcodTipo}" text="{temp>Ztipo}"/>
+                                                    </suggestionItems>
+                                                </Input>
+                                                <layoutData>
+                                                    <l:GridData span="L3 M3 S3" />
+                                                </layoutData>
+                                            </VBox>
+                                            <VBox>
+                                                <Label text="Sottotipologia di secondo livello:" />
+                                                <ComboBox id="sottotipologia" width="100%"
+                                                    items ="{
+                                                    path: 'temp>/ZhfSottotipo'
+                                                    }">
+                                                    <core:ListItem key="{temp>ZcodSottotipo}" text="{temp>Zsottotipo}" additionalText = "{temp>ZcodSottotipo}"/>                                                    
+                                                </ComboBox>
+                                                <layoutData>
+                                                    <l:GridData span="L3 M3 S3" />
+                                                </layoutData>
+                                            </VBox>
+                                            <VBox>
+                                                <Label text="Competenza/Residui:" />
+                                                <ComboBox id="competenza" width="100%" value="C">
+                                                    <core:Item text="C"/>
+                                                    <core:Item text="R"/>
+                                                </ComboBox>
+                                                <layoutData>
+                                                    <l:GridData span="L3 M3 S3" />
+                                                </layoutData>
+                                            </VBox>
+                                        </l:content>
+                                    </l:Grid>
+                                </content>
+                            </Panel>
+                        </form:SimpleForm>
+                        <OverflowToolbar id="idSubmit" active="true">
+                            <ToolbarSpacer />
+                            <Button type="Emphasized" text="{i18n>submit}" press="onSearch" id="buttonSubmit" />
+                        </OverflowToolbar>
+                        <core:Fragment fragmentName="project1.fragment.tableWizard" type="XML" />
+                    </WizardStep>
+                    <WizardStep id="APFStep" validated="true" title="Associazione Posizione Finanziaria" activate="additionalInfoValidation">
+                        <form:SimpleForm editable="true">
+                            <form:content>
+                                <Panel height="100%">
+                                    <content>
+                                        <l:Grid>
+                                            <l:content>
+                                                <VBox>
+                                                    <Label text="Struttura Amministrativa Responsabile:" required="true"/>
+                                                    <Input id="strAmmResp" showSuggestion="true" showValueHelp="true" suggestionItems="{path: 'temp>/HeaderNISet', sorter: { path: 'Fistl' }}" editable="false">
+                                                        <suggestionItems>
+                                                            <core:ListItem text="{temp>Fistl}" />
+                                                        </suggestionItems>
+                                                    </Input>
+                                                    <layoutData>
+                                                        <l:GridData span="L12 M12 S12" />
+                                                    </layoutData>
+                                                </VBox>
+                                                <VBox>
+                                                    <Label text="Posizione Finanziaria:" required="true" />
+                                                    <Input id="input_PF" showSuggestion="true" showValueHelp="true" suggestionItems="{path: 'temp>/HeaderNISet', sorter: { path: 'Fipex' }}" editable="false">
+                                                        <suggestionItems>
+                                                            <core:ListItem text="{temp>Fipex}"/>
+                                                        </suggestionItems>
+                                                    </Input>
+                                                    <layoutData>
+                                                        <l:GridData span="L4 M4 S4" />
+                                                    </layoutData>
+                                                </VBox>
+                                                <VBox>
+                                                    <Label text="Descrizione Capitolo:" />
+                                                    <Input showValueHelp="false" editable="false" suggestionItems="{path: 'temp>/', sorter: { path: '' }}">
+                                                        <core:Item key="{temp>}"/>
+                                                    </Input>
+                                                    <layoutData>
+                                                        <l:GridData span="L4 M4 S4" />
+                                                    </layoutData>
+                                                </VBox>
+                                                <VBox>
+                                                    <Label text="Descrizione PG:" />
+                                                    <Input showValueHelp="false" editable="false" suggestionItems="{path: 'temp>/', sorter: { path: '' }}">
+                                                        <core:Item key="{temp>}"/>
+                                                    </Input>
+                                                    <layoutData>
+                                                        <l:GridData span="L4 M4 S4" />
+                                                    </layoutData>
+                                                </VBox>
+                                            </l:content>
+                                        </l:Grid>
+                                    </content>
+                                </Panel>
+                            </form:content>
+                        </form:SimpleForm>
+                    </WizardStep>
+                    <WizardStep id="DatiNIStep" validated="true" activate="optionalStepActivation" title="Dati NI">
+                        <core:Fragment fragmentName="project1.fragment.wizardStep3Table" type="XML" />
+                    </WizardStep>
+                </Wizard>
+            </f:content>
+            <f:footer>
+                <OverflowToolbar>
+                    <Button text="Indietro" type="Emphasized" visible="{/BackButtonVisible}" press="onBackButton" />
+                    <Button text="Avanti" type="Emphasized" visible="{/NextButtonVisible}" press="onNextButton" />
+                    <ToolbarSpacer />
+                    <Button type="Emphasized" text="Salva" visible="{/PNIButtonVisible}" press="onPreimpNI" id="PreimpostaNI" />
+                </OverflowToolbar>
+            </f:footer>
+        </f:DynamicPage>
+    </NavContainer>
+</mvc:View>

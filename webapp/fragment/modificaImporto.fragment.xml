@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:u="sap.ui.unified"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:menu="sap.m.MenuItem"
+    xmlns:menBtn="sap.m.Menu"
+    height="100%">
+    
+    <Table class="sapUiSizeCompact" id="PositionNIMI" includeItemInSelection="true" items="{PositionNIMI>/}" visible="true">
+        <columns>
+            <Column width="auto" hAlign="Left">
+                <Label text="Codice ISIN" />
+            </Column>
+            <Column width="25%" hAlign="Left">
+                <Label text="Sottotipologia primo livello " />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Descrizione" />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Data Pagamento" />
+            </Column>
+            <Column width="auto" hAlign="Right">
+                <Label text="Importo NI" />
+            </Column>
+            <Column width="auto" hAlign="Right">
+                <Label text="Importo Residuo" />
+            </Column>
+        </columns>
+        <ColumnListItem>
+            <Text text="{PositionNIMI>ZcodIsin}" />
+            <Text text="{PositionNIMI>Ztipo}"/>
+            <Text text="{PositionNIMI>Zdescrizione}" />
+            <Text text="{path: 'PositionNIMI>ZdataPag', formatter:'.formatter.convert'}" />
+            <Input value="{PositionNIMI>ZimpoTitolo}" textAlign="Right"/>
+            <Text text ="{PositionNIMI>ZimpoRes}" textAlign="Right"/>
+        </ColumnListItem>
+    </Table>
+
+</core:FragmentDefinition>

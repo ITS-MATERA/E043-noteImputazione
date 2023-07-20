@@ -1,0 +1,75 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:u="sap.ui.unified"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:menu="sap.m.MenuItem"
+    xmlns:menBtn="sap.m.Menu"
+    height="100%">
+    <!-- <Table class="sapUiSizeCompact" id="HeaderNIWstep3" includeItemInSelection="true" items="{HeaderNIWstep3>/}" visible="true">
+        <columns>
+            <Column width="auto">
+                <Label text="Codice ISIN" />
+            </Column>
+            <Column width="25%">
+                <Label text="Sottotipologia primo livello " />
+            </Column>
+            <Column width="auto">
+                <Label text="Descrizione" />
+            </Column>
+            <Column width="auto">
+                <Label text="Data Pagamento" />
+            </Column>
+            <Column width="auto">
+                <Label text="Importo NI" />
+            </Column>
+            <Column width="auto">
+                <Label text="Importo Residuo" />
+            </Column>
+        </columns>
+        <ColumnListItem>
+            <Text text="{HeaderNIWstep3>ZcodIsin}" />
+            <Text text="{HeaderNIWstep3>Ztipo}"/>
+           <Input value="{HeaderNIWstep3>ZDescrizione}"/>
+            <Text text="{path:'HeaderNIWstep3>ZdataPag', formatter:'.formatter.convert'}" />
+            <Input value="{HeaderNIWstep3>ZimpoTitolo}"/>
+            <Input value="{HeaderNIWstep3>ZimpoRes}"/>
+        </ColumnListItem>
+    </Table> -->
+    <!--  -->
+    <Table class="sapUiSizeCompact" id="HeaderNIWstep3" includeItemInSelection="true" items="{HeaderNIWstep3>/}" visible="true">
+        <columns>
+            <Column width="auto" hAlign="Left">
+                <Label text="Codice ISIN" />
+            </Column>
+            <Column width="25%" hAlign="Left">
+                <Label text="Sottotipologia primo livello " />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Descrizione" />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Data Pagamento" />
+            </Column>
+            <Column width="auto" hAlign="Right">
+                <Label text="Importo NI" />
+            </Column>
+            <Column width="auto" hAlign="Right">
+                <Label text="Importo Residuo" />
+            </Column>
+        </columns>
+        <ColumnListItem>
+            <Text text="{HeaderNIWstep3>ZcodIsin}" />
+            <Text text="{HeaderNIWstep3>Ztipo}"/>
+            <Text text="{HeaderNIWstep3>Zdescrizione}" />
+            <Text text="{path:'HeaderNIWstep3>ZdataPag', formatter:'.formatter.convert'}" />
+            <Input value="{HeaderNIWstep3>ZimpoTitolo}" textAlign="Right"/>
+            <Text text="{path:'HeaderNIWstep3>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
+            <!-- <Text text="{HeaderNIWstep3>ZimpoRes}" /> -->
+        </ColumnListItem>
+    </Table>
+</core:FragmentDefinition>

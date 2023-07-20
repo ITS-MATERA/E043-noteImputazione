@@ -1,0 +1,18 @@
+/* Enter your custom styles here */
+.headerColor {
+    height: 100px;
+    width: 100%;
+    background: red;
+}
+
+.heightZero {
+    height: 0px!important;
+}
+
+.salvaImpegno-margin-bottom{
+    margin-bottom:0.2rem!important;
+  }
+
+.lbl-header-margin-right{
+    margin-right: 0.2rem!important;
+}

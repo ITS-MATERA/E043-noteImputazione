@@ -1,0 +1,63 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:u="sap.ui.unified"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:menu="sap.m.MenuItem"
+    xmlns:menBtn="sap.m.Menu"
+    height="100%">
+    <Table class="sapUiSizeCompact" id="HeaderInserisci" includeItemInSelection="true" items="{HeaderInserisci>/}" visible="true">
+    <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button type="Emphasized" text="Modifica Dettaglio NI" enabled="false" press="onEditRow" id="editRow" />
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column width="auto" hAlign="Left">
+                <Label text="Numero NI" />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Codice ISIN" />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Sottotipologia primo livello" />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Descrizione" />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Data Pagamento" />
+            </Column>
+            <Column width="auto" hAlign="Right">
+                <Label text="Importo NI" />
+            </Column>
+            <Column width="auto" hAlign="Right">
+                <Label text="Importo Residuo" />
+            </Column>
+             <Column width="auto" hAlign="Left">
+                <Label text="Impegno" />
+            </Column>
+        </columns>
+        <ColumnListItem>
+            <Text text="{HeaderInserisci>ZchiaveSubni}" />
+            <Text text="{HeaderInserisci>ZcodIsin}" />
+            <Text text="{HeaderInserisci>Ztipo}" />
+            <Text text="{HeaderInserisci>Zdescrizione}" />
+            <Text text="{path: 'HeaderInserisci>ZdataPag', formatter:'.formatter.convert'}" />
+
+            <Text text="{path:'HeaderInserisci>ZimpoTitolo', formatter:'.formatter.convertFormattedNumber'}" />   
+            <Text text="{path:'HeaderInserisci>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />   
+
+            <!-- <Text text="{HeaderInserisci>ZimpoTitolo}" />
+            <Text text="{HeaderInserisci>ZimpoRes}" /> -->
+            <Text text="{HeaderInserisci>ZCodCla}"/>
+        </ColumnListItem>
+    </Table>
+</core:FragmentDefinition>

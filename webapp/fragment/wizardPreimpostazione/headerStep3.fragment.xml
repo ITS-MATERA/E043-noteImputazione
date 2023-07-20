@@ -1,0 +1,76 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"  
+    xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"  
+    xmlns:zcontrollinkSar="custlinksar.custlinksar.controls" 
+    height="100%">
+    
+    <VBox visible="{componentModel>/headerStep3Visible}">
+        <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
+            <Text text="DATI NI" />
+            <!-- 1 riga -->
+           <HBox> 
+                <Label text="Esercizio di gestione: " design="Bold" class="lbl-header-margin-right" />
+                <Text text="{preimpostazioneModel>/ZgjahrEng}"/> 
+                <layoutData>
+                    <l:GridData span="XL4 L4 M6 S12" />
+                </layoutData>
+           </HBox> 
+           <HBox> 
+                <Label text="Mese: " design="Bold" class="lbl-header-margin-right" />
+                <Text text="{preimpostazioneModel>/meseDescrizione}"/> 
+                <layoutData>
+                    <l:GridData span="XL3 L3 M6 S12" />
+                </layoutData>
+           </HBox> 
+           <HBox> 
+                <Label text="Competenza/Residui: " design="Bold" class="lbl-header-margin-right" />
+                <Text text="{preimpostazioneModel>/competenzaDescrizione}"/> 
+                <layoutData>
+                    <l:GridData span="XL3 L3 M6 S12" />
+                </layoutData>
+           </HBox> 
+           <!-- 2 riga -->
+           <HBox> 
+                <Label text="N.righe di rendicontazione in preimpostazione: " design="Bold" class="lbl-header-margin-right" />
+                <Text text="{preimpostazioneModel>/rendicontazioneRowNum} per un totale di {preimpostazioneModel>/rendicontazioneSumRowSelectedString}"/> 
+                <layoutData>
+                    <l:GridData span="XL4 L4 M6 S12" linebreak="true"/>
+                </layoutData>
+           </HBox> 
+           <HBox> 
+                <Label text="Struttura amministrativa Responsabile: " design="Bold" class="lbl-header-margin-right" />
+                <zcontrollinkSar:LinkSar id="linkSarBilancio" anno="{preimpostazioneModel>/ZgjahrEng}" eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" 
+                versione="D" bilancio="" fictr="{preimpostazioneModel>/fistl}" datbis="99991231" text="{preimpostazioneModel>/fistl}"/>
+                <layoutData>
+                    <l:GridData span="XL3 L3 M6 S12" />
+                </layoutData>
+           </HBox> 
+           <HBox> 
+                <Label text="Posizione Finanziaria: " design="Bold" class="lbl-header-margin-right" />
+                <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesa" anno="{preimpostazioneModel>/ZgjahrEng}" eos="S" fikrs="S001" fase="GEST" reale="R" 
+                versione="D" fipex="{preimpostazioneModel>/fipex}" datbis="99991231" text="{preimpostazioneModel>/fipex}" semanticObject="ESAMINAMODIFICA"/>
+                <layoutData>
+                    <l:GridData span="XL3 L3 M6 S12" />
+                </layoutData>
+           </HBox> 
+           <!-- 3 riga -->
+           <HBox> 
+                <Label text="Descrizione Capitolo: " design="Bold" class="lbl-header-margin-right" />
+                <Text text="{preimpostazioneModel>/descrizioneCapitolo}"/> 
+                <layoutData>
+                    <l:GridData span="XL4 L4 M6 S12" linebreak="true"/>
+                </layoutData>
+           </HBox> 
+           <HBox> 
+                <Label text="Descrizione PG: " design="Bold" class="lbl-header-margin-right" />
+                <Text text="{preimpostazioneModel>/descrizionePG}"/> 
+                <layoutData>
+                    <l:GridData span="XL3 L3 M6 S12" />
+                </layoutData>
+           </HBox> 
+        </l:Grid>
+    </VBox>
+</core:FragmentDefinition>

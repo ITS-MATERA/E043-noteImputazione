@@ -1,0 +1,61 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:u="sap.ui.unified"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:menu="sap.m.MenuItem"
+    xmlns:menBtn="sap.m.Menu"
+    height="100%">
+    <Table class="sapUiSizeCompact" id="annullataNIRilievo" includeItemInSelection="true" items="{annullataNIRilievo>/}" visible="true">
+    <!-- <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button type="Emphasized" text="Modifica Dettaglio NI" enabled="false" press="onEditRow" id="editRow" />
+                </content>
+            </OverflowToolbar>
+        </headerToolbar> -->
+        <columns>
+            <Column width="auto" hAlign="Left">
+                <Label text="Numero NI" />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Codice ISIN" />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Sottotipologia primo livello" />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Descrizione" />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Data Pagamento" />
+            </Column>
+            <Column width="auto" hAlign="Right">
+                <Label text="Importo NI" />
+            </Column>
+            <Column width="auto" hAlign="Right">
+                <Label text="Importo Residuo" />
+            </Column>
+             <Column width="auto" hAlign="Left">
+                <Label text="Impegno" />
+            </Column>
+        </columns>
+        <ColumnListItem>
+            <Text text="{annullataNIRilievo>ZchiaveSubni}" />
+            <Text text="{annullataNIRilievo>ZcodIsin}" />
+            <Text text="{annullataNIRilievo>Ztipo}" />
+            <Text text="{annullataNIRilievo>Zdescrizione}" />
+            <Text text="{path: 'annullataNIRilievo>ZdataPag', formatter:'.formatter.convert'}" />
+            <!-- <Text text="{annullataNIRilievo>ZimpoTitolo}" />
+            <Text text="{annullataNIRilievo>ZimpoRes}" /> -->
+            <Text text="{path:'annullataNIRilievo>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
+            <Text text="{path:'annullataNIRilievo>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
+            <Text text="{annullataNIRilievo>ZCodCla}"/>
+        </ColumnListItem>
+    </Table>
+</core:FragmentDefinition>

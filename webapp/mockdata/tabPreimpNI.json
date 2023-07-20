@@ -1,0 +1,20 @@
+{
+    "items" : [{
+        "Numero NI": "2022-050.0201451.000000000001",
+        "Struttura Amministrativa Responsabile": "S00398888457722",
+        "Posizione Finanziaria": "S9895340.59394.6565464",
+        "Oggetto della spesa": "Pagamento interessi BTP di Agosto",
+        "Mese": "Agosto",
+        "Stato NI": "NI Preimpostata",
+        "Importo Totale NI": 1453665.80
+    },
+    {
+        "Numero NI": "2022-050.020999.000077000001",
+        "Struttura Amministrativa Responsabile": "S0039898987722",
+        "Posizione Finanziaria": "S9895340.59394.22222",
+        "Oggetto della spesa": "Pagamento interessi BTP di Maggio",
+        "Mese": "Maggio",
+        "Stato NI": "NI Preimpostata",
+        "Importo Totale NI": 1453111.80
+    }]
+}

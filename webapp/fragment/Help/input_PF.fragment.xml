@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">   
+<SelectDialog
+        title="Seleziona Tipologia"
+        growing="true"
+        growingThreshold="9999"
+        class="sapUiPopupWithPadding"
+        items="{
+            path: 'temp>/FipexNiSet'
+        }"
+        search="_handleValueHelpSearch"
+        confirm="_handleValueHelpValueClose"
+        cancel="_handleValueHelpClose"
+        app:filterTableField="input_PF"
+        >        
+        <StandardListItem
+            iconDensityAware="false"
+            iconInset="false"
+            title="{temp>Fipex}"
+            app:key="{temp>Fipex}"
+             />    
+</SelectDialog>
+             
+             </core:FragmentDefinition>

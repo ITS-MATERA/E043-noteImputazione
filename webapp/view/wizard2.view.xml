@@ -1,0 +1,52 @@
+<mvc:View height="100%"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns="sap.m" controllerName="project1.controller.wizard2">
+    <NavContainer id="wizardNavContainer">
+        <f:DynamicPage stickySubheaderProvider="CreateProductWizard" toggleHeaderOnTitleClick="false" class="sapUiNoContentPadding" showFooter="true">
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <!-- <Text text="DATI NI" /> -->
+                    </f:heading>
+                </f:DynamicPageTitle>
+            </f:title>
+            <f:header>
+                <f:DynamicPageHeader id="h1" pinnable="false">
+                    <core:Fragment fragmentName="project1.fragment.wizardPreimpostazione.headerStep2" type="XML" /> 
+                    <core:Fragment fragmentName="project1.fragment.wizardPreimpostazione.headerStep3" type="XML" />                 
+                </f:DynamicPageHeader>
+            </f:header>
+            <f:content>
+                <Wizard id="wizardPreimpostazioneNI" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" showNextButton="false"
+                    navigationChange="handleNavigationChange" renderMode="Scroll" width="auto">
+                        <WizardStep id="SelezioneTitoliStep" title="Selezione Titoli" validated="true" app:stepId="1">                            
+                            <core:Fragment fragmentName="project1.fragment.wizardPreimpostazione.step1" type="XML" />                            
+                        </WizardStep>    
+
+                        <WizardStep id="APFStep" validated="true" title="Associazione Posizione Finanziaria" app:stepId="2">
+                            <core:Fragment fragmentName="project1.fragment.wizardPreimpostazione.step2" type="XML" />
+                        </WizardStep>
+
+                        <WizardStep id="DatiNIStep" validated="true" activate="optionalStepActivation" title="Dati NI" app:stepId="3">
+                            <core:Fragment fragmentName="project1.fragment.wizardPreimpostazione.step3" type="XML" />
+                        </WizardStep> 
+                </Wizard>    
+
+
+            </f:content>
+            
+            <f:footer>
+                <OverflowToolbar>
+                    <Button text="Indietro" type="Emphasized" visible="{componentModel>/btnBackVisible}" press="onBackButton" />
+                    <Button text="Avanti" type="Emphasized" visible="{componentModel>/btnNextVisible}" press="onNextButton" />
+                    <ToolbarSpacer />
+                    <Button type="Emphasized" text="Preimposta NI" visible="{componentModel>/btnPreimpostaNiVisible}" press="onPreimpNI" id="PreimpostaNI" />
+                </OverflowToolbar>
+            </f:footer>
+        </f:DynamicPage>
+    </NavContainer>
+</mvc:View>

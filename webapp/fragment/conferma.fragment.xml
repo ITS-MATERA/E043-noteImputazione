@@ -1,0 +1,59 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:u="sap.ui.unified"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:menu="sap.m.MenuItem"
+    xmlns:menBtn="sap.m.Menu"
+    height="100%">
+    <Table class="sapUiSizeCompact" id="conferma" includeItemInSelection="true" items="{conferma>/}" visible="true">
+    <!-- <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button type="Emphasized" text="Modifica Dettaglio NI" enabled="false" press="onEditRow" id="editRow" />
+                </content>
+            </OverflowToolbar>
+        </headerToolbar> -->
+        <columns>
+            <Column width="auto">
+                <Label text="Numero NI" />
+            </Column>
+            <Column width="auto">
+                <Label text="Codice ISIN" />
+            </Column>
+            <Column width="auto">
+                <Label text="Sottotipologia primo livello" />
+            </Column>
+            <Column width="auto">
+                <Label text="Descrizione" />
+            </Column>
+            <Column width="auto">
+                <Label text="Data Pagamento" />
+            </Column>
+            <Column width="auto">
+                <Label text="Importo NI" />
+            </Column>
+            <Column width="auto">
+                <Label text="Importo Residuo" />
+            </Column>
+             <Column width="auto">
+                <Label text="Impegno" />
+            </Column>
+        </columns>
+        <ColumnListItem>
+            <Text text="{conferma>ZchiaveSubni}" />
+            <Text text="{conferma>ZcodIsin}" />
+            <Text text="{conferma>Ztipo}" />
+            <Text text="{conferma>Zdescrizione}" />
+            <Text text="{path: 'conferma>ZdataPag', formatter:'.formatter.convert'}" />
+            <Text text="{conferma>ZimpoTitolo}" />
+            <Text text="{conferma>ZimpoRes}" />
+            <Text text="{conferma>ZCodCla}"/>
+        </ColumnListItem>
+    </Table>
+</core:FragmentDefinition>

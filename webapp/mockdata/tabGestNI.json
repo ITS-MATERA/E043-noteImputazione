@@ -1,0 +1,24 @@
+{
+    "items" : [{
+        "Codice ISIN": "IT1234567890000",
+        "Tipologia": "Interessi BTP",
+        "Sottotipologia": "Buoni del Tesoro",
+        "Tasso di Interesse": "5%",
+        "Data inizio": "01.08.2003",
+        "Data Scadenza": "01.08.2034",
+        "Data Pagamento": "01.08.2021",
+        "CR":"Competenza",
+        "Importo Titolo":"027.123.000.55"
+    },
+    {
+        "Codice ISIN": "IT9876543210000",
+        "Tipologia": "Interessi BTP",
+        "Sottotipologia": "Buoni del Tesoro",
+        "Tasso di Interesse": "10%",
+        "Data inizio": "01.09.2003",
+        "Data Scadenza": "01.09.2034",
+        "Data Pagamento": "01.099.2021",
+        "CR":"Competenza",
+        "Importo Titolo":"027.456.111.66"
+    }]
+}

@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">   
+<SelectDialog
+        title="Seleziona Dirigente"
+        growing="true"
+        growingThreshold="9999"
+        class="sapUiPopupWithPadding"
+        items="{temp>/ShZdirncRichSet}"
+        search="_handleValueHelpSearch"
+        confirm="_handleValueHelpSetValueClose"
+        cancel="_handleValueHelpClose"
+        app:filterTableField="dirigente"
+        >        
+        <StandardListItem
+            iconDensityAware="false"
+            iconInset="false"
+            title="{temp>Name}"
+            app:key="{temp>Name}"
+             />    
+</SelectDialog>
+             
+             </core:FragmentDefinition>

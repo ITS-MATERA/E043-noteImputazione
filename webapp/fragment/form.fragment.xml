@@ -1,0 +1,87 @@
+<core:FragmentDefinition 
+    xmlns="sap.m" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    <VBox class="sapUiSmallMargin">
+        <f:SimpleForm
+            id="SimpleFormChangeColumn__threeGroups234"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanXL="6"
+            labelSpanL="7"
+            labelSpanM="6"
+            labelSpanS="12"
+            adjustLabelSpan="false"
+            emptySpanXL="0"
+            emptySpanL="0"
+            emptySpanM="0"
+            emptySpanS="0"
+            columnsM="2"
+            columnsL="4"
+            columnsXL="4"
+            singleContainerFullSize="false"
+        >
+            <f:content>
+                <core:Title text=" " />
+                <Label text="Esercizio di Gestione" required="true" />
+                <ComboBox id="es_gestione" items="{path: '/ZfmimpegniIpeSet', sorter: { path: 'Gjahr' }}" editable="false">
+                    <core:Item key="{Gjahr}" text="{Gjahr}"/>
+                </ComboBox>
+                <Label text="N. Decreto" class="sapUiTinyMarginBottom" labelFor="inputDecreto" />
+                <Input id="inputDecreto" type="Text" showValueHelp="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'Zcoddecr' }}" enabled="true" editable="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputDecreto" app:filterTableField="inputDecreto">
+                    <core:Item key="{Zcoddecr}" text="{Zcoddecr}"/>
+                </Input>
+                <core:Title text=" " />
+                <Label text="Amministrazione" class="sapUiTinyMarginBottom"/>
+                <Input id="inputAmm" type="Text" enabled="true" showValueHelp="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'Zamministr' }}">
+                    <core:Item key="{Zamministr}" text="{Zamministr}"/>
+                </Input>
+                <Label text="IPE" class="sapUiTinyMarginBottom" />
+                <Input id="inputIPE" type="Text" showValueHelp="true" enabled="true" editable="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'ZCodIpe' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputIPE" app:filterTableField="inputIPE">
+                    <core:Item key="{ZCodIpe}" text="{ZCodIpe}"/>
+                </Input>
+                <core:Title text=" " />
+                <Label text="Ufficio I Livello" class="sapUiTinyMarginbottom" required="false" />
+                <Input id="inputaUff" type="Text" enabled="true" showValueHelp="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'Zufficioliv1' }}" editable="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputaUff" app:filterTableField="inputaUff">
+                    <core:Item key="{Zufficioliv1}" text="{Zufficioliv1}"/>
+                </Input>
+                <Label text="N. Clausola" class="sapUiTinyMarginBottom" />
+                <Input id="inputClaus" type="Text" enabled="true" showValueHelp="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'ZNumCla' }}" editable="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputClaus" app:filterTableField="inputClaus">
+                    <core:Item key="{ZNumCla}" text="{ZNumCla}"/>
+                </Input>
+                <core:Title text=" " />
+                <Label text="Ufficio II Livello" class="sapUiTinyMarginBottom" required="false"  />
+                <Input id="inputbUff" type="Text" enabled="true" showValueHelp="true" editable="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'Zufficioliv2' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputbUff" app:filterTableField="inputbUff">
+                    <core:Item key="{Zufficioliv2}" text="{Zufficioliv2}"/>
+                </Input>
+            </f:content>
+        </f:SimpleForm>
+        <f:SimpleForm
+            id="SimpleFormChangeColumn__threeGroups234-1"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanXL="6"
+            labelSpanL="7"
+            labelSpanM="6"
+            labelSpanS="12"
+            adjustLabelSpan="false"
+            emptySpanXL="0"
+            emptySpanL="0"
+            emptySpanM="0"
+            emptySpanS="0"
+            columnsM="1"
+            columnsL="1"
+            columnsXL="1"
+            singleContainerFullSize="false"
+        >
+            <f:content>
+                <OverflowToolbar>
+                    <ToolbarSpacer/>
+                    <Button type="Emphasized" id="Avvio" text="Avvio" press="onSearch"/>
+                </OverflowToolbar>
+            </f:content>
+        </f:SimpleForm>
+    </VBox>
+</core:FragmentDefinition>

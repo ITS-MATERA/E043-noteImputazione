@@ -1,0 +1,43 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:u="sap.ui.unified"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:menu="sap.m.MenuItem"
+    xmlns:menBtn="sap.m.Menu"
+    height="100%">
+    <Table class="sapUiSizeCompact" id="HeaderNIWstep3" includeItemInSelection="true" items="{preimpostazioneModel>/titoliSelezionatiStep3}" visible="true">
+        <columns>
+            <Column width="auto" hAlign="Left">
+                <Label text="Codice ISIN" />
+            </Column>
+            <Column width="25%" hAlign="Left">
+                <Label text="Sottotipologia primo livello " />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Descrizione" />
+            </Column>
+            <Column width="auto" hAlign="Left">
+                <Label text="Data Pagamento" />
+            </Column>
+            <Column width="auto" hAlign="Right">
+                <Label text="Importo NI" />
+            </Column>
+            <Column width="auto" hAlign="Right">
+                <Label text="Importo Residuo" />
+            </Column>
+        </columns>
+        <ColumnListItem>
+            <Text text="{preimpostazioneModel>ZcodIsin}" />
+            <Text text="{preimpostazioneModel>Ztipo}"/>
+            <Text text="{preimpostazioneModel>Zdescrizione}" />
+            <Text text="{path:'preimpostazioneModel>ZdataPag', formatter:'.formatter.convert'}" />
+            <Input id="step3Input" type="Number" value="{preimpostazioneModel>ZimpoTitolo}" textAlign="Right" />
+            <Text text="{path:'preimpostazioneModel>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
+        </ColumnListItem>
+    </Table>
+</core:FragmentDefinition>

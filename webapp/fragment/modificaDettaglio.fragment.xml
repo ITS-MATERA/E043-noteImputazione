@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:u="sap.ui.unified"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:menu="sap.m.MenuItem"
+    xmlns:menBtn="sap.m.Menu"
+    height="100%">
+    <Table id="idModificaDettaglio" inset="false" showSeparators="Inner" items="{HeaderNIM>/}">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title text="Dettaglio NI" />
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column demandPopin="true" hAlign="Left">
+                <Label text="Struttura Amministrativa Responsabile" />
+            </Column>
+            <Column demandPopin="true" hAlign="Left">
+                <Label text="Posizione Finanziaria" />
+            </Column>
+            <Column demandPopin="true" hAlign="Left">
+                <Label text="Oggetto della spesa" />
+            </Column>
+            <Column demandPopin="true" hAlign="Left">
+                <Label text="Mese" />
+            </Column>
+        </columns>
+        <ColumnListItem>
+            <Text text="{HeaderNIM>Fistl}" />
+            <Text text="{HeaderNIM>Fipex}" />
+            <Input value="{HeaderNIM>ZoggSpesa}" id="oggSpesa"/>
+            <Text text="{path: 'HeaderNIM>Zmese', formatter:'.formatter.getMonthName'}" />
+        </ColumnListItem>
+    </Table>
+</core:FragmentDefinition>
