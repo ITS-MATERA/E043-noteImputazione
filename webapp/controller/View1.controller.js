@@ -339,34 +339,60 @@ sap.ui.define([
                 });
             },
 
-            onNavToIconTB: function () {
-                var row = this.getView().byId("HeaderNI").getSelectedItem().getBindingContext("HeaderNI").getObject()
-                if (row.ZcodiStatoni == "NI Preimpostata")
-                    this.getOwnerComponent().getRouter().navTo("iconTabBar", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
-                if (row.ZcodiStatoni == "NI Provvisoria")
-                    this.getOwnerComponent().getRouter().navTo("inserisciInvioFirma", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
-                if (row.ZcodiStatoni == "NI Inviata alla firma")
-                    this.getOwnerComponent().getRouter().navTo("revocaFirma", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
-                if (row.ZcodiStatoni == "")
-                    this.getOwnerComponent().getRouter().navTo("passaggioStato", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
-                if (row.ZcodiStatoni == "NI In Verifica")
-                    this.getOwnerComponent().getRouter().navTo("richiamaNI", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
-                if (row.ZcodiStatoni == "NI Confermata")
-                    this.getOwnerComponent().getRouter().navTo("conferma", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
-                if (row.ZcodiStatoni == "NI Validata RGS")
-                    this.getOwnerComponent().getRouter().navTo("richiamoNIRGS", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
-                if (row.ZcodiStatoni == "NI con Rilievo Registrato")
-                    this.getOwnerComponent().getRouter().navTo("richiamoRilievoRegistrato", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
-                if (row.ZcodiStatoni == "NI Annullata")
-                    this.getOwnerComponent().getRouter().navTo("annullataNI", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
-                if (row.ZcodiStatoni == "NI Annullata per Richiamo")
-                    this.getOwnerComponent().getRouter().navTo("annullataNIRichiamo", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
-                if (row.ZcodiStatoni == "NI Annullata per Rilievo")
-                    this.getOwnerComponent().getRouter().navTo("annullataNIRilievo", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
-            },
+            // onNavToIconTB: function () {
+            //     var row = this.getView().byId("HeaderNI").getSelectedItem().getBindingContext("HeaderNI").getObject();
+
+            //     if (row.ZcodiStatoni == "NI Preimpostata")
+            //         this.getOwnerComponent().getRouter().navTo("iconTabBar", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+            //     if (row.ZcodiStatoni == "NI Provvisoria")
+            //         this.getOwnerComponent().getRouter().navTo("inserisciInvioFirma", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+            //     if (row.ZcodiStatoni == "NI Inviata alla firma")
+            //         this.getOwnerComponent().getRouter().navTo("revocaFirma", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+            //     if (row.ZcodiStatoni == "")
+            //         this.getOwnerComponent().getRouter().navTo("passaggioStato", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+            //     if (row.ZcodiStatoni == "NI In Verifica")
+            //         this.getOwnerComponent().getRouter().navTo("richiamaNI", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+            //     if (row.ZcodiStatoni == "NI Confermata")
+            //         this.getOwnerComponent().getRouter().navTo("conferma", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+            //     if (row.ZcodiStatoni == "NI Validata RGS")
+            //         this.getOwnerComponent().getRouter().navTo("richiamoNIRGS", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+            //     if (row.ZcodiStatoni == "NI con Rilievo Registrato")
+            //         this.getOwnerComponent().getRouter().navTo("richiamoRilievoRegistrato", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+            //     if (row.ZcodiStatoni == "NI Annullata")
+            //         this.getOwnerComponent().getRouter().navTo("annullataNI", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+            //     if (row.ZcodiStatoni == "NI Annullata per Richiamo")
+            //         this.getOwnerComponent().getRouter().navTo("annullataNIRichiamo", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+            //     if (row.ZcodiStatoni == "NI Annullata per Rilievo")
+            //         this.getOwnerComponent().getRouter().navTo("annullataNIRilievo", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+            // },
 
             navToDettagliNI: function (oEvent) {
-                this.onNavToIconTB()
+                var self =this;
+                var row = self.getView().byId("HeaderNI").getSelectedItem().getBindingContext("HeaderNI").getObject();
+
+                if (row.ZcodiStatoni === "00")//NI Preimpostata
+                    this.getOwnerComponent().getRouter().navTo("iconTabBar", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+                if (row.ZcodiStatoni === "01")//NI Provvisoria
+                    this.getOwnerComponent().getRouter().navTo("inserisciInvioFirma", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+                if (row.ZcodiStatoni === "02")//NI Inviata alla firma
+                    this.getOwnerComponent().getRouter().navTo("revocaFirma", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+                if (row.ZcodiStatoni === "")
+                    this.getOwnerComponent().getRouter().navTo("passaggioStato", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+                if (row.ZcodiStatoni === "04")//NI In Verifica
+                    this.getOwnerComponent().getRouter().navTo("richiamaNI", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+                if (row.ZcodiStatoni === "05")//NI Confermata
+                    this.getOwnerComponent().getRouter().navTo("conferma", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+                if (row.ZcodiStatoni === "06")//NI Validata RGS
+                    this.getOwnerComponent().getRouter().navTo("richiamoNIRGS", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+                if (row.ZcodiStatoni === "07")//NI con Rilievo Registrato
+                    this.getOwnerComponent().getRouter().navTo("richiamoRilievoRegistrato", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+                if (row.ZcodiStatoni === "09")//NI Annullata
+                    this.getOwnerComponent().getRouter().navTo("annullataNI", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+                if (row.ZcodiStatoni === "10")//NI Annullata per Richiamo
+                    this.getOwnerComponent().getRouter().navTo("annullataNIRichiamo", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+                if (row.ZcodiStatoni === "11")//NI Annullata per Rilievo
+                    this.getOwnerComponent().getRouter().navTo("annullataNIRilievo", { campo: row.Bukrs, campo1: row.Gjahr, campo2: row.Zamministr, campo3: row.ZchiaveNi, campo4: row.ZidNi, campo5: row.ZRagioCompe })
+           
             },
 
 

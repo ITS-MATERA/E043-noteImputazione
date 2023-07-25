@@ -10,7 +10,11 @@
     xmlns:menu="sap.m.MenuItem"
     xmlns:menBtn="sap.m.Menu" 
     height="100%">
-    <Table class="sapUiSizeCompact" id="HeaderNIAssImp" includeItemInSelection="true" items="{HeaderNIAssImp>/}" mode="MultiSelect" >
+    <Table class="sapUiSizeCompact" id="HeaderNIAssImp" includeItemInSelection="true" 
+         items="{
+                path: 'EntityModel>/HeaderNIAssImp'
+            }"
+        mode="MultiSelect" >
         <columns>
             <Column demandPopin="true" hAlign="Left">
                 <Label text="EPR" />
@@ -29,11 +33,11 @@
             </Column>
         </columns>
         <ColumnListItem type="Active">
-            <Text text="{HeaderNIAssImp>Zepr}" />
-            <Text text="{HeaderNIAssImp>Geber}" />
-            <Text text="{HeaderNIAssImp>ZCodCla}" />
-            <Text text="" />
-            <Input value="{HeaderNIAssImp>Attribuito}" id="Zattributo" textAlign="Right" liveChange="zAttribuitoLiveChange"/>
+            <Text text="{EntityModel>Zepr}" />
+            <Text text="{EntityModel>Zgeber}" />
+            <Text text="{EntityModel>ZCodCla}" />
+            <Text text="{path:'EntityModel>Wtfree', formatter:'.formatter.convertFormattedNumber'}" />
+            <Input type="Number" value="{EntityModel>Attribuito}" id="Zattributo" textAlign="Right" liveChange="zAttribuitoLiveChange"/>
         </ColumnListItem>
     </Table>
 </core:FragmentDefinition>

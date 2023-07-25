@@ -17,10 +17,13 @@
 			<TimelineItem
 					id="idTemplateItem"
 					dateTime="{temp>DataStato}"
-					title="{temp>ZstatoDescNi}"
-					text="Registrato dall'utente {temp>UtenteDescr}"
+					text="{temp>ZstatoDescNi} da {temp>UtenteDescr}" 
+					userName="{temp>ZstatoDescNi}"
 					icon="{= ${temp>IsLast} === 'X' ? 'sap-icon://favorite' : 'sap-icon://person-placeholder' }">
 			</TimelineItem>
 		</content>
 	</Timeline>
 </core:FragmentDefinition>
+<!-- text="Registrato dall'utente {temp>UtenteDescr}"
+title="{temp>ZstatoDescNi}"
+ -->

@@ -5,13 +5,13 @@
     xmlns:core="sap.ui.core"
     height="100%">
     <Panel>
-        <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
+        <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0.2">
             <VBox>
                 <Label text="Oggetto della spesa:" required="true" />
                 <Input value="" id="oggSpesa" showValueHelp="false" liveChange="oggSpesaLiveChange">
                 </Input>
                 <layoutData>
-                    <l:GridData span="XL3 L3 M3 S3" />
+                    <l:GridData span="XL3 L3 M12 S12" />
                 </layoutData>
             </VBox>
             <core:Fragment fragmentName="project1.fragment.wizardPreimpostazione.wizardStep3Table" type="XML" />

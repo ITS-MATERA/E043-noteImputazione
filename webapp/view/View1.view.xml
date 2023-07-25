@@ -288,7 +288,7 @@
                     <Button text="{i18n>Indietro}" type="Emphasized" />
                     <ToolbarSpacer />
                     <!-- <Button text="{i18n>PreimpostazioneNI}" id="PreimpostazioneNI" press="navToWizard" type="Emphasized" enabled="false"/> -->
-                    <Button text="{i18n>PreimpostazioneNI}" id="PreimpostazioneNI" press="navToWizard2" type="Emphasized" enabled="true"/>
+                    <Button text="{i18n>PreimpostazioneNI}" id="PreimpostazioneNI" press="navToWizard2" type="Emphasized" enabled="false"/>
                 </OverflowToolbar>
             </f:footer>
         </f:DynamicPage>

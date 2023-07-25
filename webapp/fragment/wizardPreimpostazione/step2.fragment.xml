@@ -18,7 +18,7 @@
                 </Input> -->
                 <zcontrolMatchSar:GestioneLogUser eos="S" id="idFilterStruttAmmResp" fase="GEST" entrata="X" reale="R" 
                 anno="{preimpostazioneModel>/ZgjahrEng}" SEM_OBJ="Z_TEST_LIB"  versione="D" width="100%" placeholder="Scegli struttura amministrativa"
-                submit="strutturaAmministrativaLiveChange" liveChange="strutturaAmministrativaLiveChange"/>
+                submit="strutturaAmministrativaLiveChange" liveChange="strutturaAmministrativaLiveChange" />
                 <layoutData>
                     <l:GridData span="XL12 L12 M12 S12" />
                 </layoutData>
@@ -33,7 +33,7 @@
                 </Input> -->
                 <zcontrol:InputPosizioneFinanziaria id="input_PF" fase="GEST" spesa="X"
                  reale="R" anno="{preimpostazioneModel>/ZgjahrEng}" versione="D" maxSuggestionWidth="60%" submit="posizioneFinanziariaLiveChange" 
-                 liveChange="posizioneFinanziariaLiveChange" width="100%"/>
+                 liveChange="posizioneFinanziariaLiveChange"  width="100%"/>
                 <layoutData>
                     <l:GridData span="XL4 L4 M4 S4" linebreak="true" />
                 </layoutData>

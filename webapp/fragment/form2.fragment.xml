@@ -8,21 +8,23 @@
             <f:content>
                 <core:Title text=" " class="heightZero"/>
                 <Label text="Beneficiario" required="true" />
-                <Input id="inputBeneficiario" type="Text" showValueHelp="true" showSuggestion="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Lifnr' }}" enabled="true" editable="false">
+                <Input id="inputBeneficiario" value="{EntityModel>/Detail/Lifnr}" enabled="true" editable="false" />
+                <!-- <Input id="inputBeneficiario" type="Text" showValueHelp="true" showSuggestion="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Lifnr' }}" enabled="true" editable="false">
                     <core:Item key="{Lifnr}" text="{Lifnr}" />
-                </Input>
+                </Input> -->
                 <Label text="Modalità di Pagamento" required="true" />
-                <ComboBox id="ModPagamento" enabled="true" editable="false" items="{path: 'temp>/ZdescwelsBniSet', sorter: { path: 'temp>Zdescwels' }}">
-                    <core:Item key="{temp>Zdescwels}" text="{temp>Zdescwels}"/>
+                <ComboBox id="ModPagamento" enabled="false" editable="true" items="{path: 'EntityModel>/ZdescwelsBniSet', sorter: { path: 'EntityModel>Zdescwels' }}">
+                    <core:Item key="{EntityModel>Zwels}" text="{EntityModel>Zdescwels}"/>
                 </ComboBox>
                 <!-- <core:Item key="{}" text="{}"/> -->
                 <core:Title text=" " class="heightZero" />
                 <Label text="Nome" />
-                <Input id="inputNome" type="Text" enabled="true" editable="false" />
+                <Input id="inputNome" value="{EntityModel>/Detail/Nome}" type="Text" enabled="true" editable="false" />
                 <Label text="IBAN" required="true" />
-                <Input id="inputIBAN" type="Text" showValueHelp="true" enabled="true" showSuggestion="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Iban' }}" editable="false" value="IT60X0542811101000000123456">
+                <Input id="inputIBAN" value="{EntityModel>/Detail/Iban}"/>
+                <!-- <Input id="inputIBAN" type="Text" showValueHelp="true" enabled="true" showSuggestion="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Iban' }}"  value="{EntityModel>/Detail/Iban}">
                     <core:Item key="{Iban}" text="{Iban}" />
-                </Input>
+                </Input> -->
                 <core:Title text=" " />
             </f:content>
         </f:SimpleForm>
@@ -30,25 +32,27 @@
             <f:content>
                 <core:Title text=" " class=".heightZero" />
                 <Label text="Centro di Costo" required="true" />
-                <Input id="inputCentroCosto" type="Text" showValueHelp="false" suggestionItems="{path: '/LtextIcSet', sorter: { path: 'Kostl' }}" enabled="true" editable="true" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCentroCosto" app:filterTableField="inputCentroCosto">
+                <!-- <Input id="inputCentroCosto" type="Text" showValueHelp="false" suggestionItems="{path: '/LtextIcSet', sorter: { path: 'Kostl' }}" enabled="true" editable="true" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCentroCosto" app:filterTableField="inputCentroCosto">
                     <core:Item key="{Kostl}" text="{Kostl}" />
-                </Input>
+                </Input> -->
+                <Input  id="inputCentroCosto" value="{EntityModel>/Detail/Cdc}" />
                 <Label text="Conto Co. Ge." required="true" />
                 <!-- value="4011010101" -->
-                <Input id="inputCoGe" type="Text" showValueHelp="true" suggestionItems="{path: '/Txt50IcSet', sorter: { path: 'Saknr' }}" enabled="true" editable="true" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCoGe" app:filterTableField="inputCoGe" value="">
+                <!-- <Input id="inputCoGe" type="Text" showValueHelp="true" suggestionItems="{path: '/Txt50IcSet', sorter: { path: 'Saknr' }}" enabled="true" editable="true" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCoGe" app:filterTableField="inputCoGe" value="">
                     <core:Item key="{Saknr}" text="{Saknr}" />
-                </Input>
+                </Input> -->
+                <Input id="inputCoGe" value="{EntityModel>/Detail/Coge}"/>
                 <core:Title text=" " class="heightZero"/>
                 <Label text="Descrizione" />
-                <Input id="DescCentroCosto" type="Text" editable="false"/>
+                <Input id="DescCentroCosto" type="Text" editable="false" value="{EntityModel>/Detail/CdcDesc}"/>
                 <Label text="Descrizione" />
-                <Input id="DescCoGe" type="Text" value="" editable="false"/>
+                <Input id="DescCoGe" type="Text" editable="false" value="{EntityModel>/Detail/CogeDesc}"/>
             </f:content>
         </f:SimpleForm>
         <f:SimpleForm id="ImportoLiquidazione" title="Importo Liquidazione" editable="true" layout="ResponsiveGridLayout" labelSpanXL="12" labelSpanL="12" labelSpanM="6" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsM="2" columnsL="3" columnsXL="3" singleContainerFullSize="false">
             <f:content>
                 <Label text="Importo di Liquidazione" required="true" />
-                <Input type="Text" id="InputImpLiq" editable="false" />
+                <Input id="InputImpLiq" editable="false" value="{path: 'EntityModel>/Detail/ImportoLiquidazione', formatter:'.formatter.convertFormattedNumber'}" />
             </f:content>
         </f:SimpleForm>
 
@@ -60,7 +64,7 @@
                             <l:GridData span="XL2 L2 M6 S12" />
                         </layoutData>
                     </Label>
-                    <DatePicker id="DP1" displayFormat="dd.MM.yyyy" class="sapUiTinyyMarginBottom">
+                    <DatePicker id="DP1" displayFormat="dd.MM.yyyy" class="sapUiTinyyMarginBottom" change="onDtChange" app:dataField="DataProtocollo">
                         <layoutData>
                             <l:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
@@ -71,12 +75,17 @@
                             <l:GridData span="XL2 L2 M6 S12" />
                         </layoutData>
                     </Label>
-                    <Input id="inputNProtoccollo" type="Text" editable="true" showSuggestion="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'NProtocolloAmm' }}">
+                    <Input id="inputNProtoccollo" value="{EntityModel>/Detail/NProtocollo}"> 
+                        <layoutData>
+                            <l:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </Input>    
+                    <!-- <Input id="inputNProtoccollo" type="Text" editable="true" showSuggestion="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'NProtocolloAmm' }}">
                         <layoutData>
                             <l:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
                         <core:Item key="{NProtocolloAmm}" text="{NProtocolloAmm}" />
-                    </Input>
+                    </Input> -->
 
                     <!-- riga 2 -->
                     <Label text="Codice Gestionale" required="true" class="sapUiTinyMarginBottom" >
@@ -84,18 +93,23 @@
                             <l:GridData span="XL2 L2 M6 S12" linebreak="true"/>
                         </layoutData>
                     </Label>
-                    <Input id="inputCodiceGest" type="Text" editable="true" showValueHelp="false" showSuggestion="true" suggestionItems="{path: '/PositionNISet', sorter: { path: 'Zcodgest' }}" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCodiceGest" app:filterTableField="inputCodiceGest" value="001">
+                    <Input id="inputCodiceGest" value="{EntityModel>/Detail/CodiceGestionale}">
+                        <layoutData>
+                            <l:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </Input>    
+                    <!-- <Input id="inputCodiceGest" type="Text" editable="true" showValueHelp="false" showSuggestion="true" suggestionItems="{path: '/PositionNISet', sorter: { path: 'Zcodgest' }}" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCodiceGest" app:filterTableField="inputCodiceGest" value="001">
                         <layoutData>
                             <l:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
                         <core:Item key="{Zcodgest}" text="{Zcodgest}" />
-                    </Input>
+                    </Input> -->
                     <Label text="Descrizione" class="sapUiTinyMarginBottom">
                         <layoutData>
                             <l:GridData span="XL2 L2 M6 S12" />
                         </layoutData>
                     </Label>
-                    <Input id="inputDescr" type="Text" editable="false">
+                    <Input id="inputDescr" type="Text" editable="false" value="{EntityModel>/Detail/Descrizione}">
                         <layoutData>
                             <l:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
@@ -109,7 +123,7 @@
                     </Label>
                     <!-- valueHelpRequest="handleValueHelp" app:fieldName="inputLocPagamento" app:filterTableField="inputLocPagamento" valueHelpOnly="false" showValueHelp="false"-->
                     <!-- showSuggestion="true" suggestionItems="{path: '/PositionNISet', sorter: { path: 'Zlocpag' }}" -->
-                    <Input id="inputLocPagamento" type="Text" editable="true" value=""   >
+                    <Input id="inputLocPagamento" type="Text" editable="true" value="{EntityModel>/Detail/LocalitaPagamento}"   >
                         <layoutData>
                             <l:GridData span="XL3 L2 M6 S12" />
                         </layoutData>
@@ -122,12 +136,17 @@
                             <l:GridData span="XL2 L2 M6 S12" linebreak="true"/>
                         </layoutData>
                     </Label>
-                    <Input id="inputCausPagamento" type="Text" editable="true" showSuggestion="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Zcauspag' }}">
+                    <Input id="inputCausPagamento" value="{EntityModel>/Detail/CausalePagamento}" >
+                        <layoutData>
+                            <l:GridData span="XL6 L6 M6 S12" />
+                        </layoutData>
+                    </Input>    
+                    <!-- <Input id="inputCausPagamento" type="Text" editable="true" showSuggestion="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Zcauspag' }}">
                         <layoutData>
                             <l:GridData span="XL6 L6 M6 S12" />
                         </layoutData>
                         <core:Item key="{Zcauspag}" text="{Zcauspag}" />
-                    </Input>
+                    </Input> -->
 
                     <!-- riga 5 -->
                     <Label text="Data esigibilità" class="sapUiTinyMarginBottom">
@@ -136,7 +155,7 @@
                         </layoutData>
                     </Label>
 
-                    <DatePicker id="DP2" displayFormat="dd.MM.yyyy" class="sapUiTinyyMarginBottom">
+                    <DatePicker id="DP2" displayFormat="dd.MM.yyyy" class="sapUiTinyyMarginBottom" change="onDtChange" app:dataField="DataEsigibilita">
                         <layoutData>
                             <l:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
@@ -148,12 +167,17 @@
                         </layoutData>
                     </Label>
 
-                    <Input id="inputZInterv" type="Text" editable="true" showValueHelp="false" showSuggestion="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Zzonaint' }}" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputZInterv" app:filterTableField="inputZInterv">
+                    <Input id="inputZInterv" value="{EntityModel>/Detail/ZonaIntervento}">
+                        <layoutData>
+                            <l:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </Input>    
+                    <!-- <Input id="inputZInterv" type="Text" editable="true" showValueHelp="false" showSuggestion="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Zzonaint' }}" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputZInterv" app:filterTableField="inputZInterv">
                         <layoutData>
                             <l:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
                         <core:Item key="{Zzonaint}" text="{Zzonaint}" />
-                    </Input>
+                    </Input> -->
                 </l:Grid>
         </Panel>       
 

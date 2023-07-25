@@ -615,11 +615,28 @@ sap.ui.define([
                 wizard.previousStep();
             },
 
+            getTitoloSelezionato:function(list, zcodIsin){
+                var self =this,
+                    found =null;
+
+                for(var i=0; i<list.length;i++){
+                    var item = list[i];
+                    if(item.ZcodIsin !== zcodIsin)
+                        continue;
+                    
+                    found = item;
+                    i=list.length;
+                }
+                return found;
+            },
+
             onPreimpNI:function(oEvent){
                 var self =this,
                     visibilita = self.getView().getModel(WIZARD_ENTITIES_MODEL).getProperty("/Visibilita")[0],
                     oDataModel = self.getOwnerComponent().getModel(),
-                    positionArray = self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/titoliSelezionatiStep3");
+                    positionArray = self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/titoliSelezionatiStep3"),
+                    titoliSelezionati = self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/titoliSelezionati");
+
 
                 if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/oggettoSpesa") === ""){
                     MessageBox.error("Oggetto della spesa non inserito", {
@@ -632,7 +649,8 @@ sap.ui.define([
                 var mex=null;
                 for(var i=0; i<positionArray.length;i++){
                     var item = positionArray[i];
-                    var impRes = item.ZimpoRes;
+                    var titoloSelezionato = self.getTitoloSelezionato(titoliSelezionati, item.ZcodIsin);
+                    var impRes = titoloSelezionato.ZimpoRes;
                     impRes = impRes.replace(".","");
                     impRes = impRes.replace(",",".");
                     if(parseFloat(item.ZimpoTitolo) > parseFloat(impRes)){
@@ -659,7 +677,6 @@ sap.ui.define([
                     Funzionalita: 'PREIMPOSTAZIONE'
                 }
 
-                // var positionArray = self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/titoliSelezionatiStep3");
                 for(var i=0; i<positionArray.length;i++){
                     var item = positionArray[i];
                     deepEntity.PositionNISet.push({
@@ -668,6 +685,7 @@ sap.ui.define([
                         //Zamministr: item.Zamministr, Passato Da BE
                         //ZidNi: Valore Incrementato da BE
                         //ZRagioCompe: item.ZRagioCompe, Passato Da BE
+                        Ztipologia: item.Ztipologia,
                         ZposNi: item.ZposNi,
                         ZgjahrEng: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng"),
                         Ztipo: item.Ztipo,

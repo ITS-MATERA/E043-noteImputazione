@@ -9,8 +9,14 @@
     xmlns:core="sap.ui.core"
     xmlns:menu="sap.m.MenuItem"
     xmlns:menBtn="sap.m.Menu"
+    xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"  
+    xmlns:zcontrollinkSar="custlinksar.custlinksar.controls" 
     height="100%">
-    <Table id="idModificaDettaglio" inset="false" showSeparators="Inner" items="{HeaderNIM>/}">
+    <Table id="idModificaDettaglio" inset="false" showSeparators="Inner" 
+        items="{
+                path: 'EntityModel>/PositionNIMI'
+            }"
+        >
         <headerToolbar>
             <OverflowToolbar>
                 <content>
@@ -33,10 +39,16 @@
             </Column>
         </columns>
         <ColumnListItem>
-            <Text text="{HeaderNIM>Fistl}" />
-            <Text text="{HeaderNIM>Fipex}" />
-            <Input value="{HeaderNIM>ZoggSpesa}" id="oggSpesa"/>
-            <Text text="{path: 'HeaderNIM>Zmese', formatter:'.formatter.getMonthName'}" />
+            <!-- <Text text="{HeaderNIM>Fistl}" />
+            <Text text="{HeaderNIM>Fipex}" /> -->
+            <zcontrollinkSar:LinkSar id="linkSarBilancioDetails" anno="{EntityModel>Esercizio}" eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" 
+                        versione="D" bilancio="" fictr="{EntityModel>/Fistl}" datbis="99991231" text="{EntityModel>Fistl}"/>
+            
+            <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesaDetails" anno="{EntityModel>Esercizio}" eos="S" fikrs="S001" fase="GEST" reale="R" 
+                            versione="D" fipex="{EntityModel>Fipex}" datbis="99991231" text="{EntityModel>Fipex}" semanticObject="ESAMINAMODIFICA"/>
+                        
+            <Input value="{EntityModel>ZoggSpesa}" />
+            <Text text="{path: 'EntityModel>Zmese', formatter:'.formatter.getMonthName'}" />
         </ColumnListItem>
     </Table>
 </core:FragmentDefinition>

@@ -51,9 +51,7 @@
             <Text text="{HeaderNI>Fipex}"/>
             <Text text="{HeaderNI>ZoggSpesa}" />
             <Text text="{path: 'HeaderNI>Zmese', formatter:'.formatter.getMonthName'}" wrapping="false"/>
-            <!-- <Text text="{HeaderNI>ZcodiStatoni}" /> -->
             <Text text="{HeaderNI>ZcodiStatoniDesc}" />
-            <!-- <Text text="{HeaderNI>ZimpoTotni}" /> -->
             <Text text="{path:'HeaderNI>ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}" />
            
         </ColumnListItem>

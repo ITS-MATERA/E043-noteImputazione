@@ -64,6 +64,28 @@ sap.ui.define([], function () {
             var mese= date.toLocaleString('it-IT', { month: 'long' });
             const meseG = mese.charAt(0).toUpperCase() + mese.slice(1);
             return meseG
-        }
+        },
+
+        formateDateForDeep(dateValue) {
+            var self = this,
+              value,
+              month,
+              stringMonth;
+      
+            month = dateValue.getMonth() + 1;
+      
+            if (month < 10) {
+              stringMonth = "0" + month.toString();
+            } else stringMonth = month.toString();
+      
+            value =
+              dateValue.getFullYear().toString() +
+              "-" +
+              stringMonth +
+              "-" +
+              dateValue.getDate().toString();
+      
+            return value + "T00:00:00";
+          },
     }
 })

@@ -11,7 +11,11 @@
     xmlns:menBtn="sap.m.Menu"
     height="100%">
     <!-- mode="MultiSelect" -->
-    <Table class="sapUiSizeCompact" id="HeaderSalva" includeItemInSelection="true" items="{HeaderSalva>/}"  visible="true">
+    <Table class="sapUiSizeCompact" id="HeaderSalva" includeItemInSelection="true" 
+        items="{
+                path: 'EntityModel>/HeaderSalva'
+            }"
+    visible="true">
         <!-- <headerToolbar>
             <OverflowToolbar>
                 <content>
@@ -47,13 +51,15 @@
             </Column>
         </columns>
         <ColumnListItem>
-            <Text text="{HeaderSalva>ZcodIsin}" />
-            <Text text="{HeaderSalva>Ztipo}"/>
-            <Text text="{HeaderSalva>Zdescrizione}" />
-            <Text text="{path: 'HeaderSalva>ZdataPag', formatter:'.formatter.convert'}" />
-            <Text text="{HeaderSalva>ZimpoTitolo}" />
-            <Text text="{HeaderSalva>ZimpoRes}" />
-            <Text text="{HeaderSalva>ZCodCla}" wrapping="true" />
+            <Text text="{EntityModel>ZcodIsin}" />
+            <Text text="{EntityModel>Ztipo}"/>
+            <Text text="{EntityModel>Zdescrizione}" />
+            <Text text="{path: 'EntityModel>ZdataPag', formatter:'.formatter.convert'}" />
+            <!-- <Text text="{EntityModel>ZimpoTitolo}" />
+            <Text text="{EntityModel>ZimpoRes}" /> -->
+            <Text text="{path:'EntityModel>ZimpoTitolo', formatter:'.formatter.convertFormattedNumber'}" />
+            <Text text="{path:'EntityModel>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
+            <Text text="{EntityModel>ZCodCla}" wrapping="true" />
         </ColumnListItem>
     </Table>
 </core:FragmentDefinition>

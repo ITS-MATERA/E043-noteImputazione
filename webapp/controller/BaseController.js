@@ -1,8 +1,10 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/UIComponent",
-	"sap/m/library"
-], function (Controller, UIComponent, mobileLibrary) {
+	"sap/m/library",
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator",
+], function (Controller, UIComponent, mobileLibrary, Filter, FilterOperator) {
 	"use strict";
 
 	// shortcut for sap.m.URLHelper
@@ -170,6 +172,30 @@ sap.ui.define([
 				error: function (error) {
 					console.log(error)
 					var e = error;
+					callback(false);
+				}   
+			});
+		},
+
+		callPreventVisibilitaWithCallback:function(callback){
+			var self =this,
+				filters = [];
+	
+			filters.push(
+				new Filter({ path: "SEM_OBJ", operator: FilterOperator.EQ, value1: "ZS4_NOTEIMPUTAZIONI_SRV" }),
+				new Filter({ path: "AUTH_OBJ", operator: FilterOperator.EQ, value1: "Z_GEST_NI" })
+			)
+			self.getOwnerComponent().getModel("ZSS4_CA_CONI_VISIBILITA_SRV").read("/ZES_CONIAUTH_SET", {
+				filters: filters,        
+				success: function (data) {
+						console.log("success");
+						self.getOwnerComponent().getModel("temp").setProperty("/Visibilità", data.results);
+						callback(true);
+					},
+				error: function (error) {
+					console.log(error)
+					var e = error;
+					self.getOwnerComponent().getModel("temp").setProperty("/Visibilita", []);
 					callback(false);
 				}   
 			});

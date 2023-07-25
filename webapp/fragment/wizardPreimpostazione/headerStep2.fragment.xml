@@ -8,28 +8,28 @@
          <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
            <Text text="DATI NI" />
            <HBox> 
-                <Label text="Esercizio di gestione: " design="Bold" class="lbl-header-margin-right"  />
+                <Label text="Esercizio di gestione: " design="Bold" class="lbl-header-margin-right" wrapping="true" />
                 <Text text="{preimpostazioneModel>/ZgjahrEng}"/> 
                 <layoutData>
-                    <l:GridData span="XL3 L3 M6 S12" />
+                    <l:GridData span="XL3 L3 M12 S12" />
                 </layoutData>
            </HBox> 
            <HBox> 
-                <Label text="Mese: " design="Bold" class="lbl-header-margin-right" />
+                <Label text="Mese: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                 <Text text="{preimpostazioneModel>/meseDescrizione}"/> 
                 <layoutData>
-                    <l:GridData span="XL3 L3 M6 S12" />
+                    <l:GridData span="XL3 L3 M12 S12" />
                 </layoutData>
            </HBox> 
             <HBox> 
-                <Label text="Competenza/Residui: " design="Bold" class="lbl-header-margin-right" />
+                <Label text="Competenza/Residui: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                 <Text text="{preimpostazioneModel>/competenzaDescrizione}"/> 
                 <layoutData>
-                    <l:GridData span="XL3 L3 M6 S12" />
+                    <l:GridData span="XL3 L3 M12 S12" />
                 </layoutData>
            </HBox> 
            <HBox> 
-                <Label text="N.righe di rendicontazione in preimpostazione: " design="Bold" class="lbl-header-margin-right" />
+                <Label text="N.righe di rendicontazione in preimpostazione: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                 <Text text="{preimpostazioneModel>/rendicontazioneRowNum} per un totale di {preimpostazioneModel>/rendicontazioneSumRowSelectedString}"/> 
                 <layoutData>
                     <l:GridData span="XL6 L6 M12 S12" linebreak="true" />

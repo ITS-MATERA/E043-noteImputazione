@@ -8,100 +8,106 @@
     xmlns:f="sap.f"
     xmlns:core="sap.ui.core"
     xmlns:menu="sap.m.MenuItem"
-    xmlns:menBtn="sap.m.Menu" height="100%" controllerName="project1.controller.salvaImpegno">
+     xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"  
+    xmlns:zcontrollinkSar="custlinksar.custlinksar.controls" 
+    height="100%" controllerName="project1.controller.salvaImpegno">
     <f:DynamicPage id="dynamicPageId" showFooter="true">
         <f:header>
             <f:DynamicPageHeader pinnable="false">
-                <layout:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
+                <layout:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0.2">
                     <!-- 1 riga -->
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="numNI" text="{i18n>ProgressivoNI}: " design="Bold"/>
-                                <Text id="numNI1" />
+                                <Text id="numNI1" text="{EntityModel>/Header/ZidNi}" />
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
                         </FlexBox>
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="dataReg" text="{i18n>Data}: " design="Bold"/>
-                                <Text id="dataReg1" wrapping="true"/>
+                                <Text id="dataReg1" wrapping="true" text="{path:'EntityModel>/Header/ZdataCreaz', formatter:'.formatter.convert'}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
                         </FlexBox>
                     <!-- 2 riga -->
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="SARW2" text="{i18n>SAR}: " design="Bold"/>
-                                <Text id="SARWH2"/>
+                                <!-- <Text id="SARWH2"/> -->
+                                <zcontrollinkSar:LinkSar id="linkSarBilancio" anno="{EntityModel>/Header/Esercizio}" eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" 
+                                    versione="D" bilancio="" fictr="{EntityModel>/Header/Fistl}" datbis="99991231" text="{EntityModel>/Header/Fistl}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" linebreak="true" /></layoutData>
                         </FlexBox>    
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="pos_FinW2" text="{i18n>PF}: " design="Bold"/>
-                                <Text id="pos_FinWH2"/>
+                                <!-- <Text id="pos_FinWH2"/> -->
+                                <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesa" anno="{EntityModel>/Header/Esercizio}" eos="S" fikrs="S001" fase="GEST" reale="R" 
+                                    versione="D" fipex="{EntityModel>/Header/Fipex}" datbis="99991231" text="{EntityModel>/Header/Fipex}" semanticObject="ESAMINAMODIFICA"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
                         </FlexBox>  
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="oggSpesa" text="{i18n>oggSpesa}: " design="Bold"/>
-                                <Text id="oggSpesa1"/>
+                                <Text id="oggSpesa1" text="{EntityModel>/Header/ZoggSpesa}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
                         </FlexBox>  
                     <!-- 3 riga -->
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="mese" text="{i18n>Mese}: " design="Bold"/>
-                                <Text id="mese1"/>
+                                <Text id="mese1" text="{path: 'EntityModel>/Header/Zmese', formatter:'.formatter.getMonthName'}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" linebreak="true" /></layoutData>
                         </FlexBox>    
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="comp" text="{i18n>comp}: " design="Bold"/>
-                                <Text id="comp1"/>
+                                <Text id="comp1" text="{= ${EntityModel>/Header/ZcompRes} === 'C' ? 'Competenza' : ${EntityModel>/Header/ZcompRes} === 'R' ? 'Residui' : ''}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
                         </FlexBox> 
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="statoNI" text="{i18n>statoNI}: " design="Bold"/>
-                                <Text id="statoNI1"/>
+                                <Text id="statoNI1" text="{EntityModel>/Header/ZcodiStatoniDesc}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
                         </FlexBox> 
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="importoTot" text="{i18n>importoTot}: " design="Bold"/>
-                                <Text id="importoTot1"/>
+                                <Text id="importoTot1" text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
                         </FlexBox>  
                     <!-- 4 riga -->
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="Lifnr" text="{i18n>Lifnr}: " design="Bold"/>
-                                <Text id="Lifnr1"/>
+                                <Text id="Lifnr1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_Lifnr}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" linebreak="true" /></layoutData>
                         </FlexBox>  
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="Nome" text="{i18n>Nome}: " design="Bold"/>
-                                <Text id="Nome1"/>
+                                <Text id="Nome1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_Nome}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
                         </FlexBox> 
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="Zwels" text="{i18n>Zwels}: " design="Bold"/>
-                                <Text id="Zwels1"/>
+                                <Text id="Zwels1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_ZwelsDesc}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
                         </FlexBox>
                     <!-- 5 riga -->
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="CentroCosto" text="Centro di Costo: " design="Bold"/>
-                                <Text id="CentroCosto1"/>
+                                <Text id="CentroCosto1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_Cdc}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" linebreak="true" /></layoutData>
                         </FlexBox> 
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="ConCoGe" text="Conto Co.Ge.: " design="Bold"/>
-                                <Text id="ConCoGe1"/>
+                                <Text id="ConCoGe1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_Coge}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12"  /></layoutData>
                         </FlexBox>
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="ImpLiq" text="Importo Liquidazione: " design="Bold"/>
-                                <Text id="ImpLiq1"/>
+                                <Text id="ImpLiq1" text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12"  /></layoutData>
                         </FlexBox> 
                     <!-- 6 riga -->
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="CodiceGes" text="{i18n>Zcodgest}: " design="Bold"/>
-                                <Text id="CodiceGes1"/>
+                                <Text id="CodiceGes1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_CodiceGestionale}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12" linebreak="true" /></layoutData>
                         </FlexBox> 
                         <FlexBox alignItems="Start" justifyContent="Start">
                                 <Label id="CausalePagamento" text="{i18n>Zcauspag}: " design="Bold"/>
-                                <Text id="CausalePagamento1"/>
+                                <Text id="CausalePagamento1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_CausalePagamento}"/>
                             <layoutData><layout:GridData  span="XL3 L3 M6 S12"  /></layoutData>
                         </FlexBox>
                 </layout:Grid>
