@@ -687,7 +687,7 @@ sap.ui.define([
                         //ZRagioCompe: item.ZRagioCompe, Passato Da BE
                         Ztipologia: item.Ztipologia,
                         ZposNi: item.ZposNi,
-                        ZgjahrEng: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng"),
+                        //ZgjahrEng: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng"),
                         Ztipo: item.Ztipo,
                         Zsottotipo: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/sottotipologiaDescrizione"),
                         ZcompRes: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/competenza"),
@@ -695,6 +695,12 @@ sap.ui.define([
                         Zdescrizione: item.Zdescrizione,                
                         ZcodIsin: item.ZcodIsin,                       
                         ZdataPag: new Date(),
+                        Iban:item.ZibanAdd,
+                        Ztassoint: item.Ztasso,
+                        ZdataInizio: item.ZdataInizio,
+                        Zfbdt: item.ZdataScad,
+                        Zidentificativo: item.Zidentificativo,
+                        ZdataPag: item.ZdataPag
                     });
                 }
 
