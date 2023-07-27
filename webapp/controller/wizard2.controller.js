@@ -754,8 +754,8 @@ sap.ui.define([
                                                 urlParameters: { "AutorityRole": visibilita.AGR_NAME, "AutorityFikrs": visibilita.FIKRS, "AutorityPrctr": visibilita.PRCTR },
                                                 success: function (result) {
                                                     if (result.Msgty == 'E') {
-                                                        console.log(result.Message)
-                                                        MessageBox.error("Nota d'imputazione non creata correttamente", {
+                                                        console.log(result.Message);//TODO:da canc
+                                                        MessageBox.error(result.Message, {
                                                             title: "Esito Operazione",
                                                             actions: [sap.m.MessageBox.Action.OK],
                                                             emphasizedAction: MessageBox.Action.OK,

@@ -106,7 +106,7 @@
                             <fb:FilterGroupItem id="statoNI" visibleInFilterBar="true" name="statoNI" groupName="Gruppo1" label="{i18n>statoNI}">
                                 <fb:control>
                                     <Select id="statoNI1" items="{temp>/StateNI}">
-                                        <core:Item key="{temp>ZstatoDescNi}" text="{temp>ZstatoDescNi}"/>
+                                        <core:Item key="{temp>ZcodiStatoni}" text="{temp>ZstatoDescNi}"/>
                                     </Select>
                                 </fb:control>
                             </fb:FilterGroupItem>
