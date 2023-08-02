@@ -10,7 +10,10 @@
     xmlns:menu="sap.m.MenuItem"
     xmlns:menBtn="sap.m.Menu"
     height="100%">
-    <Table id="idRettificaNI" inset="false" showSeparators="Inner" items="{HeaderNIM>/}">
+    <Table id="idRettificaNI" inset="false" showSeparators="Inner"
+        items="{
+                path: 'EntityModel>/HeaderNIM'
+        }">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
@@ -33,10 +36,10 @@
             </Column>
         </columns>
         <ColumnListItem>
-            <Text text="{HeaderNIM>Fistl}" />
-            <Text text="{HeaderNIM>Fipex}" />
-            <Input value="{HeaderNIM>ZoggSpesa}" id="oggSpesaInput"/>
-            <Text text="{path: 'HeaderNIM>Zmese', formatter:'.formatter.getMonthName'}" />
+            <Text text="{EntityModel>Fistl}" />
+            <Text text="{EntityModel>Fipex}" />
+            <Input value="{EntityModel>ZoggSpesa}" id="oggSpesaInput"/>
+            <Text text="{path: 'EntityModel>Zmese', formatter:'.formatter.getMonthName'}" />
         </ColumnListItem>
     </Table>
 </core:FragmentDefinition>

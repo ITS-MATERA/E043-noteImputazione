@@ -23,7 +23,6 @@ sap.ui.define([
             };
 
         const MODEL_ENTITY = "EntityModel";
-
         return BaseController.extend("project1.controller.iconTabBar", {
             formatter: DateFormatter,
             onInit() {
@@ -88,12 +87,6 @@ sap.ui.define([
                                     self.getView().setBusy(false);
                                 }
                             });
-                            //TODO:da canc
-                            // var oModelJson = new sap.ui.model.json.JSONModel();
-                            // data.Qta = sQta;
-                            // oModelJson.setData(data);
-                            // self.getView().setModel(oModelJson,"objectView");
-                            // self.getView().getModel("objectView").setProperty("/operationType",sOperationType);    
                         },
                         error: function(error){
                             console.log(error);
@@ -804,7 +797,7 @@ sap.ui.define([
 
             onCancelNI: function (oEvent) {
                 var self =this,
-                    oModel = that.getOwnerComponent().getModel(),
+                    oModel = self.getOwnerComponent().getModel(),
                     header = self.getView().getModel(MODEL_ENTITY).getProperty("/Header");
 
                 var deepEntity = {
@@ -818,6 +811,7 @@ sap.ui.define([
                     emphasizedAction: MessageBox.Action.YES,
                     onClose: function (oAction) {
                         if (oAction === sap.m.MessageBox.Action.YES) {
+                            delete header.ZcompRes;
                             deepEntity.ZchiaveNi = header.ZidNi;
                             deepEntity.HeaderNISet = header;
                             deepEntity.HeaderNISet.ZcodiStatoni = "00";

@@ -1,146 +1,222 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:fb="sap.ui.comp.filterbar"
-    xmlns:u="sap.ui.unified"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:l="sap.ui.layout"
+    xmlns:layout="sap.ui.layout"
     xmlns:form="sap.ui.layout.form"
     xmlns:f="sap.f"
     xmlns:core="sap.ui.core"
-    xmlns:menu="sap.m.MenuItem"
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-    xmlns:menBtn="sap.m.Menu" height="100%" controllerName="project1.controller.inserisciFirma">
+    xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"  
+    xmlns:zcontrollinkSar="custlinksar.custlinksar.controls" 
+    height="100%" controllerName="project1.controller.inserisciFirma">
     <f:DynamicPage id="dynamicPageId" showFooter="true">
         <f:header>
             <f:DynamicPageHeader pinnable="false">
-                <l:HorizontalLayout allowWrapping="true">
-                    <l:VerticalLayout class="sapUiMediumMarginEnd">
-                        <HBox id="idHBox2">
-                            <VBox id="idVBox14" class="sapUiSmallMargin" width="auto">
-                                <Label id="numNI" text="{i18n>ProgressivoNI}" design="Bold"/>
-                                <Text id="numNI1"/>
-                            </VBox>
-                            <VBox id="idVBox15" class="sapUiSmallMargin" width="auto">
-                                <Label id="dataReg" text="{i18n>Data}" design="Bold"/>
-                                <Text id="dataReg1" wrapping="true"/>
-                            </VBox>
-                        </HBox>
-                        <HBox id="idHBox3">
-                            <VBox id="idVBox17" class="sapUiSmallMargin" width="auto">
-                                <Label id="SARW2" text="{i18n>SAR}" design="Bold"/>
-                                <Text id="SARWH2"/>
-                            </VBox>
-                            <VBox id="idVBox18" class="sapUiSmallMargin" width="auto">
-                                <Label id="pos_FinW2" text="{i18n>PF}" design="Bold"/>
-                                <Text id="pos_FinWH2"/>
-                            </VBox>
-                            <VBox id="idVBox19" class="sapUiSmallMargin" width="auto">
-                                <Label id="oggSpesa" text="{i18n>oggSpesa}" design="Bold"/>
-                                <Text id="oggSpesa1"/>
-                            </VBox>
-                        </HBox>
-                        <HBox id="idHBox4">
-                            <VBox id="idVBox20" class="sapUiSmallMargin" width="auto">
-                                <Label id="mese" text="{i18n>Mese}" design="Bold"/>
-                                <Text id="mese1"/>
-                            </VBox>
-                            <VBox id="idVBox22" class="sapUiSmallMargin" width="auto">
-                                <Label id="comp" text="{i18n>comp}" design="Bold"/>
-                                <Text id="comp1"/>
-                            </VBox>
-                            <VBox id="idVBox21" class="sapUiSmallMargin" width="auto">
-                                <Label id="statoNI" text="{i18n>statoNI}" design="Bold"/>
-                                <Text id="statoNI1"/>
-                            </VBox>
-                            <VBox id="idVBox23" class="sapUiSmallMargin" width="auto">
-                                <Label id="importoTot" text="{i18n>importoTot}" design="Bold"/>
-                                <Text id="importoTot1"/>
-                            </VBox>
-                        </HBox>
-                        <HBox id="idHBox5">
-                            <VBox id="idVBox24" class="sapUiSmallMargin" width="auto">
-                                <Label id="Lifnr" text="{i18n>Lifnr}" design="Bold"/>
-                                <Text id="Lifnr1"/>
-                            </VBox>
-                            <VBox id="idVBox25" class="sapUiSmallMargin" width="auto">
-                                <Label id="Nome" text="{i18n>Nome}" design="Bold"/>
-                                <Text id="Nome1"/>
-                            </VBox>
-                            <VBox id="idVBox26" class="sapUiSmallMargin" width="auto">
-                                <Label id="Zwels" text="{i18n>Zwels}" design="Bold"/>
-                                <Text id="Zwels1"/>
-                            </VBox>
-                        </HBox>
-                        <HBox id="idHBox6">
-                            <VBox id="idVBox27" class="sapUiSmallMargin" width="auto">
-                                <Label id="CentroCosto" text="Centro di Costo" design="Bold"/>
-                                <Text id="CentroCosto1"/>
-                            </VBox>
-                            <VBox id="idVBox28" class="sapUiSmallMargin" width="auto">
-                                <Label id="ConCoGe" text="Conto Co.Ge." design="Bold"/>
-                                <Text id="ConCoGe1"/>
-                            </VBox>
-                            <VBox id="idVBox29" class="sapUiSmallMargin" width="auto">
-                                <Label id="ImpLiq" text="Importo Liquidazione" design="Bold"/>
-                                <Text id="ImpLiq1"/>
-                            </VBox>
-                        </HBox>
-                        <HBox>
-                            <VBox id="idVBox31" class="sapUiSmallMargin" width="auto">
-                                <Label id="CodiceGes" text="{i18n>Zcodgest}" design="Bold"/>
-                                <Text id="CodiceGes1"/>
-                            </VBox>
-                            <VBox id="idVBox30" class="sapUiSmallMargin" width="auto">
-                                <Label id="CausalePagamento" text="{i18n>Zcauspag}" design="Bold"/>
-                                <Text id="CausalePagamento1"/>
-                            </VBox>
-                        </HBox>
-
-                    </l:VerticalLayout>
-                </l:HorizontalLayout>
+                <layout:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0.1">
+                    <!-- 1 riga -->
+                    <HBox>
+                        <Label id="numNI" text="{i18n>ProgressivoNI}:" design="Bold"/>
+                        <Text id="numNI1" text="{EntityModel>/Header/ZidNi}" wrapping="true"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="dataReg" text="{i18n>DataRegistrazioneNI}:" design="Bold"/>
+                        <Text id="dataReg1" text="{path:'EntityModel>/Header/ZdataCreaz', formatter:'.formatter.convert'}"  wrapping="true"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <!-- 2 riga -->
+                    <HBox>
+                        <Label id="SARW2" text="{i18n>SAR}:" design="Bold"/>
+                        <zcontrollinkSar:LinkSar id="linkSarBilancio" anno="{EntityModel>/Header/Esercizio}" eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" 
+                            versione="D" bilancio="" fictr="{EntityModel>/Header/Fistl}" datbis="99991231" text="{EntityModel>/Header/Fistl}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true" />
+                        </layoutData>
+                    </HBox>                        
+                    <HBox>
+                        <Label id="pos_FinW2" text="{i18n>PF}:" design="Bold"/>
+                        <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesa" anno="{EntityModel>/Header/Esercizio}" eos="S" fikrs="S001" fase="GEST" reale="R" 
+                            versione="D" fipex="{EntityModel>/Header/Fipex}" datbis="99991231" text="{EntityModel>/Header/Fipex}" semanticObject="ESAMINAMODIFICA"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="oggSpesa" text="{i18n>oggSpesa}:" design="Bold"/>
+                        <Text id="oggSpesa1" text="{EntityModel>/Header/ZoggSpesa}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <!-- 3 riga -->
+                    <HBox>
+                        <Label id="mese" text="{i18n>Mese}:" design="Bold"/>
+                        <Text id="mese1" text="{path: 'EntityModel>/Header/Zmese', formatter:'.formatter.getMonthName'}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true" />
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="comp" text="{i18n>comp}:" design="Bold"/>
+                        <Text id="comp1" text="{= ${EntityModel>/Header/ZcompRes} === 'C' ? 'Competenza' : ${EntityModel>/Header/ZcompRes} === 'R' ? 'Residui' : ''}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="statoNI" text="{i18n>statoNI}:" design="Bold"/>
+                        <Text id="statoNI1" text="{EntityModel>/Header/ZcodiStatoniDesc}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="importoTot" text="{i18n>importoTot}:" design="Bold"/>
+                        <Text id="importoTot1" text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <!-- 4 riga -->
+                    <HBox>
+                        <Label id="Lifnr" text="{i18n>Lifnr}:" design="Bold"/>
+                        <Text id="Lifnr1" text="{EntityModel>/Header/Lifnr}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                        </layoutData>
+                    </HBox>
+                    <HBox>  
+                        <Label id="Nome" text="{i18n>Nome}:" design="Bold"/>
+                        <Text id="Nome1" text="{EntityModel>/Header/LifnrDesc}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="Zwels" text="{i18n>Zwels}:" design="Bold"/>
+                        <Text id="Zwels1" text="{EntityModel>/Header/ModalitaPagamento}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <!-- 5 riga -->
+                    <HBox>
+                        <Label id="CentroCosto" text="Centro di Costo: " design="Bold"/>
+                        <Text id="CentroCosto1" text="{EntityModel>/Header/Cdc}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="ConCoGe" text="Conto Co.Ge.: " design="Bold"/>
+                        <Text id="ConCoGe1" text="{EntityModel>/Header/Coge}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="ImpLiq" text="Importo Liquidazione:" design="Bold"/>
+                        <Text id="ImpLiq1"  text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <!-- 6 riga -->
+                    <HBox>
+                        <Label id="CodiceGes" text="{i18n>Zcodgest}:" design="Bold"/>
+                        <Text id="CodiceGes1" text="{EntityModel>/Header/CodiceGestionale}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="CausalePagamento" text="{i18n>Zcauspag}:" design="Bold"/>
+                        <Text id="CausalePagamento1" text="{EntityModel>/Header/CausalePagamento}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <!-- 7 riga -->
+                    <HBox>
+                        <Label id="CodiceUff" text="Codice Ufficio:" design="Bold"/>
+                        <Text id="CodiceUff1" text="{EntityModel>/Form/CodiceUfficio}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="Dirigente" text="Dirigente/DirettoreFirmatario:" design="Bold"/>
+                        <Text id="Dirigente1" text="{EntityModel>/Form/Dirigente}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <!-- <HBox>
+                        <Label id="DataProt" text="Data Protocollo:" design="Bold"/>
+                        <Text id="DataProt1" text="{path:'EntityModel>/Form/DataProtocollo', formatter:'.formatter.convert'}" />
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>
+                    <HBox>
+                        <Label id="NumProt" text="Numero Protocollo:" design="Bold"/>
+                        <Text id="NumPro1" text="{EntityModel>/Form/NumeroProtocollo}"/>
+                        <layoutData>
+                            <layout:GridData span="XL3 L3 M6 S12" />
+                        </layoutData>
+                    </HBox>  -->
+                </layout:Grid>   
+                
             </f:DynamicPageHeader>
         </f:header>
         <f:content>
             <form:SimpleForm editable="true"  title="Inserimento dati per invio della firma">
                 <Panel height="100%">
                     <content>
-                        <l:Grid>
-                            <l:content>
+                        <layout:Grid>
+                            <layout:content>
                                 <VBox >
                                     <Label text="Codice Ufficio:" required="true"/>
-                                    <Input width="100%" showValueHelp="true" id="codUfficio" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="codUfficio" app:filterTableField="codUfficio" value="020.0021">
-                                        <core:Item key=""/>
+                                    <Input width="100%" showValueHelp="false" id="codUfficio" valueHelpOnly="false" 
+                                        valueHelpRequest="handleValueHelp" app:fieldName="codUfficio" app:filterTableField="codUfficio" 
+                                        value="{EntityModel>/Form/CodiceUfficio}" >
+                                        <!-- <core:Item key=""/> -->
                                     </Input>
                                     <layoutData>
-                                        <l:GridData span="L6 M6 S6" />
+                                        <layout:GridData span="XL6 L6 M6 S6" />
                                     </layoutData>
                                 </VBox>
                                 <VBox>
                                     <Label text="Dirigente/Direttore Finanziario:" required="true" />
-                                    <Input id="dirigente" width="100%" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="dirigente" app:filterTableField="dirigente" value="TEST10_CO">
-                                        <core:Item key=""/>
+                                    <Input id="dirigente" width="100%" showValueHelp="false" valueHelpOnly="false" 
+                                        valueHelpRequest="handleValueHelp" app:fieldName="dirigente" app:filterTableField="dirigente" 
+                                        value="{EntityModel>/Form/Dirigente}" >
+                                        <!-- <core:Item key=""/> -->
                                     </Input>
                                     <layoutData>
-                                        <l:GridData span="L6 M6 S6" />
+                                        <layout:GridData span="XL6 L6 M6 S6" />
                                     </layoutData>
                                 </VBox>
                                 <VBox>
                                     <Label text="Data Protocollo" />
-                                    <DatePicker id="DataPro" displayFormat="dd.MM.yyyy" />
+                                    <DatePicker id="DataPro" valueFormat="yyyy-MM-dd" displayFormat="dd.MM.yyyy" value="{EntityModel>/Form/DataProtocollo}"  />
                                     <layoutData>
-                                        <l:GridData span="L6 M6 S6" />
+                                        <layout:GridData span="XL6 L6 M6 S6" />
                                     </layoutData>
                                 </VBox>
                                 <VBox>
                                     <Label text="N. Protocollo" />
-                                    <Input id="numProtocollo" width="100%" showValueHelp="false" value="">  
+                                    <Input id="numProtocollo" width="100%" showValueHelp="false" value="{EntityModel>/Form/NumeroProtocollo}" >  
                                     </Input>
                                     <layoutData>
-                                        <l:GridData span="L6 M6 S6" />
+                                        <layout:GridData span="XL6 L6 M6 S6" />
                                     </layoutData>
                                 </VBox>
-                            </l:content>
-                        </l:Grid>
+                            </layout:content>
+                        </layout:Grid>
                     </content>
                 </Panel>
             </form:SimpleForm>

@@ -10,15 +10,11 @@
     xmlns:menu="sap.m.MenuItem"
     xmlns:menBtn="sap.m.Menu"
     height="100%">
-    <Table class="sapUiSizeCompact" id="richiamaNI" includeItemInSelection="true" items="{richiamaNI>/}" visible="true">
-    <!-- <headerToolbar>
-            <OverflowToolbar>
-                <content>
-                    <ToolbarSpacer />
-                    <Button type="Emphasized" text="Modifica Dettaglio NI" enabled="false" press="onEditRow" id="editRow" />
-                </content>
-            </OverflowToolbar>
-        </headerToolbar> -->
+    <Table class="sapUiSizeCompact" id="richiamaNI" includeItemInSelection="true"
+        items="{
+                path: 'EntityModel>/RichiamaNI'
+        }"    
+        visible="true">
         <columns>
             <Column width="auto" hAlign="Left">
                 <Label text="Numero NI" />
@@ -46,16 +42,16 @@
             </Column>
         </columns>
         <ColumnListItem>
-            <Text text="{richiamaNI>ZchiaveSubni}" />
-            <Text text="{richiamaNI>ZcodIsin}" />
-            <Text text="{richiamaNI>Ztipo}" />
-            <Text text="{richiamaNI>Zdescrizione}" />
-            <Text text="{path: 'richiamaNI>ZdataPag', formatter:'.formatter.convert'}" />
-            <Text text="{path:'richiamaNI>ZimpoTitolo', formatter:'.formatter.convertFormattedNumber'}" />
-            <Text text="{path:'richiamaNI>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
+            <Text text="{EntityModel>ZchiaveSubni}" />
+            <Text text="{EntityModel>ZcodIsin}" />
+            <Text text="{EntityModel>Ztipo}" />
+            <Text text="{EntityModel>Zdescrizione}" />
+            <Text text="{path: 'EntityModel>ZdataPag', formatter:'.formatter.convert'}" />
+            <Text text="{path:'EntityModel>ZimpoTitolo', formatter:'.formatter.convertFormattedNumber'}" />
+            <Text text="{path:'EntityModel>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
             <!-- <Text text="{richiamaNI>ZimpoTitolo}" />
             <Text text="{richiamaNI>ZimpoRes}" /> -->
-            <Text text="{richiamaNI>ZCodCla}"/>
+            <Text text="{EntityModel>ZCodCla}"/>
         </ColumnListItem>
     </Table>
 </core:FragmentDefinition>

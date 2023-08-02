@@ -782,7 +782,10 @@ sap.ui.define([
                 delete header.ZcompRes;
                 deepEntity.HeaderNISet = header;
                 deepEntity.HeaderNISet.ZcodiStatoni = "00";
-                deepEntity.HeaderNISet.ZdataProtAmm = DateFormatter.formateDateForDeep(impegnoValues.ImpegnoValues_DataProtocollo);
+                deepEntity.HeaderNISet.ZdataProtAmm = !impegnoValues.ImpegnoValues_DataProtocollo && 
+                        impegnoValues.ImpegnoValues_DataProtocollo !== null &&
+                        impegnoValues.ImpegnoValues_DataProtocollo !== "" ? 
+                            DateFormatter.formateDateForDeep(impegnoValues.ImpegnoValues_DataProtocollo) : null;
                 deepEntity.HeaderNISet.NProtocolloAmm = impegnoValues.ImpegnoValues_NProtocollo;
                 for(var i=0; i<headerSalva.length;i++){
                     deepEntity.PositionNISet.push(headerSalva[i]);
