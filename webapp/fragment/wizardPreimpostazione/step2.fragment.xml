@@ -16,7 +16,7 @@
                         <core:ListItem text="{temp>Fistl}" />
                     </suggestionItems>
                 </Input> -->
-                <zcontrolMatchSar:GestioneLogUser eos="S" id="idFilterStruttAmmResp" fase="GEST" entrata="X" reale="R" 
+                <zcontrolMatchSar:GestioneLogUser eos="S" id="idFilterStruttAmmResp" fase="GEST" entrata="X" reale="R"  maxLength="16"
                 anno="{preimpostazioneModel>/ZgjahrEng}" SEM_OBJ="Z_TEST_LIB"  versione="D" width="100%" placeholder="Scegli struttura amministrativa"
                 submit="strutturaAmministrativaLiveChange" liveChange="strutturaAmministrativaLiveChange" />
                 <layoutData>
@@ -31,7 +31,7 @@
                         <core:ListItem text="{temp>Fipex}"/>
                     </suggestionItems>
                 </Input> -->
-                <zcontrol:InputPosizioneFinanziaria id="input_PF" fase="GEST" spesa="X"
+                <zcontrol:InputPosizioneFinanziaria id="input_PF" fase="GEST" spesa="X" maxLength="24"
                  reale="R" anno="{preimpostazioneModel>/ZgjahrEng}" versione="D" maxSuggestionWidth="60%" submit="posizioneFinanziariaLiveChange" 
                  liveChange="posizioneFinanziariaLiveChange"  width="100%"/>
                 <layoutData>
@@ -40,7 +40,7 @@
             </VBox>
             <VBox>
                 <Label text="Descrizione Capitolo:" />
-                <Input id="descrizioneCap" showValueHelp="false" editable="false" suggestionItems="{path: 'temp>/', sorter: { path: '' }}">
+                <Input id="descrizioneCap" value="{preimpostazioneModel>/descrizioneCapitolo}" showValueHelp="false" editable="false" suggestionItems="{path: 'temp>/', sorter: { path: '' }}">
                     <core:Item key="{temp>}"/>
                 </Input>
                 <layoutData>
@@ -49,7 +49,7 @@
             </VBox>
             <VBox>
                 <Label text="Descrizione PG:" />
-                <Input id="descrizionePG" showValueHelp="false" editable="false" suggestionItems="{path: 'temp>/', sorter: { path: '' }}">
+                <Input id="descrizionePG" showValueHelp="false" value="{preimpostazioneModel>/descrizionePG}" editable="false" suggestionItems="{path: 'temp>/', sorter: { path: '' }}">
                     <core:Item key="{temp>}"/>
                 </Input>
                 <layoutData>

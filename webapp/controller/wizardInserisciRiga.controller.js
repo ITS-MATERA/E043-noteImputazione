@@ -21,6 +21,9 @@ sap.ui.define([
                 // HeaderNIWstep3Visible: true
             };
 
+        const MODEL_ENTITY = "EntityModel";    
+        const PREIMPOSTAZIONENI_MODEL = "preimpostazioneModel";
+        const COMPONENT_MODEL = "componentModel";
         return BaseController.extend("project1.controller.wizardInserisciRiga", {
             formatter: DateFormatter,
             ZhfTipoKey:"",
@@ -39,111 +42,293 @@ sap.ui.define([
                 this.getOwnerComponent().getModel("temp");
                 this.getRouter().getRoute("wizardInserisciRiga").attachPatternMatched(this._onObjectMatched, this);
 
-                this.controlPreNI()
-                this.controlHeader()
-                this.esercizioGestione()
+                // this.controlPreNI()
+                // this.controlHeader()
+                // this.esercizioGestione()
                 this.ZhfTipoKey = "";
-                //this.onSearch()
 
-            },
-
-            _onObjectMatched: function (oEvent) {
-                this.getView().bindElement(
-                    "/HeaderNISet('Bukrs='" + oEvent.getParameters().arguments.campo +
-                    "',Gjahr='" + oEvent.getParameters().arguments.campo1 +
-                    "',Zamministr='" + oEvent.getParameters().arguments.campo2 +
-                    "',ZchiaveNi='" + oEvent.getParameters().arguments.campo3 +
-                    "',ZidNi='" + oEvent.getParameters().arguments.campo4 +
-                    "',ZRagioCompe='" + oEvent.getParameters().arguments.campo5 + "')"
-                );
-                this.viewFiltri(oEvent)
-            },
-
-            viewFiltri: function (oEvent) {
-                var header = this.getView().getModel("temp").getData().HeaderNISet
-                var position = this.getView().getModel("temp").getData().PositionNISet
-                for (var i = 0; i < header.length; i++) {
-                    if (header[i].Bukrs == oEvent.getParameters().arguments.campo &&
-                        header[i].Gjahr == oEvent.getParameters().arguments.campo1 &&
-                        header[i].Zamministr == oEvent.getParameters().arguments.campo2 &&
-                        header[i].ZchiaveNi == oEvent.getParameters().arguments.campo3 &&
-                        header[i].ZidNi == oEvent.getParameters().arguments.campo4 &&
-                        header[i].ZRagioCompe == oEvent.getParameters().arguments.campo5) {
-
-                        var ZgjahrEng = position[0].ZgjahrEng
-                        this.getView().byId("es_gestione").setValue(ZgjahrEng)
-
-                        var Zmese = header[i].Zmese;
-                        this.getView().byId("mese").setSelectedKey(Zmese);
-
-                        // var ZcompRes = position[0].ZcompRes
-                        // this.getView().byId("competenza").setValue(ZcompRes)
-
-                        // var Zsottotipo = position[0].Zsottotipo
-                        // this.getView().byId("sottotipologia").setValue(Zsottotipo)
-
-                        // var Ztipo = position[0].Ztipo
-                        // this.getView().byId("tipologia").setValue(Ztipo)
-
-                    }
-                }
-            },
-
-            // ZhfTipo - START
-            handleValueHelpZhfTipo:function(oEvent){
                 var self =this;
-                var oDialog = self.openDialog("project1.fragment.Help.zhfTipo");
-                self.getOwnerComponent().getModel().read("/ZhfTipoSet", {
+                self.loadZcompRes();
+               
+                var oModelJson = new JSONModel({
+                    Header:null,
+                    RendicontazioneSet:[],
+                    ZhfTipo:[], 
+                    ZhfSottotipo:[],
+                    ZcompResNISet:[]          
+                });        
+
+                var  oModelJsonPreimpostazioneNi = new JSONModel({
+                    ZgjahrEng:"",
+                    meseValore:"",
+                    meseDescrizione:"",
+                    tipologia:"",
+                    tipologiaDescrizione:"",
+                    sottotipologia:"",
+                    sottotipologiaDescrizione:"",
+                    competenza:"C",
+                    competenzaDescrizione:"Competenza",
+                    rendicontazioneSumRowSelected:0,
+                    rendicontazioneSumRowSelectedString:"0,00",
+                    rendicontazioneRowNum:"0",
+                    fistl:"",
+                    fipex:"",
+                    descrizioneCapitolo:"",
+                    descrizionePG:"",
+                    oggettoSpesa:"",
+                    titoliSelezionati:[],
+                    titoliSelezionatiStep3:[]
+                });
+
+                var oModelJsonComponent = new JSONModel({
+                    headerStep2Visible:false,
+                    headerStep3Visible:false,
+                    btnPreimpostaNiVisible:false,
+                    btnBackVisible:true,
+                    btnNextVisible:true
+                });    
+
+                self.getView().setModel(oModelJson,MODEL_ENTITY); 
+                self.getView().setModel(oModelJsonComponent, COMPONENT_MODEL);
+                self.getView().setModel(oModelJsonPreimpostazioneNi,PREIMPOSTAZIONENI_MODEL); 
+            },
+
+            // _onObjectMatched_old: function (oEvent) {
+            //     this.getView().bindElement(
+            //         "/HeaderNISet('Bukrs='" + oEvent.getParameters().arguments.campo +
+            //         "',Gjahr='" + oEvent.getParameters().arguments.campo1 +
+            //         "',Zamministr='" + oEvent.getParameters().arguments.campo2 +
+            //         "',ZchiaveNi='" + oEvent.getParameters().arguments.campo3 +
+            //         "',ZidNi='" + oEvent.getParameters().arguments.campo4 +
+            //         "',ZRagioCompe='" + oEvent.getParameters().arguments.campo5 + "')"
+            //     );
+            //     this.viewFiltri(oEvent)
+            // },
+
+            
+            _onObjectMatched: function (oEvent) {
+                var self =this;                
+                
+                var path = self.getOwnerComponent().getModel().createKey("HeaderNISet", {
+                    Bukrs: oEvent.getParameters().arguments.campo,                    
+                    Gjahr: oEvent.getParameters().arguments.campo1,
+                    Zamministr: oEvent.getParameters().arguments.campo2,
+                    ZchiaveNi: oEvent.getParameters().arguments.campo3,
+                    ZidNi: oEvent.getParameters().arguments.campo4,
+                    ZRagioCompe: oEvent.getParameters().arguments.campo5
+                }); 
+
+                self.getView().getModel(MODEL_ENTITY).setProperty("/ZcompRes", oEvent.getParameters().arguments.campo6);
+                self.getView().setBusy(true);
+                self.loadView(path);
+            },
+
+            loadView:function(path){
+              var self =this,
+                oDataModel = self.getOwnerComponent().getModel();
+
+                self.getOwnerComponent().getModel().metadataLoaded().then(function() {
+                  oDataModel.read("/" + path, {
                     success: function(data, oResponse){
-                        var oModelJson = new sap.ui.model.json.JSONModel();
-                        oModelJson.setData(data.results);
-                        var oTable = sap.ui.getCore().byId("selectDialogZhfTipo");
-                        oTable.setModel(oModelJson,"ZhfTipoSet");
-                        oDialog.open();
+                      console.log(data);
+                      self.getView().getModel(MODEL_ENTITY).setProperty("/Header",data);
+                      self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizioneCapitolo", null);
+                      self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizionePG",null);
+                      self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/fistl", data.Fistl);
+                      self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/fipex",data.Fipex);
+                     
+                      if(data.Gjahr && data.Gjahr !== "" && data.Fipex && data.Fipex !== "")
+                        self.getDescCapDescPG(data.Gjahr, data.Fipex,function(callback){ 
+                            if(callback.success && callback.entity){
+                              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizioneCapitolo", callback.entity.DescCap);
+                              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizionePG",callback.entity.DescPg);
+                            }
+                          }
+                        );
+
+                      self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/ZgjahrEng",data.Gjahr);
+                      self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/meseValore",data.Zmese);
+                      self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/meseDescrizione",self.formatter.getMonthName(data.Zmese));
+                      self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/oggettoSpesa",data.ZoggSpesa);
+                      self.getView().setBusy(false);
                     },
-                    error: function(error){
+                    error:function(error){
+                      console.log(error);
+                      self.getView().setBusy(false);
                     }
+                  })
                 });
             },
 
-            handleValueHelpValueCloseZhfTipo:function(oEvent){
-                var self = this,
-                    tipologiaId = self.getView().byId("tipologia"),
-                    sottotipologia = self.getView().byId("sottotipologia"),
-                    key,
-                    selected = oEvent.getParameter("selectedItem");
-
-                self.ZhfTipoKey = "";
-                if(!selected){            
-                    self.getView().getModel("temp").setProperty('/ZhfSottotipo', []);         
-                    self.closeDialog();
-                    return;
-                }
-
-                key = oEvent.getParameter("selectedItem").data("key");
-                tipologiaId.setValue(selected.getTitle());
-                self.ZhfTipoKey = key;
-                
-                if(key){
-                    var filters = []
-                    filters.push(
-                        new Filter({ path: "ZcodTipo", operator: FilterOperator.EQ, value1: key })
-                    )
-
-                    self.getOwnerComponent().getModel().read("/ZhfSottotipoSet", {
-                        filters: filters,
-                        success: function(data, oResponse){
-                            self.getView().getModel("temp").setProperty('/ZhfSottotipo', data.results);
-                        },
-                        error: function(error){
-                        }
-                    });
-                }
-                else{
-                    self.getView().getModel("temp").setProperty('/ZhfSottotipo', []); 
-                }
-                self.closeDialog();
+            loadZcompRes:function () {
+              var self = this;
+              self.getOwnerComponent().getModel().read("/ZcompResNISet", {
+                  success: function (data) {
+                      self.getView().getModel(MODEL_ENTITY).setProperty('/ZcompResNISet', data.results);
+                  },
+                  error: function (error) {
+                      var e = error;
+                      console.log(e);
+                  }
+              });
             },
+
+            handleValueHelpZhfTipo:function(oEvent){
+              var self =this;
+              var oDialog = self.openDialog("project1.fragment.Help.zhfTipo");
+              self.getOwnerComponent().getModel().read("/ZhfTipoSet", {
+                  success: function(data, oResponse){
+                      var oModelJson = new sap.ui.model.json.JSONModel();
+                      oModelJson.setData(data.results);
+                      self.getView().getModel(MODEL_ENTITY).setProperty('/ZhfTipo', data.results);
+                      var oTable = sap.ui.getCore().byId("selectDialogZhfTipo");
+                      oTable.setModel(oModelJson,"ZhfTipoSet");
+                      oDialog.open();
+                  },
+                  error: function(error){
+                  }
+              });
+            },
+
+            handleValueHelpValueCloseZhfTipo:function(oEvent){
+              var self = this,
+                  tipologiaId = self.getView().byId("tipologia"),
+                  sottotipologia = self.getView().byId("sottotipologia"),
+                  key,
+                  selected = oEvent.getParameter("selectedItem");
+
+              if(!selected){              
+                  self.getView().getModel(MODEL_ENTITY).setProperty('/ZhfSottotipo', []);      
+                  self.closeDialog();
+                  return;
+              }
+              
+              key = oEvent.getParameter("selectedItem").data("key");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/tipologia",key);
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/tipologiaDescrizione",selected.getTitle());
+                              
+              if(key){
+                  var filters = [];
+                  filters.push(new Filter({ path: "ZcodTipo", operator: FilterOperator.EQ, value1: key }));
+                  self.getOwnerComponent().getModel().read("/ZhfSottotipoSet", {
+                      filters: filters,
+                      success: function(data, oResponse){
+                          self.getView().getModel(MODEL_ENTITY).setProperty('/ZhfSottotipo', data.results);
+                      },
+                      error: function(error){
+                      }
+                  });
+              }
+              else{
+                  self.getView().getModel(MODEL_ENTITY).setProperty('/ZhfSottotipo', []);
+              }
+              self.closeDialog();
+            },
+
+            ZhfTipoOnDelete:function(oEvent){
+                var self= this;
+                self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/tipologia","");
+                self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/tipologiaDescrizione",""); 
+                self.getView().getModel(MODEL_ENTITY).setProperty('/ZhfSottotipo', []);
+                self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/sottotipologia","");
+                self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/sottotipologiaDescrizione",""); 
+            },
+
+            sottotipologiaSelectionChange:function(oEvent){
+                var self= this,
+                    selected = oEvent.getParameters().selectedItem;
+                
+                self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/sottotipolgia",selected.getProperty("key"));
+                self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/sottotipolgiaDescrizione",selected.getProperty("text"));
+            },
+
+            // 
+
+            // viewFiltri: function (oEvent) {
+            //     var header = this.getView().getModel("temp").getData().HeaderNISet
+            //     var position = this.getView().getModel("temp").getData().PositionNISet
+            //     for (var i = 0; i < header.length; i++) {
+            //         if (header[i].Bukrs == oEvent.getParameters().arguments.campo &&
+            //             header[i].Gjahr == oEvent.getParameters().arguments.campo1 &&
+            //             header[i].Zamministr == oEvent.getParameters().arguments.campo2 &&
+            //             header[i].ZchiaveNi == oEvent.getParameters().arguments.campo3 &&
+            //             header[i].ZidNi == oEvent.getParameters().arguments.campo4 &&
+            //             header[i].ZRagioCompe == oEvent.getParameters().arguments.campo5) {
+
+            //             var ZgjahrEng = position[0].ZgjahrEng
+            //             this.getView().byId("es_gestione").setValue(ZgjahrEng)
+
+            //             var Zmese = header[i].Zmese;
+            //             this.getView().byId("mese").setSelectedKey(Zmese);
+
+            //             // var ZcompRes = position[0].ZcompRes
+            //             // this.getView().byId("competenza").setValue(ZcompRes)
+
+            //             // var Zsottotipo = position[0].Zsottotipo
+            //             // this.getView().byId("sottotipologia").setValue(Zsottotipo)
+
+            //             // var Ztipo = position[0].Ztipo
+            //             // this.getView().byId("tipologia").setValue(Ztipo)
+
+            //         }
+            //     }
+            // },
+
+            // ZhfTipo - START
+            // handleValueHelpZhfTipo:function(oEvent){
+            //     var self =this;
+            //     var oDialog = self.openDialog("project1.fragment.Help.zhfTipo");
+            //     self.getOwnerComponent().getModel().read("/ZhfTipoSet", {
+            //         success: function(data, oResponse){
+            //             var oModelJson = new sap.ui.model.json.JSONModel();
+            //             oModelJson.setData(data.results);
+            //             var oTable = sap.ui.getCore().byId("selectDialogZhfTipo");
+            //             oTable.setModel(oModelJson,"ZhfTipoSet");
+            //             oDialog.open();
+            //         },
+            //         error: function(error){
+            //         }
+            //     });
+            // },
+
+            // handleValueHelpValueCloseZhfTipo:function(oEvent){
+            //     var self = this,
+            //         tipologiaId = self.getView().byId("tipologia"),
+            //         sottotipologia = self.getView().byId("sottotipologia"),
+            //         key,
+            //         selected = oEvent.getParameter("selectedItem");
+
+            //     self.ZhfTipoKey = "";
+            //     if(!selected){            
+            //         self.getView().getModel("temp").setProperty('/ZhfSottotipo', []);         
+            //         self.closeDialog();
+            //         return;
+            //     }
+
+            //     key = oEvent.getParameter("selectedItem").data("key");
+            //     tipologiaId.setValue(selected.getTitle());
+            //     self.ZhfTipoKey = key;
+                
+            //     if(key){
+            //         var filters = []
+            //         filters.push(
+            //             new Filter({ path: "ZcodTipo", operator: FilterOperator.EQ, value1: key })
+            //         )
+
+            //         self.getOwnerComponent().getModel().read("/ZhfSottotipoSet", {
+            //             filters: filters,
+            //             success: function(data, oResponse){
+            //                 self.getView().getModel("temp").setProperty('/ZhfSottotipo', data.results);
+            //             },
+            //             error: function(error){
+            //             }
+            //         });
+            //     }
+            //     else{
+            //         self.getView().getModel("temp").setProperty('/ZhfSottotipo', []); 
+            //     }
+            //     self.closeDialog();
+            // },
 
             handleValueHelpSearchZhfTipo:function(oEvent){
                 var self = this,
@@ -162,23 +347,21 @@ sap.ui.define([
             // ZhfTipo - END
 
 
-            esercizioGestione: function () {
-                var that = this;
-                var oMdl = new sap.ui.model.json.JSONModel();
-                this.getOwnerComponent().getModel().read("/ZgjahrEngNiSet", {
-                    filters: [],
-                    urlParameters: "",
-                    success: function (data) {
-                        oMdl.setData(data.results);
-                        that.getView().getModel("temp").setProperty('/ZgjahrEngNiSet', data.results)
-                    },
-                    error: function (error) {
-                        //that.getView().getModel("temp").setProperty(sProperty,[]);
-                        //that.destroyBusyDialog();
-                        var e = error;
-                    }
-                });
-            },
+            // esercizioGestione: function () {
+            //     var that = this;
+            //     var oMdl = new sap.ui.model.json.JSONModel();
+            //     this.getOwnerComponent().getModel().read("/ZgjahrEngNiSet", {
+            //         filters: [],
+            //         urlParameters: "",
+            //         success: function (data) {
+            //             oMdl.setData(data.results);
+            //             that.getView().getModel("temp").setProperty('/ZgjahrEngNiSet', data.results)
+            //         },
+            //         error: function (error) {
+            //             var e = error;
+            //         }
+            //     });
+            // },
 
             onCallHeader: function (oEvent) {
                 var that = this;
@@ -396,264 +579,653 @@ sap.ui.define([
                 // console.log(oMdlWstep3)
             },
 
-            onSearch: function (oEvent) {
-                this.onCallHeader()
-                // var oModelP = this.getView().getModel("tabRendicontazione")
-                var oModelP = this.getRendicontazione();
-                //var oModelP = new sap.ui.model.json.JSONModel("../mockdata/tabRendicontazione.json");
-                this.getView().setModel(oModelP, "HeaderNIW");
-                // var that = this;
-                this.getView().byId("HeaderNIW").setVisible(true);
-            },
+            onSearch:function(oEvent){
+              var self = this;
 
-            getRendicontazione:function(){
-                var self = this,
-                    filters = [],
-                    oEsercizio = self.getView().byId("es_gestione"),
-                    oMese = self.getView().byId("mese"),
-                    oTipo = self.getView().byId("tipologia"),
-                    oSottotipo = self.getView().byId("sottotipologia"),
-                    oCompetenza = self.getView().byId("competenza");
+              if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng") === "" || 
+                  self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/meseValore") === ""){
+                  MessageBox.error("Alimentare tutti i campi obbligatori", {
+                      actions: [sap.m.MessageBox.Action.OK],
+                      emphasizedAction: MessageBox.Action.OK,
+                  });
+              }
+              else{
+                  self._getRendicontazione();        
+              }
+          },
+
+          _getRendicontazione:function(){
+              var self = this,
+                  filters = [];
+              
+              filters.push(new Filter({ path: "Gjahr", operator: FilterOperator.EQ, value1: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng") }));
+              filters.push(new Filter({ path: "Zmese", operator: FilterOperator.EQ, value1: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/meseValore") }));
+
+              if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/tipologia") !== "")
+                  filters.push(new Filter({ path: "ZcodTipo", operator: FilterOperator.EQ, value1: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/tipologia") }));
+              
+              if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/sottotipologia") !== "")
+                  filters.push(new Filter({ path: "ZcodSottotipo", operator: FilterOperator.EQ, value1: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/sottotipologia") }));
+              
+              if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/competenza") !== "")
+                  filters.push(new Filter({ path: "ZcompRes", operator: FilterOperator.EQ, value1: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/competenza").toUpperCase() }));
+              
+              self.getView().setBusy(true);
+              self.getOwnerComponent().getModel().read("/RendicontazioneSet", {
+                  filters:filters,
+                  success: function(data, oResponse){
+                      self.getView().getModel(MODEL_ENTITY).setProperty('/RendicontazioneSet', data.results);
+                      self.getView().setBusy(false);
+                  },
+                  error: function(error){
+                      self.getView().getModel(MODEL_ENTITY).setProperty('/RendicontazioneSet', []);
+                      self.getView().setBusy(false);
+                  }
+              });
+          },
+
+            // onSearch: function (oEvent) {
+            //     this.onCallHeader()
+            //     // var oModelP = this.getView().getModel("tabRendicontazione")
+            //     var oModelP = this.getRendicontazione();
+            //     //var oModelP = new sap.ui.model.json.JSONModel("../mockdata/tabRendicontazione.json");
+            //     this.getView().setModel(oModelP, "HeaderNIW");
+            //     // var that = this;
+            //     this.getView().byId("HeaderNIW").setVisible(true);
+            // },
+
+            // getRendicontazione:function(){
+            //     var self = this,
+            //         filters = [],
+            //         oEsercizio = self.getView().byId("es_gestione"),
+            //         oMese = self.getView().byId("mese"),
+            //         oTipo = self.getView().byId("tipologia"),
+            //         oSottotipo = self.getView().byId("sottotipologia"),
+            //         oCompetenza = self.getView().byId("competenza");
                 
-                var header = this.getView().getModel("temp").getData().HeaderNISet[0];
-                console.log(header.ZchiaveNi);
-                filters.push(new Filter({ path: "Gjahr", operator: FilterOperator.EQ, value1: oEsercizio.getSelectedKey() }));
-                filters.push(new Filter({ path: "Zmese", operator: FilterOperator.EQ, value1: oMese.getSelectedKey() }));
-                filters.push(new Filter({ path: "ZchiaveNi", operator: FilterOperator.EQ, value1: header.ZchiaveNi }));
+            //     var header = this.getView().getModel("temp").getData().HeaderNISet[0];
+            //     console.log(header.ZchiaveNi);
+            //     filters.push(new Filter({ path: "Gjahr", operator: FilterOperator.EQ, value1: oEsercizio.getSelectedKey() }));
+            //     filters.push(new Filter({ path: "Zmese", operator: FilterOperator.EQ, value1: oMese.getSelectedKey() }));
+            //     filters.push(new Filter({ path: "ZchiaveNi", operator: FilterOperator.EQ, value1: header.ZchiaveNi }));
 
-                if(oTipo && self.ZhfTipoKey !== "")
-                    filters.push(new Filter({ path: "ZcodTipo", operator: FilterOperator.EQ, value1: self.ZhfTipoKey }));
+            //     if(oTipo && self.ZhfTipoKey !== "")
+            //         filters.push(new Filter({ path: "ZcodTipo", operator: FilterOperator.EQ, value1: self.ZhfTipoKey }));
                 
-                if(oSottotipo && oSottotipo.getSelectedKey() && oSottotipo.getSelectedKey() !== "")
-                    filters.push(new Filter({ path: "ZcodSottotipo", operator: FilterOperator.EQ, value1: oSottotipo.getSelectedKey() }));
+            //     if(oSottotipo && oSottotipo.getSelectedKey() && oSottotipo.getSelectedKey() !== "")
+            //         filters.push(new Filter({ path: "ZcodSottotipo", operator: FilterOperator.EQ, value1: oSottotipo.getSelectedKey() }));
                 
-                if(oCompetenza && oCompetenza.getSelectedKey() && oCompetenza.getSelectedKey() !== "")
-                    filters.push(new Filter({ path: "ZcompRes", operator: FilterOperator.EQ, value1: oCompetenza.getSelectedKey() }));
+            //     if(oCompetenza && oCompetenza.getSelectedKey() && oCompetenza.getSelectedKey() !== "")
+            //         filters.push(new Filter({ path: "ZcompRes", operator: FilterOperator.EQ, value1: oCompetenza.getSelectedKey() }));
 
-                self.getOwnerComponent().getModel().read("/RendicontazioneSet", {
-                    filters:filters,
-                    success: function(data, oResponse){
-                        var oModelJson = new sap.ui.model.json.JSONModel();
-                        oModelJson.setData(data.results);
-                        return oModelJson;
-                    },
-                    error: function(error){
-                        return [];
-                    }
-                });
-            },
-
-
+            //     self.getOwnerComponent().getModel().read("/RendicontazioneSet", {
+            //         filters:filters,
+            //         success: function(data, oResponse){
+            //             var oModelJson = new sap.ui.model.json.JSONModel();
+            //             oModelJson.setData(data.results);
+            //             return oModelJson;
+            //         },
+            //         error: function(error){
+            //             return [];
+            //         }
+            //     });
+            // },
             onPreimpNI: function (oEvent) {
-                var that = this;
-                //var rows= this.getView().byId("HeaderNIW").getSelectedItem()
+              var self = this,
+                header = self.getView().getModel(MODEL_ENTITY).getProperty("/Header"),
+                array = self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/titoliSelezionatiStep3"), 
+                oDataModel = self.getOwnerComponent().getModel();
 
-                var N_es_gestione = this.getView().byId("es_gestione").mProperties.value; //header
-                var N_Tipologia = this.getView().byId("tipologia").getValue();  //position
-                var N_Sottotipologia = this.getView().byId("sottotipologia").getValue()  //position
-                var N_CR = this.getView().byId("competenza").mProperties.value  //position
+              var deepEntity = {
+                Bukrs:  header.Bukrs,
+                Gjahr: header.Gjahr,
+                Zamministr: header.Zamministr,
+                ZchiaveNi: header.ZchiaveNi,      //dichiarati fuori dal ciclo e presi dal item 0 perchè sono tutte uguali
+                ZidNi: header.ZidNi,
+                ZRagioCompe: header.ZRagioCompe,
+                Operation: "I",
+                Funzionalita: 'RETTIFICANIPREIMPOSTATA',
+                PositionNISet: []
+              }
 
-                var oDataModel = that.getOwnerComponent().getModel();
+              for (var i = 0; i < array.length; i++) {
+                var item = array[i];
+                deepEntity.PositionNISet.push({
+                  Bukrs: header.Bukrs,                     
+                  Gjahr: header.Gjahr,                     
+                  Zamministr: header.Zamministr,           
+                  ZchiaveNi: header.ZchiaveNi,             
+                  ZidNi: header.ZidNi,                     
+                  ZRagioCompe: header.ZRagioCompe,         
+                  ZposNi: item.ZposNi,                        
+                  ZgjahrEng: header.Gjahr,
+                  Ztipo: item.Ztipo,
+                  Zsottotipo: item.Zsottotipo,
+                  ZcompRes: item.ZcompRes,
+                  ZimpoTitolo: item.ZimpoTitolo,
+                  Zdescrizione: item.Zdescrizione, 
+                  ZcodIsin: item.ZcodIsin,        
+                  ZdataPag: new Date(item.ZdataPag)
+                });
+              }
 
-                var oItems = that.getView().byId("HeaderNIWstep3").getBinding("items").oList;
-                //var selectedRows = that.getView().byId("HeaderNIW").getSelectedItems().length
-
-                var deepEntity = {
-                    Funzionalita: 'RETTIFICANIPREIMPOSTATA',
-                    PositionNISet: []
-                }
-
-
-                deepEntity.Bukrs = oItems[0].Bukrs,
-                    deepEntity.Gjahr = oItems[0].Gjahr,
-                    deepEntity.Zamministr = oItems[0].Zamministr,
-                    deepEntity.ZchiaveNi = oItems[0].ZchiaveNi,      //dichiarati fuori dal ciclo e presi dal item 0 perchè sono tutte uguali
-                    deepEntity.ZidNi = oItems[0].ZidNi,
-                    deepEntity.ZRagioCompe = oItems[0].ZRagioCompe,
-                    deepEntity.Operation = "I"
-
-                for (var i = 0; i < oItems.length; i++) {
-                    var item = oItems[i];
-
-                    deepEntity.PositionNISet.push({
-                        Bukrs: oItems[0].Bukrs,                     //campi chiave Posizione
-                        Gjahr: oItems[0].Gjahr,                     //campi chiave Posizione
-                        Zamministr: oItems[0].Zamministr,           //campi chiave Posizione
-                        ZchiaveNi: oItems[0].ZchiaveNi,             //campi chiave Posizione
-                        ZidNi: oItems[0].ZidNi,                     //campi chiave Posizione
-                        ZRagioCompe: oItems[0].ZRagioCompe,         //campi chiave Posizione
-                        ZposNi: item.ZposNi,                        //campi chiave Posizione
-
-                        ZgjahrEng: N_es_gestione,
-                        Ztipo: N_Tipologia,
-                        Zsottotipo: N_Sottotipologia,
-                        ZcompRes: N_CR,
-                        //ZimpoTitolo: ZimpoTitolo,                 //aggiornare mock
-                        Zdescrizione: item.Zdescrizione,                //aggiornare mock 
-                        ZcodIsin: item.ZcodIsin,                       //aggiornare mock
-                        ZdataPag: new Date(item.ZdataPag),
-                    });
-
-                    var numeroIntero = item.ZimpoTitolo
-                    var numIntTot = ""
-                    if (numeroIntero.split(".").length > 1) {
-                        var numeri = numeroIntero.split(".")
-                        for (var n = 0; n < numeri.length; n++) {
-                            numIntTot = numIntTot + numeri[n]
-                            //var numeroFloat = parseFloat(numeroIntero)
-                            if (numIntTot.split(",").length > 1) {
-                                var virgole = numIntTot.split(",")
-                                var numeroInteroSM = virgole[0] + "." + virgole[1]
-                            }
-                        }
-                        var importoPrimaVirgola = numeroIntero.split(".")
-                        var numPunti = ""
-                        var migliaia = importoPrimaVirgola[0].split('').reverse().join('').match(/.{1,3}/g).map(function (x) {
-                            return x.split('').reverse().join('')
-                        }).reverse()
-
-                        for (var migl = 0; migl < migliaia.length; migl++) {
-                            numPunti = (numPunti + migliaia[migl] + ".")
-                        }
-                        var indice = numPunti.split("").length
-                        var numeroIntero = numPunti.substring(0, indice - 1) + "," + importoPrimaVirgola[1]
-                        deepEntity.PositionNISet[i].ZimpoTitolo = numeroInteroSM
-                    }
-
-                    else {
-                        var importoPrimaVirgola = numeroIntero.split(",")
-                        var numeroInteroSM = importoPrimaVirgola[0] + "." + importoPrimaVirgola[1]
-                        deepEntity.PositionNISet[i].ZimpoTitolo = numeroInteroSM
-                    }
-
-
-                }
-
-                MessageBox.warning("Sei sicuro di voler rettificare la nota d'imputazione?", {
-                    title: "Inserire Posizione",
-                    actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
-                    emphasizedAction: MessageBox.Action.YES,
-                    onClose: function (oAction) {
-                        if (oAction === sap.m.MessageBox.Action.YES) {
-
-                            oDataModel.create("/DeepPositionNISet", deepEntity, {
-                                success: function (result) {
-                                    MessageBox.success("Nota di Imputazione "+oItems[0].ZchiaveNi+" rettificata correttamente", {
-                                        title: "Esito Operazione",
-                                        actions: [sap.m.MessageBox.Action.OK],
-                                        emphasizedAction: MessageBox.Action.OK,
-                                        onClose: function (oAction) {
-                                            if (oAction === sap.m.MessageBox.Action.OK) {
-                                                that.getOwnerComponent().getRouter().navTo("View1");
-                                                location.reload();
-                                            }
+              MessageBox.warning("Sei sicuro di voler rettificare la nota d'imputazione?", {
+                title: "Inserire Posizione",
+                actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
+                emphasizedAction: MessageBox.Action.YES,
+                onClose: function (oAction) {
+                    if (oAction === sap.m.MessageBox.Action.YES) {
+                        oDataModel.create("/DeepPositionNISet", deepEntity, {
+                            success: function (result) {
+                                MessageBox.success("Nota di Imputazione " + header.ZchiaveNi + " rettificata correttamente", {
+                                    title: "Esito Operazione",
+                                    actions: [sap.m.MessageBox.Action.OK],
+                                    emphasizedAction: MessageBox.Action.OK,
+                                    onClose: function (oAction) {
+                                        if (oAction === sap.m.MessageBox.Action.OK) {
+                                            self.resetModelsForExitWizard();
+                                            self.getOwnerComponent().getRouter().navTo("View1");
+                                            location.reload();
                                         }
-                                    })
-                                },
-                                error: function (err) {
-                                    console.log(err);
-                                    MessageBox.error("Nota d'imputazione non rettificata correttamente", {
-                                        actions: [sap.m.MessageBox.Action.OK],
-                                        emphasizedAction: MessageBox.Action.OK,
-                                    })
-                                },
-                                async: true,  // execute async request to not stuck the main thread
-                                urlParameters: {}  // send URL parameters if required 
-                            });
-                        }
+                                    }
+                                })
+                            },
+                            error: function (err) {
+                                console.log(err);
+                                MessageBox.error("Nota d'imputazione non rettificata correttamente", {
+                                    actions: [sap.m.MessageBox.Action.OK],
+                                    emphasizedAction: MessageBox.Action.OK,
+                                })
+                            },
+                            async: true,  // execute async request to not stuck the main thread
+                            urlParameters: {}  // send URL parameters if required 
+                        });
                     }
-                })
+                }
+              });              
             },
 
-            onBackButton: function () {
-                this._oWizard = this.byId("CreateProductWizard");
-                this._oSelectedStep = this._oWizard.getSteps()[this._iSelectedStepIndex];
-                this._iSelectedStepIndex = this._oWizard.getSteps().indexOf(this._oSelectedStep);
-                //console.log(this._iSelectedStepIndex)
-                if (this._iSelectedStepIndex == 0) {
-                    //console.log(this.getOwnerComponent().getRouter().navTo("View1"))
-                    this._iSelectedStepIndex = 0
-                    window.history.go(-1);
-                    this.getView().byId("HeaderNIW").setVisible(false);
+            // onPreimpNI_old: function (oEvent) {
+            //     var that = this;
+            //     //var rows= this.getView().byId("HeaderNIW").getSelectedItem()
+
+            //     var N_es_gestione = this.getView().byId("es_gestione").mProperties.value; //header
+            //     var N_Tipologia = this.getView().byId("tipologia").getValue();  //position
+            //     var N_Sottotipologia = this.getView().byId("sottotipologia").getValue()  //position
+            //     var N_CR = this.getView().byId("competenza").mProperties.value  //position
+
+            //     var oDataModel = that.getOwnerComponent().getModel();
+
+            //     var oItems = that.getView().byId("HeaderNIWstep3").getBinding("items").oList;
+            //     //var selectedRows = that.getView().byId("HeaderNIW").getSelectedItems().length
+
+            //     var deepEntity = {
+            //         Funzionalita: 'RETTIFICANIPREIMPOSTATA',
+            //         PositionNISet: []
+            //     }
+
+
+            //     deepEntity.Bukrs = oItems[0].Bukrs,
+            //         deepEntity.Gjahr = oItems[0].Gjahr,
+            //         deepEntity.Zamministr = oItems[0].Zamministr,
+            //         deepEntity.ZchiaveNi = oItems[0].ZchiaveNi,      //dichiarati fuori dal ciclo e presi dal item 0 perchè sono tutte uguali
+            //         deepEntity.ZidNi = oItems[0].ZidNi,
+            //         deepEntity.ZRagioCompe = oItems[0].ZRagioCompe,
+            //         deepEntity.Operation = "I"
+
+            //     for (var i = 0; i < oItems.length; i++) {
+            //         var item = oItems[i];
+
+            //         deepEntity.PositionNISet.push({
+            //             Bukrs: oItems[0].Bukrs,                     //campi chiave Posizione
+            //             Gjahr: oItems[0].Gjahr,                     //campi chiave Posizione
+            //             Zamministr: oItems[0].Zamministr,           //campi chiave Posizione
+            //             ZchiaveNi: oItems[0].ZchiaveNi,             //campi chiave Posizione
+            //             ZidNi: oItems[0].ZidNi,                     //campi chiave Posizione
+            //             ZRagioCompe: oItems[0].ZRagioCompe,         //campi chiave Posizione
+            //             ZposNi: item.ZposNi,                        //campi chiave Posizione
+
+            //             ZgjahrEng: N_es_gestione,
+            //             Ztipo: N_Tipologia,
+            //             Zsottotipo: N_Sottotipologia,
+            //             ZcompRes: N_CR,
+            //             //ZimpoTitolo: ZimpoTitolo,                 //aggiornare mock
+            //             Zdescrizione: item.Zdescrizione,                //aggiornare mock 
+            //             ZcodIsin: item.ZcodIsin,                       //aggiornare mock
+            //             ZdataPag: new Date(item.ZdataPag),
+            //         });
+
+            //         // var numeroIntero = item.ZimpoTitolo
+            //         // var numIntTot = ""
+            //         // if (numeroIntero.split(".").length > 1) {
+            //         //     var numeri = numeroIntero.split(".")
+            //         //     for (var n = 0; n < numeri.length; n++) {
+            //         //         numIntTot = numIntTot + numeri[n]
+            //         //         //var numeroFloat = parseFloat(numeroIntero)
+            //         //         if (numIntTot.split(",").length > 1) {
+            //         //             var virgole = numIntTot.split(",")
+            //         //             var numeroInteroSM = virgole[0] + "." + virgole[1]
+            //         //         }
+            //         //     }
+            //         //     var importoPrimaVirgola = numeroIntero.split(".")
+            //         //     var numPunti = ""
+            //         //     var migliaia = importoPrimaVirgola[0].split('').reverse().join('').match(/.{1,3}/g).map(function (x) {
+            //         //         return x.split('').reverse().join('')
+            //         //     }).reverse()
+
+            //         //     for (var migl = 0; migl < migliaia.length; migl++) {
+            //         //         numPunti = (numPunti + migliaia[migl] + ".")
+            //         //     }
+            //         //     var indice = numPunti.split("").length
+            //         //     var numeroIntero = numPunti.substring(0, indice - 1) + "," + importoPrimaVirgola[1]
+            //         //     deepEntity.PositionNISet[i].ZimpoTitolo = numeroInteroSM
+            //         // }
+
+            //         // else {
+            //         //     var importoPrimaVirgola = numeroIntero.split(",")
+            //         //     var numeroInteroSM = importoPrimaVirgola[0] + "." + importoPrimaVirgola[1]
+            //         //     deepEntity.PositionNISet[i].ZimpoTitolo = numeroInteroSM
+            //         // }
+
+
+            //     }
+
+            //     MessageBox.warning("Sei sicuro di voler rettificare la nota d'imputazione?", {
+            //         title: "Inserire Posizione",
+            //         actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
+            //         emphasizedAction: MessageBox.Action.YES,
+            //         onClose: function (oAction) {
+            //             if (oAction === sap.m.MessageBox.Action.YES) {
+
+            //                 oDataModel.create("/DeepPositionNISet", deepEntity, {
+            //                     success: function (result) {
+            //                         MessageBox.success("Nota di Imputazione "+oItems[0].ZchiaveNi+" rettificata correttamente", {
+            //                             title: "Esito Operazione",
+            //                             actions: [sap.m.MessageBox.Action.OK],
+            //                             emphasizedAction: MessageBox.Action.OK,
+            //                             onClose: function (oAction) {
+            //                                 if (oAction === sap.m.MessageBox.Action.OK) {
+            //                                     that.getOwnerComponent().getRouter().navTo("View1");
+            //                                     location.reload();
+            //                                 }
+            //                             }
+            //                         })
+            //                     },
+            //                     error: function (err) {
+            //                         console.log(err);
+            //                         MessageBox.error("Nota d'imputazione non rettificata correttamente", {
+            //                             actions: [sap.m.MessageBox.Action.OK],
+            //                             emphasizedAction: MessageBox.Action.OK,
+            //                         })
+            //                     },
+            //                     async: true,  // execute async request to not stuck the main thread
+            //                     urlParameters: {}  // send URL parameters if required 
+            //                 });
+            //             }
+            //         }
+            //     })
+            // },
+
+            onBackButton:function(oEvent){
+              var self =this,
+                  wizard = self.getView().byId("InserisciRigaWizard"),
+                  currentStep = self.getView().byId(wizard.getCurrentStep()).data("stepId");
+
+              switch(currentStep){
+                  case "1":      
+                      self.resetModelsForExitWizard(); 
+                      window.history.go(-1);   
+                      return;               
+                      break;
+                  case "2":
+                      self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep2Visible",false);  
+                      self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep3Visible",false);  
+                      break;
+                  case "3":
+                      self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep2Visible",true);
+                      self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep3Visible",false);
+                      self.getView().getModel(COMPONENT_MODEL).setProperty("/btnNextVisible",true);
+                      self.getView().getModel(COMPONENT_MODEL).setProperty("/btnPreimpostaNiVisible",false);
+                      break;
+                  default:
+                      console.log("default");
+              }              
+              wizard.previousStep();
+            },
+
+            resetModelsForExitWizard:function(){
+              var self= this,
+                oTable = self.getView().byId("HeaderNIW");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/ZgjahrEng","");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/meseValore","");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/meseDescrizione","");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/tipologia","");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/tipologiaDescrizione","");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/sottotipologia","");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/sottotipologiaDescrizione","");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/competenza","c");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/competenzaDescrizione","Competenza");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/rendicontazioneSumRowSelected",0);
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/rendicontazioneSumRowSelectedString","0,00");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/rendicontazioneRowNum","0");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/fistl","");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/fipex","");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizioneCapitolo","");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizionePG","");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/oggettoSpesa","");
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/titoliSelezionati",[]);
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/titoliSelezionatiStep3",[]);
+
+              self.getView().getModel(MODEL_ENTITY).setProperty("/Header",[]);
+              self.getView().getModel(MODEL_ENTITY).setProperty("/RendicontazioneSet",[]);
+              self.getView().getModel(MODEL_ENTITY).setProperty("/ZhfTipo",[]);
+              self.getView().getModel(MODEL_ENTITY).setProperty("/ZhfSottotipo",[]);
+              oTable.setSelectedContextPaths([]);
+            },
+
+            // onBackButton: function () {
+            //     this._oWizard = this.byId("CreateProductWizard");
+            //     this._oSelectedStep = this._oWizard.getSteps()[this._iSelectedStepIndex];
+            //     this._iSelectedStepIndex = this._oWizard.getSteps().indexOf(this._oSelectedStep);
+            //     //console.log(this._iSelectedStepIndex)
+            //     if (this._iSelectedStepIndex == 0) {
+            //         //console.log(this.getOwnerComponent().getRouter().navTo("View1"))
+            //         this._iSelectedStepIndex = 0
+            //         window.history.go(-1);
+            //         this.getView().byId("HeaderNIW").setVisible(false);
+            //         return;
+            //     }
+            //     var oNextStep = this._oWizard.getSteps()[this._iSelectedStepIndex - 1];
+            //     if (this._oSelectedStep && !this._oSelectedStep.bLast) {
+            //         this._oWizard.goToStep(oNextStep, true);
+            //     } else {
+            //         this._oWizard.previousStep();
+            //     }
+            //     this._iSelectedStepIndex--
+            //     this._oSelectedStep = oNextStep;
+            //     this.controlPreNI();
+            //     this.controlHeader()
+            //     //cancella item tabella
+            // },
+
+            onNextButton:function(oEvent){
+              var self =this,                    
+                  wizard = self.getView().byId("InserisciRigaWizard"),
+                  oTable = self.getView().byId("HeaderNIW"),
+                  currentStep = self.getView().byId(wizard.getCurrentStep()).data("stepId"),
+                  visibilita=null;
+              if(!self.getView().getModel(MODEL_ENTITY).getProperty("/Visibilita") || 
+                  self.getView().getModel(MODEL_ENTITY).getProperty("/Visibilita")===null ||
+                  self.getView().getModel(MODEL_ENTITY).getProperty("/Visibilita").length === 0){
+
+                  self.callVisibilitaWithCallbackLocal(function(callback){
+                      if(callback){
+                          visibilita = self.getView().getModel(MODEL_ENTITY).getProperty("/Visibilita")[0];
+                      }
+                  });   
+              }
+              else
+                  visibilita = self.getView().getModel(MODEL_ENTITY).getProperty("/Visibilita")[0];    
+
+              switch(currentStep){
+                case "1":
+                  if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng") === "" || 
+                    self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/meseValore") === ""){
+                      MessageBox.error("Alimentare tutti i campi obbligatori", {
+                            actions: [sap.m.MessageBox.Action.OK],
+                            emphasizedAction: MessageBox.Action.OK,
+                      });
                     return;
-                }
-                var oNextStep = this._oWizard.getSteps()[this._iSelectedStepIndex - 1];
-                if (this._oSelectedStep && !this._oSelectedStep.bLast) {
-                    this._oWizard.goToStep(oNextStep, true);
-                } else {
-                    this._oWizard.previousStep();
-                }
-                this._iSelectedStepIndex--
-                this._oSelectedStep = oNextStep;
-                this.controlPreNI();
-                this.controlHeader()
-                //cancella item tabella
+                  }
+                  if(oTable.getSelectedContextPaths().length == 0){
+                      MessageBox.error("Selezionare almeno un pagamento", {
+                          actions: [sap.m.MessageBox.Action.OK],
+                          emphasizedAction: MessageBox.Action.OK,
+                      });
+                      return;
+                  }
+                  self._getSelectedStep1();
+                  self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep2Visible",true);  
+                  self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep3Visible",false);  
+                  self.getView().getModel(COMPONENT_MODEL).setProperty("/btnNextVisible",true);
+                  self.getView().getModel(COMPONENT_MODEL).setProperty("/btnPreimpostaNiVisible",false);
+                  wizard.nextStep(); 
+                  break;
+                case "2":
+                  if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/fistl") === "" || 
+                      self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/fipex") === ""){
+                      MessageBox.error("Alimentare tutti i campi obbligatori", {
+                          actions: [sap.m.MessageBox.Action.OK],
+                          emphasizedAction: MessageBox.Action.OK,
+                      });
+                      return;
+                  }    
+
+                  self.getView().setBusy(true);
+                  self.getOwnerComponent().getModel().callFunction("/AutImputazioneContabile", {
+                    method: "GET",
+                    urlParameters: { "AutorityRole": visibilita.AGR_NAME, 
+                                     "AutorityFikrs": visibilita.FIKRS, 
+                                     "AutorityPrctr": visibilita.PRCTR, 
+                                     "Fipex": self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/fipex"), 
+                                     "Fistl": self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/fistl"), 
+                                     "Gjahr": self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng") 
+                                    },
+                    success: function (data, response) {
+                        self.getView().setBusy(false);
+                        if(data.Value === 'E'){
+                            MessageBox.error(data.Message, {
+                                title: "Esito Operazione",
+                                actions: [sap.m.MessageBox.Action.OK],
+                                emphasizedAction: MessageBox.Action.OK,
+                            })
+                            return;
+                        }
+                        else{
+                            self._setDataStep3();
+                            self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep2Visible",false);
+                            self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep3Visible",true);
+                            self.getView().getModel(COMPONENT_MODEL).setProperty("/btnNextVisible",false);
+                            self.getView().getModel(COMPONENT_MODEL).setProperty("/btnPreimpostaNiVisible",true);
+                            wizard.nextStep();
+                            return;
+                        }        
+                    },
+                    error: function (oError) {
+                        self.getView().setBusy(false);
+                        MessageBox.error(oError.Message, {
+                            title: "Esito Operazione",
+                            actions: [sap.m.MessageBox.Action.OK],
+                            emphasizedAction: MessageBox.Action.OK,
+                        })
+                        return;
+                    }
+                  });
+                  break;
+                case "3":
+                  wizard.nextStep();
+                  break;
+                default:
+                  console.log("default");
+              }
             },
 
-            onNextButton: function () {
-                // this.onSearch()
-                // this.onCommunicationPress()
-                // var oModelP = new sap.ui.model.json.JSONModel("../mockdata/tabGestNI.json");
-                // this.getView().setModel(oModelP, "HeaderNIW");
-                this._oWizard = this.byId("CreateProductWizard");
-                this._oSelectedStep = this._oWizard.getSteps()[this._iSelectedStepIndex];
-                this._iSelectedStepIndex = this._oWizard.getSteps().indexOf(this._oSelectedStep);
-                var oNextStep = this._oWizard.getSteps()[this._iSelectedStepIndex + 1];
+            _getSelectedStep1:function(){
+              var self = this,
+                  array=[],
+                  rendicontazioneTotale=0,
+                  oTable = self.getView().byId("HeaderNIW"),
+                  oTableModel = self.getView().getModel(MODEL_ENTITY).getProperty("/RendicontazioneSet");
+              
+              console.log(oTableModel);
+              for(var i=0; i<oTable.getSelectedContextPaths().length;i++){
+                  var item = oTable.getModel(MODEL_ENTITY).getObject(oTable.getSelectedContextPaths()[i]);
+                  rendicontazioneTotale = rendicontazioneTotale + parseFloat(item.ZimpoRes);
+                  array.push(item);                    
+              }
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/titoliSelezionati",array);
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/rendicontazioneSumRowSelected",rendicontazioneTotale);   
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/rendicontazioneSumRowSelectedString",
+                  self.formatter.convertFormattedNumber(rendicontazioneTotale.toFixed(2))); 
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/rendicontazioneRowNum",oTable.getSelectedContextPaths().length > 0 ? 
+                  oTable.getSelectedContextPaths().length.toString() : "0");
+            },
 
-                if (this._oSelectedStep && !this._oSelectedStep.bLast) {
-                    this._oWizard.goToStep(oNextStep, true);
-                } else {
-                    this._oWizard.nextStep();
+            _setDataStep3:function(){
+              var self = this,
+                  arrayStep3 = [];    
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/titoliSelezionatiStep3",[]);
+              var array = self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/titoliSelezionati");
+              for(var i=0; i<array.length; i++){
+                  var item = array[i];
+                  var clone = _.clone(item);
+                  clone.ZimpoTitolo = item.ZimpoRes;
+                  clone.ZimpoRes = "0,00";
+                  arrayStep3.push(clone);
+              } 
+              
+              self.callPositionNiSet(self.getView().getModel(MODEL_ENTITY).getProperty("/Header"),function(callback){
+                if(callback.success){
+                  for(var i=0; i<callback.data.length;i++){
+                    var item = {
+                      Bukrs: callback.data[i].Bukrs,
+                      Gjahr: callback.data[i].Gjahr,
+                      ZchiaveNi: callback.data[i].ZchiaveNi,
+                      ZcodIsin: callback.data[i].ZcodIsin,
+                      ZcompRes:callback.data[i].ZcompRes,
+                      ZdataInizio:callback.data[i].ZdataInizio,
+                      ZdataPag:callback.data[i].ZdataPag,
+                      ZdataScad:null,
+                      Zdescrizione:callback.data[i].Zdescrizione,
+                      ZibanAdd:callback.data[i].Iban,
+                      ZimpoRes:callback.data[i].ZimpoRes,
+                      ZimpoTitolo:callback.data[i].ZimpoTitolo,
+                      Zmese: self.getView().getModel(MODEL_ENTITY).getProperty("/Header").Zmese,
+                      Zsottotipo:callback.data[i].Zsottotipo,
+                      Ztipo: callback.data[i].Ztipo,
+                      Ztipologia: callback.data[i].Ztipologia
+                    };
+                    arrayStep3.push(item);
+                  }
                 }
+                self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/titoliSelezionatiStep3",arrayStep3);
+              });
+            },
 
-                this._iSelectedStepIndex++;
-                this._oSelectedStep = oNextStep;
+            callPositionNiSet:function(headerEntity, callback){
+              var self =this,
+                  filters = [],
+                  oDataModel = self.getOwnerComponent().getModel();
+              filters.push(new Filter({path: "Bukrs",operator: FilterOperator.EQ,value1: headerEntity.Bukrs}));
+              filters.push(new Filter({path: "Gjahr",operator: FilterOperator.EQ,value1: headerEntity.Gjahr}));
+              filters.push(new Filter({path: "Zamministr",operator: FilterOperator.EQ,value1: headerEntity.Zamministr}));
+              filters.push(new Filter({path: "ZchiaveNi",operator: FilterOperator.EQ,value1: headerEntity.ZchiaveNi}));
+              filters.push(new Filter({path: "ZidNi",operator: FilterOperator.EQ,value1: headerEntity.ZidNi}));
+              filters.push(new Filter({path: "ZRagioCompe",operator: FilterOperator.EQ,value1: headerEntity.ZRagioCompe}));
 
-                this.controlPreNI()
-                this.controlHeader()
+              self.getOwnerComponent().getModel().metadataLoaded().then(function() {
+                      oDataModel.read("/PositionNISet" , {
+                          filters: filters,
+                          success: function (data) {
+                              console.log(data.results);//TODO:da canc
+                              callback({success:true, data:data.results});
+                          },
+                          error:function (error) {
+                              console.log(error);
+                              callback({success:false, data:[]});
+                          }
+                  })
+              });    
+            },
 
+            callVisibilitaWithCallbackLocal:function(callback){
+              var self =this,
+                filters = [];
+          
+              filters.push(
+                new Filter({ path: "SEM_OBJ", operator: FilterOperator.EQ, value1: "ZS4_NOTEIMPUTAZIONI_SRV" }),
+                new Filter({ path: "AUTH_OBJ", operator: FilterOperator.EQ, value1: "Z_GEST_NI" })
+              )
+              self.getOwnerComponent().getModel("ZSS4_CA_CONI_VISIBILITA_SRV").read("/ZES_CONIAUTH_SET", {
+                filters: filters,        
+                success: function (data) {
+                    console.log("success");
+                    self.getView().getModel(MODEL_ENTITY).setProperty("/Visibilita", data.results);
+                    callback(true);
+                  },
+                error: function (error) {
+                  console.log(error)
+                  var e = error;
+                  callback(false);
+                }   
+              });
             },
 
 
-            controlPreNI: function () {
-                var oProprietà = this.getView().getModel();
-                switch (this._iSelectedStepIndex) {
-                    case 0:
-                        oProprietà.setProperty("/BackButtonVisible", true);
-                        oProprietà.setProperty("/NextButtonVisible", true);
-                        oProprietà.setProperty("/PNIButtonVisible", false);
-                        break;
-                    case 1:
-                        oProprietà.setProperty("/BackButtonVisible", true);
-                        oProprietà.setProperty("/NextButtonVisible", true);
-                        oProprietà.setProperty("/PNIButtonVisible", false);
-                        break;
-                    case 2:
-                        oProprietà.setProperty("/BackButtonVisible", true);
-                        oProprietà.setProperty("/NextButtonVisible", false);
-                        oProprietà.setProperty("/PNIButtonVisible", true);
-                        break;
-                    default: break;
-                }
-            },
+            // onNextButton_old: function () {
+            //     // this.onSearch()
+            //     // this.onCommunicationPress()
+            //     // var oModelP = new sap.ui.model.json.JSONModel("../mockdata/tabGestNI.json");
+            //     // this.getView().setModel(oModelP, "HeaderNIW");
+            //     this._oWizard = this.byId("CreateProductWizard");
+            //     this._oSelectedStep = this._oWizard.getSteps()[this._iSelectedStepIndex];
+            //     this._iSelectedStepIndex = this._oWizard.getSteps().indexOf(this._oSelectedStep);
+            //     var oNextStep = this._oWizard.getSteps()[this._iSelectedStepIndex + 1];
 
-            controlHeader: function () {
-                var oProprietà = this.getView().getModel();
-                switch (this._iSelectedStepIndex) {
-                    case 0:
-                        oProprietà.setProperty("/headerVisible", false);
-                        break;
-                    case 1:
-                        oProprietà.setProperty("/headerVisible", true);
-                        this.viewHeader1()
-                        this.filtriStep1()
-                        break;
-                    case 2:
-                        oProprietà.setProperty("/headerVisible", true);
-                        this.selectedRow()
-                        break;
-                    default: break;
-                }
-            },
+            //     if (this._oSelectedStep && !this._oSelectedStep.bLast) {
+            //         this._oWizard.goToStep(oNextStep, true);
+            //     } else {
+            //         this._oWizard.nextStep();
+            //     }
+
+            //     this._iSelectedStepIndex++;
+            //     this._oSelectedStep = oNextStep;
+
+            //     this.controlPreNI()
+            //     this.controlHeader()
+
+            // },
+
+
+            // controlPreNI: function () {
+            //     var oProprietà = this.getView().getModel();
+            //     switch (this._iSelectedStepIndex) {
+            //         case 0:
+            //             oProprietà.setProperty("/BackButtonVisible", true);
+            //             oProprietà.setProperty("/NextButtonVisible", true);
+            //             oProprietà.setProperty("/PNIButtonVisible", false);
+            //             break;
+            //         case 1:
+            //             oProprietà.setProperty("/BackButtonVisible", true);
+            //             oProprietà.setProperty("/NextButtonVisible", true);
+            //             oProprietà.setProperty("/PNIButtonVisible", false);
+            //             break;
+            //         case 2:
+            //             oProprietà.setProperty("/BackButtonVisible", true);
+            //             oProprietà.setProperty("/NextButtonVisible", false);
+            //             oProprietà.setProperty("/PNIButtonVisible", true);
+            //             break;
+            //         default: break;
+            //     }
+            // },
+
+            // controlHeader: function () {
+            //     var oProprietà = this.getView().getModel();
+            //     switch (this._iSelectedStepIndex) {
+            //         case 0:
+            //             oProprietà.setProperty("/headerVisible", false);
+            //             break;
+            //         case 1:
+            //             oProprietà.setProperty("/headerVisible", true);
+            //             this.viewHeader1()
+            //             this.filtriStep1()
+            //             break;
+            //         case 2:
+            //             oProprietà.setProperty("/headerVisible", true);
+            //             this.selectedRow()
+            //             break;
+            //         default: break;
+            //     }
+            // },
         });
     });

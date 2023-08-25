@@ -425,7 +425,13 @@ sap.ui.define([
                     ImpegnoValues_ZwelsDesc: impegnoValues.ZwelsDesc,
                     ImpegnoValues_CodiceGestionale: impegnoValues.CodiceGestionale,
                     ImpegnoValues_DataProtocollo: impegnoValues.DataProtocollo, 
-                    ImpegnoValues_NProtocollo: impegnoValues.NProtocollo
+                    ImpegnoValues_NProtocollo: impegnoValues.NProtocollo,
+                    ImpegnoValues_Descrizione: impegnoValues.Descrizione,
+                    ImpegnoValues_ZonaIntervento: impegnoValues.ZonaIntervento,
+                    ImpegnoValues_LocalitaPagamento: impegnoValues.LocalitaPagamento,
+                    ImpegnoValues_CogeDesc: impegnoValues.CogeDesc,
+                    ImpegnoValues_CdcDesc: impegnoValues.CdcDesc,
+                    ImpegnoValues_DataEsigibilita: impegnoValues.DataEsigibilita
                 }
                 self.getView().getModel(MODEL_ENTITY).setProperty("/ImpegnoValues", header2);
             },
@@ -458,7 +464,7 @@ sap.ui.define([
                 }
 
                 for (var i=0; i<impegniSelezionati.length; i++) {
-                    impegniSelezionati[i].Attribuito = impegniSelezionati[i].Attribuito.toFixed(2);
+                    impegniSelezionati[i].Attribuito = parseFloat(impegniSelezionati[i].Attribuito).toFixed(2);
                     deepEntity.ZfmimpegniIpeSet.push(impegniSelezionati[i]);
                 }
 

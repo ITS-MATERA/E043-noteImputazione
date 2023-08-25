@@ -1,0 +1,84 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"  
+    xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"  
+    xmlns:zcontrollinkSar="custlinksar.custlinksar.controls" 
+    height="100%">
+    
+    <VBox visible="{componentModel>/headerStep3Visible}">
+        <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
+            <Text text="Dati NI" />
+            <!-- 1 riga -->
+            <HBox> 
+                <Label id="numNI" text="{i18n>ProgressivoNI}:" design="Bold" class="lbl-header-margin-right"/>
+                <Label id="numNI1" text="{EntityModel>/Header/ZchiaveNi}" wrapping="true"/>
+                <layoutData>
+                    <l:GridData span="XL3 L3 M12 S12" />
+                </layoutData>
+           </HBox> 
+           <HBox> 
+                <Label id="dataReg" text="{i18n>DataRegistrazioneNI}:" design="Bold" class="lbl-header-margin-right"/>
+                <Label id="dataReg1" text="{path:'EntityModel>/Header/ZdataCreaz', formatter:'.formatter.convert'}"  wrapping="true"/>
+                <layoutData>
+                    <l:GridData span="XL3 L3 M12 S12" />
+                </layoutData>
+           </HBox> 
+           <!-- 2 riga -->
+           <HBox> 
+                <Label id="SARW2" text="{i18n>SAR}:" design="Bold" class="lbl-header-margin-right"/>
+                <zcontrollinkSar:LinkSar id="linkSarBilancio" anno="{EntityModel>/Header/Esercizio}" eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" 
+                    versione="D" bilancio="" fictr="{EntityModel>/Header/Fistl}" datbis="99991231" text="{EntityModel>/Header/Fistl}"/>                        
+                <layoutData>
+                    <l:GridData span="XL3 L3 M12 S12" linebreak="true"/>
+                </layoutData>
+           </HBox> 
+           <HBox> 
+                <Label id="pos_FinW2" text="{i18n>PF}:" design="Bold" class="lbl-header-margin-right"/>
+                <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesa" anno="{EntityModel>/Header/Esercizio}" eos="S" fikrs="S001" fase="GEST" reale="R" 
+                    versione="D" fipex="{EntityModel>/Header/Fipex}" datbis="99991231" text="{EntityModel>/Header/Fipex}" semanticObject="ESAMINAMODIFICA"/>
+                <layoutData>
+                    <l:GridData span="XL3 L3 M12 S12" />
+                </layoutData>
+           </HBox> 
+           <HBox> 
+                <Label text="Oggetto della spesa: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                <Label text="{preimpostazioneModel>/oggettoSpesa}" wrapping="true"/> 
+                <layoutData>
+                    <l:GridData span="XL3 L3 M12 S12" />
+                </layoutData>
+           </HBox> 
+           <!-- 3 riga -->
+           <HBox>
+                <Label  text="{i18n>Mese}:" design="Bold" class="lbl-header-margin-right"/>
+                <Label  text="{path: 'EntityModel>/Header/Zmese', formatter:'.formatter.getMonthName'}"/>
+                <layoutData>
+                    <l:GridData span="XL3 L3 M6 S12" linebreak="true" />
+                </layoutData>
+            </HBox>
+            <HBox>
+                <Label id="comp" text="{i18n>comp}:" design="Bold" class="lbl-header-margin-right"/> 
+                <Label id="comp1" text="{preimpostazioneModel>/competenzaDescrizione}"/>
+                <layoutData>
+                    <l:GridData span="XL3 L3 M6 S12" />
+                </layoutData>
+            </HBox>
+            <HBox>
+                <Label id="statoNI" text="{i18n>statoNI}:" design="Bold" class="lbl-header-margin-right"/>
+                <Label id="statoNI1" text="{EntityModel>/Header/ZcodiStatoniDesc}"/>
+                <layoutData>
+                    <l:GridData span="XL3 L3 M6 S12" />
+                </layoutData>
+            </HBox>
+           
+           <!-- 4 riga -->
+           <HBox>
+                <Label id="importoTot" text="{i18n>importoTot}:" design="Bold" class="lbl-header-margin-right"/>
+                <Label id="importoTot1" text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}"/>
+                <layoutData>
+                    <l:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                </layoutData>
+            </HBox>           
+        </l:Grid>
+    </VBox>
+</core:FragmentDefinition>

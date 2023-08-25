@@ -758,7 +758,7 @@ sap.ui.define(
                 Funzionalita: 'FIRMA',
               }  
 
-              MessageBox.warning("Sei sicuro di voler inviare la firma della Nota d'Imputazione n° " + header.ZchiaveNi + "?", {
+              MessageBox.warning("Sei sicuro di voler firmare la Nota di Imputazione n° " + header.ZchiaveNi + "?", {
                 actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
                 emphasizedAction: MessageBox.Action.YES,
                 onClose: function (oAction) {

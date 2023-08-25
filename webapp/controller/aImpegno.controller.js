@@ -231,12 +231,14 @@ sap.ui.define([
             // },
 
             onBackButton: function () {
-                var self =this;
+                var self =this,
+                    table = self.getView().byId("HeaderNIAssImp");
                 self.getView().getModel(MODEL_ENTITY).setProperty("/Header",null);
                 self.getView().getModel(MODEL_ENTITY).setProperty("/HeaderNIAssImp",[]);
                 self.getView().getModel(MODEL_ENTITY).setProperty("/PositionNI",[]);
                 self.getView().getModel(MODEL_ENTITY).setProperty("/TotAttribuito",(0).toFixed(2));
                 self.getView().getModel("temp").setProperty("/ImpegniSelezionati", []);
+                table.setSelectedContextPaths([]);
                 window.history.go(-1);
             },
 
@@ -745,20 +747,28 @@ sap.ui.define([
                 for(var i=0; i<selectedArray.length;i++){
                     var item = self.getView().getModel(MODEL_ENTITY).getProperty(selectedArray[i]);
                     if(parseFloat(importoTotaleNI) <= parseFloat(item.Wtfree)){
-                        self.getView().getModel(MODEL_ENTITY).setProperty(selectedArray[i]+"/Attribuito",parseFloat(importoTotaleNI));
+                        self.getView().getModel(MODEL_ENTITY).setProperty(selectedArray[i]+"/Attribuito",parseFloat(importoTotaleNI).toFixed(2));
                         i=selectedArray.length;
                     }else{
-                        self.getView().getModel(MODEL_ENTITY).setProperty(selectedArray[i]+"/Attribuito",parseFloat(item.Wtfree));
+                        self.getView().getModel(MODEL_ENTITY).setProperty(selectedArray[i]+"/Attribuito",parseFloat(item.Wtfree).toFixed(2));
                         importoTotaleNI = parseFloat(importoTotaleNI) - parseFloat(item.Wtfree);
                     }
                 }
-                tableAss = self.getView().getModel(MODEL_ENTITY).getProperty("/HeaderNIAssImp");
+
                 var tot = 0;
-                for(var i=0;i<tableAss.length;i++){
-                    var item = tableAss[i];
+                for(var i=0; i< selectedArray.length;i++){
+                    var item = self.getView().getModel(MODEL_ENTITY).getProperty(selectedArray[i]);
                     tot = tot + parseFloat(item.Attribuito);
                 }
-                self.getView().getModel(MODEL_ENTITY).setProperty("/TotAttribuito", tot.toFixed(2));
+                self.getView().getModel(MODEL_ENTITY).setProperty("/TotAttribuito", self.formatter.convertFormattedNumber(tot.toFixed(2))); 
+                /*
+                tableAss = self.getView().getModel(MODEL_ENTITY).getProperty("/HeaderNIAssImp");
+                var tot = 0;
+                for(var i=0;i<tableAss.length;i++){                    
+                    var item = tableAss[i];
+                    tot = tot + parseFloat(item.Attribuito);
+                }*/
+                // self.getView().getModel(MODEL_ENTITY).setProperty("/TotAttribuito", tot.toFixed(2));
             },
 
 
@@ -868,6 +878,24 @@ sap.ui.define([
             // },
 
             zAttribuitoLiveChange:function(oEvent){
+                var self =this,
+                    table = self.getView().byId("HeaderNIAssImp"),
+                    path  =oEvent.getSource().getParent().getBindingContextPath(),
+                    value = oEvent.getParameters().value,
+                    tot = 0;
+
+                self.getView().getModel(MODEL_ENTITY).setProperty(path+"/Attribuito",value === "" ? 0 : value);
+                var selectedArray = table.getSelectedContextPaths();
+                //var table = self.getView().getModel(MODEL_ENTITY).getProperty("/HeaderNIAssImp");
+                for(var i=0;i<selectedArray.length;i++){
+                    var item = self.getView().getModel(MODEL_ENTITY).getProperty(selectedArray[i]);
+                    tot = tot + parseFloat(item.Attribuito);
+                }
+                // self.getView().getModel(MODEL_ENTITY).setProperty("/TotAttribuito", tot.toFixed(2));
+                self.getView().getModel(MODEL_ENTITY).setProperty("/TotAttribuito", self.formatter.convertFormattedNumber(tot.toFixed(2))); 
+            },
+
+            zAttribuitoLiveChange_old:function(oEvent){
                 var self =this,
                     path  =oEvent.getSource().getParent().getBindingContextPath(),
                     value = oEvent.getParameters().value,

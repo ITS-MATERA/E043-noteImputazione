@@ -41,9 +41,7 @@
             <Text text="{EntityModel>Ztipo}"/>
             <Text text="{EntityModel>Zdescrizione}" />
             <Text text="{path: 'EntityModel>ZdataPag', formatter:'.formatter.convert'}" />
-            <!-- <Input value="{EntityModel>ZimpoTitolo}" textAlign="Right"/>
-            <Text text ="{EntityModel>ZimpoRes}" textAlign="Right"/> -->
-            <Input value="{EntityModel>ZimpoTitolo}" />
+            <Input id="modificaImportoInput" type="Number" value="{EntityModel>ZimpoTitolo}" />
             <Text text="{path:'EntityModel>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
         </ColumnListItem>
     </Table>

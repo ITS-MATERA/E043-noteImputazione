@@ -1,14 +1,11 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:fb="sap.ui.comp.filterbar"
-    xmlns:u="sap.ui.unified"
-    xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:layout="sap.ui.layout"
-    xmlns:form="sap.ui.layout.form"
     xmlns:f="sap.f"
     xmlns:core="sap.ui.core"
-    xmlns:menu="sap.m.MenuItem"
-    xmlns:menBtn="sap.m.Menu" height="100%" controllerName="project1.controller.annullataNI">
+    xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"  
+    xmlns:zcontrollinkSar="custlinksar.custlinksar.controls"     
+    controllerName="project1.controller.annullataNI">
     <f:DynamicPage id="dynamicPageId" showFooter="true">
         <f:header>
             <f:DynamicPageHeader pinnable="false">
@@ -16,14 +13,14 @@
                     <!-- 1 riga -->
                     <HBox>   
                         <Label id="numNI" text="{i18n>ProgressivoNI}:" design="Bold"/>
-                        <Text id="numNI1"/>   
+                        <Label id="numNI1" text="{EntityModel>/Header/ZidNi}"/>   
                         <layoutData>
                             <layout:GridData span="XL3 L3 M6 S12" />
                         </layoutData>              
                     </HBox>
                     <HBox>    
                         <Label id="dataReg" text="{i18n>Data}:" design="Bold"/>
-                        <Text id="dataReg1" wrapping="true"/>   
+                        <Label id="dataReg1" text="{path:'EntityModel>/Header/ZdataCreaz', formatter:'.formatter.convert'}"  wrapping="true"/>   
                         <layoutData>
                             <layout:GridData span="XL3 L3 M6 S12" />
                         </layoutData>             
@@ -31,21 +28,29 @@
                     <!-- 2 riga --> 
                     <HBox>
                         <Label id="SARW2" text="{i18n>SAR}:" design="Bold"/>
-                        <Text id="SARWH2"/>
+                        <Label id="SARWH2"/>
+                        <zcontrollinkSar:LinkSar id="linkSarBilancio" anno="{EntityModel>/Header/Esercizio}" eos="E" fikrs="S001" 
+                            fase="GEST" SEM_OBJ="" reale="R" 
+                            versione="D" bilancio="" fictr="{EntityModel>/Header/Fistl}" 
+                            datbis="99991231" 
+                            text="{EntityModel>/Header/Fistl}"/>
                         <layoutData>
                             <layout:GridData span="XL3 L3 M6 S12" linebreak="true" />
                         </layoutData> 
                     </HBox>
                     <HBox>
                         <Label id="pos_FinW2" text="{i18n>PF}:" design="Bold"/>
-                        <Text id="pos_FinWH2"/>
+                        <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesa" anno="{EntityModel>/Header/Esercizio}" 
+                            eos="S" fikrs="S001" fase="GEST" reale="R" 
+                            versione="D" fipex="{EntityModel>/Header/Fipex}" 
+                            datbis="99991231" text="{EntityModel>/Header/Fipex}" semanticObject="ESAMINAMODIFICA"/>
                         <layoutData>
                             <layout:GridData span="XL3 L3 M6 S12" />
                         </layoutData> 
                     </HBox>
                     <HBox>
                         <Label id="oggSpesa" text="{i18n>oggSpesa}:" design="Bold"/>
-                        <Text id="oggSpesa1"/>
+                        <Label id="oggSpesa1" text="{EntityModel>/Header/ZoggSpesa}" wrapping="true"/>
                         <layoutData>
                             <layout:GridData span="XL3 L3 M6 S12" />
                         </layoutData> 
@@ -53,21 +58,21 @@
                     <!-- 3 riga -->
                     <HBox>
                         <Label id="mese" text="{i18n>Mese}:" design="Bold"/>
-                        <Text id="mese1"/>
+                        <Label id="mese1" text="{path: 'EntityModel>/Header/Zmese', formatter:'.formatter.getMonthName'}"/>
                         <layoutData>
                             <layout:GridData span="XL3 L3 M6 S12" linebreak="true" />
                         </layoutData>
                     </HBox>
                     <HBox>
                         <Label id="comp" text="{i18n>comp}:" design="Bold"/>
-                        <Text id="comp1"/>
+                        <Label id="comp1" text="{= ${EntityModel>/Header/ZcompRes} === 'C' ? 'Competenza' : ${EntityModel>/Header/ZcompRes} === 'R' ? 'Residui' : ''}"/>
                         <layoutData>
                             <layout:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
                     </HBox>
                     <HBox>
                         <Label id="statoNI" text="{i18n>statoNI}:" design="Bold"/>
-                        <Text id="statoNI1"/>
+                        <Label id="statoNI1"  text="{EntityModel>/Header/ZcodiStatoniDesc}"/>
                         <layoutData>
                             <layout:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
@@ -75,7 +80,7 @@
                     <!-- 4 riga -->
                     <HBox>
                         <Label id="importoTot" text="{i18n>importoTot}:" design="Bold"/>
-                        <Text id="importoTot1"/>
+                        <Label id="importoTot1" text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}"/>
                         <layoutData>
                             <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
                         </layoutData>

@@ -21,7 +21,7 @@
                 <Label text="Nome" />
                 <Input id="inputNome" value="{EntityModel>/Detail/Nome}" type="Text" enabled="true" editable="false" />
                 <Label text="IBAN" required="true" />
-                <Input id="inputIBAN" value="{EntityModel>/Detail/Iban}"/>
+                <Input id="inputIBAN" value="{EntityModel>/Detail/Iban}" maxLength="34"/>
                 <!-- <Input id="inputIBAN" type="Text" showValueHelp="true" enabled="true" showSuggestion="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Iban' }}"  value="{EntityModel>/Detail/Iban}">
                     <core:Item key="{Iban}" text="{Iban}" />
                 </Input> -->
@@ -35,13 +35,13 @@
                 <!-- <Input id="inputCentroCosto" type="Text" showValueHelp="false" suggestionItems="{path: '/LtextIcSet', sorter: { path: 'Kostl' }}" enabled="true" editable="true" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCentroCosto" app:filterTableField="inputCentroCosto">
                     <core:Item key="{Kostl}" text="{Kostl}" />
                 </Input> -->
-                <Input  id="inputCentroCosto" value="{EntityModel>/Detail/Cdc}" />
+                <Input  id="inputCentroCosto" value="{EntityModel>/Detail/Cdc}" maxLength="10"/>
                 <Label text="Conto Co. Ge." required="true" />
                 <!-- value="4011010101" -->
                 <!-- <Input id="inputCoGe" type="Text" showValueHelp="true" suggestionItems="{path: '/Txt50IcSet', sorter: { path: 'Saknr' }}" enabled="true" editable="true" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCoGe" app:filterTableField="inputCoGe" value="">
                     <core:Item key="{Saknr}" text="{Saknr}" />
                 </Input> -->
-                <Input id="inputCoGe" value="{EntityModel>/Detail/Coge}"/>
+                <Input id="inputCoGe" value="{EntityModel>/Detail/Coge}" maxLength="10"/>
                 <core:Title text=" " class="heightZero"/>
                 <Label text="Descrizione" />
                 <Input id="DescCentroCosto" type="Text" editable="false" value="{EntityModel>/Detail/CdcDesc}"/>
@@ -75,7 +75,7 @@
                             <l:GridData span="XL2 L2 M6 S12" />
                         </layoutData>
                     </Label>
-                    <Input id="inputNProtoccollo" value="{EntityModel>/Detail/NProtocollo}"> 
+                    <Input id="inputNProtoccollo" value="{EntityModel>/Detail/NProtocollo}" maxLength="20"> 
                         <layoutData>
                             <l:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
@@ -93,7 +93,7 @@
                             <l:GridData span="XL2 L2 M6 S12" linebreak="true"/>
                         </layoutData>
                     </Label>
-                    <Input id="inputCodiceGest" value="{EntityModel>/Detail/CodiceGestionale}">
+                    <Input id="inputCodiceGest" value="{EntityModel>/Detail/CodiceGestionale}" maxLength="3">
                         <layoutData>
                             <l:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
@@ -123,7 +123,7 @@
                     </Label>
                     <!-- valueHelpRequest="handleValueHelp" app:fieldName="inputLocPagamento" app:filterTableField="inputLocPagamento" valueHelpOnly="false" showValueHelp="false"-->
                     <!-- showSuggestion="true" suggestionItems="{path: '/PositionNISet', sorter: { path: 'Zlocpag' }}" -->
-                    <Input id="inputLocPagamento" type="Text" editable="true" value="{EntityModel>/Detail/LocalitaPagamento}"   >
+                    <Input id="inputLocPagamento" type="Text" editable="true" value="{EntityModel>/Detail/LocalitaPagamento}"  maxLength="15" >
                         <layoutData>
                             <l:GridData span="XL3 L2 M6 S12" />
                         </layoutData>
@@ -136,7 +136,7 @@
                             <l:GridData span="XL2 L2 M6 S12" linebreak="true"/>
                         </layoutData>
                     </Label>
-                    <Input id="inputCausPagamento" value="{EntityModel>/Detail/CausalePagamento}" >
+                    <Input id="inputCausPagamento" value="{EntityModel>/Detail/CausalePagamento}" maxLength="140">
                         <layoutData>
                             <l:GridData span="XL6 L6 M6 S12" />
                         </layoutData>
@@ -167,7 +167,7 @@
                         </layoutData>
                     </Label>
 
-                    <Input id="inputZInterv" value="{EntityModel>/Detail/ZonaIntervento}">
+                    <Input id="inputZInterv" value="{EntityModel>/Detail/ZonaIntervento}" maxLength="50">
                         <layoutData>
                             <l:GridData span="XL3 L3 M6 S12" />
                         </layoutData>

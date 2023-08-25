@@ -665,7 +665,7 @@ sap.ui.define([
                         campo2: header.Zamministr, 
                         campo3: header.ZchiaveNi, 
                         campo4: header.ZidNi, 
-                        campo5: header.ZRagioCompe 
+                        campo5: header.ZRagioCompe
                     });
                    
                 self.getView().byId("editImporto").setEnabled(false);
@@ -713,87 +713,161 @@ sap.ui.define([
                 // this.getView().byId("pressAssImpegno").setEnabled(false);
             },
 
-
             onDeleteRow: function (oEvent) {
-                var that = this;
-                //var position = this.getView().getModel("temp").getData().PositionNISet
-                var selectedPosition = this.getView().byId("HeaderITB").getSelectedItems()
+              var self = this,
+                header = self.getView().getModel(MODEL_ENTITY).getProperty("/Header"),
+                oModel = self.getOwnerComponent().getModel(),
+                oTable = self.getView().byId("HeaderITB"),
+                selectedPosition = oTable.getSelectedContextPaths();
 
-                var deepEntity = {
-                    Funzionalita: 'RETTIFICANIPREIMPOSTATA',
-                    PositionNISet: []
-                }
-
-                for (var i = 0; i < selectedPosition.length; i++) {
-
-                    var item = selectedPosition[i].getBindingContext("HeaderITB").getObject();
-                    //var indice = i
-                    var oModel = that.getOwnerComponent().getModel();
-
-                    deepEntity.Bukrs = item.Bukrs,
-                        deepEntity.Gjahr = item.Gjahr,
-                        deepEntity.Zamministr = item.Zamministr,
-                        deepEntity.ZchiaveNi = item.ZchiaveNi,
-                        deepEntity.ZidNi = item.ZidNi,
-                        deepEntity.ZRagioCompe = item.ZRagioCompe,
-                        deepEntity.Operation = "D",
-
-                        deepEntity.PositionNISet.push({
-                            ZposNi: item.ZposNi,
-                            Bukrs: item.Bukrs,
-                            Gjahr: item.Gjahr,
-                            Zamministr: item.Zamministr,
-                            ZchiaveNi: item.ZchiaveNi,
-                            ZidNi: item.ZidNi,
-                            ZRagioCompe: item.ZRagioCompe,
-                        })
-                }
-                MessageBox.warning("Sei sicuro di voler rettificare la Nota d'Imputazione n° " + item.ZchiaveNi + "?", {
-                    title: "Elimina Riga",
-                    actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
-                    emphasizedAction: MessageBox.Action.YES,
-                    onClose: function (oAction) {
-                        if (oAction === sap.m.MessageBox.Action.YES) {
-
-                            oModel.create("/DeepPositionNISet", deepEntity, {
-                                // method: "PUT",
-                                success: function (result) {
-                                    if (result.Msgty == 'E') {
-                                        console.log(result.Message)
-                                        MessageBox.error("Operazione eseguita non correttamente", {
-                                            title: "Esito Operazione",
-                                            actions: [sap.m.MessageBox.Action.OK],
-                                            emphasizedAction: MessageBox.Action.OK,
-                                        })
-                                    }
-                                    if (result.Msgty == 'S') {
-                                        MessageBox.success("Nota di Imputazione "+item.ZchiaveNi+" rettificata correttamente", {
-                                            title: "Esito Operazione",
-                                            actions: [sap.m.MessageBox.Action.OK],
-                                            emphasizedAction: MessageBox.Action.OK,
-                                            onClose: function (oAction) {
-                                                if (oAction === sap.m.MessageBox.Action.OK) {
-                                                    that.getOwnerComponent().getRouter().navTo("View1");
-                                                    location.reload();
-                                                }
-                                            }
-                                        })
-                                    }
-                                },
-                                error: function (e) {
-                                    //console.log("error");
-                                    MessageBox.error("Operazione non eseguita", {
-                                        title: "Esito Operazione",
-                                        actions: [sap.m.MessageBox.Action.OK],
-                                        emphasizedAction: MessageBox.Action.OK,
-                                    })
-                                }
-                            });
-                        }
-
-                    }
+              var deepEntity = {
+                Bukrs:header.Bukrs,
+                Gjahr:header.Gjahr,
+                Zamministr:header.Zamministr,
+                ZchiaveNi:header.ZchiaveNi,
+                ZidNi:header.ZidNi,
+                ZRagioCompe:header.ZRagioCompe,
+                Operation:"D",
+                Funzionalita: 'RETTIFICANIPREIMPOSTATA',
+                PositionNISet: []
+              }
+            
+              for (var i = 0; i < selectedPosition.length; i++) {
+                var item = self.getView().getModel(MODEL_ENTITY).getObject(selectedPosition[i]);
+                deepEntity.PositionNISet.push({
+                    ZposNi: item.ZposNi,
+                    Bukrs: item.Bukrs,
+                    Gjahr: item.Gjahr,
+                    Zamministr: item.Zamministr,
+                    ZchiaveNi: item.ZchiaveNi,
+                    ZidNi: item.ZidNi,
+                    ZRagioCompe: item.ZRagioCompe,
                 });
+              }
+
+              MessageBox.warning("Sei sicuro di voler rettificare la Nota d'Imputazione n° " + header.ZchiaveNi + "?", {
+                title: "Elimina Riga",
+                actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
+                emphasizedAction: MessageBox.Action.YES,
+                onClose: function (oAction) {
+                    if (oAction === sap.m.MessageBox.Action.YES) {
+                      oModel.create("/DeepPositionNISet", deepEntity, {
+                          success: function (result) {
+                              if (result.Msgty == 'E') {
+                                  console.log(result.Message)//TODO:da canc
+                                  MessageBox.error("Operazione eseguita non correttamente", {
+                                      title: "Esito Operazione",
+                                      actions: [sap.m.MessageBox.Action.OK],
+                                      emphasizedAction: MessageBox.Action.OK,
+                                  })
+                              }
+                              if (result.Msgty == 'S') {
+                                  MessageBox.success("Nota di Imputazione "+item.ZchiaveNi+" rettificata correttamente", {
+                                      title: "Esito Operazione",
+                                      actions: [sap.m.MessageBox.Action.OK],
+                                      emphasizedAction: MessageBox.Action.OK,
+                                      onClose: function (oAction) {
+                                          if (oAction === sap.m.MessageBox.Action.OK) {
+                                              self.getOwnerComponent().getRouter().navTo("View1");
+                                              location.reload();
+                                          }
+                                      }
+                                  })
+                              }
+                          },
+                          error: function (e) {
+                              MessageBox.error("Operazione non eseguita", {
+                                  title: "Esito Operazione",
+                                  actions: [sap.m.MessageBox.Action.OK],
+                                  emphasizedAction: MessageBox.Action.OK,
+                              })
+                          }
+                      });
+                    }
+                }
+              });
             },
+
+            // onDeleteRow: function (oEvent) {
+            //     var that = this;
+            //     //var position = this.getView().getModel("temp").getData().PositionNISet
+            //     var selectedPosition = this.getView().byId("HeaderITB").getSelectedItems()
+
+            //     var deepEntity = {
+            //         Funzionalita: 'RETTIFICANIPREIMPOSTATA',
+            //         PositionNISet: []
+            //     }
+
+            //     for (var i = 0; i < selectedPosition.length; i++) {
+
+            //         var item = selectedPosition[i].getBindingContext("HeaderITB").getObject();
+            //         //var indice = i
+            //         var oModel = that.getOwnerComponent().getModel();
+
+            //         deepEntity.Bukrs = item.Bukrs,
+            //             deepEntity.Gjahr = item.Gjahr,
+            //             deepEntity.Zamministr = item.Zamministr,
+            //             deepEntity.ZchiaveNi = item.ZchiaveNi,
+            //             deepEntity.ZidNi = item.ZidNi,
+            //             deepEntity.ZRagioCompe = item.ZRagioCompe,
+            //             deepEntity.Operation = "D",
+
+            //             deepEntity.PositionNISet.push({
+            //                 ZposNi: item.ZposNi,
+            //                 Bukrs: item.Bukrs,
+            //                 Gjahr: item.Gjahr,
+            //                 Zamministr: item.Zamministr,
+            //                 ZchiaveNi: item.ZchiaveNi,
+            //                 ZidNi: item.ZidNi,
+            //                 ZRagioCompe: item.ZRagioCompe,
+            //             })
+            //     }
+            //     MessageBox.warning("Sei sicuro di voler rettificare la Nota d'Imputazione n° " + item.ZchiaveNi + "?", {
+            //         title: "Elimina Riga",
+            //         actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
+            //         emphasizedAction: MessageBox.Action.YES,
+            //         onClose: function (oAction) {
+            //             if (oAction === sap.m.MessageBox.Action.YES) {
+
+            //                 oModel.create("/DeepPositionNISet", deepEntity, {
+            //                     // method: "PUT",
+            //                     success: function (result) {
+            //                         if (result.Msgty == 'E') {
+            //                             console.log(result.Message)
+            //                             MessageBox.error("Operazione eseguita non correttamente", {
+            //                                 title: "Esito Operazione",
+            //                                 actions: [sap.m.MessageBox.Action.OK],
+            //                                 emphasizedAction: MessageBox.Action.OK,
+            //                             })
+            //                         }
+            //                         if (result.Msgty == 'S') {
+            //                             MessageBox.success("Nota di Imputazione "+item.ZchiaveNi+" rettificata correttamente", {
+            //                                 title: "Esito Operazione",
+            //                                 actions: [sap.m.MessageBox.Action.OK],
+            //                                 emphasizedAction: MessageBox.Action.OK,
+            //                                 onClose: function (oAction) {
+            //                                     if (oAction === sap.m.MessageBox.Action.OK) {
+            //                                         that.getOwnerComponent().getRouter().navTo("View1");
+            //                                         location.reload();
+            //                                     }
+            //                                 }
+            //                             })
+            //                         }
+            //                     },
+            //                     error: function (e) {
+            //                         //console.log("error");
+            //                         MessageBox.error("Operazione non eseguita", {
+            //                             title: "Esito Operazione",
+            //                             actions: [sap.m.MessageBox.Action.OK],
+            //                             emphasizedAction: MessageBox.Action.OK,
+            //                         })
+            //                     }
+            //                 });
+            //             }
+
+            //         }
+            //     });
+            // },
 
             onCancelNI: function (oEvent) {
                 var self =this,
@@ -812,23 +886,34 @@ sap.ui.define([
                     onClose: function (oAction) {
                         if (oAction === sap.m.MessageBox.Action.YES) {
                             delete header.ZcompRes;
-                            deepEntity.ZchiaveNi = header.ZidNi;
+                            deepEntity.ZchiaveNi = header.ZchiaveNi;
                             deepEntity.HeaderNISet = header;
                             deepEntity.HeaderNISet.ZcodiStatoni = "00";
 
                             oModel.create("/DeepZNIEntitySet", deepEntity, {
                                 success: function (data) {
-                                    MessageBox.success("Nota di Imputazione " + header.ZchiaveNi + " annullata correttamente", {
-                                        title: "Esito Operazione",
-                                        actions: [sap.m.MessageBox.Action.OK],
-                                        emphasizedAction: MessageBox.Action.OK,
-                                        onClose: function (oAction) {
-                                            if (oAction === sap.m.MessageBox.Action.OK) {
-                                                self.getOwnerComponent().getRouter().navTo("View1");
-                                                location.reload();
+
+                                    if(data.Msgty!=="E"){
+                                        MessageBox.success("Nota di Imputazione " + header.ZchiaveNi + " annullata correttamente", {
+                                            title: "Esito Operazione",
+                                            actions: [sap.m.MessageBox.Action.OK],
+                                            emphasizedAction: MessageBox.Action.OK,
+                                            onClose: function (oAction) {
+                                                if (oAction === sap.m.MessageBox.Action.OK) {
+                                                    self.getOwnerComponent().getRouter().navTo("View1");
+                                                    location.reload();
+                                                }
                                             }
-                                        }
-                                    })
+                                        });
+                                    }
+                                    else{
+                                        MessageBox.error(data.Message, {
+                                            title: "Esito Operazione",
+                                            actions: [sap.m.MessageBox.Action.OK],
+                                            emphasizedAction: MessageBox.Action.OK,
+                                            onClose: function (oAction) {}
+                                        });
+                                    }
                                 },
                                 error: function (e) {
                                     console.log("error");

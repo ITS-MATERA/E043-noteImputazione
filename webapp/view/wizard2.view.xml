@@ -6,14 +6,7 @@
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     xmlns="sap.m" controllerName="project1.controller.wizard2">
     <NavContainer id="wizardNavContainer">
-        <f:DynamicPage stickySubheaderProvider="CreateProductWizard" toggleHeaderOnTitleClick="false" class="sapUiNoContentPadding" showFooter="true">
-            <f:title>
-                <f:DynamicPageTitle>
-                    <f:heading>
-                        <!-- <Text text="DATI NI" /> -->
-                    </f:heading>
-                </f:DynamicPageTitle>
-            </f:title>
+        <f:DynamicPage stickySubheaderProvider="wizardPreimpostazioneNI" toggleHeaderOnTitleClick="false" class="sapUiNoContentPadding" showFooter="true">            
             <f:header>
                 <f:DynamicPageHeader id="h1" pinnable="false">
                     <core:Fragment fragmentName="project1.fragment.wizardPreimpostazione.headerStep2" type="XML" /> 

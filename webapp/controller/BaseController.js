@@ -201,25 +201,35 @@ sap.ui.define([
 			});
 		},
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		getDescCapDescPG:function(gjahr,fipex,callback){
+			var self =this,
+				filters = [];
+			
+			self.getOwnerComponent().getModel().read("/ZamministrNiSet", {
+				success: function (data) {
+					self.getView().getModel("temp").setProperty('/ZamministrNiSet', data.results)
+					filters.push(
+						new Filter({ path: "Gjahr", operator: FilterOperator.EQ, value1: gjahr }),
+						new Filter({ path: "Zamministr", operator: FilterOperator.EQ, value1: data.results[0].Zamministr }),
+						new Filter({ path: "Fipex", operator: FilterOperator.EQ, value1: fipex })
+					);
+					self.getOwnerComponent().getModel().read("/DescPgCapSet", {
+						filters:filters,
+						success: function(data, oResponse){
+              callback({success:true,entity:data && data.results.length>0 ? data.results[0]: null});
+						},
+						error: function(error){
+						  console.log(error);
+						  callback({success:false,entity:null});
+						}
+					});					
+				},
+				error: function (error) {
+					console.log(error);
+					callback({success:false,entity:null});
+				}
+			});
+		},
 
 
 		/**

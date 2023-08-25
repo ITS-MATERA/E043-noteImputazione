@@ -499,9 +499,9 @@ sap.ui.define(
                 form= self.getView().getModel(MODEL_ENTITY).getProperty("/Form");
                
               if(!form.CodiceUfficio || form.CodiceUfficio === null || form.CodiceUfficio=== "" || 
-                !form.Dirigente || form.Dirigente === null || form.Dirigente=== "" || 
+                !form.Dirigente || form.Dirigente === null || form.Dirigente=== "" /*|| 
                 !form.DataProtocollo || form.DataProtocollo === null || form.DataProtocollo=== "" || 
-                !form.NumeroProtocollo || form.NumeroProtocollo === null || form.NumeroProtocollo=== ""){
+                !form.NumeroProtocollo || form.NumeroProtocollo === null || form.NumeroProtocollo=== ""*/){
                   MessageBox.error("Inserire i dati per l'invio alla firma", {
                       title:"Esito Operazione",
                       actions: [sap.m.MessageBox.Action.OK],

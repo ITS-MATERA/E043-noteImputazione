@@ -14,11 +14,11 @@
     <f:DynamicPage id="dynamicPageId" showFooter="true">
         <f:header>
             <f:DynamicPageHeader pinnable="false">
-                <layout:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0.1">
+                <layout:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
                     <!-- 1 riga -->
                     <HBox>
                         <Label id="numNI" text="{i18n>ProgressivoNI}:" design="Bold"/>
-                        <Text id="numNI1" text="{EntityModel>/Header/ZidNi}" wrapping="true"/>
+                        <Text id="numNI1" text="{EntityModel>/Header/ZchiaveNi}" wrapping="true"/>
                         <layoutData>
                             <layout:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
@@ -175,7 +175,7 @@
                                         <core:Item key=""/>
                                     </Input>
                                     <Label text="N. Protocollo RGS"/>
-                                    <Input id="numProtocolloRGS" width="100%" value="{EntityModel>/Rilievi/NProtocolloRag}">
+                                    <Input id="numProtocolloRGS" width="100%" enabled="false" value="{EntityModel>/Rilievi/NProtocolloRag}">
                                     </Input>
                                 </VBox>
                                 <VBox>
@@ -185,6 +185,7 @@
                                     <Label text="Data Protocollo RGS:" />
                                     <DatePicker id="dataProtocolloRGS" width="100%" valueFormat="yyyy-MM-dd" 
                                         displayFormat="dd.MM.yyyy" 
+                                        enabled="false"
                                         value="{EntityModel>/Rilievi/ZdataProtRag}">
                                     </DatePicker>
                                 </VBox>
@@ -192,6 +193,7 @@
                                     <Label text="Data Rilievo:" required="true" />
                                     <DatePicker id="dataRilievo" width="100%" valueFormat="yyyy-MM-dd" 
                                         displayFormat="dd.MM.yyyy"
+                                        enabled="false"
                                         value="{EntityModel>/Rilievi/ZdatRilievo}">
                                     </DatePicker>
                                 </VBox>

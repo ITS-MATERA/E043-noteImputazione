@@ -260,13 +260,26 @@ sap.ui.define([
             },
             
             posizioneFinanziariaLiveChange:function(oEvent) {
-                var self = this,
-                    descrizioneCapitoloControl = self.getView().byId("descrizioneCap"),
-                    descrizionePGControl = self.getView().byId("descrizionePG");
-                    
-                self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/fipex",oEvent.getParameters().value);
-                self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizioneCapitolo", descrizioneCapitoloControl.getValue());
-                self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizionePG",descrizionePGControl.getValue());
+              var self = this;
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizioneCapitolo",null);
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizionePG",null);
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/fipex",oEvent.getParameters().value);
+
+              if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng") && 
+                self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng") !== "" &&
+                oEvent.getParameters().value !== ""){
+
+                self.getDescCapDescPG(
+                  self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng"),
+                  oEvent.getParameters().value,
+                  function(callback){ 
+                    if(callback.success && callback.entity){
+                      self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizioneCapitolo", callback.entity.DescCap);
+                      self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizionePG",callback.entity.DescPg);
+                    }
+                  }
+                );
+              }
             },
 
             oggSpesaLiveChange:function(oEvent){
@@ -450,14 +463,7 @@ sap.ui.define([
                             if(callback){
                                 visibilita = self.getView().getModel(WIZARD_ENTITIES_MODEL).getProperty("/Visibilita")[0];
                             }
-                        });    
-
-                        // self.callVisibilita();     
-                        //     // setTimeout(function() {
-                        //     //     fEanMobile.focus();
-                        //     //     fEanMobile.setValue("");
-                        //     // }, 350);
-                        // visibilita = self.getView().getModel(WIZARD_ENTITIES_MODEL).getProperty("/Visibilita");
+                        });   
                     }
                     else
                         visibilita = self.getView().getModel(WIZARD_ENTITIES_MODEL).getProperty("/Visibilita")[0];

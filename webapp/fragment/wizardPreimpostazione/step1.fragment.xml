@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     height="100%">
     <Panel>
-        <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
+        <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0.1">
             <VBox>
                 <Label text="Esercizio di Gestione:" required="true" />
                 <ComboBox id="es_gestione" width="100%" items="{path: 'wizardEntitiesModel>/ZgjahrEngNiSet', sorter: { path: 'ZgjahrEng' }}"

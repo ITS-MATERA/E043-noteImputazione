@@ -20,6 +20,10 @@ sap.ui.define(
                     PositionNIMI:[]              
                 });        
 
+                var input = this.getView().byId("modificaImportoInput"); 
+                input.attachBrowserEvent("keypress",this.formatter.acceptOnlyNumbers);
+
+
                 this.getView().setModel(oModelJson,MODEL_ENTITY); 
                 this.getOwnerComponent().getModel("temp");
                 this.getRouter().getRoute("modificaImporto").attachPatternMatched(this._onObjectMatched, this);

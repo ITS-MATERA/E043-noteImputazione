@@ -9,25 +9,25 @@
     
     <VBox visible="{componentModel>/headerStep3Visible}">
         <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
-            <Text text="DATI NI" />
+            <Text text="Dati NI" />
             <!-- 1 riga -->
            <HBox> 
                 <Label text="Esercizio di gestione: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
-                <Text text="{preimpostazioneModel>/ZgjahrEng}"/> 
+                <Label text="{preimpostazioneModel>/ZgjahrEng}"/> 
                 <layoutData>
                     <l:GridData span="XL4 L4 M12 S12" />
                 </layoutData>
            </HBox> 
            <HBox> 
                 <Label text="Mese: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
-                <Text text="{preimpostazioneModel>/meseDescrizione}"/> 
+                <Label text="{preimpostazioneModel>/meseDescrizione}"/> 
                 <layoutData>
                     <l:GridData span="XL3 L3 M12 S12" />
                 </layoutData>
            </HBox> 
            <HBox> 
                 <Label text="Competenza/Residui: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
-                <Text text="{preimpostazioneModel>/competenzaDescrizione}"/> 
+                <Label text="{preimpostazioneModel>/competenzaDescrizione}"/> 
                 <layoutData>
                     <l:GridData span="XL3 L3 M12 S12" />
                 </layoutData>
@@ -35,7 +35,7 @@
            <!-- 2 riga -->
            <HBox> 
                 <Label text="N.righe di rendicontazione in preimpostazione: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
-                <Text text="{preimpostazioneModel>/rendicontazioneRowNum} per un totale di {preimpostazioneModel>/rendicontazioneSumRowSelectedString}"/> 
+                <Label text="{preimpostazioneModel>/rendicontazioneRowNum} per un totale di {preimpostazioneModel>/rendicontazioneSumRowSelectedString}"/> 
                 <layoutData>
                     <l:GridData span="XL4 L4 M12 S12" linebreak="true"/>
                 </layoutData>
@@ -59,14 +59,14 @@
            <!-- 3 riga -->
            <HBox> 
                 <Label text="Descrizione Capitolo: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
-                <Text text="{preimpostazioneModel>/descrizioneCapitolo}"/> 
+                <Label text="{preimpostazioneModel>/descrizioneCapitolo}" wrapping="true"/> 
                 <layoutData>
                     <l:GridData span="XL4 L4 M12 S12" linebreak="true"/>
                 </layoutData>
            </HBox> 
            <HBox> 
                 <Label text="Descrizione PG: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
-                <Text text="{preimpostazioneModel>/descrizionePG}"/> 
+                <Label text="{preimpostazioneModel>/descrizionePG}" wrapping="true"/> 
                 <layoutData>
                     <l:GridData span="XL3 L3 M12 S12" />
                 </layoutData>

@@ -9,7 +9,7 @@
 			enableDoubleSided="false"
 			growingThreshold="0"
             showIcons="true"
-			
+			sort="false"
 			height="100%"
 			content="{temp>/WFStateNI}"
 			>

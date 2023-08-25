@@ -528,7 +528,7 @@ sap.ui.define([
                     numClausolaDa = self.getView().byId("numClausolaDa1"),//
                     numClausolaA = self.getView().byId("numClausolaA1"),//
                     dataFirmaAmm = self.getView().byId("dataFirmaAmmDa1"),// 								-> dpèt
-                    dataFirmaAmmA = self.getView().byId("dataFirmaAmmA1 "),//								-> dopt
+                    dataFirmaAmmA = self.getView().byId("dataFirmaAmmA1"),//								-> dopt
                     dataProtocolloAmmDa = self.getView().byId("dataProtocolloAmmDa1"),// 					->dpt
                     dataProtocollaAmmA = self.getView().byId("dataProtocolloAmmA1"),// 						->dpt
                     dataProtocolloRGSDA = self.getView().byId("dataProtocolloRGSDa1"),//					->dpt

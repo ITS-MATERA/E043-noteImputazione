@@ -225,7 +225,7 @@
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem id="numProtocolloRGS" visibleInFilterBar="true" name="numProtocolloRGS" groupName="Gruppo4" label="{i18n>numProtocolloRGS}">
                                 <fb:control>
-                                    <Input id="numProtocolloRGS1" showValueHelp="false" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'NProtocolloRag' }}">
+                                    <Input id="numProtocolloRGS1" showValueHelp="false" maxLength="20" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'NProtocolloRag' }}">
                                         <core:Item key="{NProtocolloRag}" text="{NProtocolloRag}"/>
                                     </Input>
                                 </fb:control>
@@ -242,7 +242,7 @@
                             <fb:FilterGroupItem id="struttura_amm" visibleInFilterBar="true" name="struttura_amm" groupName="Gruppo5" label="{i18n>struttura_amm}">
                                 <fb:control>
                                     <zcontrolMatchSar:GestioneLogUser eos="S" id="idFilterStruttAmmResp" fase="GEST" entrata="X" 
-                                    reale="R" anno="{temp>/EsercizioGestioneMC}" SEM_OBJ="Z_TEST_LIB"  
+                                    reale="R" anno="{temp>/EsercizioGestioneMC}" SEM_OBJ="Z_TEST_LIB"  maxLength="16"
                                     versione="D" width="70%" placeholder="Scegli struttura amministrativa"/>
                                     <!-- <Input showSuggestion="true" id="struttura_amm1" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Fistl' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="struttura_amm1" app:filterTableField="struttura_amm1">
                                         <core:Item key="{Fistl}" text="{Fistl}"/>
@@ -252,7 +252,7 @@
                             <fb:FilterGroupItem id="PF" visibleInFilterBar="true" name="PF" groupName="Gruppo5" label="{i18n>PF}">
                                 <fb:control>
                                     <zcontrol:InputPosizioneFinanziaria id="inputPosFin" fase="GEST" spesa="X" reale="R" 
-                                        anno="{temp>/EsercizioGestioneMC}" versione="D" maxSuggestionWidth="60%" 
+                                        anno="{temp>/EsercizioGestioneMC}" versione="D" maxSuggestionWidth="60%"  maxLength="24"
                                         liveChange="onSelectPosFin" submit="onSelectPosFin" width="70%"/>
                                     <!-- <Input showSuggestion="true" id="inputPosFin" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Fipex' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputPosFin" app:filterTableField="inputPosFin">
                                         <core:Item key="{Fipex}" text="{Fipex}"/>
