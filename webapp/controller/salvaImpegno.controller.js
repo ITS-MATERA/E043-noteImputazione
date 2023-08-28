@@ -459,7 +459,6 @@ sap.ui.define([
                     positions[i].Zcodgest = impegnoValues.CodiceGestionale;
                     positions[i].Zcauspag = impegnoValues.CausalePagamento;
                     positions[i].Zdataesig = impegnoValues.DataEsigibilita;
-                    positions[i].ZimpoTitolo = header.ZimpoTotni;
                     deepEntity.PositionNISet.push(positions[i]);
                 }
 
@@ -469,9 +468,9 @@ sap.ui.define([
                 }
 
                 var oDataModel = self.getOwnerComponent().getModel();
-                var oDataModel = self.getOwnerComponent().getModel();
                 oDataModel.create("/DeepPositionNISet", deepEntity, {
                     success: function (data) {
+                        //TODO: ci sarà da mettere nella versione successiva un controllo bloccante in caso di errore.
                         self.getView().getModel("temp").setProperty('/PositionNISet', data.PositionNISet.results);
                         self.getView().getModel(MODEL_ENTITY).setProperty("/PositionNI",data.PositionNISet.results);
                         self.getView().getModel(MODEL_ENTITY).setProperty("/HeaderSalva",data.PositionNISet.results);
@@ -788,13 +787,16 @@ sap.ui.define([
                 delete header.ZcompRes;
                 deepEntity.HeaderNISet = header;
                 deepEntity.HeaderNISet.ZcodiStatoni = "00";
-                deepEntity.HeaderNISet.ZdataProtAmm = !impegnoValues.ImpegnoValues_DataProtocollo && 
+                deepEntity.HeaderNISet.ZdataProtAmm = impegnoValues.ImpegnoValues_DataProtocollo && 
                         impegnoValues.ImpegnoValues_DataProtocollo !== null &&
                         impegnoValues.ImpegnoValues_DataProtocollo !== "" ? 
                             DateFormatter.formateDateForDeep(impegnoValues.ImpegnoValues_DataProtocollo) : null;
                 deepEntity.HeaderNISet.NProtocolloAmm = impegnoValues.ImpegnoValues_NProtocollo;
                 for(var i=0; i<headerSalva.length;i++){
-                    deepEntity.PositionNISet.push(headerSalva[i]);
+                    var item = Object.assign({}, headerSalva[i]);
+                    item.Zdataesig =  impegnoValues.ImpegnoValues_DataEsigibilita ? 
+                        DateFormatter.formateDateForDeep(impegnoValues.ImpegnoValues_DataEsigibilita) : null;
+                    deepEntity.PositionNISet.push(item);
                 }
 
                 MessageBox.warning("Sei sicuro di voler completare la NI?", {

@@ -531,8 +531,11 @@ sap.ui.define(
                   data["ZdataProtRag"] = self.getView().getModel(MODEL_ENTITY).getProperty("/Header/ZdataProtRag") ? 
                     self.formatter.convert(self.getView().getModel(MODEL_ENTITY).getProperty("/Header/ZdataProtRag")): null;
 
-                  data.ZdatRilievo = data.ZdatRilievo ? self.formatter.convert(data.ZdatRilievo) : null;
-                  self.getView().getModel(MODEL_ENTITY).setProperty("/Rilievi",data);                  
+                  //data.ZdatRilievo = data.ZdatRilievo ? self.formatter.convert(data.ZdatRilievo) : null;
+                  // data.ZdatRilievo = data.ZdatRilievo ? data.ZdatRilievo : null;
+                  self.getView().getModel(MODEL_ENTITY).setProperty("/Rilievi",data); 
+                  var dataRilievoControl = self.getView().byId("dataRilievo");
+                  dataRilievoControl.setDateValue(data.ZdatRilievo) ;                
                 },
                 error: function (error) {
                   console.log(error);
@@ -633,7 +636,7 @@ sap.ui.define(
               
               if(!dataRilievoControl || dataRilievoControl.getDateValue() === null || dataRilievoControl.getDateValue() === "" ||
                   !rilievi.Zmotrilievo || rilievi.Zmotrilievo === null || rilievi.Zmotrilievo === ""){
-                MessageBox.warning("Inserire i campi obbligatori!", {
+                MessageBox.warning("Alimentare tutti i campi obbligatori", {
                     title: "Esito Operazione",
                     actions: [sap.m.MessageBox.Action.OK],
                     emphasizedAction: MessageBox.Action.OK,
@@ -713,7 +716,7 @@ sap.ui.define(
                   deepEntity.Funzionalita = "RETTIFICARILIEVO";
                   deepEntity.HeaderNISet.ZcodiStatoni = "07";
                   message = "Sei sicuro di voler rettificare il rilievo della Nota d'Imputazione n° " + header.ZchiaveNi + "?";
-                  messageSuccess = "Rilievo della Nota di Imputazione n."+header.ZchiaveNi+" rettificato";
+                  messageSuccess = "Rilievo della Nota di Imputazione n." + header.ZchiaveNi + " rettificato correttamente";
                   title="Rettifica Rilievo";  
                   deepEntity.RilievoNiSet = rilievi;
                   deepEntity.HeaderNISet.NProtocolloRag = self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/NProtocolloRag");
@@ -739,6 +742,7 @@ sap.ui.define(
                 emphasizedAction: MessageBox.Action.YES,
                 onClose: function (oAction) {
                     if (oAction === sap.m.MessageBox.Action.YES) {
+                      self.getView().setBusy(true);
                         var oModel = self.getOwnerComponent().getModel();
                         delete deepEntity.HeaderNISet.ZcompRes;
                         delete deepEntity.HeaderNISet.Lifnr;
@@ -756,6 +760,7 @@ sap.ui.define(
                         delete deepEntity.RilievoNiSet.ZdataProtRag;
                         oModel.create("/DeepZNIEntitySet", deepEntity, {
                           success: function (data) {
+                            self.getView().setBusy(false);
                               if (data.Msgty == 'E') {
                                 MessageBox.error(data.Message, {
                                     title: "Esito Operazione",

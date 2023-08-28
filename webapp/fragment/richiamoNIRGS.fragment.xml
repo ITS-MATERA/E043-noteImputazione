@@ -10,15 +10,11 @@
     xmlns:menu="sap.m.MenuItem"
     xmlns:menBtn="sap.m.Menu"
     height="100%">
-    <Table class="sapUiSizeCompact" id="richiamoNIRGS" includeItemInSelection="true" items="{richiamoNIRGS>/}" visible="true">
-    <!-- <headerToolbar>
-            <OverflowToolbar>
-                <content>
-                    <ToolbarSpacer />
-                    <Button type="Emphasized" text="Modifica Dettaglio NI" enabled="false" press="onEditRow" id="editRow" />
-                </content>
-            </OverflowToolbar>
-        </headerToolbar> -->
+    <Table class="sapUiSizeCompact" id="richiamoNIRGS" includeItemInSelection="true" 
+        items="{
+                path: 'EntityModel>/PositionNI'
+        }"
+        visible="true">
         <columns>
             <Column width="auto" hAlign="Left">
                 <Label text="Numero NI" />
@@ -46,18 +42,14 @@
             </Column>
         </columns>
         <ColumnListItem>
-            <Text text="{richiamoNIRGS>ZchiaveSubni}" />
-            <Text text="{richiamoNIRGS>ZcodIsin}" />
-            <Text text="{richiamoNIRGS>Ztipo}" />
-            <Text text="{richiamoNIRGS>Zdescrizione}" />
-            <Text text="{path: 'richiamoNIRGS>ZdataPag', formatter:'.formatter.convert'}" />
-
-            <Text text="{path:'richiamoNIRGS>ZimpoTitolo', formatter:'.formatter.convertFormattedNumber'}" />
-            <Text text="{path:'richiamoNIRGS>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />    
-
-            <!-- <Text text="{richiamoNIRGS>ZimpoTitolo}" />
-            <Text text="{richiamoNIRGS>ZimpoRes}" /> -->
-            <Text text="{richiamoNIRGS>ZCodCla}"/>
+            <Text text="{EntityModel>ZchiaveSubni}" />
+            <Text text="{EntityModel>ZcodIsin}" />
+            <Text text="{EntityModel>Ztipo}" />
+            <Text text="{EntityModel>Zdescrizione}" />
+            <Text text="{path: 'EntityModel>ZdataPag', formatter:'.formatter.convert'}" />
+            <Text text="{path:'EntityModel>ZimpoTitolo', formatter:'.formatter.convertFormattedNumber'}" />
+            <Text text="{path:'EntityModel>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />    
+            <Text text="{EntityModel>ZCodCla}"/>
         </ColumnListItem>
     </Table>
 </core:FragmentDefinition>

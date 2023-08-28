@@ -32,8 +32,7 @@ sap.ui.define([
             },
 
             _onObjectMatched: function (oEvent) {
-                var self =this;
-                self.getView().getModel("temp").setProperty('/SalvaImpegnoValues', null);
+                var self =this;                
                 if(!self.getView().getModel("temp").getProperty("/ImpegniSelezionati")){
                     self.onBackButton();
                     return;
@@ -102,7 +101,9 @@ sap.ui.define([
                             self.loadBeneficiario();
                             self.loadModalitaPagamento();
 
-
+                            if(self.getView().getModel("temp").getProperty('/SalvaImpegnoValues')){
+                                self.loadForm(self.getView().getModel("temp").getProperty('/SalvaImpegnoValues'));
+                            }
 
                             self.onModificaNISet(data, function(callback){
                                 if(callback.success){
@@ -127,6 +128,25 @@ sap.ui.define([
                         }
                     })
                 });
+            },
+
+            loadForm:function(data){
+                var self =this;
+                self.getView().byId("DP1").setDateValue(data.DataProtocollo);
+                self.getView().byId("DP2").setDateValue(data.DataEsigibilita);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/Iban", data.Iban);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/Cdc", data.Cdc);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/Coge", data.Coge);                
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/NProtocollo", data.NProtocollo);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/CodiceGestionale", data.CodiceGestionale);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/Descrizione", data.Descrizione);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/LocalitaPagamento", data.LocalitaPagamento);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/CausalePagamento", data.CausalePagamento);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/ZonaIntervento", data.ZonaIntervento);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/CdcDesc", data.CdcDesc);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/CogeDesc", data.CogeDesc);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/DataProtocollo", data.DataProtocollo);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/DataEsigibilita", data.DataEsigibilita);
             },
 
             loadBeneficiario:function(){
@@ -497,6 +517,7 @@ sap.ui.define([
                 self.getView().getModel(MODEL_ENTITY).setProperty("/Header",null);
                 self.getView().getModel(MODEL_ENTITY).setProperty("/Detail",null);
                 self.getView().getModel(MODEL_ENTITY).setProperty("/ZdescwelsBniSet",[]);
+                self.getView().getModel("temp").setProperty('/SalvaImpegnoValues', null);
                 window.history.go(-1);
             },
 

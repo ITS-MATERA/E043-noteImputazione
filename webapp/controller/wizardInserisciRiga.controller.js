@@ -1103,7 +1103,8 @@ sap.ui.define([
                       Zmese: self.getView().getModel(MODEL_ENTITY).getProperty("/Header").Zmese,
                       Zsottotipo:callback.data[i].Zsottotipo,
                       Ztipo: callback.data[i].Ztipo,
-                      Ztipologia: callback.data[i].Ztipologia
+                      Ztipologia: callback.data[i].Ztipologia,
+                      ZposNi:callback.data[i].ZposNi,
                     };
                     arrayStep3.push(item);
                   }

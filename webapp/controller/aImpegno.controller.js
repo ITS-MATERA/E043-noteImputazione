@@ -36,6 +36,7 @@ sap.ui.define([
             
             _onObjectMatched: function (oEvent) {
                 var self =this;
+                self.getView().getModel("temp").setProperty('/SalvaImpegnoValues', null);
                 var path = self.getOwnerComponent().getModel().createKey("HeaderNISet", {
                     Bukrs: oEvent.getParameters().arguments.campo,                    
                     Gjahr: oEvent.getParameters().arguments.campo1,

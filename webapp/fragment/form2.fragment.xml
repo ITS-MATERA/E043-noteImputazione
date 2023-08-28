@@ -64,7 +64,8 @@
                             <l:GridData span="XL2 L2 M6 S12" />
                         </layoutData>
                     </Label>
-                    <DatePicker id="DP1" displayFormat="dd.MM.yyyy" class="sapUiTinyyMarginBottom" change="onDtChange" app:dataField="DataProtocollo">
+                    <DatePicker id="DP1" displayFormat="dd.MM.yyyy" class="sapUiTinyyMarginBottom" 
+                        change="onDtChange" app:dataField="DataProtocollo">
                         <layoutData>
                             <l:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
@@ -155,7 +156,8 @@
                         </layoutData>
                     </Label>
 
-                    <DatePicker id="DP2" displayFormat="dd.MM.yyyy" class="sapUiTinyyMarginBottom" change="onDtChange" app:dataField="DataEsigibilita">
+                    <DatePicker id="DP2" displayFormat="dd.MM.yyyy" class="sapUiTinyyMarginBottom" 
+                        change="onDtChange" app:dataField="DataEsigibilita">
                         <layoutData>
                             <l:GridData span="XL3 L3 M6 S12" />
                         </layoutData>

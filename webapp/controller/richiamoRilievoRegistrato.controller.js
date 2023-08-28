@@ -1099,7 +1099,7 @@ sap.ui.define(
                                 });
                             }
                             if (data.Msgty == 'S') {
-                              MessageBox.success("Rilievo della Nota di Imputazione n."+header.ZchiaveNi+" cancellato", {
+                              MessageBox.success("Rilievo della Nota di Imputazione n." + header.ZchiaveNi + " cancellato correttamente", {
                                 actions: [sap.m.MessageBox.Action.OK],
                                 emphasizedAction: MessageBox.Action.OK,
                                 onClose: function (oAction) {

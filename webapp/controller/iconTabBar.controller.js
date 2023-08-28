@@ -79,7 +79,6 @@ sap.ui.define([
                                             self.getView().setBusy(false);
                                         }
                                     });
-
                                 }
                                 else{
                                     self.getView().getModel(MODEL_ENTITY).setProperty("/PositionNI",callback.data);
@@ -491,8 +490,7 @@ sap.ui.define([
 
             onBackButton: function () {
                 var self =this;
-                this.getView().byId("HeaderITB").destroyItems()
-                self.getOwnerComponent().getRouter().navTo("View1");
+                this.getView().byId("HeaderITB").destroyItems();                
                 this.getView().byId("editImporto").setEnabled(false);
                 this.getView().byId("editRow").setEnabled(false);
                 this.getView().byId("addRow").setEnabled(false);
@@ -500,6 +498,7 @@ sap.ui.define([
                 this.getView().byId("pressAssImpegno").setEnabled(true);
                 self.getView().getModel(MODEL_ENTITY).setProperty("/Header",null);
                 self.getView().getModel(MODEL_ENTITY).setProperty("/PositionNI",[]);
+                self.getOwnerComponent().getRouter().navTo("View1");
             },
 
             pressAssociaImpegno: function (oEvent) {
