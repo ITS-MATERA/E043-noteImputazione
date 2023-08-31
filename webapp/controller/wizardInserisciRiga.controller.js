@@ -610,6 +610,9 @@ sap.ui.define([
               if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/competenza") !== "")
                   filters.push(new Filter({ path: "ZcompRes", operator: FilterOperator.EQ, value1: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/competenza").toUpperCase() }));
               
+              if(self.getView().getModel(MODEL_ENTITY).getProperty("/Header/ZchiaveNi") && self.getView().getModel(MODEL_ENTITY).getProperty("/Header/ZchiaveNi") !== "")
+                filters.push(new Filter({ path: "ZchiaveNi", operator: FilterOperator.EQ, value1: self.getView().getModel(MODEL_ENTITY).getProperty("/Header/ZchiaveNi") }));
+              
               self.getView().setBusy(true);
               self.getOwnerComponent().getModel().read("/RendicontazioneSet", {
                   filters:filters,
