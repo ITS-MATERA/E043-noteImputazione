@@ -190,8 +190,9 @@
                                         <core:Item key=""/>
                                     </Input>
                                     <Label text="N. Protocollo RGS"/>
-                                    <Input id="numProtocolloRGS" width="100%" enabled="false" value="{EntityModel>/Rilievi/NProtocolloRag}">
+                                    <Input id="numProtocolloRGS" width="100%"  value="{EntityModel>/Rilievi/NProtocolloRag}">
                                     </Input>
+                                    <!-- enabled="false" -->
                                 </VBox>
                                 <VBox>
                                     <Label text="Cognome:" required="true" />
@@ -200,16 +201,16 @@
                                     <Label text="Data Protocollo RGS:" />
                                     <DatePicker id="dataProtocolloRGS" width="100%" valueFormat="yyyy-MM-dd" 
                                         displayFormat="dd.MM.yyyy" 
-                                        enabled="false"
                                         value="{EntityModel>/Rilievi/ZdataProtRag}">
                                     </DatePicker>
+                                    <!-- enabled="false" -->
                                 </VBox>
                                 <VBox>
                                     <Label text="Data Rilievo:" required="true" />
                                     <DatePicker id="dataRilievo" width="100%" 
-                                        displayFormat="dd.MM.yyyy"
-                                        enabled="false">
+                                        displayFormat="dd.MM.yyyy">
                                     </DatePicker>
+                                    <!-- enabled="false" -->
                                 </VBox>
                                 <VBox>
                                     <Label text="Motivazione Rilievo:" required="true" />
