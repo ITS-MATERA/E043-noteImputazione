@@ -17,233 +17,147 @@
                 <layout:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
                     <!-- 1 riga -->
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="numNI" text="{i18n>ProgressivoNI}: " design="Bold" class="lbl-header-margin-right"/>
-                                <Label id="numNI1" text="{EntityModel>/Header/ZchiaveNi}" />
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                                <Label id="numNI" text="{i18n>ProgressivoNI}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                                <Label id="numNI1" text="{EntityModel>/Header/ZchiaveNi}" wrapping="true" />
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                         </FlexBox>
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="dataReg" text="{i18n>Data} NI: " design="Bold" class="lbl-header-margin-right"/>
-                                <Label id="dataReg1" wrapping="true" text="{path:'EntityModel>/Header/ZdataCreaz', formatter:'.formatter.convert'}"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                                <Label id="dataReg" text="{i18n>Data} NI: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                                <Label id="dataReg1"  text="{path:'EntityModel>/Header/ZdataCreaz', formatter:'.formatter.convert'}" wrapping="true"/>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                         </FlexBox>
                     <!-- 2 riga -->
-                        <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="SARW2" text="{i18n>SAR}: " design="Bold" class="lbl-header-margin-right"/>
-                                <!-- <Text id="SARWH2"/> -->
+                        <FlexBox alignItems="Start" justifyContent="Start" class="text-overflow">
+                                <Label id="SARW2" text="{i18n>SAR}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                                 <zcontrollinkSar:LinkSar id="linkSarBilancio" anno="{EntityModel>/Header/Esercizio}" eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" 
-                                    versione="D" bilancio="" fictr="{EntityModel>/Header/Fistl}" datbis="99991231" text="{EntityModel>/Header/Fistl}"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" linebreak="true" /></layoutData>
+                                    versione="D" bilancio="" fictr="{EntityModel>/Header/Fistl}" datbis="99991231" text="{EntityModel>/Header/Fistl}"
+                                    wrapping="true"/>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" linebreak="true" /></layoutData>
                         </FlexBox>    
-                        <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="pos_FinW2" text="{i18n>PF}: " design="Bold" class="lbl-header-margin-right"/>
-                                <!-- <Text id="pos_FinWH2"/> -->
+                        <FlexBox alignItems="Start" justifyContent="Start" class="text-overflow">
+                                <Label id="pos_FinW2" text="{i18n>PF}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                                 <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesa" anno="{EntityModel>/Header/Esercizio}" eos="S" fikrs="S001" fase="GEST" reale="R" 
-                                    versione="D" fipex="{EntityModel>/Header/Fipex}" datbis="99991231" text="{EntityModel>/Header/Fipex}" semanticObject="ESAMINAMODIFICA"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                                    versione="D" fipex="{EntityModel>/Header/Fipex}" datbis="99991231" text="{EntityModel>/Header/Fipex}" semanticObject="ESAMINAMODIFICA"
+                                    wrapping="true"/>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                         </FlexBox>  
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="oggSpesa" text="{i18n>oggSpesa}: " design="Bold" class="lbl-header-margin-right"/>
+                                <Label id="oggSpesa" text="{i18n>oggSpesa}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                                 <Label id="oggSpesa1" text="{EntityModel>/Header/ZoggSpesa}" wrapping="true"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                         </FlexBox>  
                     <!-- 3 riga -->
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="mese" text="{i18n>Mese}: " design="Bold" class="lbl-header-margin-right"/>
-                                <Label id="mese1" text="{path: 'EntityModel>/Header/Zmese', formatter:'.formatter.getMonthName'}"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" linebreak="true" /></layoutData>
+                                <Label id="mese" text="{i18n>Mese}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                                <Label id="mese1" text="{path: 'EntityModel>/Header/Zmese', formatter:'.formatter.getMonthName'}" wrapping="true"/>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" linebreak="true" /></layoutData>
                         </FlexBox>    
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="comp" text="{i18n>comp}: " design="Bold" class="lbl-header-margin-right"/>
-                                <Label id="comp1" text="{= ${EntityModel>/Header/ZcompRes} === 'C' ? 'Competenza' : ${EntityModel>/Header/ZcompRes} === 'R' ? 'Residui' : ''}"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                                <Label id="comp" text="{i18n>comp}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                                <Label id="comp1" wrapping="true" 
+                                    text="{= ${EntityModel>/Header/ZcompRes} === 'C' ? 'Competenza' : ${EntityModel>/Header/ZcompRes} === 'R' ? 'Residui' : ''}"/>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                         </FlexBox> 
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="statoNI" text="{i18n>statoNI}: " design="Bold" class="lbl-header-margin-right"/>
-                                <Label id="statoNI1" text="{EntityModel>/Header/ZcodiStatoniDesc}"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                                <Label id="statoNI" text="{i18n>statoNI}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                                <Label id="statoNI1" text="{EntityModel>/Header/ZcodiStatoniDesc}" wrapping="true"/>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                         </FlexBox> 
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="importoTot" text="{i18n>importoTot}: " design="Bold" class="lbl-header-margin-right"/>
-                                <Label id="importoTot1" text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                                <Label id="importoTot" text="{i18n>importoTot}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                                <Label id="importoTot1" text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}" wrapping="true"/>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                         </FlexBox>  
                     <!-- 4 riga -->
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="Lifnr" text="{i18n>Lifnr}: " design="Bold" class="lbl-header-margin-right"/>
-                                <Label id="Lifnr1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_Lifnr}" wrapping="true"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" linebreak="true" /></layoutData>
+                                <Label id="Lifnr" text="{i18n>Lifnr}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                                <Label id="Lifnr1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_Lifnr}" wrapping="true" />
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" linebreak="true" /></layoutData>
                         </FlexBox>  
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="Nome" text="{i18n>Nome}: " design="Bold" class="lbl-header-margin-right"/>
+                                <Label id="Nome" text="{i18n>Nome}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                                 <Label id="Nome1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_Nome}" wrapping="true"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                         </FlexBox> 
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="Zwels" text="{i18n>Zwels}: " design="Bold" class="lbl-header-margin-right"/>
-                                <Label id="Zwels1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_ZwelsDesc}"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                                <Label id="Zwels" text="{i18n>Zwels}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                                <Label id="Zwels1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_ZwelsDesc}" wrapping="true"/>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                         </FlexBox>
                     <!-- 5 riga -->
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="CentroCosto" text="Centro di Costo: " design="Bold" class="lbl-header-margin-right"/>
+                                <Label id="CentroCosto" text="Centro di Costo: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                                 <Label id="CentroCosto1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_Cdc}" wrapping="true"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" linebreak="true" /></layoutData>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" linebreak="true" /></layoutData>
                         </FlexBox> 
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="ConCoGe" text="Conto Co.Ge.: " design="Bold" class="lbl-header-margin-right"/>
-                                <Label id="ConCoGe1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_Coge}"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12"  /></layoutData>
+                                <Label id="ConCoGe" text="Conto Co.Ge.: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                                <Label id="ConCoGe1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_Coge}" wrapping="true"/>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12"  /></layoutData>
                         </FlexBox>
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="ImpLiq" text="Importo Liquidazione: " design="Bold" class="lbl-header-margin-right"/>
-                                <Label id="ImpLiq1" text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12"  /></layoutData>
+                                <Label id="ImpLiq" text="Importo Liquidazione: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                                <Label id="ImpLiq1" text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}" wrapping="true"/>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12"  /></layoutData>
                         </FlexBox> 
                     <!-- 6 riga -->
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="CodiceGes" text="{i18n>Zcodgest}: " design="Bold" class="lbl-header-margin-right"/>
+                                <Label id="CodiceGes" text="{i18n>Zcodgest}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                                 <Label id="CodiceGes1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_CodiceGestionale}" wrapping="true"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12" linebreak="true" /></layoutData>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12" linebreak="true" /></layoutData>
                         </FlexBox> 
                         <FlexBox alignItems="Start" justifyContent="Start">
-                                <Label id="CausalePagamento" text="{i18n>Zcauspag}: " design="Bold" class="lbl-header-margin-right"/>
+                                <Label id="CausalePagamento" text="{i18n>Zcauspag}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                                 <Label id="CausalePagamento1" text="{EntityModel>/ImpegnoValues/ImpegnoValues_CausalePagamento}" wrapping="true"/>
-                            <layoutData><layout:GridData  span="XL3 L3 M6 S12"  /></layoutData>
+                            <layoutData><layout:GridData  span="XL3 L3 M12 S12"  /></layoutData>
                         </FlexBox>
 
                     <!-- 7 riga -->  
                     
                     <FlexBox alignItems="Start" justifyContent="Start">
-                            <Label id="DataProtocollo" text="{i18n>DataProtocollo}: " design="Bold" class="lbl-header-margin-right"/>
+                            <Label id="DataProtocollo" text="{i18n>DataProtocollo}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                            <!-- <Label id="DataProtocollo1" wrapping="true" 
+                                text="{path:'EntityModel>/ImpegnoValues/ImpegnoValues_DataProtocollo', formatter:'.formatter.convert'}"/> -->
                             <Label id="DataProtocollo1" wrapping="true" 
-                                text="{path:'EntityModel>/ImpegnoValues/ImpegnoValues_DataProtocollo', formatter:'.formatter.convert'}"/>
-                        <layoutData><layout:GridData  span="XL3 L3 M6 S12" linebreak="true" /></layoutData>
+                                text="{EntityModel>/ImpegnoValues/ImpegnoValues_DataProtocollo_Header}"/>
+                        <layoutData><layout:GridData  span="XL3 L3 M12 S12" linebreak="true" /></layoutData>
                     </FlexBox>  
                     <FlexBox alignItems="Start" justifyContent="Start">
-                            <Label id="NProtocollo" text="{i18n>NProtocollo}: " design="Bold" class="lbl-header-margin-right"/>
+                            <Label id="NProtocollo" text="{i18n>NProtocollo}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                             <Label id="NProtocollo1" wrapping="true" text="{EntityModel>/ImpegnoValues/ImpegnoValues_NProtocollo}"/>
-                        <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                        <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                     </FlexBox>  
                     <FlexBox alignItems="Start" justifyContent="Start">
-                            <Label id="CodiceGestionale" text="{i18n>CodiceGestionale}: " design="Bold" class="lbl-header-margin-right"/>
+                            <Label id="CodiceGestionale" text="{i18n>CodiceGestionale}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                             <Label id="CodiceGestionale1" wrapping="true" text="{EntityModel>/ImpegnoValues/ImpegnoValues_CodiceGestionale}"/>
-                        <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                        <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                     </FlexBox> 
                     <FlexBox alignItems="Start" justifyContent="Start">
-                            <Label id="DescrizioneCodGest" text="{i18n>DescrizioneCodGest}: " design="Bold" class="lbl-header-margin-right"/>
+                            <Label id="DescrizioneCodGest" text="{i18n>DescrizioneCodGest}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                             <Label id="DescrizioneCodGest1" wrapping="true" text="{EntityModel>/ImpegnoValues/ImpegnoValues_Descrizione}"/>
-                        <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                        <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                     </FlexBox> 
 
                     <!-- 8 riga -->                    
                     <FlexBox alignItems="Start" justifyContent="Start">
                             <Label id="LocPagamento" text="{i18n>LocPagamento}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                             <Label id="LocPagamento1" wrapping="true" text="{EntityModel>/ImpegnoValues/ImpegnoValues_LocalitaPagamento}"/>
-                        <layoutData><layout:GridData  span="XL3 L3 M6 S12" linebreak="true" /></layoutData>
+                        <layoutData><layout:GridData  span="XL3 L3 M12 S12" linebreak="true" /></layoutData>
                     </FlexBox>  
                     <FlexBox alignItems="Start" justifyContent="Start">
                             <Label id="DataEsigibilita" text="{i18n>DataEsigibilita}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                            <!-- <Label id="DataEsigibilita1" wrapping="true" 
+                                text="{path:'EntityModel>/ImpegnoValues/ImpegnoValues_DataEsigibilita', formatter:'.formatter.convert'}"/> -->
                             <Label id="DataEsigibilita1" wrapping="true" 
-                                text="{path:'EntityModel>/ImpegnoValues/ImpegnoValues_DataEsigibilita', formatter:'.formatter.convert'}"/>
-                        <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                                text="{EntityModel>/ImpegnoValues/ImpegnoValues_DataEsigibilita_Header}"/>
+                        <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                     </FlexBox> 
                     <FlexBox alignItems="Start" justifyContent="Start">
                             <Label id="ZonaIntervento" text="{i18n>ZonaIntervento}: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                             <Label id="ZonaIntervento1" wrapping="true" text="{EntityModel>/ImpegnoValues/ImpegnoValues_ZonaIntervento}"/>
-                        <layoutData><layout:GridData  span="XL3 L3 M6 S12" /></layoutData>
+                        <layoutData><layout:GridData  span="XL3 L3 M12 S12" /></layoutData>
                     </FlexBox> 
                 </layout:Grid>
-
-                <!-- <layout:HorizontalLayout allowWrapping="true">
-                    <layout:VerticalLayout class="sapUiMediumMarginEnd"> -->
-                        <!-- <HBox id="idHBox2">
-                            <VBox id="idVBox14" class="sapUiSmallMargin" width="auto">
-                                <Label id="numNI" text="{i18n>ProgressivoNI}" design="Bold"/>
-                                <Text id="numNI1"/>
-                            </VBox>
-                            <VBox id="idVBox15" class="sapUiSmallMargin" width="auto">
-                                <Label id="dataReg" text="{i18n>Data}" design="Bold"/>
-                                <Text id="dataReg1" wrapping="true"/>
-                            </VBox>
-                        </HBox> -->
-                        <!-- <HBox id="idHBox3"> -->
-                            <!-- <VBox id="idVBox17" class="sapUiSmallMargin" width="auto">
-                                <Label id="SARW2" text="{i18n>SAR}" design="Bold"/>
-                                <Text id="SARWH2"/>
-                            </VBox> -->
-                            <!-- <VBox id="idVBox18" class="sapUiSmallMargin" width="auto">
-                                <Label id="pos_FinW2" text="{i18n>PF}" design="Bold"/>
-                                <Text id="pos_FinWH2"/>
-                            </VBox> -->
-                            <!-- <VBox id="idVBox19" class="sapUiSmallMargin" width="auto">
-                                <Label id="oggSpesa" text="{i18n>oggSpesa}" design="Bold"/>
-                                <Text id="oggSpesa1"/>
-                            </VBox> -->
-                        <!-- </HBox> -->
-                        <!-- <HBox id="idHBox4"> -->
-                            <!-- <VBox id="idVBox20" class="sapUiSmallMargin" width="auto">
-                                <Label id="mese" text="{i18n>Mese}" design="Bold"/>
-                                <Text id="mese1"/>
-                            </VBox> -->
-                            <!-- <VBox id="idVBox22" class="sapUiSmallMargin" width="auto">
-                                <Label id="comp" text="{i18n>comp}" design="Bold"/>
-                                <Text id="comp1"/>
-                            </VBox> -->
-                            <!-- <VBox id="idVBox21" class="sapUiSmallMargin" width="auto">
-                                <Label id="statoNI" text="{i18n>statoNI}" design="Bold"/>
-                                <Text id="statoNI1"/>
-                            </VBox> -->
-                            <!-- <VBox id="idVBox23" class="sapUiSmallMargin" width="auto">
-                                <Label id="importoTot" text="{i18n>importoTot}" design="Bold"/>
-                                <Text id="importoTot1"/>
-                            </VBox> -->
-                        <!-- </HBox> -->
-                        <!-- <HBox id="idHBox5">
-                            <VBox id="idVBox24" class="sapUiSmallMargin" width="auto">
-                                <Label id="Lifnr" text="{i18n>Lifnr}" design="Bold"/>
-                                <Text id="Lifnr1"/>
-                            </VBox>
-                            <VBox id="idVBox25" class="sapUiSmallMargin" width="auto">
-                                <Label id="Nome" text="{i18n>Nome}" design="Bold"/>
-                                <Text id="Nome1"/>
-                            </VBox>
-                            <VBox id="idVBox26" class="sapUiSmallMargin" width="auto">
-                                <Label id="Zwels" text="{i18n>Zwels}" design="Bold"/>
-                                <Text id="Zwels1"/>
-                            </VBox>
-                        </HBox> -->
-                        <!-- <HBox id="idHBox6">
-                            <VBox id="idVBox27" class="sapUiSmallMargin" width="auto">
-                                <Label id="CentroCosto" text="Centro di Costo" design="Bold"/>
-                                <Text id="CentroCosto1"/>
-                            </VBox>
-                            <VBox id="idVBox28" class="sapUiSmallMargin" width="auto">
-                                <Label id="ConCoGe" text="Conto Co.Ge." design="Bold"/>
-                                <Text id="ConCoGe1"/>
-                            </VBox>
-                            <VBox id="idVBox29" class="sapUiSmallMargin" width="auto">
-                                <Label id="ImpLiq" text="Importo Liquidazione" design="Bold"/>
-                                <Text id="ImpLiq1"/>
-                            </VBox>
-                        </HBox> -->
-                        <!-- <HBox>
-                            <VBox id="idVBox31" class="sapUiSmallMargin" width="auto">
-                                <Label id="CodiceGes" text="{i18n>Zcodgest}" design="Bold"/>
-                                <Text id="CodiceGes1"/>
-                            </VBox>
-                            <VBox id="idVBox30" class="sapUiSmallMargin" width="auto">
-                                <Label id="CausalePagamento" text="{i18n>Zcauspag}" design="Bold"/>
-                                <Text id="CausalePagamento1"/>
-                            </VBox>
-                        </HBox> -->
-
-                    <!-- </layout:VerticalLayout>
-                </layout:HorizontalLayout> -->
-                <!-- <OverflowToolbar>
-                    <ToolbarSpacer />
-                    <Button text="Associa Impegno" type="Emphasized" press="pressAssociaImpegno" enabled="false" id="pressAssImpegno"/>
-                    <Button text="Rettifica NI" type="Emphasized" press="pressRettificaNI" enabled="false" id="rettificaNI"/>
-                </OverflowToolbar> -->
             </f:DynamicPageHeader>
         </f:header>
         <f:content>

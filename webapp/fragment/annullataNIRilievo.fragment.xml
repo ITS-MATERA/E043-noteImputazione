@@ -1,24 +1,12 @@
 <core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:fb="sap.ui.comp.filterbar"
-    xmlns:u="sap.ui.unified"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:layout="sap.ui.layout"
-    xmlns:form="sap.ui.layout.form"
-    xmlns:f="sap.f"
     xmlns:core="sap.ui.core"
-    xmlns:menu="sap.m.MenuItem"
-    xmlns:menBtn="sap.m.Menu"
     height="100%">
-    <Table class="sapUiSizeCompact" id="annullataNIRilievo" includeItemInSelection="true" items="{annullataNIRilievo>/}" visible="true">
-    <!-- <headerToolbar>
-            <OverflowToolbar>
-                <content>
-                    <ToolbarSpacer />
-                    <Button type="Emphasized" text="Modifica Dettaglio NI" enabled="false" press="onEditRow" id="editRow" />
-                </content>
-            </OverflowToolbar>
-        </headerToolbar> -->
+    <Table class="sapUiSizeCompact" id="annullataNIRilievo" includeItemInSelection="true" 
+        items="{
+                path: 'EntityModel>/PositionNI'
+            }"
+        >
         <columns>
             <Column width="auto" hAlign="Left">
                 <Label text="Numero NI" />
@@ -46,16 +34,14 @@
             </Column>
         </columns>
         <ColumnListItem>
-            <Text text="{annullataNIRilievo>ZchiaveSubni}" />
-            <Text text="{annullataNIRilievo>ZcodIsin}" />
-            <Text text="{annullataNIRilievo>Ztipo}" />
-            <Text text="{annullataNIRilievo>Zdescrizione}" />
-            <Text text="{path: 'annullataNIRilievo>ZdataPag', formatter:'.formatter.convert'}" />
-            <!-- <Text text="{annullataNIRilievo>ZimpoTitolo}" />
-            <Text text="{annullataNIRilievo>ZimpoRes}" /> -->
-            <Text text="{path:'annullataNIRilievo>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
-            <Text text="{path:'annullataNIRilievo>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
-            <Text text="{annullataNIRilievo>ZCodCla}"/>
+            <Text text="{EntityModel>ZchiaveSubni}" />
+            <Text text="{EntityModel>ZcodIsin}" />
+            <Text text="{EntityModel>Ztipo}" />
+            <Text text="{EntityModel>Zdescrizione}" />
+            <Text text="{path: 'EntityModel>ZdataPag', formatter:'.formatter.convert'}" />
+            <Text text="{path:'EntityModel>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
+            <Text text="{path:'EntityModel>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
+            <Text text="{EntityModel>ZCodCla}"/>
         </ColumnListItem>
     </Table>
 </core:FragmentDefinition>

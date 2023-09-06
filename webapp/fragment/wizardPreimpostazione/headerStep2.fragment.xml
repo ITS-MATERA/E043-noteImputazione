@@ -6,34 +6,26 @@
     <VBox visible="{componentModel>/headerStep2Visible}">
          <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
            <Text text="Dati NI" />
-           <HBox> 
-                <Label text="Esercizio di gestione: " design="Bold" class="lbl-header-margin-right" wrapping="true" />
-                <Label text="{preimpostazioneModel>/ZgjahrEng}"/> 
-                <layoutData>
-                    <l:GridData span="XL3 L3 M12 S12" />
-                </layoutData>
-           </HBox> 
-           <HBox> 
-                <Label text="Mese: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
-                <Label text="{preimpostazioneModel>/meseDescrizione}"/> 
-                <layoutData>
-                    <l:GridData span="XL3 L3 M12 S12" />
-                </layoutData>
-           </HBox> 
-            <HBox> 
-                <Label text="Competenza/Residui: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
-                <Label text="{preimpostazioneModel>/competenzaDescrizione}"/> 
-                <layoutData>
-                    <l:GridData span="XL3 L3 M12 S12" />
-                </layoutData>
-           </HBox> 
-           <HBox> 
-                <Label text="N.righe di rendicontazione in preimpostazione: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
-                <Label text="{preimpostazioneModel>/rendicontazioneRowNum} per un totale di {preimpostazioneModel>/rendicontazioneSumRowSelectedString}"/> 
-                <layoutData>
-                    <l:GridData span="XL6 L6 M12 S12" linebreak="true" />
-                </layoutData>
-           </HBox> 
+           <FlexBox alignItems="Start" justifyContent="Start">
+              <Label text="Esercizio di gestione: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+              <Label text="{preimpostazioneModel>/ZgjahrEng}" wrapping="true"/> 
+              <layoutData><l:GridData span="XL3 L3 M12 S12" /></layoutData>                
+           </FlexBox>     
+           <FlexBox alignItems="Start" justifyContent="Start">
+              <Label text="Mese: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+              <Label text="{preimpostazioneModel>/meseDescrizione}" wrapping="true"/> 
+              <layoutData><l:GridData span="XL3 L3 M12 S12" indent="XL2 L2" /></layoutData>
+           </FlexBox> 
+            <FlexBox> 
+              <Label text="Competenza/Residui: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+              <Label text="{preimpostazioneModel>/competenzaDescrizione}" wrapping="true"/> 
+              <layoutData><l:GridData span="XL3 L3 M12 S12" /></layoutData>
+           </FlexBox> 
+           <FlexBox> 
+              <Label text="N.righe di rendicontazione in preimpostazione: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+              <Label text="{preimpostazioneModel>/rendicontazioneRowNum} per un totale di {preimpostazioneModel>/rendicontazioneSumRowSelectedString}" wrapping="true"/> 
+              <layoutData><l:GridData span="XL5 L5 M12 S12" linebreak="true" /></layoutData>
+           </FlexBox> 
         </l:Grid> 
     </VBox>
 </core:FragmentDefinition>

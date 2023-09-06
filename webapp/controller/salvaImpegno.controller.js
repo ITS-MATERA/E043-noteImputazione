@@ -431,7 +431,10 @@ sap.ui.define([
                     ImpegnoValues_LocalitaPagamento: impegnoValues.LocalitaPagamento,
                     ImpegnoValues_CogeDesc: impegnoValues.CogeDesc,
                     ImpegnoValues_CdcDesc: impegnoValues.CdcDesc,
-                    ImpegnoValues_DataEsigibilita: impegnoValues.DataEsigibilita
+                    ImpegnoValues_DataEsigibilita: impegnoValues.DataEsigibilita,
+
+                    ImpegnoValues_DataProtocollo_Header: impegnoValues.DataProtocollo ? formatter.convert(impegnoValues.DataProtocollo) : null,
+                    ImpegnoValues_DataEsigibilita_Header: impegnoValues.DataEsigibilita ? formatter.convert(impegnoValues.DataEsigibilita) : null
                 }
                 self.getView().getModel(MODEL_ENTITY).setProperty("/ImpegnoValues", header2);
             },
@@ -458,7 +461,9 @@ sap.ui.define([
                     positions[i].Saknr = impegnoValues.Coge;
                     positions[i].Zcodgest = impegnoValues.CodiceGestionale;
                     positions[i].Zcauspag = impegnoValues.CausalePagamento;
-                    positions[i].Zdataesig = impegnoValues.DataEsigibilita;
+                    positions[i].Zdataesig = impegnoValues.DataEsigibilita;                    
+                    positions[i].Zlocpag = impegnoValues.LocalitaPagamento;
+                    positions[i].Zzonaint = impegnoValues.ZonaIntervento;
                     deepEntity.PositionNISet.push(positions[i]);
                 }
 

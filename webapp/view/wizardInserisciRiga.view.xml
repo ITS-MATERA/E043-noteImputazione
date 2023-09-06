@@ -27,14 +27,14 @@
                                                 <Label text="Esercizio di Gestione:" required="true" />
                                                 <Input id="es_gestione" width="100%" value="{EntityModel>/Header/Gjahr}" enabled="false" /> 
                                                 <layoutData>
-                                                    <l:GridData span="XL6 L6 M6 S6" />
+                                                    <l:GridData span="XL6 L6 M12 S6" />
                                                 </layoutData>
                                             </VBox>                                            
                                             <VBox>
                                                 <Label text="Mese:" required="true" />
                                                 <Input id="mese" value="{path: 'EntityModel>/Header/Zmese', formatter:'.formatter.getMonthName'}" enabled="false"/>                                                
                                                 <layoutData>
-                                                    <l:GridData span="XL3 L3 M6 S6" />
+                                                    <l:GridData span="XL3 L3 M12 S6" />
                                                 </layoutData>
                                             </VBox>
                                             <VBox>
@@ -52,7 +52,7 @@
                                                     </suggestionItems>
                                                 </Input>
                                                 <layoutData>
-                                                    <l:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                                                    <l:GridData span="XL3 L3 M12 S12" linebreak="true"/>
                                                 </layoutData>
                                             </VBox>
                                             <VBox>
@@ -64,7 +64,7 @@
                                                     <core:ListItem key="{EntityModel>ZhfSottotipo}" text="{EntityModel>Zsottotipo}" additionalText = "{EntityModel>ZcodSottotipo}"/>                                                    
                                                 </ComboBox>
                                                 <layoutData>
-                                                    <l:GridData span="XL3 L3 M6 S12" />
+                                                    <l:GridData span="XL3 L3 M12 S12" />
                                                 </layoutData>
                                             </VBox>
                                             <VBox>
@@ -73,7 +73,7 @@
                                                     <core:Item key="{EntityModel>ZcompRes}" text="{EntityModel>Descrizione}"/>
                                                 </ComboBox>
                                                 <layoutData>
-                                                    <l:GridData span="XL3 L3 M6 S12" />
+                                                    <l:GridData span="XL3 L3 M12 S12" />
                                                 </layoutData>
                                             </VBox> 
 

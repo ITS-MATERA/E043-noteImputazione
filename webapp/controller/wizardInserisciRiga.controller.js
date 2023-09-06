@@ -700,15 +700,21 @@ sap.ui.define([
                   ZchiaveNi: header.ZchiaveNi,             
                   ZidNi: header.ZidNi,                     
                   ZRagioCompe: header.ZRagioCompe,         
-                  ZposNi: item.ZposNi,                        
-                  ZgjahrEng: header.Gjahr,
+                  ZposNi: item.ZposNi,    
+                  
                   Ztipo: item.Ztipo,
                   Zsottotipo: item.Zsottotipo,
                   ZcompRes: item.ZcompRes,
                   ZimpoTitolo: item.ZimpoTitolo,
                   Zdescrizione: item.Zdescrizione, 
                   ZcodIsin: item.ZcodIsin,        
-                  ZdataPag: new Date(item.ZdataPag)
+                  ZdataPag: new Date(item.ZdataPag),
+                  
+                  Ztassoint: item.Ztasso,
+                  ZdataInizio: item.ZdataInizio,
+                  Iban: item.ZibanAdd,  
+                  Zfbdt: item.ZdataScad,
+                  Zidentificativo: item.Zidentificativo
                 });
               }
 
@@ -720,18 +726,26 @@ sap.ui.define([
                     if (oAction === sap.m.MessageBox.Action.YES) {
                         oDataModel.create("/DeepPositionNISet", deepEntity, {
                             success: function (result) {
-                                MessageBox.success("Nota di Imputazione " + header.ZchiaveNi + " rettificata correttamente", {
-                                    title: "Esito Operazione",
+                                if(result.Msgty === 'S'){
+                                    MessageBox.success("Nota di Imputazione " + header.ZchiaveNi + " rettificata correttamente", {
+                                        title: "Esito Operazione",
+                                        actions: [sap.m.MessageBox.Action.OK],
+                                        emphasizedAction: MessageBox.Action.OK,
+                                        onClose: function (oAction) {
+                                            if (oAction === sap.m.MessageBox.Action.OK) {
+                                                self.resetModelsForExitWizard();
+                                                self.getOwnerComponent().getRouter().navTo("View1");
+                                                location.reload();
+                                            }
+                                        }
+                                    });
+                                }
+                                else{
+                                  MessageBox.error(result.Message, {
                                     actions: [sap.m.MessageBox.Action.OK],
                                     emphasizedAction: MessageBox.Action.OK,
-                                    onClose: function (oAction) {
-                                        if (oAction === sap.m.MessageBox.Action.OK) {
-                                            self.resetModelsForExitWizard();
-                                            self.getOwnerComponent().getRouter().navTo("View1");
-                                            location.reload();
-                                        }
-                                    }
-                                })
+                                  });
+                                }
                             },
                             error: function (err) {
                                 console.log(err);

@@ -16,17 +16,6 @@
                 path: 'EntityModel>/HeaderSalva'
             }"
     visible="true">
-        <!-- <headerToolbar>
-            <OverflowToolbar>
-                <content>
-                    <ToolbarSpacer />
-                    <Button type="Emphasized" text="Modifica Importo NI" enabled="false" press="onEditImporto" id="editImporto" />
-                    <Button type="Emphasized" text="Modifica Dettaglio NI" enabled="false" press="onEditRow" id="editRow" />
-                    <Button icon="sap-icon://add" type="Emphasized" text="Inserisci riga" enabled="false" press="onAddRow" id="addRow" />
-                    <Button icon="sap-icon://less" type="Emphasized" text="Cancella riga" enabled="false" press="onDeleteRow" id="deleteRow" />
-                </content>
-            </OverflowToolbar>
-        </headerToolbar> -->
         <columns>
             <Column width="auto" hAlign="Left">
                 <Label text="Codice ISIN" />

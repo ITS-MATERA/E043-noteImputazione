@@ -11,66 +11,50 @@
         <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
             <Text text="Dati NI" />
             <!-- 1 riga -->
-           <HBox> 
-                <Label text="Esercizio di gestione: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
-                <Label text="{preimpostazioneModel>/ZgjahrEng}"/> 
-                <layoutData>
-                    <l:GridData span="XL4 L4 M12 S12" />
-                </layoutData>
-           </HBox> 
-           <HBox> 
-                <Label text="Mese: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
-                <Label text="{preimpostazioneModel>/meseDescrizione}"/> 
-                <layoutData>
-                    <l:GridData span="XL3 L3 M12 S12" />
-                </layoutData>
-           </HBox> 
-           <HBox> 
-                <Label text="Competenza/Residui: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
-                <Label text="{preimpostazioneModel>/competenzaDescrizione}"/> 
-                <layoutData>
-                    <l:GridData span="XL3 L3 M12 S12" />
-                </layoutData>
-           </HBox> 
+           <FlexBox> 
+              <Label text="Esercizio di gestione: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+              <Label text="{preimpostazioneModel>/ZgjahrEng}"/> 
+              <layoutData><l:GridData span="XL3 L3 M12 S12" /></layoutData> 
+           </FlexBox> 
+           <FlexBox> 
+              <Label text="Mese: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+              <Label text="{preimpostazioneModel>/meseDescrizione}"/> 
+              <layoutData><l:GridData span="XL3 L3 M12 S12" indent="XL2 L2" /></layoutData>
+           </FlexBox> 
+           <FlexBox> 
+              <Label text="Competenza/Residui: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+              <Label text="{preimpostazioneModel>/competenzaDescrizione}"/> 
+              <layoutData><l:GridData span="XL3 L3 M12 S12" /></layoutData>
+           </FlexBox> 
            <!-- 2 riga -->
-           <HBox> 
+           <FlexBox> 
                 <Label text="N.righe di rendicontazione in preimpostazione: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                 <Label text="{preimpostazioneModel>/rendicontazioneRowNum} per un totale di {preimpostazioneModel>/rendicontazioneSumRowSelectedString}"/> 
-                <layoutData>
-                    <l:GridData span="XL4 L4 M12 S12" linebreak="true"/>
-                </layoutData>
-           </HBox> 
-           <HBox> 
+                <layoutData><l:GridData span="XL5 L5 M12 S12" linebreak="true" /></layoutData>
+           </FlexBox> 
+           <FlexBox> 
                 <Label text="Struttura amministrativa Responsabile: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                 <zcontrollinkSar:LinkSar id="linkSarBilancio" anno="{preimpostazioneModel>/ZgjahrEng}" eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" 
                 versione="D" bilancio="" fictr="{preimpostazioneModel>/fistl}" datbis="99991231" text="{preimpostazioneModel>/fistl}"/>
-                <layoutData>
-                    <l:GridData span="XL3 L3 M12 S12" />
-                </layoutData>
-           </HBox> 
-           <HBox> 
+                <layoutData><l:GridData span="XL3 L3 M12 S12" /></layoutData> 
+           </FlexBox> 
+           <FlexBox> 
                 <Label text="Posizione Finanziaria: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                 <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesa" anno="{preimpostazioneModel>/ZgjahrEng}" eos="S" fikrs="S001" fase="GEST" reale="R" 
                 versione="D" fipex="{preimpostazioneModel>/fipex}" datbis="99991231" text="{preimpostazioneModel>/fipex}" semanticObject="ESAMINAMODIFICA"/>
-                <layoutData>
-                    <l:GridData span="XL3 L3 M12 S12" />
-                </layoutData>
-           </HBox> 
+                <layoutData><l:GridData span="XL3 L3 M12 S12" /></layoutData> 
+           </FlexBox> 
            <!-- 3 riga -->
-           <HBox> 
+           <FlexBox> 
                 <Label text="Descrizione Capitolo: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                 <Label text="{preimpostazioneModel>/descrizioneCapitolo}" wrapping="true"/> 
-                <layoutData>
-                    <l:GridData span="XL4 L4 M12 S12" linebreak="true"/>
-                </layoutData>
-           </HBox> 
-           <HBox> 
+                <layoutData><l:GridData span="XL5 L5 M12 S12" linebreak="true" /></layoutData>
+           </FlexBox> 
+           <FlexBox> 
                 <Label text="Descrizione PG: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                 <Label text="{preimpostazioneModel>/descrizionePG}" wrapping="true"/> 
-                <layoutData>
-                    <l:GridData span="XL3 L3 M12 S12" />
-                </layoutData>
-           </HBox> 
+                <layoutData><l:GridData span="XL3 L3 M12 S12" /></layoutData>
+           </FlexBox> 
         </l:Grid>
     </VBox>
 </core:FragmentDefinition>

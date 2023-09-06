@@ -568,7 +568,7 @@ sap.ui.define(
                 Funzionalita: 'REVOCAINVIOFIRMA',
               };  
 
-              MessageBox.warning("Sei sicuro di voler revocare la Nota d'Imputazione n° " + header.ZchiaveNi + "?", {
+              MessageBox.warning("Sei sicuro di voler revocare l'invio alla firma della Nota d'Imputazione n° " + header.ZchiaveNi + "?", {
                 title: "Revoca Invio Firma",
                 actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
                 emphasizedAction: MessageBox.Action.YES,

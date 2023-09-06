@@ -225,7 +225,7 @@
                             </fb:FilterGroupItem>
                             <fb:FilterGroupItem id="numProtocolloRGS" visibleInFilterBar="true" name="numProtocolloRGS" groupName="Gruppo4" label="{i18n>numProtocolloRGS}">
                                 <fb:control>
-                                    <Input id="numProtocolloRGS1" showValueHelp="false" maxLength="20" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'NProtocolloRag' }}">
+                                    <Input id="numProtocolloRGS1" showValueHelp="false" maxLength="7" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'NProtocolloRag' }}">
                                         <core:Item key="{NProtocolloRag}" text="{NProtocolloRag}"/>
                                     </Input>
                                 </fb:control>

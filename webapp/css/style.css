@@ -16,3 +16,7 @@
 .lbl-header-margin-right{
     margin-right: 0.2rem!important;
 }
+
+.text-overflow > div{
+    overflow: auto!important;
+}
