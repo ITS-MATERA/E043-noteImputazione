@@ -398,9 +398,11 @@ sap.ui.define(
                                 actions: [sap.m.MessageBox.Action.OK],
                                 emphasizedAction: MessageBox.Action.OK,
                               });
+                              self.oSubmitDialog.getContent()[0].setValue(null)
+                              return false;
                             }
                             if (data.Msgty == 'S') {
-                                MessageBox.success("Nota di Imputazione n°"+header.ZchiaveNi+" richiamata correttamente", {
+                                MessageBox.success("Nota di Imputazione n°" + deepEntity.HeaderNISet.ZchiaveNi + " richiamata correttamente", {
                                   title: "Esito Operazione",
                                   actions: [sap.m.MessageBox.Action.OK],
                                   emphasizedAction: MessageBox.Action.OK,
@@ -409,6 +411,7 @@ sap.ui.define(
                                         self.getView().getModel(MODEL_ENTITY).setProperty("/Header",null);
                                         self.getView().getModel(MODEL_ENTITY).setProperty("/RichiamaNI",[]);
                                         self.getOwnerComponent().getRouter().navTo("View1");
+                                        self.oSubmitDialog.getContent()[0].setValue(null)
                                         location.reload();
                                       }
                                   }
@@ -417,7 +420,8 @@ sap.ui.define(
                           },
                           error: function (e) {
                             console.log(e);//TODO:da canc
-                            MessageBox.error("Operazione non eseguita");
+                            MessageBox.error("Operazione non eseguita");      
+                            self.oSubmitDialog.getContent()[0].setValue(null)                      
                           }
                         });
                         this.oSubmitDialog.close();

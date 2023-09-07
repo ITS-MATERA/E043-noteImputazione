@@ -190,9 +190,9 @@
                                         <core:Item key=""/>
                                     </Input>
                                     <Label text="N. Protocollo RGS"/>
-                                    <Input id="numProtocolloRGS" width="100%"  value="{EntityModel>/Rilievi/NProtocolloRag}">
+                                    <Input id="numProtocolloRGS" width="100%"  value="{EntityModel>/Rilievi/NProtocolloRag}"
+                                    enabled="{= ${EntityModel>/Header/ZcodiStatoni} === '07' ? false : true }">
                                     </Input>
-                                    <!-- enabled="false" -->
                                 </VBox>
                                 <VBox>
                                     <Label text="Cognome:" required="true" />
@@ -201,16 +201,15 @@
                                     <Label text="Data Protocollo RGS:" />
                                     <DatePicker id="dataProtocolloRGS" width="100%" valueFormat="yyyy-MM-dd" 
                                         displayFormat="dd.MM.yyyy" 
-                                        value="{EntityModel>/Rilievi/ZdataProtRag}">
+                                        value="{EntityModel>/Rilievi/ZdataProtRag}"
+                                        enabled="{= ${EntityModel>/Header/ZcodiStatoni} === '07' ? false : true }">
                                     </DatePicker>
-                                    <!-- enabled="false" -->
                                 </VBox>
                                 <VBox>
                                     <Label text="Data Rilievo:" required="true" />
-                                    <DatePicker id="dataRilievo" width="100%" 
+                                    <DatePicker id="dataRilievo" width="100%" enabled="{= ${EntityModel>/Header/ZcodiStatoni} === '07' ? false : true }"
                                         displayFormat="dd.MM.yyyy">
                                     </DatePicker>
-                                    <!-- enabled="false" -->
                                 </VBox>
                                 <VBox>
                                     <Label text="Motivazione Rilievo:" required="true" />

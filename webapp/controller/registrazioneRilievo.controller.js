@@ -527,7 +527,7 @@ sap.ui.define(
 
               self.getOwnerComponent().getModel().read(path, {
                 success: function (data) {
-                  data["NProtocolloRag"] = self.getView().getModel(MODEL_ENTITY).getProperty("/Header/NProtocolloRag");
+                  data["NProtocolloRag"] = self.getView().getModel(MODEL_ENTITY).getProperty("/Header/NProtocolloRag") === '0000000' ? null :  self.getView().getModel(MODEL_ENTITY).getProperty("/Header/NProtocolloRag");
                   data["ZdataProtRag"] = self.getView().getModel(MODEL_ENTITY).getProperty("/Header/ZdataProtRag") ? 
                     self.formatter.convert(self.getView().getModel(MODEL_ENTITY).getProperty("/Header/ZdataProtRag")): null;
 
@@ -677,11 +677,13 @@ sap.ui.define(
                     ZidNi: header.ZidNi,
                     ZchiaveNi: header.ZchiaveNi,
                     ZRagioCompe: header.ZRagioCompe,
-                    ZdatRilievo: self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") && 
+                    ZdatRilievo:dataRilievoControl.getDateValue() && dataRilievoControl.getDateValue() !== null && dataRilievoControl.getDateValue() !== "" ?
+                      self.formatter.formateDateForDeep(dataRilievoControl.getDateValue()) : null,
+                    /*ZdatRilievo: self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") && 
                           self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") !== null && 
                           self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") !== "" ?
                           self.formatter.formateDateForDeep(self.getView().byId("dataRilievo").getDateValue()):
-                          null,
+                          null,*/
                     Zmotrilievo: self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/Zmotrilievo")
                   }
                   break;
@@ -704,11 +706,13 @@ sap.ui.define(
                     ZidNi: header.ZidNi,
                     ZchiaveNi: header.ZchiaveNi,
                     ZRagioCompe: header.ZRagioCompe,
-                    ZdatRilievo: self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") && 
-                          self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") !== null && 
-                          self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") !== "" ?
-                          self.formatter.formateDateForDeep(self.getView().byId("dataRilievo").getDateValue()):
-                          null,
+                    ZdatRilievo:dataRilievoControl.getDateValue() && dataRilievoControl.getDateValue() !== null && dataRilievoControl.getDateValue() !== "" ?
+                      self.formatter.formateDateForDeep(dataRilievoControl.getDateValue()) : null,
+                    // ZdatRilievo: self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") && 
+                    //       self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") !== null && 
+                    //       self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") !== "" ?
+                    //       self.formatter.formateDateForDeep(self.getView().byId("dataRilievo").getDateValue()):
+                    //       null,
                     Zmotrilievo: self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/Zmotrilievo")
                   }
                   break;
@@ -725,11 +729,13 @@ sap.ui.define(
                           self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdataProtRag") !== "" ?
                           self.formatter.formateDateForDeep(self.getView().byId("dataProtocolloRGS").getDateValue()):
                           null;
-                  deepEntity.RilievoNiSet.ZdatRilievo= self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") && 
-                          self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") !== null && 
-                          self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") !== "" ?
-                          self.formatter.formateDateForDeep(self.getView().byId("dataRilievo").getDateValue()):
-                          null;
+                  deepEntity.RilievoNiSet.ZdatRilievo= dataRilievoControl.getDateValue() && dataRilievoControl.getDateValue() !== null && dataRilievoControl.getDateValue() !== "" ?
+                          self.formatter.formateDateForDeep(dataRilievoControl.getDateValue()) : null;      
+                  // deepEntity.RilievoNiSet.ZdatRilievo= self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") && 
+                  //         self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") !== null && 
+                  //         self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/ZdatRilievo") !== "" ?
+                  //         self.formatter.formateDateForDeep(self.getView().byId("dataRilievo").getDateValue()):
+                  //         null;
                   deepEntity.RilievoNiSet.Zmotrilievo = self.getView().getModel(MODEL_ENTITY).getProperty("/Rilievi/Zmotrilievo");
                   break;
                 default:

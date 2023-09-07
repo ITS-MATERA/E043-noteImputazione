@@ -723,14 +723,13 @@ sap.ui.define(
                 emphasizedAction: MessageBox.Action.YES,
                 onClose: function (oAction) {
                   if (oAction === sap.m.MessageBox.Action.YES) {
-                    var oModel = that.getOwnerComponent().getModel();
+                    var oModel = self.getOwnerComponent().getModel();
                     var deepEntity = {
-                      ZchiaveNi: header.ZchiaveNi,
-                      ZcodiStatoni:"06",
+                      ZchiaveNi: header.ZchiaveNi,                      
                       HeaderNISet: header,
                       Funzionalita: 'REVOCAVALIDAZIONE',
                     };
-
+                    deepEntity.HeaderNISet.ZcodiStatoni = "06";
                     delete deepEntity.HeaderNISet.ZcompRes; 
                     delete deepEntity.HeaderNISet.LifnrDesc;
                     delete deepEntity.HeaderNISet.Lifnr;                                
@@ -753,7 +752,7 @@ sap.ui.define(
                           })
                         }
                         if (data.Msgty == 'S') {
-                          MessageBox.success("Validazione Nota di Imputazione n." + header.ZchiaveNi + "revocata correttamente", {
+                          MessageBox.success("Validazione Nota di Imputazione n." + header.ZchiaveNi + " revocata correttamente", {
                             title: "Esito Operazione",
                             actions: [sap.m.MessageBox.Action.OK],
                             emphasizedAction: MessageBox.Action.OK,
@@ -893,6 +892,8 @@ sap.ui.define(
                                     actions: [sap.m.MessageBox.Action.OK],
                                     emphasizedAction: MessageBox.Action.OK,
                                 })
+                                self.oSubmitDialog.getContent()[0].setValue(null);
+                                return false;
                             }
                             if (data.Msgty == 'S') {
                                 MessageBox.success("Nota di Imputazione n°" + header.ZchiaveNi + " richiamata correttamente", {
@@ -902,6 +903,7 @@ sap.ui.define(
                                     onClose: function (oAction) {
                                         if (oAction === sap.m.MessageBox.Action.OK) {
                                             this.getOwnerComponent().getRouter().navTo("View1");
+                                            self.oSubmitDialog.getContent()[0].setValue(null)
                                             location.reload();
                                         }
                                     }
@@ -911,6 +913,7 @@ sap.ui.define(
                         error: function (e) {
                             console.log(e);//TODO:da canc
                             MessageBox.error("Operazione non eseguita");
+                            self.oSubmitDialog.getContent()[0].setValue(null)
                         }
                       });
                     }.bind(this)

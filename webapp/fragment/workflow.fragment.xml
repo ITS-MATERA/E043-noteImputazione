@@ -16,7 +16,13 @@
 		<content>
 			<TimelineItem
 					id="idTemplateItem"
-					dateTime="{temp>DataStato}"
+					dateTime="{
+						'path': 'temp>DataStato',
+						'type': 'sap.ui.model.type.Date',
+						'formatOptions': {
+							'pattern': 'dd.MM.yyyy HH.mm'
+						}
+					}"					
 					text="{temp>ZstatoDescNi} da {temp>UtenteDescr}" 
 					userName="{temp>ZstatoDescNi}"
 					icon="{= ${temp>IsLast} === 'X' ? 'sap-icon://favorite' : 'sap-icon://person-placeholder' }">
@@ -24,6 +30,7 @@
 		</content>
 	</Timeline>
 </core:FragmentDefinition>
+<!-- dateTime="{temp>DataStato}" -->
 <!-- text="Registrato dall'utente {temp>UtenteDescr}"
 title="{temp>ZstatoDescNi}"
  -->

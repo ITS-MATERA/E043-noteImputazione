@@ -433,8 +433,8 @@ sap.ui.define([
                     ImpegnoValues_CdcDesc: impegnoValues.CdcDesc,
                     ImpegnoValues_DataEsigibilita: impegnoValues.DataEsigibilita,
 
-                    ImpegnoValues_DataProtocollo_Header: impegnoValues.DataProtocollo ? formatter.convert(impegnoValues.DataProtocollo) : null,
-                    ImpegnoValues_DataEsigibilita_Header: impegnoValues.DataEsigibilita ? formatter.convert(impegnoValues.DataEsigibilita) : null
+                    ImpegnoValues_DataProtocollo_Header: impegnoValues.DataProtocollo ? self.formatter.convert(impegnoValues.DataProtocollo) : null,
+                    ImpegnoValues_DataEsigibilita_Header: impegnoValues.DataEsigibilita ? self.formatter.convert(impegnoValues.DataEsigibilita) : null
                 }
                 self.getView().getModel(MODEL_ENTITY).setProperty("/ImpegnoValues", header2);
             },
@@ -810,8 +810,10 @@ sap.ui.define([
                     emphasizedAction: MessageBox.Action.YES,
                     onClose: function (oAction) {
                         if (oAction === sap.m.MessageBox.Action.YES) {
+                            self.getView().setBusy(true);
                             oDataModel.create("/DeepZNIEntitySet", deepEntity, {
                                 success: function (result) {
+                                  self.getView().setBusy(false);
                                     if (result.Msgty == 'E') {
                                         console.log(result.Message);//TODO:da canc
                                         MessageBox.error(result.Message, {
@@ -823,7 +825,7 @@ sap.ui.define([
                                     else{
                                         let unique = [];
                                         for (var asc = 0; asc < result.PositionNISet.results.length; asc++) {
-                                            if (asc == 0 || (unique.includes(result.PositionNISet.results[asc].ZchiaveSubni)) == false) {
+                                            if (asc == 0 || (unique.includes(result.PositionNISet.results[asc].ZchiaveSubni)) === false) {
                                                 unique.push(result.PositionNISet.results[asc].ZchiaveSubni);
                                             }
                                         }
@@ -845,6 +847,7 @@ sap.ui.define([
                                 },
                                 error: function (err) {
                                     console.log(err);
+                                    self.getView().setBusy(false);
                                     MessageBox.error("Nota d'imputazione non completata correttamente", {
                                         title: "Esito Operazione",
                                         actions: [sap.m.MessageBox.Action.OK],
