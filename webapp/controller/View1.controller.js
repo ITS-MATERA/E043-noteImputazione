@@ -286,13 +286,23 @@ sap.ui.define([
                     type: EdmType.String
                 });
 
+                // aCols.push({
+                //     property: 'Zmese',
+                //     type: EdmType.String
+                // });
+
+                // aCols.push({
+                //     property: 'ZcodiStatoni',
+                //     type: EdmType.String
+                // });
+                
                 aCols.push({
-                    property: 'Zmese',
+                    property: 'ZmeseDesc',
                     type: EdmType.String
                 });
 
                 aCols.push({
-                    property: 'ZcodiStatoni',
+                    property: 'ZcodiStatoniDesc',
                     type: EdmType.String
                 });
 
@@ -305,7 +315,7 @@ sap.ui.define([
             },
 
             onExport: function () {
-                //console.log("onExport")
+                var self =this;
                 var aCols, oRowBinding, oSettings, oSheet, oTable;
 
                 if (!this._oTable) {
@@ -313,14 +323,16 @@ sap.ui.define([
                 }
 
                 oTable = this._oTable;
-
-
-                // var oSelectedItemPath = oEvent.getSource().getParent().getBindingContextPath();
-                // var oSelectedItem = this.getOwnerComponent().getModel("booksMdl").getObject(oSelectedItemPath);
-
-                //console.log("table1: " + oTable)
                 oRowBinding = oTable.getBinding('items');
-                //console.log("row binding: " + oRowBinding);
+
+                var customList = oRowBinding.oList;
+                var data = customList.map((x)=>{
+                    var item = x;
+                    item.ZmeseDesc = self.formatter.getMonthName(item.Zmese);
+                    return item;
+                }); 
+
+                oRowBinding.oList = data;
                 aCols = this.createColumnConfig();
 
                 oSettings = {
