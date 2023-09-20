@@ -1,43 +1,75 @@
-<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:fb="sap.ui.comp.filterbar"
-    xmlns:u="sap.ui.unified"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:layout="sap.ui.layout"
-    xmlns:form="sap.ui.layout.form"
-    xmlns:f="sap.f"
-    xmlns:core="sap.ui.core"
-    xmlns:menu="sap.m.MenuItem"
-    xmlns:menBtn="sap.m.Menu" 
-    height="100%">
-    <Table class="sapUiSizeCompact" id="HeaderNIAssImp" includeItemInSelection="true" 
-         items="{
-                path: 'EntityModel>/HeaderNIAssImp'
-            }"
-        mode="MultiSelect" >
-        <columns>
-            <Column demandPopin="true" hAlign="Left">
-                <Label text="EPR" />
-            </Column>
-            <Column demandPopin="true" hAlign="Left" width="25%" >
-                <Label text="Autorizzazione" />
-            </Column>
-            <Column demandPopin="true" hAlign="Left" >
-                <Label text="Impegno" />
-            </Column>
-            <Column demandPopin="true" hAlign="Right">
-                <Label text="Disponibilità Impegno" />
-            </Column>
-            <Column demandPopin="true" hAlign="Right">
-                <Label text="Importo Attribuito" />
-            </Column>
-        </columns>
-        <ColumnListItem type="Active">
-            <Text text="{EntityModel>Zepr}" />
-            <Text text="{EntityModel>Zgeber}" />
-            <Text text="{EntityModel>ZCodCla}" />
-            <Text text="{path:'EntityModel>Wtfree', formatter:'.formatter.convertFormattedNumber'}" />
-            <Input type="Number" value="{EntityModel>Attribuito}" id="Zattributo" textAlign="Right" liveChange="zAttribuitoLiveChange"/>
-        </ColumnListItem>
-    </Table>
+<core:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:u="sap.ui.unified"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:layout="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:f="sap.f"
+	xmlns:core="sap.ui.core"
+	xmlns:menu="sap.m.MenuItem"
+	xmlns:menBtn="sap.m.Menu"
+	height="100%"
+>
+	<Table
+		class="sapUiSizeCompact"
+		id="HeaderNIAssImp"
+		includeItemInSelection="true"
+		items="{
+			path: 'EntityModel>/HeaderNIAssImp'
+		}"
+		mode="MultiSelect"
+		growing="true"
+	>
+		<columns>
+			<Column
+				demandPopin="true"
+				hAlign="Left"
+			>
+				<Label text="EPR"/>
+			</Column>
+			<Column
+				demandPopin="true"
+				hAlign="Left"
+				width="25%"
+			>
+				<Label text="Autorizzazione"/>
+			</Column>
+			<Column
+				demandPopin="true"
+				hAlign="Left"
+			>
+				<Label text="Impegno"/>
+			</Column>
+			<Column
+				demandPopin="true"
+				hAlign="Right"
+			>
+				<Label text="Disponibilità Impegno"/>
+			</Column>
+			<Column
+				demandPopin="true"
+				hAlign="Right"
+			>
+				<Label text="Importo Attribuito"/>
+			</Column>
+		</columns>
+		<ColumnListItem type="Active">
+			<Text text="{EntityModel>Zepr}"/>
+			<Text text="{EntityModel>Zgeber}"/>
+			<Text text="{EntityModel>ZCodCla}"/>
+			<Text text="{
+				path: 'EntityModel>Wtfree',
+				formatter: '.formatter.convertFormattedNumber'
+			}"/>
+			<Input
+				type="Number"
+				value="{EntityModel>Attribuito}"
+				id="Zattributo"
+				textAlign="Right"
+				liveChange="zAttribuitoLiveChange"
+			/>
+		</ColumnListItem>
+	</Table>
 </core:FragmentDefinition>

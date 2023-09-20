@@ -1,49 +1,82 @@
-<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:fb="sap.ui.comp.filterbar"
-    xmlns:u="sap.ui.unified"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:layout="sap.ui.layout"
-    xmlns:form="sap.ui.layout.form"
-    xmlns:f="sap.f"
-    xmlns:core="sap.ui.core"
-    xmlns:menu="sap.m.MenuItem"
-    xmlns:menBtn="sap.m.Menu"
-    height="100%">
-    
-    <Table class="sapUiSizeCompact" id="PositionNIMI" includeItemInSelection="true" 
-        items="{
-                path: 'EntityModel>/PositionNIMI'
-            }"
-        visible="true">
-        <columns>
-            <Column width="auto" hAlign="Left">
-                <Label text="Codice ISIN" />
-            </Column>
-            <Column width="25%" hAlign="Left">
-                <Label text="Sottotipologia primo livello " />
-            </Column>
-            <Column width="auto" hAlign="Left">
-                <Label text="Descrizione" />
-            </Column>
-            <Column width="auto" hAlign="Left">
-                <Label text="Data Pagamento" />
-            </Column>
-            <Column width="auto" hAlign="Right">
-                <Label text="Importo NI" />
-            </Column>
-            <Column width="auto" hAlign="Right">
-                <Label text="Importo Residuo" />
-            </Column>
-        </columns>
-        <ColumnListItem>
-            <Text text="{EntityModel>ZcodIsin}" />
-            <Text text="{EntityModel>Ztipo}"/>
-            <Text text="{EntityModel>Zdescrizione}" />
-            <Text text="{path: 'EntityModel>ZdataPag', formatter:'.formatter.convert'}" />
-            <Input id="modificaImportoInput" type="Number" value="{EntityModel>ZimpoTitolo}" />
-            <Text text="{path:'EntityModel>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
-        </ColumnListItem>
-    </Table>
-
+<core:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:u="sap.ui.unified"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:layout="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:f="sap.f"
+	xmlns:core="sap.ui.core"
+	xmlns:menu="sap.m.MenuItem"
+	xmlns:menBtn="sap.m.Menu"
+	height="100%"
+>
+	<Table
+		class="sapUiSizeCompact"
+		id="PositionNIMI"
+		includeItemInSelection="true"
+		items="{
+			path: 'EntityModel>/PositionNIMI'
+		}"
+		visible="true"
+		growing="true"
+	>
+		<columns>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Codice ISIN"/>
+			</Column>
+			<Column
+				width="25%"
+				hAlign="Left"
+			>
+				<Label text="Sottotipologia primo livello "/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Descrizione"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Data Pagamento"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Right"
+			>
+				<Label text="Importo NI"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Right"
+			>
+				<Label text="Importo Residuo"/>
+			</Column>
+		</columns>
+		<ColumnListItem>
+			<Text text="{EntityModel>ZcodIsin}"/>
+			<Text text="{EntityModel>Ztipo}"/>
+			<Text text="{EntityModel>Zdescrizione}"/>
+			<Text text="{
+				path: 'EntityModel>ZdataPag',
+				formatter: '.formatter.convert'
+			}"/>
+			<Input
+				id="modificaImportoInput"
+				type="Number"
+				value="{EntityModel>ZimpoTitolo}"
+			/>
+			<Text text="{
+				path: 'EntityModel>ZimpoRes',
+				formatter: '.formatter.convertFormattedNumber'
+			}"/>
+		</ColumnListItem>
+	</Table>
 </core:FragmentDefinition>

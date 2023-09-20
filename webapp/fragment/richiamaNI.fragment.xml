@@ -1,57 +1,97 @@
-<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:fb="sap.ui.comp.filterbar"
-    xmlns:u="sap.ui.unified"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:layout="sap.ui.layout"
-    xmlns:form="sap.ui.layout.form"
-    xmlns:f="sap.f"
-    xmlns:core="sap.ui.core"
-    xmlns:menu="sap.m.MenuItem"
-    xmlns:menBtn="sap.m.Menu"
-    height="100%">
-    <Table class="sapUiSizeCompact" id="richiamaNI" includeItemInSelection="true"
-        items="{
-                path: 'EntityModel>/RichiamaNI'
-        }"    
-        visible="true">
-        <columns>
-            <Column width="auto" hAlign="Left">
-                <Label text="Numero NI" />
-            </Column>
-            <Column width="auto" hAlign="Left">
-                <Label text="Codice ISIN" />
-            </Column>
-            <Column width="auto" hAlign="Left">
-                <Label text="Sottotipologia primo livello" />
-            </Column>
-            <Column width="auto" hAlign="Left">
-                <Label text="Descrizione" />
-            </Column>
-            <Column width="auto" hAlign="Left">
-                <Label text="Data Pagamento" />
-            </Column>
-            <Column width="auto" hAlign="Right">
-                <Label text="Importo NI" />
-            </Column>
-            <Column width="auto" hAlign="Right">
-                <Label text="Importo Residuo" />
-            </Column>
-             <Column width="auto" hAlign="Left">
-                <Label text="Impegno" />
-            </Column>
-        </columns>
-        <ColumnListItem>
-            <Text text="{EntityModel>ZchiaveSubni}" />
-            <Text text="{EntityModel>ZcodIsin}" />
-            <Text text="{EntityModel>Ztipo}" />
-            <Text text="{EntityModel>Zdescrizione}" />
-            <Text text="{path: 'EntityModel>ZdataPag', formatter:'.formatter.convert'}" />
-            <Text text="{path:'EntityModel>ZimpoTitolo', formatter:'.formatter.convertFormattedNumber'}" />
-            <Text text="{path:'EntityModel>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />
-            <!-- <Text text="{richiamaNI>ZimpoTitolo}" />
+<core:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:u="sap.ui.unified"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:layout="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:f="sap.f"
+	xmlns:core="sap.ui.core"
+	xmlns:menu="sap.m.MenuItem"
+	xmlns:menBtn="sap.m.Menu"
+	height="100%"
+>
+	<Table
+		class="sapUiSizeCompact"
+		id="richiamaNI"
+		includeItemInSelection="true"
+		items="{
+			path: 'EntityModel>/RichiamaNI'
+		}"
+		visible="true"
+		growing="true"
+	>
+		<columns>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Numero NI"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Codice ISIN"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Sottotipologia primo livello"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Descrizione"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Data Pagamento"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Right"
+			>
+				<Label text="Importo NI"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Right"
+			>
+				<Label text="Importo Residuo"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Impegno"/>
+			</Column>
+		</columns>
+		<ColumnListItem>
+			<Text text="{EntityModel>ZchiaveSubni}"/>
+			<Text text="{EntityModel>ZcodIsin}"/>
+			<Text text="{EntityModel>Ztipo}"/>
+			<Text text="{EntityModel>Zdescrizione}"/>
+			<Text text="{
+				path: 'EntityModel>ZdataPag',
+				formatter: '.formatter.convert'
+			}"/>
+			<Text text="{
+				path: 'EntityModel>ZimpoTitolo',
+				formatter: '.formatter.convertFormattedNumber'
+			}"/>
+			<Text text="{
+				path: 'EntityModel>ZimpoRes',
+				formatter: '.formatter.convertFormattedNumber'
+			}"/>
+			<!-- <Text text="{richiamaNI>ZimpoTitolo}" />
             <Text text="{richiamaNI>ZimpoRes}" /> -->
-            <Text text="{EntityModel>ZCodCla}"/>
-        </ColumnListItem>
-    </Table>
+			<Text text="{EntityModel>ZCodCla}"/>
+		</ColumnListItem>
+	</Table>
 </core:FragmentDefinition>

@@ -1,296 +1,941 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:fb="sap.ui.comp.filterbar"
-    xmlns:u="sap.ui.unified"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:layout="sap.ui.layout"
-    xmlns:form="sap.ui.layout.form"
-    xmlns:f="sap.f"
-    xmlns:core="sap.ui.core"
-    xmlns:menu="sap.m.MenuItem"
-    xmlns:menBtn="sap.m.Menu"
-    xmlns:zcontrollinkSar="custlinksar.custlinksar.controls" 
-    xmlns:zcontrol="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfin.controls"
-    xmlns:zcontrolMatchSar="zsap.com.r3.cobi.s4.custapiuser.z_s4_userlog.controls"
-    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" height="100%" controllerName="project1.controller.View1">
-    <App id="app">
-        <f:DynamicPage showFooter="true">
-            <f:title>
-                <f:DynamicPageTitle>
-                    <f:heading>
-                        <Title text="{i18n>nome_app}" />
-                    </f:heading>
-                </f:DynamicPageTitle>
-            </f:title>
-            <f:header>
-                <f:DynamicPageHeader pinnable="true">
-                    <fb:FilterBar id="filterbar" showClearOnFB="false" showFilterConfiguration="false" useToolbar="false" search="onSearch">
-                        <fb:filterGroupItems>
-                        	
-                            <fb:FilterGroupItem groupName="Gruppo1" name="idState" label="{i18n>es_gestione}" tooltip="suggestion" visibleInFilterBar="true" mandatory="true">
-                                <fb:control>
-                                    <Select id="es_gestione" required="true" items="{path: 'temp>/GjahrNiSet', sorter: { path: 'Gjahr' }}" change="chiaveNI">
-                                        <core:Item key="{temp>Gjahr}" text="{temp>Gjahr}"/>
-                                    </Select>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            
-                        
-                            <fb:FilterGroupItem groupName="Gruppo1" id="amministrazioneEG" visibleInFilterBar="true" name="amministrazioneEG" label="{i18n>amministrazioneEG}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="amministrazioneEG1" showValueHelp="true" editable="false" suggestionItems="{path: 'temp>/ZhfNotabozzaSet', sorter: { path: 'Zamministr' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="amministrazioneEG1" app:filterTableField="amministrazioneEG1">
-                                        <core:Item key="{temp>Zamministr}" text="{temp>Zamministr}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            
-                            <fb:FilterGroupItem id="ragioneria" visibleInFilterBar="true" name="ragioneria" groupName="Gruppo1" label="{i18n>ragioneria}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="ragioneria1" showValueHelp="true" editable="false" suggestionItems="{path: 'temp>/ZRagioCompeSet', sorter: { path: 'ZRagioCompe' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="ragioneria1" app:filterTableField="ragioneria1">
-                                        <core:Item key="{temp>CodiceRagioneria}" text="{temp>CodiceRagioneria}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="capitolo" visibleInFilterBar="true" name="capitolo" groupName="Gruppo1" label="{i18n>capitolo}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="capitolo1" showValueHelp="true" suggestionItems="{path: 'temp>/ZhfNotabozzaSet', sorter: { path: 'Zcapitolo' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="capitolo1" app:filterTableField="capitolo1">
-                                        <core:Item key="{temp>Zcapitolo}" text="{temp>Zcapitolo}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="progressivoNIDa" visibleInFilterBar="true" name="progressivoNIDa" groupName="Gruppo1" label="{i18n>progressivoNIDa}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="progressivoNIDa1" showValueHelp="true" suggestionItems="{path: 'temp>/ZhfNotabozzaSet', sorter: { path: 'ZchiaveNi' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="progressivoNIDa1" app:filterTableField="progressivoNIDa1">
-                                        <core:Item key="{temp>ZchiaveNi}" text="{temp>ZchiaveNi}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="progressivoNIA" visibleInFilterBar="true" name="progressivoNIA" groupName="Gruppo1" label="{i18n>progressivoNIA}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="progressivoNIA1" showValueHelp="true" suggestionItems="{path: 'temp>/ZhfNotabozzaSet', sorter: { path: 'ZchiaveNi' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="progressivoNIA1" app:filterTableField="progressivoNIA1">
-                                        <core:Item key="{temp>ZchiaveNi}" text="{temp>ZchiaveNi}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="NumNIDa" visibleInFilterBar="true" name="NumNIDa" groupName="Gruppo1" label="{i18n>NumNIDa}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="NumNIDa1" showValueHelp="true" suggestionItems="{path: 'temp>/ZhfNotaimpSet', sorter: { path: 'ZidSubni' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="NumNIDa1" app:filterTableField="NumNIDa1">
-                                        <core:Item key="{temp>ZchiaveSubni}" text="{temp>ZchiaveSubni}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="NumNIA" visibleInFilterBar="true" name="NumNIA" groupName="Gruppo1" label="{i18n>NumNIA}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="NumNIA1" showValueHelp="true" suggestionItems="{path: 'temp>/ZhfNotaimpSet', sorter: { path: 'ZzChiaveSubniPos' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="NumNIA1" app:filterTableField="NumNIA1">
-                                        <core:Item key="{temp>ZchiaveSubni}" text="{temp>ZchiaveSubni}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="dataRegNIDa" visibleInFilterBar="true" name="dateFrom" groupName="Gruppo1" label="{i18n>coFrom}">
-                                <fb:control>
-                                    <DatePicker id="dataRegNIDa1" displayFormat="dd.MM.yyyy" />
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="dataRegNIA" visibleInFilterBar="true" name="dateTo" groupName="Gruppo1" label="{i18n>coTo}">
-                                <fb:control>
-                                    <DatePicker id="dataRegNIA1" displayFormat="dd.MM.yyyy" />
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="mese" visibleInFilterBar="true" name="mese" groupName="Gruppo1" label="{i18n>mese}">
-                                <fb:control>
-                                    <Select id="mese1" items="{path: 'temp>/ZmeseSet'}">
-                                        <core:Item key="{temp>Valore}" text="{temp>Descrizione}"/>
-                                    </Select>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="statoNI" visibleInFilterBar="true" name="statoNI" groupName="Gruppo1" label="{i18n>statoNI}">
-                                <fb:control>
-                                    <Select id="statoNI1" items="{temp>/StateNI}">
-                                        <core:Item key="{temp>ZcodiStatoni}" text="{temp>ZstatoDescNi}"/>
-                                    </Select>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-    
-    
-                            <fb:FilterGroupItem id="es_decreto" visibleInFilterBar="true" name="es_decreto" groupName="Gruppo2" label="{i18n>es_decreto}">
-                                <fb:control>
-                                    <Select id="es_decreto1" items="{path: 'temp>/ZgjahrEngNiSet', sorter: { path: 'temp>ZgjahrEng' }}">
-                                        <core:Item key="{temp>ZgjahrEng}" text="{temp>ZgjahrEng}"/>
-                                    </Select>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="amministrazioneED" visibleInFilterBar="true" name="amministrazioneED" groupName="Gruppo2" label="{i18n>amministrazioneED}">
-                                <fb:control>
-                                    <Input id="amministrazioneED1" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'AmministrDecreto' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="amministrazioneED1" app:filterTableField="amministrazioneED1">
-                                        <core:Item key="{AmministrDecreto}" text="{AmministrDecreto}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="uff1Livello" visibleInFilterBar="true" name="uff1Livello" groupName="Gruppo2" label="{i18n>uff1Livello}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="uff1Livello1" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Zufficioliv1' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="uff1Livello1" app:filterTableField="uff1Livello1">
-                                        <core:Item key="{Zufficioliv1}" text="{Zufficioliv1}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="uff2Livello" visibleInFilterBar="true" name="uff2Livello" groupName="Gruppo2" label="{i18n>uff2Livello}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="uff2Livello2" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Zufficioliv2' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="uff2Livello" app:filterTableField="uff2Livello">
-                                        <core:Item key="{Zufficioliv2}" text="{Zufficioliv2}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="numDecretoDa" visibleInFilterBar="true" name="numDecretoDa" groupName="Gruppo2" label="{i18n>numDecretoDa}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="numDecretoDa1" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Zcoddecr' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="numDecretoDa1" app:filterTableField="numDecretoDa1">
-                                        <core:Item key="{Zcoddecr}" text="{Zcoddecr}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="numDecretoA" visibleInFilterBar="true" name="numDecretoA" groupName="Gruppo2" label="{i18n>numDecretoA}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="numDecretoA1" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Zcoddecr' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="numDecretoA1" app:filterTableField="numDecretoA1">
-                                        <core:Item key="{Zcoddecr}" text="{Zcoddecr}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="numIPEDa" visibleInFilterBar="true" name="numIPEDa" groupName="Gruppo2" label="{i18n>numIPEDa}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="numIPEDa1" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'ZCodIpe' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="numIPEDa1" app:filterTableField="numIPEDa1">
-                                        <core:Item key="{ZzCodIpePos}" text="{ZzCodIpePos}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="numIPEA" visibleInFilterBar="true" name="numIPEA" groupName="Gruppo2" label="{i18n>numIPEA}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="numIPEA1" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'ZCodIpe' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="numIPEA1" app:filterTableField="numIPEA1">
-                                        <core:Item key="{ZzCodIpePos}" text="{ZzCodIpePos}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="numClausolaDa" visibleInFilterBar="true" name="numClausolaDa" groupName="Gruppo2" label="{i18n>numClausolaDa}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="numClausolaDa1" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'ZNumCla' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="numClausolaDa1" app:filterTableField="numClausolaDa1">
-                                        <core:Item key="{ZNumCla}" text="{ZNumCla}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="numClausolaA" visibleInFilterBar="true" name="numClausolaA" groupName="Gruppo2" label="{i18n>numClausolaA}">
-                                <fb:control>
-                                    <Input showSuggestion="true" id="numClausolaA1" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'ZNumCla' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="numClausolaA1" app:filterTableField="numClausolaA1">
-                                        <core:Item key="{ZNumCla}" text="{ZNumCla}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-
-
-                            <fb:FilterGroupItem id="dataFirmaAmmDa" visibleInFilterBar="true" name="dataFirmaAmmDa" groupName="Gruppo3" label="{i18n>dataFirmaAmmDa}">
-                                <fb:control>
-                                    <DatePicker id="dataFirmaAmmDa1" displayFormat="dd.MM.yyyy" />
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="dataFirmaAmmA" visibleInFilterBar="true" name="dataFirmaAmmA" groupName="Gruppo3" label="{i18n>dataFirmaAmmA}">
-                                <fb:control>
-                                    <DatePicker id="dataFirmaAmmA1" displayFormat="dd.MM.yyyy" />
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="dataProtocolloAmmDa" visibleInFilterBar="true" name="dataProtocolloAmmDa" groupName="Gruppo3" label="{i18n>dataProtocolloAmmDa}">
-                                <fb:control>
-                                    <DatePicker id="dataProtocolloAmmDa1" displayFormat="dd.MM.yyyy" />
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="dataProtocolloAmmA" visibleInFilterBar="true" name="dataProtocolloAmmA" groupName="Gruppo3" label="{i18n>dataProtocolloAmmA}">
-                                <fb:control>
-                                    <DatePicker id="dataProtocolloAmmA1" displayFormat="dd.MM.yyyy" />
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="numProtocolloAmm" visibleInFilterBar="true" name="numProtocolloAmm" groupName="Gruppo3" label="{i18n>numProtocolloAmm}">
-                                <fb:control>
-                                    <Input id="numProtocolloAmm1" showValueHelp="false" maxLength="20" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'NProtocolloAmm' }}">
-                                        <core:Item key="{NProtocolloAmm}" text="{NProtocolloAmm}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-
-
-                            <fb:FilterGroupItem id="dataProtocolloRGSDa" visibleInFilterBar="true" name="dataProtocolloRGSDa" groupName="Gruppo4" label="{i18n>dataProtocolloRGSDa}">
-                                <fb:control>
-                                    <DatePicker id="dataProtocolloRGSDa1" displayFormat="dd.MM.yyyy" />
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="dataProtocolloRGSA" visibleInFilterBar="true" name="dataProtocolloRGSA" groupName="Gruppo4" label="{i18n>dataProtocolloRGSA}">
-                                <fb:control>
-                                    <DatePicker id="dataProtocolloRGSA1" displayFormat="dd.MM.yyyy" />
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="numProtocolloRGS" visibleInFilterBar="true" name="numProtocolloRGS" groupName="Gruppo4" label="{i18n>numProtocolloRGS}">
-                                <fb:control>
-                                    <Input id="numProtocolloRGS1" showValueHelp="false" maxLength="7" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'NProtocolloRag' }}">
-                                        <core:Item key="{NProtocolloRag}" text="{NProtocolloRag}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-
-
-                            <fb:FilterGroupItem id="es_PF" visibleInFilterBar="true" name="es_PF" groupName="Gruppo5" label="{i18n>es_PF}">
-                                <fb:control>
-                                    <Select id="es_PF1" items="{path: 'temp>/EsercizioNiSet', sorter: { path: 'temp>Esercizio' }}">
-                                        <core:Item key="{temp>Esercizio}" text="{temp>Esercizio}"/>
-                                    </Select>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="struttura_amm" visibleInFilterBar="true" name="struttura_amm" groupName="Gruppo5" label="{i18n>struttura_amm}">
-                                <fb:control>
-                                    <zcontrolMatchSar:GestioneLogUser eos="S" id="idFilterStruttAmmResp" fase="GEST" entrata="X" 
-                                    reale="R" anno="{temp>/EsercizioGestioneMC}" SEM_OBJ="Z_TEST_LIB"  maxLength="16"
-                                    versione="D" width="70%" placeholder="Scegli struttura amministrativa"/>
-                                    <!-- <Input showSuggestion="true" id="struttura_amm1" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Fistl' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="struttura_amm1" app:filterTableField="struttura_amm1">
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:u="sap.ui.unified"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:layout="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:f="sap.f"
+	xmlns:core="sap.ui.core"
+	xmlns:menu="sap.m.MenuItem"
+	xmlns:menBtn="sap.m.Menu"
+	xmlns:zcontrollinkSar="custlinksar.custlinksar.controls"
+	xmlns:zcontrol="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfin.controls"
+	xmlns:zcontrolMatchSar="zsap.com.r3.cobi.s4.custapiuser.z_s4_userlog.controls"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	height="100%"
+	controllerName="project1.controller.View1"
+>
+	<App id="app">
+		<f:DynamicPage showFooter="true">
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="{i18n>nome_app}"/>
+					</f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+					<fb:FilterBar
+						id="filterbar"
+						showClearOnFB="false"
+						showFilterConfiguration="false"
+						useToolbar="false"
+						search="onSearch"
+					>
+						<fb:filterGroupItems>
+							<fb:FilterGroupItem
+								groupName="Gruppo1"
+								name="idState"
+								label="{i18n>es_gestione}"
+								tooltip="suggestion"
+								visibleInFilterBar="true"
+								mandatory="true"
+							>
+								<fb:control>
+									<Select
+										id="es_gestione"
+										required="true"
+										items="{
+											path: 'temp>/GjahrNiSet',
+											sorter: {
+												path: 'Gjahr'
+											}
+										}"
+										change="chiaveNI"
+									>
+										<core:Item
+											key="{temp>Gjahr}"
+											text="{temp>Gjahr}"
+										/>
+									</Select>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								groupName="Gruppo1"
+								id="amministrazioneEG"
+								visibleInFilterBar="true"
+								name="amministrazioneEG"
+								label="{i18n>amministrazioneEG}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="amministrazioneEG1"
+										showValueHelp="true"
+										editable="false"
+										suggestionItems="{
+											path: 'temp>/ZhfNotabozzaSet',
+											sorter: {
+												path: 'Zamministr'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="amministrazioneEG1"
+										app:filterTableField="amministrazioneEG1"
+									>
+										<core:Item
+											key="{temp>Zamministr}"
+											text="{temp>Zamministr}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="ragioneria"
+								visibleInFilterBar="true"
+								name="ragioneria"
+								groupName="Gruppo1"
+								label="{i18n>ragioneria}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="ragioneria1"
+										showValueHelp="true"
+										editable="false"
+										suggestionItems="{
+											path: 'temp>/ZRagioCompeSet',
+											sorter: {
+												path: 'ZRagioCompe'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="ragioneria1"
+										app:filterTableField="ragioneria1"
+									>
+										<core:Item
+											key="{temp>CodiceRagioneria}"
+											text="{temp>CodiceRagioneria}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="capitolo"
+								visibleInFilterBar="true"
+								name="capitolo"
+								groupName="Gruppo1"
+								label="{i18n>capitolo}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="capitolo1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: 'temp>/ZhfNotabozzaSet',
+											sorter: {
+												path: 'Zcapitolo'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="capitolo1"
+										app:filterTableField="capitolo1"
+									>
+										<core:Item
+											key="{temp>Zcapitolo}"
+											text="{temp>Zcapitolo}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="progressivoNIDa"
+								visibleInFilterBar="true"
+								name="progressivoNIDa"
+								groupName="Gruppo1"
+								label="{i18n>progressivoNIDa}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="progressivoNIDa1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: 'temp>/ZhfNotabozzaSet',
+											sorter: {
+												path: 'ZchiaveNi'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="progressivoNIDa1"
+										app:filterTableField="progressivoNIDa1"
+									>
+										<core:Item
+											key="{temp>ZchiaveNi}"
+											text="{temp>ZchiaveNi}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="progressivoNIA"
+								visibleInFilterBar="true"
+								name="progressivoNIA"
+								groupName="Gruppo1"
+								label="{i18n>progressivoNIA}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="progressivoNIA1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: 'temp>/ZhfNotabozzaSet',
+											sorter: {
+												path: 'ZchiaveNi'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="progressivoNIA1"
+										app:filterTableField="progressivoNIA1"
+									>
+										<core:Item
+											key="{temp>ZchiaveNi}"
+											text="{temp>ZchiaveNi}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="NumNIDa"
+								visibleInFilterBar="true"
+								name="NumNIDa"
+								groupName="Gruppo1"
+								label="{i18n>NumNIDa}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="NumNIDa1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: 'temp>/ZhfNotaimpSet',
+											sorter: {
+												path: 'ZidSubni'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="NumNIDa1"
+										app:filterTableField="NumNIDa1"
+									>
+										<core:Item
+											key="{temp>ZchiaveSubni}"
+											text="{temp>ZchiaveSubni}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="NumNIA"
+								visibleInFilterBar="true"
+								name="NumNIA"
+								groupName="Gruppo1"
+								label="{i18n>NumNIA}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="NumNIA1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: 'temp>/ZhfNotaimpSet',
+											sorter: {
+												path: 'ZzChiaveSubniPos'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="NumNIA1"
+										app:filterTableField="NumNIA1"
+									>
+										<core:Item
+											key="{temp>ZchiaveSubni}"
+											text="{temp>ZchiaveSubni}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="dataRegNIDa"
+								visibleInFilterBar="true"
+								name="dateFrom"
+								groupName="Gruppo1"
+								label="{i18n>coFrom}"
+							>
+								<fb:control>
+									<DatePicker
+										id="dataRegNIDa1"
+										displayFormat="dd.MM.yyyy"
+										valueFormat="yyyy-MM-dd"
+									/>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="dataRegNIA"
+								visibleInFilterBar="true"
+								name="dateTo"
+								groupName="Gruppo1"
+								label="{i18n>coTo}"
+							>
+								<fb:control>
+									<DatePicker
+										id="dataRegNIA1"
+										displayFormat="dd.MM.yyyy"
+										valueFormat="yyyy-MM-dd"
+									/>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="mese"
+								visibleInFilterBar="true"
+								name="mese"
+								groupName="Gruppo1"
+								label="{i18n>mese}"
+							>
+								<fb:control>
+									<Select
+										id="mese1"
+										items="{
+											path: 'temp>/ZmeseSet'
+										}"
+									>
+										<core:Item
+											key="{temp>Valore}"
+											text="{temp>Descrizione}"
+										/>
+									</Select>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="statoNI"
+								visibleInFilterBar="true"
+								name="statoNI"
+								groupName="Gruppo1"
+								label="{i18n>statoNI}"
+							>
+								<fb:control>
+									<Select
+										id="statoNI1"
+										items="{temp>/StateNI}"
+									>
+										<core:Item
+											key="{temp>ZcodiStatoni}"
+											text="{temp>ZstatoDescNi}"
+										/>
+									</Select>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="es_decreto"
+								visibleInFilterBar="true"
+								name="es_decreto"
+								groupName="Gruppo2"
+								label="{i18n>es_decreto}"
+							>
+								<fb:control>
+									<Select
+										id="es_decreto1"
+										items="{
+											path: 'temp>/ZgjahrEngNiSet',
+											sorter: {
+												path: 'temp>ZgjahrEng'
+											}
+										}"
+									>
+										<core:Item
+											key="{temp>ZgjahrEng}"
+											text="{temp>ZgjahrEng}"
+										/>
+									</Select>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="amministrazioneED"
+								visibleInFilterBar="true"
+								name="amministrazioneED"
+								groupName="Gruppo2"
+								label="{i18n>amministrazioneED}"
+							>
+								<fb:control>
+									<Input
+										id="amministrazioneED1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: '/HeaderNISet',
+											sorter: {
+												path: 'AmministrDecreto'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="amministrazioneED1"
+										app:filterTableField="amministrazioneED1"
+									>
+										<core:Item
+											key="{AmministrDecreto}"
+											text="{AmministrDecreto}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="uff1Livello"
+								visibleInFilterBar="true"
+								name="uff1Livello"
+								groupName="Gruppo2"
+								label="{i18n>uff1Livello}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="uff1Livello1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: '/HeaderNISet',
+											sorter: {
+												path: 'Zufficioliv1'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="uff1Livello1"
+										app:filterTableField="uff1Livello1"
+									>
+										<core:Item
+											key="{Zufficioliv1}"
+											text="{Zufficioliv1}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="uff2Livello"
+								visibleInFilterBar="true"
+								name="uff2Livello"
+								groupName="Gruppo2"
+								label="{i18n>uff2Livello}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="uff2Livello2"
+										showValueHelp="true"
+										suggestionItems="{
+											path: '/HeaderNISet',
+											sorter: {
+												path: 'Zufficioliv2'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="uff2Livello"
+										app:filterTableField="uff2Livello"
+									>
+										<core:Item
+											key="{Zufficioliv2}"
+											text="{Zufficioliv2}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="numDecretoDa"
+								visibleInFilterBar="true"
+								name="numDecretoDa"
+								groupName="Gruppo2"
+								label="{i18n>numDecretoDa}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="numDecretoDa1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: '/HeaderNISet',
+											sorter: {
+												path: 'Zcoddecr'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="numDecretoDa1"
+										app:filterTableField="numDecretoDa1"
+									>
+										<core:Item
+											key="{Zcoddecr}"
+											text="{Zcoddecr}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="numDecretoA"
+								visibleInFilterBar="true"
+								name="numDecretoA"
+								groupName="Gruppo2"
+								label="{i18n>numDecretoA}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="numDecretoA1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: '/HeaderNISet',
+											sorter: {
+												path: 'Zcoddecr'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="numDecretoA1"
+										app:filterTableField="numDecretoA1"
+									>
+										<core:Item
+											key="{Zcoddecr}"
+											text="{Zcoddecr}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="numIPEDa"
+								visibleInFilterBar="true"
+								name="numIPEDa"
+								groupName="Gruppo2"
+								label="{i18n>numIPEDa}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="numIPEDa1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: '/HeaderNISet',
+											sorter: {
+												path: 'ZCodIpe'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="numIPEDa1"
+										app:filterTableField="numIPEDa1"
+									>
+										<core:Item
+											key="{ZzCodIpePos}"
+											text="{ZzCodIpePos}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="numIPEA"
+								visibleInFilterBar="true"
+								name="numIPEA"
+								groupName="Gruppo2"
+								label="{i18n>numIPEA}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="numIPEA1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: '/HeaderNISet',
+											sorter: {
+												path: 'ZCodIpe'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="numIPEA1"
+										app:filterTableField="numIPEA1"
+									>
+										<core:Item
+											key="{ZzCodIpePos}"
+											text="{ZzCodIpePos}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="numClausolaDa"
+								visibleInFilterBar="true"
+								name="numClausolaDa"
+								groupName="Gruppo2"
+								label="{i18n>numClausolaDa}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="numClausolaDa1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: '/HeaderNISet',
+											sorter: {
+												path: 'ZNumCla'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="numClausolaDa1"
+										app:filterTableField="numClausolaDa1"
+									>
+										<core:Item
+											key="{ZNumCla}"
+											text="{ZNumCla}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="numClausolaA"
+								visibleInFilterBar="true"
+								name="numClausolaA"
+								groupName="Gruppo2"
+								label="{i18n>numClausolaA}"
+							>
+								<fb:control>
+									<Input
+										showSuggestion="true"
+										id="numClausolaA1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: '/HeaderNISet',
+											sorter: {
+												path: 'ZNumCla'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="numClausolaA1"
+										app:filterTableField="numClausolaA1"
+									>
+										<core:Item
+											key="{ZNumCla}"
+											text="{ZNumCla}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="dataFirmaAmmDa"
+								visibleInFilterBar="true"
+								name="dataFirmaAmmDa"
+								groupName="Gruppo3"
+								label="{i18n>dataFirmaAmmDa}"
+							>
+								<fb:control>
+									<DatePicker
+										id="dataFirmaAmmDa1"
+										displayFormat="dd.MM.yyyy"
+										valueFormat="yyyy-MM-dd"
+									/>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="dataFirmaAmmA"
+								visibleInFilterBar="true"
+								name="dataFirmaAmmA"
+								groupName="Gruppo3"
+								label="{i18n>dataFirmaAmmA}"
+							>
+								<fb:control>
+									<DatePicker
+										id="dataFirmaAmmA1"
+										displayFormat="dd.MM.yyyy"
+										valueFormat="yyyy-MM-dd"
+									/>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="dataProtocolloAmmDa"
+								visibleInFilterBar="true"
+								name="dataProtocolloAmmDa"
+								groupName="Gruppo3"
+								label="{i18n>dataProtocolloAmmDa}"
+							>
+								<fb:control>
+									<DatePicker
+										id="dataProtocolloAmmDa1"
+										displayFormat="dd.MM.yyyy"
+										valueFormat="yyyy-MM-dd"
+									/>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="dataProtocolloAmmA"
+								visibleInFilterBar="true"
+								name="dataProtocolloAmmA"
+								groupName="Gruppo3"
+								label="{i18n>dataProtocolloAmmA}"
+							>
+								<fb:control>
+									<DatePicker
+										id="dataProtocolloAmmA1"
+										displayFormat="dd.MM.yyyy"
+										valueFormat="yyyy-MM-dd"
+									/>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="numProtocolloAmm"
+								visibleInFilterBar="true"
+								name="numProtocolloAmm"
+								groupName="Gruppo3"
+								label="{i18n>numProtocolloAmm}"
+							>
+								<fb:control>
+									<Input
+										id="numProtocolloAmm1"
+										showValueHelp="false"
+										maxLength="20"
+										suggestionItems="{
+											path: '/HeaderNISet',
+											sorter: {
+												path: 'NProtocolloAmm'
+											}
+										}"
+									>
+										<core:Item
+											key="{NProtocolloAmm}"
+											text="{NProtocolloAmm}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="dataProtocolloRGSDa"
+								visibleInFilterBar="true"
+								name="dataProtocolloRGSDa"
+								groupName="Gruppo4"
+								label="{i18n>dataProtocolloRGSDa}"
+							>
+								<fb:control>
+									<DatePicker
+										id="dataProtocolloRGSDa1"
+										displayFormat="dd.MM.yyyy"
+										valueFormat="yyyy-MM-dd"
+									/>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="dataProtocolloRGSA"
+								visibleInFilterBar="true"
+								name="dataProtocolloRGSA"
+								groupName="Gruppo4"
+								label="{i18n>dataProtocolloRGSA}"
+							>
+								<fb:control>
+									<DatePicker
+										id="dataProtocolloRGSA1"
+										displayFormat="dd.MM.yyyy"
+										valueFormat="yyyy-MM-dd"
+									/>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="numProtocolloRGS"
+								visibleInFilterBar="true"
+								name="numProtocolloRGS"
+								groupName="Gruppo4"
+								label="{i18n>numProtocolloRGS}"
+							>
+								<fb:control>
+									<Input
+										id="numProtocolloRGS1"
+										showValueHelp="false"
+										maxLength="7"
+										suggestionItems="{
+											path: '/HeaderNISet',
+											sorter: {
+												path: 'NProtocolloRag'
+											}
+										}"
+									>
+										<core:Item
+											key="{NProtocolloRag}"
+											text="{NProtocolloRag}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="es_PF"
+								visibleInFilterBar="true"
+								name="es_PF"
+								groupName="Gruppo5"
+								label="{i18n>es_PF}"
+							>
+								<fb:control>
+									<Select
+										id="es_PF1"
+										items="{
+											path: 'temp>/EsercizioNiSet',
+											sorter: {
+												path: 'temp>Esercizio'
+											}
+										}"
+									>
+										<core:Item
+											key="{temp>Esercizio}"
+											text="{temp>Esercizio}"
+										/>
+									</Select>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="struttura_amm"
+								visibleInFilterBar="true"
+								name="struttura_amm"
+								groupName="Gruppo5"
+								label="{i18n>struttura_amm}"
+							>
+								<fb:control>
+									<zcontrolMatchSar:GestioneLogUser
+										eos="S"
+										id="idFilterStruttAmmResp"
+										fase="GEST"
+										entrata="X"
+										reale="R"
+										anno="{temp>/EsercizioGestioneMC}"
+										SEM_OBJ="Z_TEST_LIB"
+										maxLength="16"
+										versione="D"
+										width="70%"
+										placeholder="Scegli struttura amministrativa"
+									/>
+									<!-- <Input showSuggestion="true" id="struttura_amm1" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Fistl' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="struttura_amm1" app:filterTableField="struttura_amm1">
                                         <core:Item key="{Fistl}" text="{Fistl}"/>
                                     </Input> -->
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="PF" visibleInFilterBar="true" name="PF" groupName="Gruppo5" label="{i18n>PF}">
-                                <fb:control>
-                                    <zcontrol:InputPosizioneFinanziaria id="inputPosFin" fase="GEST" spesa="X" reale="R" 
-                                        anno="{temp>/EsercizioGestioneMC}" versione="D" maxSuggestionWidth="60%"  maxLength="24"
-                                        liveChange="onSelectPosFin" submit="onSelectPosFin" width="70%"/>
-                                    <!-- <Input showSuggestion="true" id="inputPosFin" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Fipex' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputPosFin" app:filterTableField="inputPosFin">
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="PF"
+								visibleInFilterBar="true"
+								name="PF"
+								groupName="Gruppo5"
+								label="{i18n>PF}"
+							>
+								<fb:control>
+									<zcontrol:InputPosizioneFinanziaria
+										id="inputPosFin"
+										fase="GEST"
+										spesa="X"
+										reale="R"
+										anno="{temp>/EsercizioGestioneMC}"
+										versione="D"
+										maxSuggestionWidth="60%"
+										maxLength="24"
+										liveChange="onSelectPosFin"
+										submit="onSelectPosFin"
+										width="70%"
+									/>
+									<!-- <Input showSuggestion="true" id="inputPosFin" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Fipex' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputPosFin" app:filterTableField="inputPosFin">
                                         <core:Item key="{Fipex}" text="{Fipex}"/>
                                     </Input> -->
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="autorizzazione" visibleInFilterBar="true" name="autorizzazione" groupName="Gruppo5" label="{i18n>autorizzazione}">
-                                <fb:control>
-                                    <Select id="autorizzazione1" items="{path: '/HeaderNISet', sorter: { path: 'Zgeber' }}">
-                                        <core:Item key="{Zgeber}" text="{Zgeber}"/>
-                                    </Select>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-                            <fb:FilterGroupItem id="EPR" visibleInFilterBar="true" name="EPR" groupName="Gruppo5" label="{i18n>EPR}">
-                                <fb:control>
-                                    <Input id="EPR1" showValueHelp="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Epr' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="EPR1" app:filterTableField="EPR1">
-                                        <core:Item key="{Epr}" text="{Epr}"/>
-                                    </Input>
-                                </fb:control>
-                            </fb:FilterGroupItem>
-
-
-                        </fb:filterGroupItems>
-                       
-                    </fb:FilterBar>
-                </f:DynamicPageHeader>
-            </f:header>
-            <f:content>
-                <core:Fragment fragmentName="project1.fragment.table1" type="XML" />
-            </f:content>
-            <f:footer>
-                <OverflowToolbar>
-                    <Button text="{i18n>Indietro}" type="Emphasized" />
-                    <ToolbarSpacer />
-                    <!-- <Button text="{i18n>PreimpostazioneNI}" id="PreimpostazioneNI" press="navToWizard" type="Emphasized" enabled="false"/> -->
-                    <Button text="{i18n>PreimpostazioneNI}" id="PreimpostazioneNI" press="navToWizard2" type="Emphasized" enabled="false"/>
-                </OverflowToolbar>
-            </f:footer>
-        </f:DynamicPage>
-    </App>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="autorizzazione"
+								visibleInFilterBar="true"
+								name="autorizzazione"
+								groupName="Gruppo5"
+								label="{i18n>autorizzazione}"
+							>
+								<fb:control>
+									<Select
+										id="autorizzazione1"
+										items="{
+											path: '/HeaderNISet',
+											sorter: {
+												path: 'Zgeber'
+											}
+										}"
+									>
+										<core:Item
+											key="{Zgeber}"
+											text="{Zgeber}"
+										/>
+									</Select>
+								</fb:control>
+							</fb:FilterGroupItem>
+							<fb:FilterGroupItem
+								id="EPR"
+								visibleInFilterBar="true"
+								name="EPR"
+								groupName="Gruppo5"
+								label="{i18n>EPR}"
+							>
+								<fb:control>
+									<Input
+										id="EPR1"
+										showValueHelp="true"
+										suggestionItems="{
+											path: '/HeaderNISet',
+											sorter: {
+												path: 'Epr'
+											}
+										}"
+										valueHelpOnly="true"
+										valueHelpRequest="handleValueHelp"
+										app:fieldName="EPR1"
+										app:filterTableField="EPR1"
+									>
+										<core:Item
+											key="{Epr}"
+											text="{Epr}"
+										/>
+									</Input>
+								</fb:control>
+							</fb:FilterGroupItem>
+						</fb:filterGroupItems>
+					</fb:FilterBar>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<core:Fragment
+					fragmentName="project1.fragment.table1"
+					type="XML"
+				/>
+			</f:content>
+			<f:footer>
+				<OverflowToolbar>
+					<Button
+						text="{i18n>Indietro}"
+						type="Emphasized"
+					/>
+					<ToolbarSpacer/>
+					<!-- <Button text="{i18n>PreimpostazioneNI}" id="PreimpostazioneNI" press="navToWizard" type="Emphasized" enabled="false"/> -->
+					<Button
+						text="{i18n>PreimpostazioneNI}"
+						id="PreimpostazioneNI"
+						press="navToWizard2"
+						type="Emphasized"
+						enabled="false"
+					/>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
+	</App>
 </mvc:View>

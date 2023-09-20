@@ -1,64 +1,87 @@
-<core:FragmentDefinition 
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-    height="100%">
-    <Table class="sapUiSizeCompact" 
-        id="HeaderNIW"
-        includeItemInSelection="true" 
-        items="{EntityModel>/RendicontazioneSet}" 
-        mode="MultiSelect">
-        <columns>
-            <Column width="auto" hAlign="Left">
-                <Label text="Codice ISIN" />
-            </Column>
-            <Column width="25%" hAlign="Left">
-                <Label text="Sottotipologia primo livello " />
-            </Column>
-            <Column width="auto" hAlign="Left">
-                <Label text="Data Pagamento" />
-            </Column>
-            <Column width="auto" hAlign="Right">
-                <Label text="Importo Titolo" />
-            </Column>
-            <Column width="auto" hAlign="Right">
-                <Label text="Importo Associato" />
-            </Column>
-            <Column width="auto" hAlign="Right">
-                <Label text="Importo Residuo" />
-            </Column>
-        </columns>
-        <ColumnListItem>
-            <Text text="{EntityModel>ZcodIsin}" />
-            <Text text="{EntityModel>Ztipo}"/>
-            <Text text="{path: 'EntityModel>ZdataPag',
-                        parts:[
-                            {path: 'EntityModel>ZdataPag'}
-                        ],
-                        formatter:'.formatter.convert'
-                        }"  
-            />  
-
-            <Text text="{path: 'EntityModel>ZimpoTitolo',
-                        parts:[
-                            {path: 'EntityModel>ZimpoTitolo'}
-                        ],
-                        formatter:'.formatter.convertFormattedNumber'
-                        }" />
-
-            <Text text="{path: 'EntityModel>ZimpoAss',
-                        parts:[
-                            {path: 'EntityModel>ZimpoAss'}
-                        ],
-                        formatter:'.formatter.convertFormattedNumber'
-                        }" />   
-            <Text text="{path: 'EntityModel>ZimpoRes',
-                        parts:[
-                            {path: 'EntityModel>ZimpoRes'}
-                        ],
-                        formatter:'.formatter.convertFormattedNumber'
-                        }" />                       
-        </ColumnListItem>
-    </Table>
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	height="100%"
+>
+	<Table
+		class="sapUiSizeCompact"
+		id="HeaderNIW"
+		includeItemInSelection="true"
+		items="{EntityModel>/RendicontazioneSet}"
+		mode="MultiSelect"
+		growing="true"
+	>
+		<columns>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Codice ISIN"/>
+			</Column>
+			<Column
+				width="25%"
+				hAlign="Left"
+			>
+				<Label text="Sottotipologia primo livello "/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Data Pagamento"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Right"
+			>
+				<Label text="Importo Titolo"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Right"
+			>
+				<Label text="Importo Associato"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Right"
+			>
+				<Label text="Importo Residuo"/>
+			</Column>
+		</columns>
+		<ColumnListItem>
+			<Text text="{EntityModel>ZcodIsin}"/>
+			<Text text="{EntityModel>Ztipo}"/>
+			<Text text="{
+				path: 'EntityModel>ZdataPag',
+				parts: [{
+					path: 'EntityModel>ZdataPag'
+				}],
+				formatter: '.formatter.convert'
+			}"/>
+			<Text text="{
+				path: 'EntityModel>ZimpoTitolo',
+				parts: [{
+					path: 'EntityModel>ZimpoTitolo'
+				}],
+				formatter: '.formatter.convertFormattedNumber'
+			}"/>
+			<Text text="{
+				path: 'EntityModel>ZimpoAss',
+				parts: [{
+					path: 'EntityModel>ZimpoAss'
+				}],
+				formatter: '.formatter.convertFormattedNumber'
+			}"/>
+			<Text text="{
+				path: 'EntityModel>ZimpoRes',
+				parts: [{
+					path: 'EntityModel>ZimpoRes'
+				}],
+				formatter: '.formatter.convertFormattedNumber'
+			}"/>
+		</ColumnListItem>
+	</Table>
 </core:FragmentDefinition>
 <!-- <core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"

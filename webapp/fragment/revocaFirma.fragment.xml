@@ -1,51 +1,89 @@
-<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-    height="100%">
-    <Table class="sapUiSizeCompact" id="revocaFirma" includeItemInSelection="true"
-        items="{
-                path: 'EntityModel>/revocaFirma'
-        }"
-        visible="true">
-        <columns>
-            <Column width="auto" hAlign="Left">
-                <Label text="Numero NI" />
-            </Column>
-            <Column width="auto" hAlign="Left">
-                <Label text="Codice ISIN" />
-            </Column>
-            <Column width="auto" hAlign="Left">
-                <Label text="Sottotipologia primo livello" />
-            </Column>
-            <Column width="auto" hAlign="Left">
-                <Label text="Descrizione" />
-            </Column>
-            <Column width="auto" hAlign="Left">
-                <Label text="Data Pagamento" />
-            </Column>
-            <Column width="auto" hAlign="Right">
-                <Label text="Importo NI" />
-            </Column>
-            <Column width="auto" hAlign="Right">
-                <Label text="Importo Residuo" />
-            </Column>
-             <Column width="auto" hAlign="Left">
-                <Label text="Impegno" />
-            </Column>
-        </columns>
-        <ColumnListItem>
-            <Text text="{EntityModel>ZchiaveSubni}" />
-            <Text text="{EntityModel>ZcodIsin}" />
-            <Text text="{EntityModel>Ztipo}" />
-            <Text text="{EntityModel>Zdescrizione}" />
-            <Text text="{path: 'EntityModel>ZdataPag', formatter:'.formatter.convert'}" />
-
-            <Text text="{path:'EntityModel>ZimpoTitolo', formatter:'.formatter.convertFormattedNumber'}" />   
-            <Text text="{path:'EntityModel>ZimpoRes', formatter:'.formatter.convertFormattedNumber'}" />   
-
-            <!-- <Text text="{revocaFirma>ZimpoTitolo}" />
+<core:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	height="100%"
+>
+	<Table
+		class="sapUiSizeCompact"
+		id="revocaFirma"
+		includeItemInSelection="true"
+		items="{
+			path: 'EntityModel>/revocaFirma'
+		}"
+		visible="true"
+		growing="true"
+	>
+		<columns>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Numero NI"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Codice ISIN"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Sottotipologia primo livello"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Descrizione"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Data Pagamento"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Right"
+			>
+				<Label text="Importo NI"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Right"
+			>
+				<Label text="Importo Residuo"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Impegno"/>
+			</Column>
+		</columns>
+		<ColumnListItem>
+			<Text text="{EntityModel>ZchiaveSubni}"/>
+			<Text text="{EntityModel>ZcodIsin}"/>
+			<Text text="{EntityModel>Ztipo}"/>
+			<Text text="{EntityModel>Zdescrizione}"/>
+			<Text text="{
+				path: 'EntityModel>ZdataPag',
+				formatter: '.formatter.convert'
+			}"/>
+			<Text text="{
+				path: 'EntityModel>ZimpoTitolo',
+				formatter: '.formatter.convertFormattedNumber'
+			}"/>
+			<Text text="{
+				path: 'EntityModel>ZimpoRes',
+				formatter: '.formatter.convertFormattedNumber'
+			}"/>
+			<!-- <Text text="{revocaFirma>ZimpoTitolo}" />
             <Text text="{revocaFirma>ZimpoRes}" /> -->
-            <Text text="{EntityModel>ZCodCla}"/>
-        </ColumnListItem>
-    </Table>
+			<Text text="{EntityModel>ZCodCla}"/>
+		</ColumnListItem>
+	</Table>
 </core:FragmentDefinition>
