@@ -108,11 +108,15 @@ sap.ui.define(
                     if (data[d].ACTV_4 == "Z07") {
                         this.getView().byId("AnnullaNI2").setEnabled(true);
                     }
+                    if (data[d].ACTV_4 == "Z21") {
+                        this.getView().byId("idFascicoloIconTabFilter").setEnabled(true);
+                    }
                 }
             },
 
             _onObjectMatched: function (oEvent) {
                 var self =this;
+                self.callVisibilità();
                 self.callPositionNI(oEvent);
             },
 

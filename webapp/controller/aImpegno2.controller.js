@@ -108,6 +108,27 @@ sap.ui.define(
         }
       },
 
+      loadIban: function () {
+        var self = this,
+          selezionati = self
+            .getView()
+            .getModel("temp")
+            .getProperty("/ImpegniSelezionati");
+
+        self
+          .getView()
+          .getModel(MODEL_ENTITY)
+          .setProperty("/Detail/Iban", selezionati[0].Iban);
+        if (selezionati.length > 1) {
+          var found = selezionati.filter((x) => x.Iban !== selezionati[0].Iban);
+          if (found && found.length > 0)
+            self
+              .getView()
+              .getModel(MODEL_ENTITY)
+              .setProperty("/Detail/Iban", null);
+        }
+      },
+
       loadView: function (path) {
         var self = this,
           oDataModel = self.getOwnerComponent().getModel();
@@ -128,6 +149,7 @@ sap.ui.define(
                   .setProperty("/Detail/ImportoLiquidazione", data.ZimpoTotni);
 
                 self.loadBeneficiario();
+                self.loadIban();
                 self.loadModalitaPagamento();
 
                 if (
@@ -770,6 +792,20 @@ sap.ui.define(
           });
           return false;
         }
+
+        if (detail.DataEsigibilita && detail.DataEsigibilita !== "") {
+          if (detail.DataEsigibilita < new Date(new Date().toDateString())) {
+            MessageBox.error(
+              "La data di esigibilità inserita non è valida. Definire un altro valore",
+              {
+                actions: [sap.m.MessageBox.Action.OK],
+                emphasizedAction: MessageBox.Action.OK,
+              }
+            );
+            return false;
+          }
+        }
+
         self
           .getView()
           .getModel("temp")
@@ -783,6 +819,91 @@ sap.ui.define(
           campo5: header.ZRagioCompe,
         });
       },
+
+      // onSaveButton_old: function () {
+      //     var beneficiario = this.getView().byId("inputBeneficiario").getValue()
+      //     var valoriNuovi = []
+      //     valoriNuovi.push(beneficiario)
+      //     if (beneficiario &&
+      //             this.getView().byId("inputCentroCosto").getValue() &&
+      //             this.getView().byId("inputCoGe").getValue() &&
+      //             this.getView().byId("inputCodiceGest").getValue()) {
+
+      //         var centroCosto = this.getView().byId("inputCentroCosto").getValue()
+      //         valoriNuovi.push(centroCosto)
+
+      //         var DescCentroCosto = this.getView().byId("DescCentroCosto").getValue()
+      //         valoriNuovi.push(DescCentroCosto)
+
+      //         var contoCOGE = this.getView().byId("inputCoGe").getValue()
+      //         valoriNuovi.push(contoCOGE)
+
+      //         var DescCoGe = this.getView().byId("DescCoGe").getValue()
+      //         valoriNuovi.push(DescCoGe)
+
+      //         var codiceGestionale = this.getView().byId("inputCodiceGest").getValue()
+      //         valoriNuovi.push(codiceGestionale)
+
+      //         var causalePagamento = this.getView().byId("inputCausPagamento").getValue()
+      //         valoriNuovi.push(causalePagamento)
+
+      //         var modalitàPagamento = this.getView().byId("ModPagamento").getValue()
+      //         valoriNuovi.push(modalitàPagamento)
+
+      //         var Iban = this.getView().byId("inputIBAN").getValue()
+      //         valoriNuovi.push(Iban)
+
+      //         var ZzragSoc = this.getView().byId("inputNome").getValue()
+      //         valoriNuovi.push(ZzragSoc)
+
+      //         var dataEsigibilità = this.getView().byId("DP2").getDateValue()
+      //         if (dataEsigibilità !== "") {
+      //             valoriNuovi.push(this.formateDateForFilter(dataEsigibilità));
+      //             // var numeri = dataEsigibilità.split("/");
+      //             // var nData = (numeri[1] + "/" + numeri[0] + "/" + numeri[2])
+      //             // var dataEsi = new Date(nData)
+      //             // valoriNuovi.push(dataEsi)
+      //         }
+
+      //         var dataProtocollo = this.getView().byId("DP1").getDateValue();
+      //         if(dataProtocollo !== ""){
+      //             valoriNuovi.push(this.formateDateForFilter(dataProtocollo));
+      //         }
+
+      //         this.getView().getModel("temp").setProperty('/ValoriNuovi', valoriNuovi)
+      //         //console.log("eh")
+      //     }
+      //     if (beneficiario != undefined && centroCosto != undefined && contoCOGE != undefined && codiceGestionale != undefined && causalePagamento != undefined && modalitàPagamento != undefined && Iban != undefined) {
+      //         var url = location.href
+      //         var sUrl = url.split("/aImpegno2/")[1]
+      //         var aValori = sUrl.split(",")
+
+      //         var Bukrs = aValori[0]
+      //         var Gjahr = aValori[1]
+      //         var Zamministr = aValori[2]
+      //         var ZchiaveNi = aValori[3]
+      //         var ZidNi = aValori[4]
+      //         var ZRagioCompe = aValori[5]
+
+      //         var header = this.getView().getModel("temp").getData().HeaderNISet
+      //         for (var i = 0; i < header.length; i++) {
+      //             if (header[i].Bukrs == Bukrs &&
+      //                 header[i].Gjahr == Gjahr &&
+      //                 header[i].Zamministr == Zamministr &&
+      //                 header[i].ZchiaveNi == ZchiaveNi &&
+      //                 header[i].ZidNi == ZidNi &&
+      //                 header[i].ZRagioCompe == ZRagioCompe) {
+      //                 this.getOwnerComponent().getRouter().navTo("salvaImpegno", { campo: header[i].Bukrs, campo1: header[i].Gjahr, campo2: header[i].Zamministr, campo3: header[i].ZchiaveNi, campo4: header[i].ZidNi, campo5: header[i].ZRagioCompe });
+      //             }
+      //         }
+      //     }
+      //     else {
+      //         MessageBox.error("Alimentare tutti i campi obbligatori", {
+      //             actions: [sap.m.MessageBox.Action.OK],
+      //             emphasizedAction: MessageBox.Action.OK,
+      //         })
+      //     }
+      // }
     });
   }
 );

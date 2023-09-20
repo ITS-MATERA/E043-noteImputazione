@@ -57,7 +57,7 @@ sap.ui.define(
                   self.getOwnerComponent().getModel("temp").getData().Visibilità === null){
                     self.callPreventVisibilitaWithCallback(function(callback){
                         if(callback){ 
-                          // self.pulsantiVisibiltà(self.getOwnerComponent().getModel("temp").getData().Visibilità);
+                           self.pulsantiVisibiltà(self.getOwnerComponent().getModel("temp").getData().Visibilità);
                           self.callPositionNI(path);           
                         }
                     });    
@@ -65,6 +65,15 @@ sap.ui.define(
                 else{ 
                   self.callPositionNI(path);
                 }
+            },
+
+            pulsantiVisibiltà: function (data) {
+              console.log(data);
+              for (var d = 0; d < data.length; d++) {
+                if (data[d].ACTV_4 == "Z18") {
+                    this.getView().byId("SalvaNI").setEnabled(true);
+                }                  
+              }
             },
 
             callPositionNI:function(path){

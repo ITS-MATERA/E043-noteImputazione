@@ -1,15 +1,7 @@
 <core:FragmentDefinition
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
-	xmlns:fb="sap.ui.comp.filterbar"
-	xmlns:u="sap.ui.unified"
-	xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:layout="sap.ui.layout"
-	xmlns:form="sap.ui.layout.form"
-	xmlns:f="sap.f"
 	xmlns:core="sap.ui.core"
-	xmlns:menu="sap.m.MenuItem"
-	xmlns:menBtn="sap.m.Menu"
 	height="100%"
 >
 	<Table
@@ -72,4 +64,11 @@
 			/>
 		</ColumnListItem>
 	</Table>
+</Table>
+</Table>
+</Table>
+</Table>
+</Table>
+</Table>
+</Table>
 </core:FragmentDefinition>

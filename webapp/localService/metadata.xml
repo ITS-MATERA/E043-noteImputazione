@@ -12,6 +12,7 @@
                     <PropertyRef Name="ZRagioCompe"/>
                 </Key>
                 <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="ZfascicoloNi" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ZidNi" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="Gjahr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="Zamministr" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
@@ -409,6 +410,18 @@
                 <Property Name="ZimpoRes" Type="Edm.Decimal" Precision="24" Scale="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="ZimpoTitolo" Type="Edm.Decimal" Precision="24" Scale="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
+            <EntityType Name="DescPgCap" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Zamministr"/>
+                    <PropertyRef Name="Fipex"/>
+                    <PropertyRef Name="Gjahr"/>
+                </Key>
+                <Property Name="Zamministr" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Fipex" Type="Edm.String" Nullable="false" MaxLength="24" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Gjahr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="DescPg" Type="Edm.String" MaxLength="1333" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DescCap" Type="Edm.String" MaxLength="1333" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
             <EntityType Name="WFStateNI" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Esercizio"/>
@@ -635,18 +648,6 @@
                 <Property Name="Key" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Value" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
             </EntityType>
-            <EntityType Name="DescPgCap" sap:content-version="1">
-                <Key>
-                    <PropertyRef Name="Zamministr"/>
-                    <PropertyRef Name="Fipex"/>
-                    <PropertyRef Name="Gjahr"/>
-                </Key>
-                <Property Name="Zamministr" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="Fipex" Type="Edm.String" Nullable="false" MaxLength="24" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="Gjahr" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="DescPg" Type="Edm.String" MaxLength="1333" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="DescCap" Type="Edm.String" MaxLength="1333" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-            </EntityType>
             <Association Name="DeepEntityToPositions" sap:content-version="1">
                 <End Type="ZS4_NOTEIMPUTAZIONI_SRV.DeepZNIEntity" Multiplicity="1" Role="FromRole_DeepEntityToPositions"/>
                 <End Type="ZS4_NOTEIMPUTAZIONI_SRV.PositionNI" Multiplicity="*" Role="ToRole_DeepEntityToPositions"/>
@@ -747,6 +748,7 @@
                 <EntitySet Name="ZhfTipoSet" EntityType="ZS4_NOTEIMPUTAZIONI_SRV.ZhfTipo" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="ZhfSottotipoSet" EntityType="ZS4_NOTEIMPUTAZIONI_SRV.ZhfSottotipo" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="RendicontazioneSet" EntityType="ZS4_NOTEIMPUTAZIONI_SRV.Rendicontazione" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="DescPgCapSet" EntityType="ZS4_NOTEIMPUTAZIONI_SRV.DescPgCap" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="WFStateNISet" EntityType="ZS4_NOTEIMPUTAZIONI_SRV.WFStateNI" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="DeepZNIEntitySet" EntityType="ZS4_NOTEIMPUTAZIONI_SRV.DeepZNIEntity" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="ShZdirncRichSet" EntityType="ZS4_NOTEIMPUTAZIONI_SRV.ShZdirncRich" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
@@ -769,7 +771,6 @@
                 <EntitySet Name="ZUffContFirmSet" EntityType="ZS4_NOTEIMPUTAZIONI_SRV.ZUffContFirm" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="ContoDebitoSet" EntityType="ZS4_NOTEIMPUTAZIONI_SRV.ContoDebito" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="FileSet" EntityType="ZS4_NOTEIMPUTAZIONI_SRV.File" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
-                <EntitySet Name="DescPgCapSet" EntityType="ZS4_NOTEIMPUTAZIONI_SRV.DescPgCap" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <AssociationSet Name="DeepEntityToPositionsSet" Association="ZS4_NOTEIMPUTAZIONI_SRV.DeepEntityToPositions" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="DeepZNIEntitySet" Role="FromRole_DeepEntityToPositions"/>
                     <End EntitySet="PositionNISet" Role="ToRole_DeepEntityToPositions"/>

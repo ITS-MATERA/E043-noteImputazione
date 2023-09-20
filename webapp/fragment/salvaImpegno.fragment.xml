@@ -1,15 +1,8 @@
 <core:FragmentDefinition
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
-	xmlns:fb="sap.ui.comp.filterbar"
-	xmlns:u="sap.ui.unified"
-	xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:layout="sap.ui.layout"
-	xmlns:form="sap.ui.layout.form"
-	xmlns:f="sap.f"
 	xmlns:core="sap.ui.core"
-	xmlns:menu="sap.m.MenuItem"
-	xmlns:menBtn="sap.m.Menu"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	height="100%"
 >
 	<!-- mode="MultiSelect" -->
@@ -23,6 +16,22 @@
 		visible="true"
 		growing="true"
 	>
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<ToolbarSpacer/>
+					<Button
+						icon="sap-icon://excel-attachment"
+						app:tableId="HeaderSalva"
+						app:filename="Esporta NI Preimpostata"
+						app:columnConfig="columnConfigPreimpostata"
+						press="onExportDetail"
+						type="Emphasized"
+						text="Esporta"
+					/>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
 		<columns>
 			<Column
 				width="auto"

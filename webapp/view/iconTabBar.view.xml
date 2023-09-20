@@ -86,8 +86,8 @@
 
                 <OverflowToolbar>
                     <ToolbarSpacer />
-                    <Button text="Associa Impegno" type="Emphasized" press="pressAssociaImpegno" enabled="true" id="pressAssImpegno" />
-                    <Button text="Rettifica NI" id="rettificaNI" type="Emphasized" press="pressRettificaNI" />
+                    <Button text="Associa Impegno" type="Emphasized" press="pressAssociaImpegno" enabled="false" id="pressAssImpegno" />
+                    <Button text="Rettifica NI" id="rettificaNI" type="Emphasized" press="pressRettificaNI" enable="false"/>
                 </OverflowToolbar>
             </f:DynamicPageHeader>
         </f:header>
@@ -100,7 +100,7 @@
                     <IconTabFilter icon="sap-icon://history" text="Workflow" key="Workflow">
                         <core:Fragment fragmentName="project1.fragment.workflow" type="XML"/>
                     </IconTabFilter>
-                    <IconTabFilter icon="sap-icon://documents" text="Fascicolo" key="Fascicolo">
+                    <IconTabFilter id="idFascicoloIconTab" icon="sap-icon://documents" text="Fascicolo" key="Fascicolo" enabled="false">
                     </IconTabFilter>
                 </items>
             </IconTabBar>
@@ -110,7 +110,7 @@
             <OverflowToolbar>
                 <Button text="Indietro" type="Emphasized" press="onBackButton" />
                 <ToolbarSpacer />
-                <Button type="Emphasized" text="Annulla NI" press="onCancelNI" id="AnnullaNI" />
+                <Button type="Emphasized" text="Annulla NI" press="onCancelNI" id="AnnullaNI" enabled="false" />
                 <Button type="Emphasized" text="Completa NI" press="onCompleteNI" id="CompletaNI" enabled="false" />
             </OverflowToolbar>
         </f:footer>

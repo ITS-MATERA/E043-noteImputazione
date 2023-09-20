@@ -239,6 +239,7 @@ sap.ui.define([
                 self.getView().getModel(MODEL_ENTITY).setProperty("/PositionNI",[]);
                 self.getView().getModel(MODEL_ENTITY).setProperty("/TotAttribuito",(0).toFixed(2));
                 self.getView().getModel("temp").setProperty("/ImpegniSelezionati", []);
+                table.removeSelections(true);
                 table.setSelectedContextPaths([]);
                 window.history.go(-1);
             },
@@ -743,17 +744,24 @@ sap.ui.define([
                     });
                     return false;
                 }
-
+                selectedArray.sort();
                 var importoTotaleNI = header.ZimpoTotni;
+                var full=false;
                 for(var i=0; i<selectedArray.length;i++){
-                    var item = self.getView().getModel(MODEL_ENTITY).getProperty(selectedArray[i]);
+                  var item = self.getView().getModel(MODEL_ENTITY).getProperty(selectedArray[i]);
+                  if(!full){
                     if(parseFloat(importoTotaleNI) <= parseFloat(item.Wtfree)){
                         self.getView().getModel(MODEL_ENTITY).setProperty(selectedArray[i]+"/Attribuito",parseFloat(importoTotaleNI).toFixed(2));
-                        i=selectedArray.length;
+                        full= true;
+                        // i=selectedArray.length;
                     }else{
                         self.getView().getModel(MODEL_ENTITY).setProperty(selectedArray[i]+"/Attribuito",parseFloat(item.Wtfree).toFixed(2));
                         importoTotaleNI = parseFloat(importoTotaleNI) - parseFloat(item.Wtfree);
                     }
+                  }
+                  else{
+                    self.getView().getModel(MODEL_ENTITY).setProperty(selectedArray[i]+"/Attribuito",parseFloat(0).toFixed(2));
+                  }
                 }
 
                 var tot = 0;

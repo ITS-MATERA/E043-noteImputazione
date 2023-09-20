@@ -75,7 +75,10 @@ sap.ui.define(
                     }
                     if (data[d].ACTV_4 == "Z06") {
                         this.getView().byId("InviaNI").setEnabled(true);
-                    }                  
+                    }  
+                    if (data[d].ACTV_4 == "Z21") {
+                      this.getView().byId("idFascicoloIconTabFilter").setEnabled(true);
+                  }                 
                 }
             },
 

@@ -67,13 +67,14 @@ sap.ui.define(
                     }
                     if (data[d].ACTV_4 == "Z19") {
                         this.getView().byId("rettificaRilievo").setEnabled(true);
-                    }
-                    if (data[d].ACTV_4 == "Z19") {
                         this.getView().byId("CancellaRilievo").setEnabled(true);
                     }
                     if (data[d].ACTV_4 == "Z20") {
                         this.getView().byId("ValidaRilievo").setEnabled(true);
                     }
+                    if (data[d].ACTV_4 == "Z21") {
+                      this.getView().byId("idFascicoloIconTabFilter").setEnabled(true);
+                  }
                 }
             },
 

@@ -237,7 +237,7 @@
             <OverflowToolbar>
                 <Button text="Indietro" type="Emphasized" press="onBackButton" />
                 <ToolbarSpacer />
-                <Button type="Emphasized" text="Salva" press="onSave" id="SalvaNI"/>
+                <Button type="Emphasized" text="Salva" press="onSave" id="SalvaNI" enabled="false"/>
             </OverflowToolbar>
         </f:footer>
     </f:DynamicPage>

@@ -1,19 +1,9 @@
 <core:FragmentDefinition
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
-	xmlns:fb="sap.ui.comp.filterbar"
-	xmlns:u="sap.ui.unified"
-	xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:layout="sap.ui.layout"
-	xmlns:form="sap.ui.layout.form"
-	xmlns:f="sap.f"
 	xmlns:core="sap.ui.core"
-	xmlns:menu="sap.m.MenuItem"
-	xmlns:menBtn="sap.m.Menu"
 	height="100%"
 >
-	<!-- mode="SingleSelectLeft" 
-    itemPress="onRowSelectionChange"-->
 	<Table
 		class="sapUiSizeCompact"
 		id="HeaderNI"
@@ -22,6 +12,8 @@
 		mode="SingleSelectLeft"
 		selectionChange="onRowSelectionChange"
 		growing="true"
+		growingThreshold="20"
+		growingScrollToLoad="true"
 	>
 		<headerToolbar>
 			<OverflowToolbar>
@@ -109,4 +101,11 @@
 			}"/>
 		</ColumnListItem>
 	</Table>
+	<!-- <HBox justifyContent="Center">
+    <FeedContent id="mkt"
+      class="paginatorClass"
+      contentText="More"
+      subheader="[5/6]" press="pressMKT">
+    </FeedContent>
+  </HBox> -->
 </core:FragmentDefinition>

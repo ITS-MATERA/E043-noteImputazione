@@ -9,7 +9,6 @@ sap.ui.define(
     "sap/ui/export/Spreadsheet",
     "project1/model/DateFormatter",
   ],
-
   function (
     ODataModel,
     BaseController,
@@ -350,47 +349,44 @@ sap.ui.define(
         var aCols = [];
 
         aCols.push({
+          label: "Progressivo NI",
           property: "ZchiaveNi",
           type: EdmType.String,
         });
 
         aCols.push({
+          label: "Struttura Amministrativa Responsabile",
           property: "Fistl",
           type: EdmType.String,
         });
 
         aCols.push({
+          label: "Posizione Finanziaria",
           property: "Fipex",
           type: EdmType.String,
         });
 
         aCols.push({
+          label: "Oggetto della spesa",
           property: "ZoggSpesa",
           type: EdmType.String,
         });
 
-        // aCols.push({
-        //     property: 'Zmese',
-        //     type: EdmType.String
-        // });
-
-        // aCols.push({
-        //     property: 'ZcodiStatoni',
-        //     type: EdmType.String
-        // });
-
         aCols.push({
+          label: "Mese",
           property: "ZmeseDesc",
           type: EdmType.String,
         });
 
         aCols.push({
+          label: "Stato NI",
           property: "ZcodiStatoniDesc",
           type: EdmType.String,
         });
 
         aCols.push({
-          property: "ZimpoTotni",
+          label: "Importo Totale NI",
+          property: "ZimpoTotniString",
           type: EdmType.Number,
         });
 
@@ -412,6 +408,9 @@ sap.ui.define(
         var data = customList.map((x) => {
           var item = x;
           item.ZmeseDesc = self.formatter.getMonthName(item.Zmese);
+          item.ZimpoTotniString = self.formatter.convertFormattedNumber(
+            item.ZimpoTotni
+          );
           return item;
         });
 
@@ -1026,9 +1025,8 @@ sap.ui.define(
 
       onSearch: function (oEvent) {
         // this.getView().byId("PreimpostazioneNI").setEnabled(true);
-        console.log(this.getView().getModel("temp").getData());
         var visibilità = this.getView().getModel("temp").getData()
-          ?.Visibilità[0];
+          .Visibilità[0];
 
         var esGestione = this.getView().byId("es_gestione");
         if (!esGestione || esGestione.getSelectedKey() === "") {
@@ -1040,6 +1038,14 @@ sap.ui.define(
         }
         var that = this;
         var datiNI = [];
+
+        //TODO:da canc
+        // var abc=this.getView().byId("filterbar").getAllFilterItems();
+
+        // var bindingInfo = ""
+        // var path = ""
+
+        // var numFilter = oEvent.getParameters().selectionSet.length;
 
         datiNI = this.getFilters();
         var that = this;
@@ -1061,8 +1067,6 @@ sap.ui.define(
                 .getView()
                 .getModel("temp")
                 .setProperty("/HeaderNISet", data.results);
-              //that.setVirgolaMigliaia(data.results)
-              // that.setDescrizioneStato(data.results)
               that.getView().setBusy(false);
             },
             error: function (error) {

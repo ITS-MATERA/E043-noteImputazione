@@ -20,3 +20,18 @@
 .text-overflow > div{
     overflow: auto!important;
 }
+
+.paginatorClass{
+    text-align: center!important;
+}
+
+.paginatorClass >.sapMFCCTxt{
+    height: 40%!important;
+    font-weight:bold
+}
+.paginatorClass >.sapMFCCTxt>span{
+    color: #346187;
+}
+.paginatorClass >.sapMFCSbh{
+    color: #346187;
+}
