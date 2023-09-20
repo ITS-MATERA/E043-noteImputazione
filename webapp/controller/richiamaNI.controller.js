@@ -68,6 +68,9 @@ sap.ui.define(
                     if (data[d].ACTV_4 == "Z18") {
                         this.getView().byId("RegistraRilievoNI").setEnabled(true);
                     }
+                    if (data[d].ACTV_4 == "Z21") {
+                      this.getView().byId("idFascicoloIconTabFilter").setEnabled(true);
+                  }
                 }
             },
 

@@ -87,11 +87,15 @@ sap.ui.define(
                     if (data[d].ACTV_4 == "Z17") {
                         this.getView().byId("richiama2").setEnabled(true);
                     }
+                    if (data[d].ACTV_4 == "Z21") {
+                      this.getView().byId("idFascicoloIconTabFilter").setEnabled(true);
+                  }
                 }
             },
 
             _onObjectMatched: function (oEvent) {
                 var self = this;
+                self.callVisibilità();
                 var path = self.getOwnerComponent().getModel().createKey("HeaderNISet", {
                     Bukrs: oEvent.getParameters().arguments.campo,                    
                     Gjahr: oEvent.getParameters().arguments.campo1,
@@ -102,9 +106,6 @@ sap.ui.define(
                 }); 
                 self.getView().setBusy(true);
                 self.loadView(path);
-                
-                //this.callPositionNI()
-                //this.viewHeader(oEvent)
             },
 
             loadView:function(path){

@@ -1,12 +1,27 @@
 <core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     height="100%">
     <Table class="sapUiSizeCompact" id="revocaFirma" includeItemInSelection="true"
         items="{
                 path: 'EntityModel>/revocaFirma'
         }"
         visible="true">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button icon="sap-icon://excel-attachment" 
+                      app:tableId="revocaFirma" 
+                      app:filename="Esporta NI Inviata alla Firma" 
+                      app:columnConfig="columnConfigProvvisoria"
+                      press="onExportDetail" 
+                      type="Emphasized" 
+                      text="Esporta" />
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
         <columns>
             <Column width="auto" hAlign="Left">
                 <Label text="Numero NI" />

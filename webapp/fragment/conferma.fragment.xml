@@ -1,19 +1,27 @@
 <core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:fb="sap.ui.comp.filterbar"
-    xmlns:u="sap.ui.unified"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:layout="sap.ui.layout"
-    xmlns:form="sap.ui.layout.form"
-    xmlns:f="sap.f"
     xmlns:core="sap.ui.core"
-    xmlns:menu="sap.m.MenuItem"
-    xmlns:menBtn="sap.m.Menu"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     height="100%">
     <Table class="sapUiSizeCompact" id="conferma" includeItemInSelection="true" 
         items="{
                 path: 'EntityModel>/PositionNI'
             }" >
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button type="Emphasized" text="Modifica Dettaglio NI" enabled="false" press="onEditRow" id="editRow" />
+                    <Button icon="sap-icon://excel-attachment" 
+                      app:tableId="conferma" 
+                      app:filename="Esporta NI Confermata" 
+                      app:columnConfig="columnConfigProvvisoria"
+                      press="onExportDetail" 
+                      type="Emphasized" 
+                      text="Esporta" />
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
         <columns>
             <Column width="auto">
                 <Label text="Numero NI" />

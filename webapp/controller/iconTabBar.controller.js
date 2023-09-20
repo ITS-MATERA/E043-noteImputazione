@@ -47,7 +47,7 @@ sap.ui.define([
             _onObjectMatched: function (oEvent) {
                 var self =this,
                     oDataModel = self.getOwnerComponent().getModel();
-                
+                self.callVisibilità();
                 var path = self.getOwnerComponent().getModel().createKey("HeaderNISet", {
                     Bukrs: oEvent.getParameters().arguments.campo,                    
                     Gjahr: oEvent.getParameters().arguments.campo1,
@@ -208,14 +208,17 @@ sap.ui.define([
 
             pulsantiVisibiltà: function (data) {
                 for (var d = 0; d < data.length; d++) {
-                    if (data[d].ACTV_1 == "Z01") {
+                    if (data[d].ACTV_1 === "Z01") {
                         this.getView().byId("pressAssImpegno").setEnabled(true);
                     }
-                    if (data[d].ACTV_2 == "Z02") {
+                    if (data[d].ACTV_2 === "Z02") {
                         this.getView().byId("rettificaNI").setEnabled(true);
                     }
-                    if (data[d].ACTV_4 == "Z07") {
+                    if (data[d].ACTV_4 === "Z07") {
                         this.getView().byId("AnnullaNI").setEnabled(true);
+                    }
+                    if (data[d].ACTV_4 === "Z21") {
+                        this.getView().byId("idFascicoloIconTab").setEnabled(true);
                     }
                 }
             },
@@ -498,6 +501,7 @@ sap.ui.define([
                 this.getView().byId("pressAssImpegno").setEnabled(true);
                 self.getView().getModel(MODEL_ENTITY).setProperty("/Header",null);
                 self.getView().getModel(MODEL_ENTITY).setProperty("/PositionNI",[]);
+                self.getView().byId("HeaderITB").removeSelections(true);
                 self.getOwnerComponent().getRouter().navTo("View1");
             },
 

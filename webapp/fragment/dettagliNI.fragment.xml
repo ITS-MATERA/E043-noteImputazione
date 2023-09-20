@@ -1,15 +1,8 @@
 <core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:fb="sap.ui.comp.filterbar"
-    xmlns:u="sap.ui.unified"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:layout="sap.ui.layout"
-    xmlns:form="sap.ui.layout.form"
-    xmlns:f="sap.f"
     xmlns:core="sap.ui.core"
-    xmlns:menu="sap.m.MenuItem"
-    xmlns:menBtn="sap.m.Menu"
-    height="100%">
+    height="100%"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
     <!-- items="{EntityModel>PositionNI>/}" -->
     <Table class="sapUiSizeCompact" id="HeaderITB" includeItemInSelection="true"
         items="{
@@ -24,6 +17,13 @@
                     <Button type="Emphasized" text="Modifica Dettaglio NI" enabled="false" press="onEditRow" id="editRow" />
                     <Button icon="sap-icon://add" type="Emphasized" text="Inserisci riga" enabled="false" press="onAddRow" id="addRow" />
                     <Button icon="sap-icon://less" type="Emphasized" text="Cancella riga" enabled="false" press="onDeleteRow" id="deleteRow" />
+                    <Button icon="sap-icon://excel-attachment" 
+                      app:tableId="HeaderITB" 
+                      app:filename="Esporta NI Preimpostata" 
+                      app:columnConfig="columnConfigPreimpostata"
+                      press="onExportDetail" 
+                      type="Emphasized" 
+                      text="Esporta" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>

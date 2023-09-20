@@ -4,13 +4,16 @@ sap.ui.define([
 	"sap/m/library",
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
-], function (Controller, UIComponent, mobileLibrary, Filter, FilterOperator) {
+  'project1/model/DateFormatter',
+  'sap/ui/export/Spreadsheet',
+], function (Controller, UIComponent, mobileLibrary, Filter, FilterOperator, DateFormatter,Spreadsheet) {
 	"use strict";
 
 	// shortcut for sap.m.URLHelper
 	var URLHelper = mobileLibrary.URLHelper;
-
+  var EdmType = sap.ui.export.EdmType;
 	return Controller.extend("project1.controller.BaseController", {
+    formatter: DateFormatter,
 		/**
 		 * Convenience method for accessing the router.
 		 * @public
@@ -231,19 +234,150 @@ sap.ui.define([
 			});
 		},
 
+    onExportDetail:function(oEvent){
+      var self =this,
+        aCols, oRowBinding, oSettings, oSheet,
+        tableId = oEvent.getSource().data("tableId"),
+        fileName = oEvent.getSource().data("filename"),
+		functionColumnConfig = oEvent.getSource().data("columnConfig");
+      
+      if(!tableId || tableId === null || tableId === "" || 
+	  !fileName || fileName === null || fileName === "" ||
+	  !functionColumnConfig || functionColumnConfig === null || functionColumnConfig === ""){
+        MessageBox.error("Impossibile effettuare il download", {
+          actions: [sap.m.MessageBox.Action.OK],
+          emphasizedAction: MessageBox.Action.OK,
+        });
+        return false;
+      }
 
-		/**
-		 * Event handler when the share by E-Mail button has been clicked
-		 * @public
-		 */
+      var oTable = self.getView().byId(tableId);
+      oRowBinding = oTable.getBinding('items');
+      var customList = oRowBinding.oList;
+      var data = customList.map((x)=>{
+          var item = x;
+          item.ZdataPagString = self.formatter.convert(item.ZdataPag);
+          item.ZimpoTitoloString = self.formatter.convertFormattedNumber(item.ZimpoTitolo);
+          item.ZimpoResString = self.formatter.convertFormattedNumber(item.ZimpoRes);
+          return item;
+      }); 
+
+      oRowBinding.oList = data;
+	    aCols = eval(`this.${functionColumnConfig}("")`);
+      //aCols = this.createColumnConfigForDetail();
+
+      oSettings = {
+          workbook: {
+              columns: aCols,
+              hierarchyLevel: 'Level'
+          },
+          dataSource: oRowBinding,
+          fileName: fileName,
+          worker: false // We need to disable worker because we are using a MockServer as OData Service
+      };
+
+      oSheet = new sap.ui.export.Spreadsheet(oSettings);
+      oSheet.build().finally(function () {
+          oSheet.destroy();
+      });
+    },
+
+    columnConfigPreimpostata: function (value) {
+      var aCols = [];
+
+      aCols.push({
+        label:'Codice ISIN',
+        property: 'ZcodIsin',
+        type: EdmType.String
+      });
+
+      aCols.push({
+        label:'Sottotipologia primo livello',
+        property: 'Ztipo',
+        type: EdmType.String
+      });
+
+      aCols.push({
+        label:'Descrizione',
+        property: 'Zdescrizione',
+        type: EdmType.String
+      });
+
+      aCols.push({
+        label:'Data Pagamento',
+        property: 'ZdataPagString',
+        type: EdmType.String
+      });      
+      aCols.push({
+        label:'Importo NI',
+        property: 'ZimpoTitoloString',
+        type: EdmType.String
+      });
+
+      aCols.push({
+        label:'Importo Residuo',
+        property: 'ZimpoResString',
+        type: EdmType.String
+      });
+      return aCols;
+    },
+
+    columnConfigProvvisoria: function (value) {
+      var aCols = [];
+
+      aCols.push({
+        label:'Numero NI',
+        property: 'ZchiaveSubni',
+        type: EdmType.String
+      });
+
+      aCols.push({
+        label:'Codice ISIN',
+        property: 'ZcodIsin',
+        type: EdmType.String
+      });
+
+      aCols.push({
+        label:'Sottotipologia primo livello',
+        property: 'Ztipo',
+        type: EdmType.String
+      });
+
+      aCols.push({
+        label:'Descrizione',
+        property: 'Zdescrizione',
+        type: EdmType.String
+      });
+
+      aCols.push({
+        label:'Data Pagamento',
+        property: 'ZdataPagString',
+        type: EdmType.String
+      });      
+      aCols.push({
+        label:'Importo NI',
+        property: 'ZimpoTitoloString',
+        type: EdmType.String
+      });
+
+      aCols.push({
+        label:'Importo Residuo',
+        property: 'ZimpoResString',
+        type: EdmType.String
+      });
+
+      aCols.push({
+        label:'Impegno',
+        property: 'ZCodCla',
+        type: EdmType.String
+      });
+      return aCols;
+    },
 
 
-		/**
-		 * Adds a history entry in the FLP page history
-		 * @public
-		 * @param {object} oEntry An entry object to add to the hierachy array as expected from the ShellUIService.setHierarchy method
-		 * @param {boolean} bReset If true resets the history before the new entry is added
-		 */
+    // pressMKT:function(oEvent){
+    //   console.log("ciola");
+    // }
 
 
 	});

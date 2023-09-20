@@ -362,7 +362,7 @@
 
             <OverflowToolbar>
                     <ToolbarSpacer />
-                    <Button text="Rettifica Rilievo NI" type="Emphasized" press="pressRettificaRilievo" id="rettificaRilievo" />
+                    <Button text="Rettifica Rilievo NI" type="Emphasized" press="pressRettificaRilievo" id="rettificaRilievo" enabled="false"/>
                 </OverflowToolbar>
             </f:DynamicPageHeader>
         </f:header>
@@ -375,7 +375,7 @@
                     <IconTabFilter icon="sap-icon://history" text="Workflow" key="Workflow">
                         <core:Fragment fragmentName="project1.fragment.workflow" type="XML"/>
                     </IconTabFilter>
-                    <IconTabFilter icon="sap-icon://documents" text="Fascicolo" key="Fascicolo">
+                    <IconTabFilter id="idFascicoloIconTabFilter" icon="sap-icon://documents" text="Fascicolo" key="Fascicolo" enabled="false">
                     </IconTabFilter>
                 </items>
             </IconTabBar>
@@ -385,9 +385,9 @@
             <OverflowToolbar>
                 <Button text="Indietro" type="Emphasized" press="onBackButton" />
                 <ToolbarSpacer />
-                <Button type="Emphasized" text="Richiama NI" press="onRichiamaNI" id="richiama2" />
-                <Button type="Emphasized" text="Cancella Rilievo NI" press="onCancellaRilievo" id="CancellaRilievo" />
-                <Button type="Emphasized" text="Valida Rilievo NI" press="onValidaRilievo" id="ValidaRilievo" />
+                <Button type="Emphasized" text="Richiama NI" press="onRichiamaNI" id="richiama2" enabled="false"/>
+                <Button type="Emphasized" text="Cancella Rilievo NI" press="onCancellaRilievo" id="CancellaRilievo" enabled="false"/>
+                <Button type="Emphasized" text="Valida Rilievo NI" press="onValidaRilievo" id="ValidaRilievo" enabled="false"/>
             </OverflowToolbar>
         </f:footer>
     </f:DynamicPage>

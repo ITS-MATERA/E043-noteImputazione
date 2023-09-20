@@ -89,6 +89,18 @@ sap.ui.define([
                 }    
             },
 
+            loadIban:function(){
+              var self =this,
+                selezionati = self.getView().getModel("temp").getProperty("/ImpegniSelezionati");
+              
+              self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/Iban",selezionati[0].Iban);  
+              if(selezionati.length>1){
+                var found = selezionati.filter( x => x.Iban !== selezionati[0].Iban);
+                if(found && found.length >0)
+                  self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/Iban",null);
+              }
+            },
+
             loadView:function(path){
                 var self =this,
                     oDataModel = self.getOwnerComponent().getModel();
@@ -99,6 +111,7 @@ sap.ui.define([
                             self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/ImportoLiquidazione", data.ZimpoTotni);
 
                             self.loadBeneficiario();
+                            self.loadIban();
                             self.loadModalitaPagamento();
 
                             if(self.getView().getModel("temp").getProperty('/SalvaImpegnoValues')){
@@ -110,9 +123,6 @@ sap.ui.define([
                                     if(callback.data.length>0){
                                         var item = callback.data[0];
                                         self.getView().getModel(MODEL_ENTITY).setProperty("/Header/ZcompRes",item.ZcompRes);
-
-
-
                                     }
                                     
                                     self.getView().setBusy(false);
@@ -564,6 +574,17 @@ sap.ui.define([
                     });
                     return false;
                 }
+
+                if(detail.DataEsigibilita && detail.DataEsigibilita !== ""){
+                    if(detail.DataEsigibilita < new Date(new Date().toDateString())){
+                        MessageBox.error("La data di esigibilità inserita non è valida. Definire un altro valore", {
+                            actions: [sap.m.MessageBox.Action.OK],
+                            emphasizedAction: MessageBox.Action.OK,
+                        });
+                        return false;
+                    }
+                }
+
                 self.getView().getModel("temp").setProperty('/SalvaImpegnoValues', detail);  
                 self.getOwnerComponent().getRouter().navTo("salvaImpegno", 
                     { 

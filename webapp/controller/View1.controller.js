@@ -267,48 +267,45 @@ sap.ui.define([
                 var aCols = [];
 
                 aCols.push({
+                    label:'Progressivo NI',
                     property: 'ZchiaveNi',
                     type: EdmType.String
                 });
 
                 aCols.push({
-                    property: 'Fistl',
-                    type: EdmType.String
+                  label:'Struttura Amministrativa Responsabile',
+                  property: 'Fistl',
+                  type: EdmType.String
                 });
 
                 aCols.push({
-                    property: 'Fipex',
-                    type: EdmType.String
+                  label:'Posizione Finanziaria',
+                  property: 'Fipex',
+                  type: EdmType.String
                 });
 
                 aCols.push({
-                    property: 'ZoggSpesa',
-                    type: EdmType.String
-                });
-
-                // aCols.push({
-                //     property: 'Zmese',
-                //     type: EdmType.String
-                // });
-
-                // aCols.push({
-                //     property: 'ZcodiStatoni',
-                //     type: EdmType.String
-                // });
+                  label:'Oggetto della spesa',
+                  property: 'ZoggSpesa',
+                  type: EdmType.String
+                });                
                 
-                aCols.push({
-                    property: 'ZmeseDesc',
-                    type: EdmType.String
+                aCols.push({                  
+                  label:'Mese',
+                  property: 'ZmeseDesc',
+                  type: EdmType.String
+                });
+
+                aCols.push({                  
+                  label:'Stato NI',
+                  property: 'ZcodiStatoniDesc',
+                  type: EdmType.String
                 });
 
                 aCols.push({
-                    property: 'ZcodiStatoniDesc',
-                    type: EdmType.String
-                });
-
-                aCols.push({
-                    property: 'ZimpoTotni',
-                    type: EdmType.Number
+                  label:'Importo Totale NI',
+                  property: 'ZimpoTotniString',
+                  type: EdmType.Number
                 });
 
                 return aCols;
@@ -329,6 +326,7 @@ sap.ui.define([
                 var data = customList.map((x)=>{
                     var item = x;
                     item.ZmeseDesc = self.formatter.getMonthName(item.Zmese);
+                    item.ZimpoTotniString = self.formatter.convertFormattedNumber(item.ZimpoTotni);
                     return item;
                 }); 
 
@@ -732,212 +730,6 @@ sap.ui.define([
                 // var numFilter = oEvent.getParameters().selectionSet.length;
 
                 datiNI = this.getFilters();
-
-
-                //TODO:da canc
-                // for (let i = 0; i < numFilter; i++) {
-
-                //     bindingInfo = "items"
-                //     path = oEvent.getParameters().selectionSet[i].getBindingInfo(bindingInfo)
-                //     if (path == undefined) {
-                //         bindingInfo = "suggestionItems"
-                //         path = oEvent.getParameters().selectionSet[i].getBindingInfo(bindingInfo)
-                //     }
-                //     var filtro = oEvent.getParameters().selectionSet[i]
-
-                //     if (filtro) {
-                //         if (i == 4) {
-                //             if (oEvent.getParameters().selectionSet[4].mProperties.value != '') {
-                //                 datiNI.push(new Filter({
-                //                     path: "ZchiaveNi",
-                //                     operator: FilterOperator.BT,
-                //                     value1: oEvent.getParameters().selectionSet[4].mProperties.value,
-                //                     value2: oEvent.getParameters().selectionSet[5].mProperties.value
-                //                 }));
-                //             }
-                //         }
-                //         if (i == 6) {
-                //             if (oEvent.getParameters().selectionSet[6].mProperties.value != '') {
-                //                 datiNI.push(new Filter({
-                //                     path: "ZzChiaveSubniPos",
-                //                     operator: FilterOperator.BT,
-                //                     value1: oEvent.getParameters().selectionSet[6].mProperties.value,
-                //                     value2: oEvent.getParameters().selectionSet[7].mProperties.value
-                //                 }));
-                //             }
-                //         }
-                //         if (i == 16) {
-                //             if (oEvent.getParameters().selectionSet[16].mProperties.value != '') {
-                //                 datiNI.push(new Filter({
-                //                     path: "Zcoddecr",
-                //                     operator: FilterOperator.BT,
-                //                     value1: oEvent.getParameters().selectionSet[16].mProperties.value,
-                //                     value2: oEvent.getParameters().selectionSet[17].mProperties.value
-                //                 }));
-                //             }
-                //         }
-                //         if (i == 18) {
-                //             if (oEvent.getParameters().selectionSet[18].mProperties.value != '') {
-                //                 datiNI.push(new Filter({
-                //                     path: "ZzCodIpePos",
-                //                     operator: FilterOperator.BT,
-                //                     value1: oEvent.getParameters().selectionSet[18].mProperties.value,
-                //                     value2: oEvent.getParameters().selectionSet[19].mProperties.value
-                //                 }));
-                //             }
-                //         }
-                //         if (i == 20) {
-                //             if (oEvent.getParameters().selectionSet[20].mProperties.value != '') {
-                //                 datiNI.push(new Filter({
-                //                     path: "ZzNumClaPos",
-                //                     operator: FilterOperator.BT,
-                //                     value1: oEvent.getParameters().selectionSet[20].mProperties.value,
-                //                     value2: oEvent.getParameters().selectionSet[21].mProperties.value
-                //                 }));
-                //             }
-                //         }
-
-
-
-                //         else if (i == 5 || i == 7 || i == 17 || i == 19 || i == 21) {
-                //             continue
-                //         }
-
-                //         if (filtro.mProperties.dateValue instanceof Date || !isNaN(filtro.mProperties.dateValue)) {
-                //             if (i == 8) {
-                //                 if (oEvent.getParameters().selectionSet[8].mProperties.value != '') {
-                //                     datiNI.push(new Filter({
-                //                         path: "ZdataCreaz",
-                //                         operator: FilterOperator.BT,
-                //                         value1: oEvent.getParameters().selectionSet[8].mProperties.value,
-                //                         value2: oEvent.getParameters().selectionSet[9].mProperties.value
-                //                     }));
-                //                 }
-                //             }
-                //             if (i == 20) {
-                //                 if (oEvent.getParameters().selectionSet[18].mProperties.value != '') {
-                //                     datiNI.push(new Filter({
-                //                         path: "ZdataFirmNi",
-                //                         operator: FilterOperator.BT,
-                //                         value1: oEvent.getParameters().selectionSet[20].mProperties.value,
-                //                         value2: oEvent.getParameters().selectionSet[21].mProperties.value
-                //                     }));
-                //                 }
-                //             }
-                //             if (i == 22) {
-                //                 if (oEvent.getParameters().selectionSet[20].mProperties.value != '') {
-                //                     datiNI.push(new Filter({
-                //                         path: "ZdataProtAmm",
-                //                         operator: FilterOperator.BT,
-                //                         value1: oEvent.getParameters().selectionSet[22].mProperties.value,
-                //                         value2: oEvent.getParameters().selectionSet[23].mProperties.value
-                //                     }));
-                //                 }
-                //             }
-                //             if (i == 25) {
-                //                 if (oEvent.getParameters().selectionSet[23].mProperties.value != '') {
-                //                     datiNI.push(new Filter({
-                //                         path: "ZdataProtRag",
-                //                         operator: FilterOperator.BT,
-                //                         value1: oEvent.getParameters().selectionSet[25].mProperties.value,
-                //                         value2: oEvent.getParameters().selectionSet[26].mProperties.value
-                //                     }));
-                //                 }
-                //             }
-                //         }
-                //         else if (oEvent.getParameters().selectionSet[i].mProperties.value != '' && i != 4 && i != 6 && i != 11 && i != 10 && i != 16 && i != 18 && i != 20) {
-                //             datiNI.push(new Filter({
-                //                 path: path.sorter.sPath,
-                //                 operator: FilterOperator.EQ,
-                //                 // value1: filtro.getValue()
-                //                 value1: filtro.getSelectedKey()
-                //             }));
-                //             //datiNI.push("?$filter= "+path.sorter.sPath+" eq '" + filtro.getValue() + "'");
-                //         }
-                //         else if (i == 9 || i == 21 || i == 23 || i == 26) {
-                //             continue
-                //         }
-
-                //         else if (i == 0) {
-                //             if (oEvent.getParameters().selectionSet[i].mProperties.value == '') {
-                //                 MessageBox.error("Valorizzare Esercizio di gestione", {
-                //                     actions: [sap.m.MessageBox.Action.OK],
-                //                     emphasizedAction: MessageBox.Action.OK,
-                //                 })
-                //             }
-                //         }
-                //         else if (i == 11) {
-                //             var stati = this.getView().getModel("temp").getData().StateNI
-                //             for (var st = 0; st < stati.length; st++) {
-                //                 if (oEvent.getParameters().selectionSet[i].mProperties.value == stati[st].ZstatoDescNi) {
-                //                     datiNI.push(new Filter({
-                //                         path: "ZcodiStatoni",
-                //                         operator: FilterOperator.EQ,
-                //                         value1: stati[st].ZcodiStatoni
-                //                     }));
-                //                 }
-
-                //             }
-
-                //         }
-                //         else if (i == 10) {
-                //             var mese = this.getView().getModel("temp").getData().ZmeseSet
-                //             for (var me = 0; me < mese.length; me++) {
-                //                 if (oEvent.getParameters().selectionSet[i].mProperties.value == mese[me].Descrizione) {
-                //                     switch (mese[me].Descrizione) {
-                //                         case "Gennaio":
-                //                             var nMese = "1"
-                //                             break;
-                //                         case "Febbraio":
-                //                             var nMese = "2"
-                //                             break;
-                //                         case "Marzo":
-                //                             var nMese = "3"
-                //                             break;
-                //                         case "Aprile":
-                //                             var nMese = "4"
-                //                             break;
-                //                         case "Maggio":
-                //                             var nMese = "5"
-                //                             break;
-                //                         case "Giugno":
-                //                             var nMese = "6"
-                //                             break;
-                //                         case "Luglio":
-                //                             var nMese = "7"
-                //                             break;
-                //                         case "Agosto":
-                //                             var nMese = "8"
-                //                             break;
-                //                         case "Settembre":
-                //                             var nMese = "9"
-                //                             break;
-                //                         case "Ottobre":
-                //                             var nMese = "10"
-                //                             break;
-                //                         case "Novembre":
-                //                             var nMese = "11"
-                //                             break;
-                //                         case "Dicembre":
-                //                             var nMese = "12"
-                //                             break;
-                //                         default: break;
-                //                     }
-
-                //                     datiNI.push(new Filter({
-                //                         path: "Zmese",
-                //                         operator: FilterOperator.EQ,
-                //                         value1: nMese
-                //                     }));
-                //                 }
-
-                //             }
-
-                //         }
-                //     }
-                // }
-                // if (datiNI.length != 0 && datiNI[0].sPath == "Gjahr") {
-                    //console.log(datiNI)
                     var that = this;
                     var oMdl = new sap.ui.model.json.JSONModel();
                     
@@ -948,8 +740,6 @@ sap.ui.define([
                         success: function (data) {
                             oMdl.setData(data.results);
                             that.getView().getModel("temp").setProperty('/HeaderNISet', data.results)
-                            //that.setVirgolaMigliaia(data.results)
-                            // that.setDescrizioneStato(data.results)
                             that.getView().setBusy(false);
                         },
                         error: function (error) {

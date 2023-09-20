@@ -168,7 +168,7 @@
                     <IconTabFilter icon="sap-icon://history" text="Workflow" key="Workflow">
                         <core:Fragment fragmentName="project1.fragment.workflow" type="XML" />
                     </IconTabFilter>
-                    <IconTabFilter icon="sap-icon://documents" text="Fascicolo" key="Fascicolo">
+                    <IconTabFilter id="idFascicoloIconTabFilter" icon="sap-icon://documents" text="Fascicolo" key="Fascicolo" enabled="false">
                     </IconTabFilter>
                 </items>
             </IconTabBar>
@@ -178,10 +178,10 @@
             <OverflowToolbar>
                 <Button text="Indietro" type="Emphasized" press="onBackButton" />
                 <ToolbarSpacer />
-                <Button type="Emphasized" text="Richiama NI" press="onRichiamaNI" id="richiama" />
-                <Button type="Emphasized" text="Revoca Conferma NI" press="onRevocaConfermaNI" id="revocaConferma" />
-                <Button type="Emphasized" text="Registra Rilievo NI" press="onRegistraRilievo" id="RegistraRilievoNI" />
-                <Button type="Emphasized" text="Valida NI" press="onValidaNI" id="Valida" />
+                <Button type="Emphasized" text="Richiama NI" press="onRichiamaNI" id="richiama" enabled="false"/>
+                <Button type="Emphasized" text="Revoca Conferma NI" press="onRevocaConfermaNI" id="revocaConferma" enabled="false"/>
+                <Button type="Emphasized" text="Registra Rilievo NI" press="onRegistraRilievo" id="RegistraRilievoNI" enabled="false"/>
+                <Button type="Emphasized" text="Valida NI" press="onValidaNI" id="Valida" enabled="false"/>
             </OverflowToolbar>
         </f:footer>
     </f:DynamicPage>

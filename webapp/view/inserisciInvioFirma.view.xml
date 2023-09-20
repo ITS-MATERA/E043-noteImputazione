@@ -1,10 +1,6 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:fb="sap.ui.comp.filterbar"
-    xmlns:u="sap.ui.unified"
-    xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:layout="sap.ui.layout"
-    xmlns:form="sap.ui.layout.form"
     xmlns:f="sap.f"
     xmlns:core="sap.ui.core"
     xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"  
@@ -148,7 +144,7 @@
                 <OverflowToolbar>
                     <ToolbarSpacer />
                     <Button text="Rettifica NI" type="Emphasized" press="pressRettificaNI" id="InserisciInvioFirmaRettificaNI" enabled="false" />
-                    <Button text="Inserisci dati per Invio della firma" type="Emphasized" press="pressFirma" enabled="true" id="pressFirma" icon="sap-icon://edit"/>
+                    <Button text="Inserisci dati per Invio della firma" type="Emphasized" press="pressFirma" enabled="false" id="pressFirma" icon="sap-icon://edit"/>
                 </OverflowToolbar>
             </f:DynamicPageHeader>
         </f:header>
@@ -161,7 +157,7 @@
                     <IconTabFilter icon="sap-icon://history" text="Workflow" key="Workflow">
                         <core:Fragment fragmentName="project1.fragment.workflow" type="XML"/>
                     </IconTabFilter>
-                    <IconTabFilter icon="sap-icon://documents" text="Fascicolo" key="Fascicolo">
+                    <IconTabFilter id="idFascicoloIconTabFilter" icon="sap-icon://documents" text="Fascicolo" key="Fascicolo" enabled="false">
                     </IconTabFilter>
                 </items>
             </IconTabBar>
@@ -171,7 +167,7 @@
             <OverflowToolbar>
                 <Button text="Indietro" type="Emphasized" press="onBackButton" />
                 <ToolbarSpacer />
-                <Button type="Emphasized" text="Annulla NI" press="onCancelNI" id="AnnullaNI2" />
+                <Button type="Emphasized" text="Annulla NI" press="onCancelNI" id="AnnullaNI2" enabled="false"/>
                 <Button type="Emphasized" text="Invia alla Firma" press="onCompleteNI" id="InviaNI" enabled="false" />
             </OverflowToolbar>
         </f:footer>
