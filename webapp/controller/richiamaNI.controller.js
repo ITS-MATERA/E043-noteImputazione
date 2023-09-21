@@ -95,6 +95,7 @@ sap.ui.define(
                     });    
                   }
                 else{ 
+                  self.pulsantiVisibiltà(self.getOwnerComponent().getModel("temp").getData().Visibilità);
                   self.callPositionNI(path);
                 }
             },

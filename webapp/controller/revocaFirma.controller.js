@@ -71,12 +71,15 @@ sap.ui.define(
             pulsantiVisibiltà: function (data) {
                 for (var d = 0; d < data.length; d++) {
                     if (data[d].ACTV_4 == "Z05") {
+                        console.log("Z05")
                         this.getView().byId("AnnullaNI2").setEnabled(true);
                     }
                     if (data[d].ACTV_4 == "Z06") {
+                      console.log("Z06")
                         this.getView().byId("InviaNI").setEnabled(true);
                     }  
                     if (data[d].ACTV_4 == "Z21") {
+                      console.log("Z21")
                       this.getView().byId("idFascicoloIconTabFilter").setEnabled(true);
                   }                 
                 }
@@ -102,6 +105,7 @@ sap.ui.define(
                     });    
                   }
                 else{ 
+                  self.pulsantiVisibiltà(self.getOwnerComponent().getModel("temp").getData().Visibilità);
                   self.callPositionNI(path);
                 }
             },

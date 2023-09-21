@@ -57,12 +57,13 @@ sap.ui.define(
                   self.getOwnerComponent().getModel("temp").getData().Visibilità === null){
                     self.callPreventVisibilitaWithCallback(function(callback){
                         if(callback){ 
-                           self.pulsantiVisibiltà(self.getOwnerComponent().getModel("temp").getData().Visibilità);
+                          self.pulsantiVisibiltà(self.getOwnerComponent().getModel("temp").getData().Visibilità);
                           self.callPositionNI(path);           
                         }
                     });    
                   }
                 else{ 
+                  self.pulsantiVisibiltà(self.getOwnerComponent().getModel("temp").getData().Visibilità);
                   self.callPositionNI(path);
                 }
             },

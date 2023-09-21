@@ -164,6 +164,7 @@ sap.ui.define([
                         });    
                     }
                     else{
+                        self.pulsantiVisibiltà(self.getOwnerComponent().getModel("temp").getProperty("/Visibilità"));
                         self.loadView(path);
                     }    
                 }
