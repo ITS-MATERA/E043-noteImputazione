@@ -102,7 +102,7 @@ sap.ui.define([
             pulsantiVisibiltà: function (data) {
                 for (var d = 0; d < data.length; d++) {
                     if (data[d].ACTV_1 == "Z01") {
-                        this.getView().byId("pressAssImpegno").setEnabled(false);
+                       //this.getView().byId("pressAssImpegno").setEnabled(false);
                         this.getView().byId("CompletaNI").setEnabled(true);
                     }
                     // if (data[d].ACTV_2 == "Z02") {
