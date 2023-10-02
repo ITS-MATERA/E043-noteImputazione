@@ -353,6 +353,8 @@ sap.ui.define([
             onSearch:function(oEvent){
                 var self = this;
 
+                console.log(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getData())//TODO:Da canc
+
                 if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng") === "" || 
                     self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/meseValore") === ""){
                     MessageBox.error("Alimentare tutti i campi obbligatori", {
@@ -846,7 +848,8 @@ sap.ui.define([
                         }
                     });
                 }
-            }
+            },
 
+          
         });
     });

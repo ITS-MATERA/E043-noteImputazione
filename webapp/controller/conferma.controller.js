@@ -1008,7 +1008,7 @@ sap.ui.define(
               var deepEntity = {
                 ZchiaveNi: header.ZchiaveNi,
                 HeaderNISet: header,
-                Funzionalita: 'RICHIAMOCONFERMATA',
+                Funzionalita: 'REVOCACONFERMA',
               };
               MessageBox.warning("Sei sicuro di voler revocare la conferma della Nota d'Imputazione n° " + header.ZchiaveNi + "?", {
                 title: "Revoca Conferma",

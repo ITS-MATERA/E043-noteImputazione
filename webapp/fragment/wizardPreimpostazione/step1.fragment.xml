@@ -4,6 +4,7 @@
     xmlns:l="sap.ui.layout"
     xmlns:core="sap.ui.core"
     xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:zTipoLibrary="custZtipo.zTipoLibrary.controls"
     height="100%">
     <Panel>
         <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0.1">
@@ -28,7 +29,7 @@
             </VBox>
             <VBox>
                 <Label text="Sottotipologia primo livello:" />
-                <Input value="{preimpostazioneModel>/tipologiaDescrizione}" id="tipologia" width="100%" showSuggestion="false" showValueHelp="true" showClearIcon="true"
+                <!-- <Input value="{preimpostazioneModel>/tipologiaDescrizione}" id="tipologia" width="100%" showSuggestion="false" showValueHelp="true" showClearIcon="true"
                     valueHelpRequest="handleValueHelpZhfTipo" 
                     suggestionItems="{path: 'wizardEntitiesModel>/ZhfTipo', sorter: { path: 'ZcodTipo' }}" 
                     app:fieldName="tipologia" 
@@ -38,19 +39,37 @@
                     <suggestionItems>
                         <core:ListItem key="{wizardEntitiesModel>ZcodTipo}" text="{wizardEntitiesModel>Ztipo}"/>
                     </suggestionItems>
-                </Input>
+                </Input> -->
+
+                <zTipoLibrary:InputZTipo  
+                  bukrs="S001"
+                  value="{preimpostazioneModel>/tipologiaDescrizione}" 
+                  key="{preimpostazioneModel>/tipologia}">                
+                </zTipoLibrary:InputZTipo>    
+
+
                 <layoutData>
                     <l:GridData span="XL3 L3 M6 S12" linebreak="true"/>
                 </layoutData>
             </VBox>
             <VBox>
                 <Label text="Sottotipologia secondo livello:" />
-                <ComboBox id="sottotipologia" width="100%" selectionChange="sottotipologiaSelectionChange"
+                <!-- <ComboBox id="sottotipologia" width="100%" selectionChange="sottotipologiaSelectionChange"
                     items ="{
                     path: 'wizardEntitiesModel>/ZhfSottotipo'
                     }">
                     <core:ListItem key="{wizardEntitiesModel>ZhfSottotipo}" text="{wizardEntitiesModel>Zsottotipo}" additionalText = "{wizardEntitiesModel>ZcodSottotipo}"/>                                                    
-                </ComboBox>
+                </ComboBox> -->
+
+                <zTipoLibrary:InputZSottotipo  
+                  bukrs="S001"
+                  zcodTipo="{preimpostazioneModel>/tipologia}"
+                  ztipo="{preimpostazioneModel>/tipologiaDescrizione}"
+                  value="{preimpostazioneModel>/sottotipolgiaDescrizione}" 
+                  key="{preimpostazioneModel>/sottotipolgia}">                
+                </zTipoLibrary:InputZSottotipo> 
+
+
                 <layoutData>
                     <l:GridData span="XL3 L3 M6 S12" />
                 </layoutData>
