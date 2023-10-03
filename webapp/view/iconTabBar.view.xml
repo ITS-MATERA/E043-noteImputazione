@@ -15,14 +15,14 @@
                         <Label id="numNI" text="{i18n>ProgressivoNI}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="numNI1" text="{EntityModel>/Header/ZchiaveNi}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M12 S12" />
+                            <layout:GridData span="XL4 L4 M12 S12" />
                         </layoutData>
                     </HBox>
                     <HBox>
                         <Label id="dataReg" text="{i18n>DataRegistrazioneNI}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="dataReg1" text="{path:'EntityModel>/Header/ZdataCreaz', formatter:'.formatter.convert'}"  wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M12 S12" />
+                            <layout:GridData span="XL4 L4 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 2 riga -->
@@ -32,7 +32,7 @@
                             versione="D" bilancio="" fictr="{EntityModel>/Header/Fistl}" datbis="99991231" text="{EntityModel>/Header/Fistl}"
                             wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true" />
+                            <layout:GridData span="XL4 L4 M12 S12" linebreak="true" />
                         </layoutData>
                     </FlexBox>                        
                     <FlexBox class="text-overflow">
@@ -41,14 +41,14 @@
                             versione="D" fipex="{EntityModel>/Header/Fipex}" datbis="99991231" text="{EntityModel>/Header/Fipex}" semanticObject="ESAMINAMODIFICA"
                             wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M12 S12" />
+                            <layout:GridData span="XL4 L4 M12 S12" />
                         </layoutData>
                     </FlexBox>
                     <HBox>
                         <Label id="oggSpesa" text="{i18n>oggSpesa}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="oggSpesa1" text="{EntityModel>/Header/ZoggSpesa}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M12 S12" />
+                            <layout:GridData span="XL4 L4 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 3 riga -->
@@ -56,7 +56,7 @@
                         <Label id="mese" text="{i18n>Mese}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="mese1" text="{path: 'EntityModel>/Header/Zmese', formatter:'.formatter.getMonthName'}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true" />
+                            <layout:GridData span="XL4 L4 M12 S12" linebreak="true" />
                         </layoutData>
                     </HBox>
                     <HBox>
@@ -64,14 +64,14 @@
                         <Label id="comp1" wrapping="true"
                              text="{= ${EntityModel>/Header/ZcompRes} === 'C' ? 'Competenza' : ${EntityModel>/Header/ZcompRes} === 'R' ? 'Residui' : ''}"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M12 S12" />
+                            <layout:GridData span="XL4 L4 M12 S12" />
                         </layoutData>
                     </HBox>
                     <HBox>
                         <Label id="statoNI" text="{i18n>statoNI}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="statoNI1" text="{EntityModel>/Header/ZcodiStatoniDesc}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M12 S12" />
+                            <layout:GridData span="XL4 L4 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 4 riga -->
@@ -79,7 +79,7 @@
                         <Label id="importoTot" text="{i18n>importoTot}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="importoTot1" text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true"/>
+                            <layout:GridData span="XL4 L4 M12 S12" linebreak="true"/>
                         </layoutData>
                     </HBox>
                 </layout:Grid>

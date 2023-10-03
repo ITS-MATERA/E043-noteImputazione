@@ -781,10 +781,10 @@ sap.ui.define(
           detail.CausalePagamento === "" ||
           !detail.Zwels ||
           detail.Zwels === null ||
-          detail.Zwels === "" ||
+          detail.Zwels === "" /*||
           !detail.Iban ||
           detail.Iban === null ||
-          detail.Iban === ""
+          detail.Iban === ""*/
         ) {
           MessageBox.error("Alimentare tutti i campi obbligatori", {
             actions: [sap.m.MessageBox.Action.OK],

@@ -14,6 +14,10 @@
 	xmlns:zcontrol="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfin.controls"
 	xmlns:zcontrolMatchSar="zsap.com.r3.cobi.s4.custapiuser.z_s4_userlog.controls"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+
+  	xmlns:zNumeroNILibrary="custZnumeroNI.zNumeroNILibrary.controls"
+  	xmlns:zprogrnilibrary="custprogrni.zprogrnilibrary.controls"
+
 	height="100%"
 	controllerName="project1.controller.View1"
 >
@@ -163,7 +167,7 @@
 								label="{i18n>progressivoNIDa}"
 							>
 								<fb:control>
-									<Input
+									<!-- <Input
 										showSuggestion="true"
 										id="progressivoNIDa1"
 										showValueHelp="true"
@@ -182,7 +186,22 @@
 											key="{temp>ZchiaveNi}"
 											text="{temp>ZchiaveNi}"
 										/>
-									</Input>
+									</Input> -->
+									<zprogrnilibrary:InputZProgressivo  
+										id="progressivoNIDa1"
+										bukrs="{temp>/InitInfoMc/Bukrs}"
+										esercizio=""
+										amministrazione=""
+										ragioneria=""
+										capitolo=""
+										oggettoSpesa=""
+										value=""  
+										role= "{temp>/InitInfoMc/Role}"
+										fikrs="{temp>/InitInfoMc/Fikrs}"
+										prctr="{temp>/InitInfoMc/Prctr}"
+										key="">                
+									</zprogrnilibrary:InputZProgressivo>  
+
 								</fb:control>
 							</fb:FilterGroupItem>
 							<fb:FilterGroupItem
@@ -193,7 +212,7 @@
 								label="{i18n>progressivoNIA}"
 							>
 								<fb:control>
-									<Input
+									<!-- <Input
 										showSuggestion="true"
 										id="progressivoNIA1"
 										showValueHelp="true"
@@ -212,7 +231,25 @@
 											key="{temp>ZchiaveNi}"
 											text="{temp>ZchiaveNi}"
 										/>
-									</Input>
+									</Input> -->
+
+                  <!-- petrocelli -->
+                  <zprogrnilibrary:InputZProgressivo  
+				  	id="progressivoNIA1"
+                    bukrs="{temp>/InitInfoMc/Bukrs}"
+                    esercizio=""
+                    amministrazione=""
+                    ragioneria=""
+                    capitolo=""
+                    oggettoSpesa=""
+                    value=""  
+                    role= "{temp>/InitInfoMc/Role}"
+                    fikrs="{temp>/InitInfoMc/Fikrs}"
+                    prctr="{temp>/InitInfoMc/Prctr}"
+                    key="">                
+                  </zprogrnilibrary:InputZProgressivo>  
+
+
 								</fb:control>
 							</fb:FilterGroupItem>
 							<fb:FilterGroupItem
@@ -223,7 +260,7 @@
 								label="{i18n>NumNIDa}"
 							>
 								<fb:control>
-									<Input
+									<!-- <Input
 										showSuggestion="true"
 										id="NumNIDa1"
 										showValueHelp="true"
@@ -242,7 +279,22 @@
 											key="{temp>ZchiaveSubni}"
 											text="{temp>ZchiaveSubni}"
 										/>
-									</Input>
+									</Input> -->
+
+                  <!-- giannilecci   -->
+                  <zNumeroNILibrary:InputZnumero  
+                    bukrs="{temp>/InitInfoMc/Bukrs}"
+                    esercizio=""
+                    amministrazione=""
+                    ragioneria=""
+                    progressivo=""
+                    value="" 
+                    role= "{temp>/InitInfoMc/Role}"
+                    fikrs="{temp>/InitInfoMc/Fikrs}"
+                    prctr="{temp>/InitInfoMc/Prctr}"
+                    key="">                
+                  </zNumeroNILibrary:InputZnumero>  
+
 								</fb:control>
 							</fb:FilterGroupItem>
 							<fb:FilterGroupItem
@@ -467,16 +519,17 @@
 							>
 								<fb:control>
 									<Input
-										showSuggestion="true"
+                    maxLength="7"
+										showSuggestion="false"
 										id="numDecretoDa1"
-										showValueHelp="true"
+										showValueHelp="false"
 										suggestionItems="{
 											path: '/HeaderNISet',
 											sorter: {
 												path: 'Zcoddecr'
 											}
 										}"
-										valueHelpOnly="true"
+										valueHelpOnly="false"
 										valueHelpRequest="handleValueHelp"
 										app:fieldName="numDecretoDa1"
 										app:filterTableField="numDecretoDa1"
@@ -497,16 +550,17 @@
 							>
 								<fb:control>
 									<Input
-										showSuggestion="true"
+                    maxLength="7"
+										showSuggestion="false"
 										id="numDecretoA1"
-										showValueHelp="true"
+										showValueHelp="false"
 										suggestionItems="{
 											path: '/HeaderNISet',
 											sorter: {
 												path: 'Zcoddecr'
 											}
 										}"
-										valueHelpOnly="true"
+										valueHelpOnly="false"
 										valueHelpRequest="handleValueHelp"
 										app:fieldName="numDecretoA1"
 										app:filterTableField="numDecretoA1"
@@ -527,16 +581,17 @@
 							>
 								<fb:control>
 									<Input
-										showSuggestion="true"
+                    maxLength="3"
+										showSuggestion="false"
 										id="numIPEDa1"
-										showValueHelp="true"
+										showValueHelp="false"
 										suggestionItems="{
 											path: '/HeaderNISet',
 											sorter: {
 												path: 'ZCodIpe'
 											}
 										}"
-										valueHelpOnly="true"
+										valueHelpOnly="false"
 										valueHelpRequest="handleValueHelp"
 										app:fieldName="numIPEDa1"
 										app:filterTableField="numIPEDa1"
@@ -557,16 +612,17 @@
 							>
 								<fb:control>
 									<Input
-										showSuggestion="true"
+                    maxLength="3"
+										showSuggestion="false"
 										id="numIPEA1"
-										showValueHelp="true"
+										showValueHelp="false"
 										suggestionItems="{
 											path: '/HeaderNISet',
 											sorter: {
 												path: 'ZCodIpe'
 											}
 										}"
-										valueHelpOnly="true"
+										valueHelpOnly="false"
 										valueHelpRequest="handleValueHelp"
 										app:fieldName="numIPEA1"
 										app:filterTableField="numIPEA1"
@@ -587,16 +643,17 @@
 							>
 								<fb:control>
 									<Input
-										showSuggestion="true"
+                    maxLength="3"
+										showSuggestion="false"
 										id="numClausolaDa1"
-										showValueHelp="true"
+										showValueHelp="false"
 										suggestionItems="{
 											path: '/HeaderNISet',
 											sorter: {
 												path: 'ZNumCla'
 											}
 										}"
-										valueHelpOnly="true"
+										valueHelpOnly="false"
 										valueHelpRequest="handleValueHelp"
 										app:fieldName="numClausolaDa1"
 										app:filterTableField="numClausolaDa1"
@@ -617,16 +674,17 @@
 							>
 								<fb:control>
 									<Input
-										showSuggestion="true"
+                    maxLength="3"
+										showSuggestion="false"
 										id="numClausolaA1"
-										showValueHelp="true"
+										showValueHelp="false"
 										suggestionItems="{
 											path: '/HeaderNISet',
 											sorter: {
 												path: 'ZNumCla'
 											}
 										}"
-										valueHelpOnly="true"
+										valueHelpOnly="false"
 										valueHelpRequest="handleValueHelp"
 										app:fieldName="numClausolaA1"
 										app:filterTableField="numClausolaA1"

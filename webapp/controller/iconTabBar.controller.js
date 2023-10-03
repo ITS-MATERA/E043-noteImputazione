@@ -723,6 +723,24 @@ sap.ui.define([
                 oTable = self.getView().byId("HeaderITB"),
                 selectedPosition = oTable.getSelectedContextPaths();
 
+              if(selectedPosition.length === 0){
+                MessageBox.warning("Selezionare almeno una riga da eliminare", {
+                  title: "Esito Operazione",
+                  actions: [sap.m.MessageBox.Action.OK],
+                  emphasizedAction: MessageBox.Action.OK,
+                });
+                return false;
+              }
+
+              if(selectedPosition.length === oTable.getItems().length){
+                MessageBox.warning("Per cancellare tutte le posizioni in elaborazione, procedere con l’annullamento della Nota", {
+                  title: "Esito Operazione",
+                  actions: [sap.m.MessageBox.Action.OK],
+                  emphasizedAction: MessageBox.Action.OK,
+                });
+                return false;
+              }
+
               var deepEntity = {
                 Bukrs:header.Bukrs,
                 Gjahr:header.Gjahr,

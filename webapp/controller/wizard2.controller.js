@@ -93,6 +93,14 @@ sap.ui.define([
                     success: function (data) {
                             console.log("success");
                             self.getView().getModel(WIZARD_ENTITIES_MODEL).setProperty("/Visibilita", data.results);
+                            console.log(data.results);
+
+                            if(!self.getView().getModel("temp").getProperty("/InitInfoMc") || 
+                                self.getView().getModel("temp").getProperty("/InitInfoMc") === null){
+                                  self.getView().getModel("temp").setProperty("/InitInfoMc",
+                                  self.setInitInfoMC(data.results[0]));    
+                            }
+
                             // self.getView().getModel("temp").setProperty('/Visibilita', data.results)
                             //self.pulsantiVisibiltà(data.results)
                         },

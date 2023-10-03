@@ -42,7 +42,7 @@
                 </Input> -->
 
                 <zTipoLibrary:InputZTipo  
-                  bukrs="S001"
+                  bukrs="{temp>/InitInfoMc/Bukrs}"
                   value="{preimpostazioneModel>/tipologiaDescrizione}" 
                   key="{preimpostazioneModel>/tipologia}">                
                 </zTipoLibrary:InputZTipo>    
@@ -62,11 +62,11 @@
                 </ComboBox> -->
 
                 <zTipoLibrary:InputZSottotipo  
-                  bukrs="S001"
+                  bukrs="{temp>/InitInfoMc/Bukrs}"
                   zcodTipo="{preimpostazioneModel>/tipologia}"
                   ztipo="{preimpostazioneModel>/tipologiaDescrizione}"
-                  value="{preimpostazioneModel>/sottotipolgiaDescrizione}" 
-                  key="{preimpostazioneModel>/sottotipolgia}">                
+                  value="{preimpostazioneModel>/sottotipologiaDescrizione}" 
+                  key="{preimpostazioneModel>/sottotipologia}">                
                 </zTipoLibrary:InputZSottotipo> 
 
 

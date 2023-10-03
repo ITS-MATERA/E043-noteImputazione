@@ -19,7 +19,8 @@ sap.ui.define([
                     Header:null,
                     HeaderNIAssImp:[],
                     PositionNI:[],
-                    TotAttribuito:(0).toFixed(2)              
+                    TotAttribuito:self.formatter.convertFormattedNumber((0).toFixed(2))
+                    // TotAttribuito:(0).toFixed(2)              
                 });     
 
                 var oInputZattributo = self.getView().byId("Zattributo");

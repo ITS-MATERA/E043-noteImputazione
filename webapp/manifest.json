@@ -70,7 +70,9 @@
                 "zsap.com.r3.cobi.s4.custposfin.z_s4_zposfin": {},
                 "zsap.com.r3.cobi.s4.custapiuser.z_s4_userlog": {},
                 "zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink":{},
-                "custZtipo.zTipoLibrary":{}
+                "custZtipo.zTipoLibrary":{},
+                "custZnumeroNI.zNumeroNILibrary":{},    
+                "custprogrni.zprogrnilibrary":{}
             }
         },
         "contentDensities": {

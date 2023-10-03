@@ -187,6 +187,11 @@ sap.ui.define(
                 .getView()
                 .getModel("temp")
                 .setProperty("/Visibilità", data.results);
+
+
+              self.getView().getModel("temp").setProperty("/InitInfoMc", self.setInitInfoMC(data.results[0]));  
+
+
               self.pulsantiVisibiltà(data.results);
               console.log(data.results);
             },
@@ -196,6 +201,8 @@ sap.ui.define(
             },
           });
       },
+
+      
 
       pulsantiVisibiltà: function (data) {
         for (var d = 0; d < data.length; d++) {

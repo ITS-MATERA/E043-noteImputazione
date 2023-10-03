@@ -465,13 +465,13 @@ sap.ui.define(
 
       setFilterEQ: function (aFilters, sPropertyModel, sValue) {
         if (sValue) {
-          aFilters.push(new Filter(sPropertyModel, EQ, sValue));
+          aFilters.push(new Filter(sPropertyModel, FilterOperator.EQ, sValue));
         }
       },
 
       setFilterBT: function (aFilters, sPropertyModel, sValueFrom, sValueTo) {
         if (sValueFrom && sValueTo) {
-          aFilters.push(new Filter(sPropertyModel, BT, sValueFrom, sValueTo));
+          aFilters.push(new Filter(sPropertyModel, FilterOperator.BT, sValueFrom, sValueTo));
           return;
         }
         if (sValueFrom || sValueTo) {
@@ -480,6 +480,19 @@ sap.ui.define(
           return;
         }
       },
+
+      setInitInfoMC:function(data){
+        var self =this;
+        console.log(data);
+        return {
+          Bukrs: data.BUKRS,
+          Role: data.AGR_NAME,
+          Fikrs: data.FIKRS,
+          Prctr: data.PRCTR
+        }
+      },
+
+
     });
   }
 );

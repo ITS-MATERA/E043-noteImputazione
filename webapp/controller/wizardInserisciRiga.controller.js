@@ -107,7 +107,8 @@ sap.ui.define([
 
             
             _onObjectMatched: function (oEvent) {
-                var self =this;                
+                var self =this,
+                  visibilita =null;            
                 
                 var path = self.getOwnerComponent().getModel().createKey("HeaderNISet", {
                     Bukrs: oEvent.getParameters().arguments.campo,                    
@@ -117,6 +118,32 @@ sap.ui.define([
                     ZidNi: oEvent.getParameters().arguments.campo4,
                     ZRagioCompe: oEvent.getParameters().arguments.campo5
                 }); 
+
+
+                if(!self.getView().getModel(MODEL_ENTITY).getProperty("/Visibilita") || 
+                  self.getView().getModel(MODEL_ENTITY).getProperty("/Visibilita")===null ||
+                  self.getView().getModel(MODEL_ENTITY).getProperty("/Visibilita").length === 0){
+
+                  self.callVisibilitaWithCallbackLocal(function(callback){
+                      if(callback){
+                        visibilita = self.getView().getModel(MODEL_ENTITY).getProperty("/Visibilita")[0];
+                        if(!self.getView().getModel("temp").getProperty("/InitInfoMc") || 
+                          self.getView().getModel("temp").getProperty("/InitInfoMc") === null){
+                            self.getView().getModel("temp").setProperty("/InitInfoMc",
+                            self.setInitInfoMC(visibilita));    
+                        }
+                      }
+                  });   
+                }
+                else{
+                  visibilita = self.getView().getModel(MODEL_ENTITY).getProperty("/Visibilita")[0];  
+                  if(!self.getView().getModel("temp").getProperty("/InitInfoMc") || 
+                    self.getView().getModel("temp").getProperty("/InitInfoMc") === null){
+                      self.getView().getModel("temp").setProperty("/InitInfoMc",
+                      self.setInitInfoMC(visibilita));    
+                  }
+                }
+
 
                 self.getView().getModel(MODEL_ENTITY).setProperty("/ZcompRes", oEvent.getParameters().arguments.campo6);
                 self.getView().setBusy(true);
