@@ -713,60 +713,67 @@ sap.ui.define(
               if(!header || header === null)
                 return false;
               
-              var deepEntity = {
-                ZchiaveNi: header.ZchiaveNi,
-                HeaderNISet: header,
-                Funzionalita: 'VALIDAZIONE',
-              };
-              
-              deepEntity.HeaderNISet.ZcodiStatoni = "05";
-              delete deepEntity.HeaderNISet.ZcompRes;
-              delete deepEntity.HeaderNISet.Lifnr;
-              delete deepEntity.HeaderNISet.Cdc;              
-              delete deepEntity.HeaderNISet.Coge;
-              delete deepEntity.HeaderNISet.CodiceGestionale;
-              delete deepEntity.HeaderNISet.CausalePagamento;
-              delete deepEntity.HeaderNISet.ModalitaPagamento;
-              delete deepEntity.HeaderNISet.LifnrDesc;
-              delete deepEntity.HeaderNISet.CodiceUfficio;
-              delete deepEntity.HeaderNISet.Dirigente;
-              oModel.create("/DeepZNIEntitySet", deepEntity, {
-                success: function (data) {
-                    if(data.Msgty !== "E"){
-                      MessageBox.success(data.Message, {
-                          title: "Esito Operazione",
-                          actions: [sap.m.MessageBox.Action.OK],
-                          emphasizedAction: MessageBox.Action.OK,
-                          onClose: function (oAction) {
-                              if (oAction === sap.m.MessageBox.Action.OK) {
-                                self.getView().getModel(MODEL_ENTITY).setProperty("/Header",null);
-                                self.getView().getModel(MODEL_ENTITY).setProperty("/PositionNI",[]);
-                                self.getOwnerComponent().getRouter().navTo("View1");
-                                location.reload();
-                              }
-                          }
+              MessageBox.warning("Sei sicuro di voler validare la Nota di Imputazione n." + header.ZchiaveNi + "?", {
+                title: "Valida NI",
+                actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
+                emphasizedAction: MessageBox.Action.YES,
+                onClose: function (oAction) {
+                    if (oAction === sap.m.MessageBox.Action.YES) {
+                      var deepEntity = {
+                        ZchiaveNi: header.ZchiaveNi,
+                        HeaderNISet: header,
+                        Funzionalita: 'VALIDAZIONE',
+                      };
+                      
+                      deepEntity.HeaderNISet.ZcodiStatoni = "05";
+                      delete deepEntity.HeaderNISet.ZcompRes;
+                      delete deepEntity.HeaderNISet.Lifnr;
+                      delete deepEntity.HeaderNISet.Cdc;              
+                      delete deepEntity.HeaderNISet.Coge;
+                      delete deepEntity.HeaderNISet.CodiceGestionale;
+                      delete deepEntity.HeaderNISet.CausalePagamento;
+                      delete deepEntity.HeaderNISet.ModalitaPagamento;
+                      delete deepEntity.HeaderNISet.LifnrDesc;
+                      delete deepEntity.HeaderNISet.CodiceUfficio;
+                      delete deepEntity.HeaderNISet.Dirigente;
+                      oModel.create("/DeepZNIEntitySet", deepEntity, {
+                        success: function (data) {
+                            if(data.Msgty !== "E"){
+                              MessageBox.success(data.Message, {
+                                  title: "Esito Operazione",
+                                  actions: [sap.m.MessageBox.Action.OK],
+                                  emphasizedAction: MessageBox.Action.OK,
+                                  onClose: function (oAction) {
+                                      if (oAction === sap.m.MessageBox.Action.OK) {
+                                        self.getView().getModel(MODEL_ENTITY).setProperty("/Header",null);
+                                        self.getView().getModel(MODEL_ENTITY).setProperty("/PositionNI",[]);
+                                        self.getOwnerComponent().getRouter().navTo("View1");
+                                        location.reload();
+                                      }
+                                  }
+                              });
+                            }
+                            else{
+                              MessageBox.error(data.Message, {
+                                title: "Esito Operazione",
+                                actions: [sap.m.MessageBox.Action.OK],
+                                emphasizedAction: MessageBox.Action.OK,
+                              });
+                              return false;
+                            }
+                        },
+                        error: function (e) {
+                            console.log(e);
+                            MessageBox.error("Operazione non eseguita", {
+                                title: "Esito Operazione",
+                                actions: [sap.m.MessageBox.Action.OK],
+                                emphasizedAction: MessageBox.Action.OK,
+                            })
+                        }
                       });
                     }
-                    else{
-                      MessageBox.error(data.Message, {
-                        title: "Esito Operazione",
-                        actions: [sap.m.MessageBox.Action.OK],
-                        emphasizedAction: MessageBox.Action.OK,
-                      });
-                      return false;
-                    }
-                },
-                error: function (e) {
-                    console.log(e);
-                    MessageBox.error("Operazione non eseguita", {
-                        title: "Esito Operazione",
-                        actions: [sap.m.MessageBox.Action.OK],
-                        emphasizedAction: MessageBox.Action.OK,
-                    })
-                }
-            });
-
-
+                  }
+                });
             },
 
             // onValidaNI: function () {
@@ -1135,7 +1142,8 @@ sap.ui.define(
                                 actions: [sap.m.MessageBox.Action.OK],
                                 emphasizedAction: MessageBox.Action.OK,
                               });
-                              self.oSubmitDialog.getContent()[0].setValue(null)
+                              self.oSubmitDialog.getContent()[0].setValue(null);
+                              self.oSubmitDialog.close();
                               return false;
                             }
                             if (data.Msgty == 'S') {
@@ -1148,7 +1156,8 @@ sap.ui.define(
                                         self.getView().getModel(MODEL_ENTITY).setProperty("/Header",null);
                                         self.getView().getModel(MODEL_ENTITY).setProperty("/PositizionNI",[]);
                                         self.getOwnerComponent().getRouter().navTo("View1");
-                                        self.oSubmitDialog.getContent()[0].setValue(null)
+                                        self.oSubmitDialog.getContent()[0].setValue(null);
+                                        self.oSubmitDialog.close();
                                         location.reload();
                                       }
                                   }
@@ -1158,7 +1167,8 @@ sap.ui.define(
                           error: function (e) {
                             console.log(e);//TODO:da canc
                             MessageBox.error("Operazione non eseguita");
-                            self.oSubmitDialog.getContent()[0].setValue(null)
+                            self.oSubmitDialog.getContent()[0].setValue(null);
+                            self.oSubmitDialog.close();
                           }
                         });
                         this.oSubmitDialog.close();
@@ -1167,7 +1177,7 @@ sap.ui.define(
                   endButton: new Button({
                     text: "Annulla",
                     press: function () {
-                        this.oSubmitDialog.close();
+                        self.oSubmitDialog.close();
                     }.bind(this)
                 })
               });

@@ -17,159 +17,159 @@
                 <layout:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
                     <!-- 1 riga -->
                     <HBox>
-                        <Label id="numNI" text="{i18n>ProgressivoNI}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="numNI" text="{i18n>ProgressivoNI}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="numNI1" text="{EntityModel>/Header/ZchiaveNi}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="dataReg" text="{i18n>DataRegistrazioneNI}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="dataReg" text="{i18n>DataRegistrazioneNI}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="dataReg1" text="{path:'EntityModel>/Header/ZdataCreaz', formatter:'.formatter.convert'}"  wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 2 riga -->
                     <HBox>
-                        <Label id="SARW2" text="{i18n>SAR}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="SARW2" text="{i18n>SAR}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <zcontrollinkSar:LinkSar id="linkSarBilancio" anno="{EntityModel>/Header/Esercizio}" eos="E" fikrs="S001" fase="GEST" SEM_OBJ="" reale="R" 
-                            versione="D" bilancio="" fictr="{EntityModel>/Header/Fistl}" datbis="99991231" text="{EntityModel>/Header/Fistl}"/>
+                            versione="D" bilancio="" fictr="{EntityModel>/Header/Fistl}" datbis="99991231" text="{EntityModel>/Header/Fistl}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true" />
+                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true" />
                         </layoutData>
                     </HBox>                        
                     <HBox>
-                        <Label id="pos_FinW2" text="{i18n>PF}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="pos_FinW2" text="{i18n>PF}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesa" anno="{EntityModel>/Header/Esercizio}" eos="S" fikrs="S001" fase="GEST" reale="R" 
-                            versione="D" fipex="{EntityModel>/Header/Fipex}" datbis="99991231" text="{EntityModel>/Header/Fipex}" semanticObject="ESAMINAMODIFICA"/>
+                            versione="D" fipex="{EntityModel>/Header/Fipex}" datbis="99991231" text="{EntityModel>/Header/Fipex}" semanticObject="ESAMINAMODIFICA" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="oggSpesa" text="{i18n>oggSpesa}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="oggSpesa" text="{i18n>oggSpesa}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="oggSpesa1" text="{EntityModel>/Header/ZoggSpesa}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 3 riga -->
                     <HBox>
-                        <Label id="mese" text="{i18n>Mese}:" design="Bold" class="lbl-header-margin-right"/>
-                        <Label id="mese1" text="{path: 'EntityModel>/Header/Zmese', formatter:'.formatter.getMonthName'}"/>
+                        <Label id="mese" text="{i18n>Mese}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                        <Label id="mese1" text="{path: 'EntityModel>/Header/Zmese', formatter:'.formatter.getMonthName'}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true" />
+                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true" />
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="comp" text="{i18n>comp}:" design="Bold" class="lbl-header-margin-right"/>
-                        <Label id="comp1" text="{= ${EntityModel>/Header/ZcompRes} === 'C' ? 'Competenza' : ${EntityModel>/Header/ZcompRes} === 'R' ? 'Residui' : ''}"/>
+                        <Label id="comp" text="{i18n>comp}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                        <Label id="comp1" text="{= ${EntityModel>/Header/ZcompRes} === 'C' ? 'Competenza' : ${EntityModel>/Header/ZcompRes} === 'R' ? 'Residui' : ''}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="statoNI" text="{i18n>statoNI}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="statoNI" text="{i18n>statoNI}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="statoNI1" text="{EntityModel>/Header/ZcodiStatoniDesc}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="importoTot" text="{i18n>importoTot}:" design="Bold" class="lbl-header-margin-right"/>
-                        <Label id="importoTot1" text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}"/>
+                        <Label id="importoTot" text="{i18n>importoTot}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                        <Label id="importoTot1" text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 4 riga -->
                     <HBox>
-                        <Label id="Lifnr" text="{i18n>Lifnr}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="Lifnr" text="{i18n>Lifnr}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="Lifnr1" text="{EntityModel>/Header/Lifnr}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true"/>
                         </layoutData>
                     </HBox>
                     <HBox>  
-                        <Label id="Nome" text="{i18n>Nome}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="Nome" text="{i18n>Nome}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="Nome1" text="{EntityModel>/Header/LifnrDesc}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="Zwels" text="{i18n>Zwels}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="Zwels" text="{i18n>Zwels}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="Zwels1" text="{EntityModel>/Header/ModalitaPagamento}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 5 riga -->
                     <HBox>
-                        <Label id="CentroCosto" text="Centro di Costo: " design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="CentroCosto" text="Centro di Costo: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="CentroCosto1" text="{EntityModel>/Header/Cdc}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true"/>
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="ConCoGe" text="Conto Co.Ge.: " design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="ConCoGe" text="Conto Co.Ge.: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="ConCoGe1" text="{EntityModel>/Header/Coge}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="ImpLiq" text="Importo Liquidazione:" design="Bold" class="lbl-header-margin-right"/>
-                        <Label id="ImpLiq1"  text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}"/>
+                        <Label id="ImpLiq" text="Importo Liquidazione:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                        <Label id="ImpLiq1"  text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 6 riga -->
                     <HBox>
-                        <Label id="CodiceGes" text="{i18n>Zcodgest}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="CodiceGes" text="{i18n>Zcodgest}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="CodiceGes1" text="{EntityModel>/Header/CodiceGestionale}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true"/>
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="CausalePagamento" text="{i18n>Zcauspag}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="CausalePagamento" text="{i18n>Zcauspag}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="CausalePagamento1" text="{EntityModel>/Header/CausalePagamento}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 7 riga -->
                     <HBox>
-                        <Label id="CodiceUff" text="Codice Ufficio:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="CodiceUff" text="Codice Ufficio:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="CodiceUff1" text="{EntityModel>/Header/CodiceUfficio}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true"/>
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="Dirigente" text="Dirigente/DirettoreFirmatario:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="Dirigente" text="Dirigente/DirettoreFirmatario:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="Dirigente1" text="{EntityModel>/Header/Dirigente}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 8 riga -->
                     <HBox>
-                        <Label id="Nome_" text="Nome:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="Nome_" text="Nome:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="Nome1_" text="{EntityModel>/UserInfo/NameFirst}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true"/>
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="Cognome" text="Cognome:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="Cognome" text="Cognome:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="Cognome1" text="{EntityModel>/UserInfo/NameLast}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                 </layout:Grid>                  
@@ -181,53 +181,65 @@
                     <IconTabFilter icon="sap-icon://detail-view" text="Dettaglio NI" key="ListaDettagli">  
                         <form:SimpleForm editable="true">
                 <Panel height="100%">
-                    <content>
-                        <layout:Grid>
-                            <layout:content>
-                                <VBox >
-                                    <Label text="Nome:" required="true"/>
-                                    <Input id="Name" width="100%" value="{EntityModel>/UserInfo/NameFirst}" enabled="false">
-                                        <core:Item key=""/>
-                                    </Input>
-                                    <Label text="N. Protocollo RGS"/>
-                                    <Input id="numProtocolloRGS" width="100%"  value="{EntityModel>/Rilievi/NProtocolloRag}"
-                                    enabled="{= ${EntityModel>/Header/ZcodiStatoni} === '07' ? false : true }">
-                                    </Input>
-                                </VBox>
-                                <VBox>
-                                    <Label text="Cognome:" required="true" />
-                                    <Input id="Surname" width="100%" value="{EntityModel>/UserInfo/NameLast}" enabled="false">
-                                    </Input>
-                                    <Label text="Data Protocollo RGS:" />
-                                    <DatePicker id="dataProtocolloRGS" width="100%" valueFormat="yyyy-MM-dd" 
-                                        displayFormat="dd.MM.yyyy" 
-                                        value="{EntityModel>/Rilievi/ZdataProtRag}"
-                                        enabled="{= ${EntityModel>/Header/ZcodiStatoni} === '07' ? false : true }">
-                                    </DatePicker>
-                                </VBox>
-                                <VBox>
-                                    <Label text="Data Rilievo:" required="true" />
-                                    <DatePicker id="dataRilievo" width="100%" enabled="{= ${EntityModel>/Header/ZcodiStatoni} === '07' ? false : true }"
-                                        displayFormat="dd.MM.yyyy">
-                                    </DatePicker>
-                                </VBox>
-                                <VBox>
-                                    <Label text="Motivazione Rilievo:" required="true" />
-                                    <Input id="motivizioneRilievo" width="100%" value="{EntityModel>/Rilievi/Zmotrilievo}">
-                                    </Input>
-                                    <layoutData>
-                                        <layout:GridData span="L12 M12 S12" />
-                                    </layoutData>
-                                </VBox>
-                            </layout:content>
-                        </layout:Grid>
-                    </content>
+                  <content>
+                    <layout:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
+                        <!-- <layout:content> -->
+                      <VBox >
+                        <Label text="Nome:" required="true"/>
+                        <Input id="Name" width="100%" value="{EntityModel>/UserInfo/NameFirst}" enabled="false" />
+                        <layoutData>
+                            <layout:GridData span="XL4 L4 M12 S12" />
+                        </layoutData>
+                      </VBox >
+                      <VBox >
+                        <Label text="Cognome:" required="true" />
+                        <Input id="Surname" width="100%" value="{EntityModel>/UserInfo/NameLast}" enabled="false"/>
+                        <layoutData>
+                            <layout:GridData span="XL4 L4 M12 S12" />
+                        </layoutData>        
+                      </VBox >
+                      <VBox >
+                        <Label text="Data Rilievo:" required="true" />
+                        <DatePicker id="dataRilievo" width="100%" enabled="{= ${EntityModel>/Header/ZcodiStatoni} === '07' ? false : true }" displayFormat="dd.MM.yyyy"/>
+                        <layoutData>
+                            <layout:GridData span="XL4 L4 M12 S12" />
+                        </layoutData>  
+                      </VBox >
+
+                      <VBox >
+                        <Label text="N. Protocollo RGS"/>
+                        <Input id="numProtocolloRGS" width="100%"  value="{EntityModel>/Rilievi/NProtocolloRag}" enabled="{= ${EntityModel>/Header/ZcodiStatoni} === '07' ? false : true }"/>
+                        <layoutData>
+                            <layout:GridData span="XL4 L4 M12 S12" linebreak="true" />
+                        </layoutData>    
+                      </VBox>
+                      <VBox >
+                      <!-- value="{EntityModel>/Rilievi/ZdataProtRag}" -->
+                        <Label text="Data Protocollo RGS:" />
+                        <DatePicker id="dataProtocolloRGS" width="100%" valueFormat="yyyy-MM-dd" 
+                            displayFormat="dd.MM.yyyy" 
+                            
+                            enabled="{= ${EntityModel>/Header/ZcodiStatoni} === '07' ? false : true }"/>
+                        <layoutData>
+                            <layout:GridData span="XL4 L4 M12 S12" />
+                        </layoutData>     
+                      </VBox>
+                      <VBox>
+                          <Label text="Motivazione Rilievo:" required="true" />
+                          <Input id="motivizioneRilievo" width="100%" value="{EntityModel>/Rilievi/Zmotrilievo}"/>
+                          <layoutData>
+                              <layout:GridData span="XL12 L12 M12 S12" linebreak="true" />
+                          </layoutData>
+                      </VBox>
+                            <!-- </layout:content> -->
+                    </layout:Grid>
+                  </content>
                 </Panel>
             </form:SimpleForm>
                     </IconTabFilter>
                     <IconTabFilter icon="sap-icon://history" text="Workflow" key="Workflow">
                     </IconTabFilter>
-                    <IconTabFilter icon="sap-icon://documents" text="Fascicolo" key="Fascicolo">
+                    <IconTabFilter id="idFascicoloIconTabFilter" icon="sap-icon://documents" text="Fascicolo" key="Fascicolo" enabled="false">
                     </IconTabFilter>
                 </items>
             </IconTabBar>

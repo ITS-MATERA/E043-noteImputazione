@@ -865,12 +865,12 @@ sap.ui.define(
                     press: function(){                     
 
                       var deepEntity = {
-                        ZchiaveNi : header.ZchiaveNi,
-                        ZcodiStatoni : '06',
-                        Zmotrichiamo : Core.byId("submissionNote").getValue(),
+                        ZchiaveNi : header.ZchiaveNi,                        
                         HeaderNISet: header,
                         Funzionalita: 'RICHIAMOVALIDATARGS',
                       }
+                      deepEntity.HeaderNISet.ZcodiStatoni = '06';
+                      deepEntity.HeaderNISet.Zmotrichiamo = Core.byId("submissionNote").getValue();
 
                       delete deepEntity.HeaderNISet.ZcompRes; 
                       delete deepEntity.HeaderNISet.LifnrDesc;
@@ -883,17 +883,18 @@ sap.ui.define(
                       delete deepEntity.HeaderNISet.CodiceUfficio;
                       delete deepEntity.HeaderNISet.Dirigente;
 
-                      var oModel = that.getOwnerComponent().getModel();
+                      var oModel = self.getOwnerComponent().getModel();
                       oModel.create("/DeepZNIEntitySet", deepEntity, {                        
                         success: function (data) {
                           console.log(data);//TODO:da canc
                             if (data.Msgty == 'E') {                                
-                                MessageBox.error("Operazione non eseguita", {
+                                MessageBox.error(data.Message, {
                                     title: "Esito Operazione",
                                     actions: [sap.m.MessageBox.Action.OK],
                                     emphasizedAction: MessageBox.Action.OK,
                                 })
                                 self.oSubmitDialog.getContent()[0].setValue(null);
+                                self.oSubmitDialog.close();
                                 return false;
                             }
                             if (data.Msgty == 'S') {
@@ -904,7 +905,8 @@ sap.ui.define(
                                     onClose: function (oAction) {
                                         if (oAction === sap.m.MessageBox.Action.OK) {
                                             this.getOwnerComponent().getRouter().navTo("View1");
-                                            self.oSubmitDialog.getContent()[0].setValue(null)
+                                            self.oSubmitDialog.getContent()[0].setValue(null);
+                                            self.oSubmitDialog.close();
                                             location.reload();
                                         }
                                     }
@@ -914,7 +916,8 @@ sap.ui.define(
                         error: function (e) {
                             console.log(e);//TODO:da canc
                             MessageBox.error("Operazione non eseguita");
-                            self.oSubmitDialog.getContent()[0].setValue(null)
+                            self.oSubmitDialog.getContent()[0].setValue(null);
+                            self.oSubmitDialog.close();
                         }
                       });
                     }.bind(this)
@@ -922,7 +925,7 @@ sap.ui.define(
                   endButton: new Button({
                     text: "Annulla",
                     press: function () {
-                        this.oSubmitDialog.close();
+                        self.oSubmitDialog.close();
                     }.bind(this)
                   })
                });

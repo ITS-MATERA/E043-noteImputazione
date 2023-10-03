@@ -52,12 +52,29 @@ sap.ui.define(
                 self.getOwnerComponent().getModel("temp").getData().Visibilità === null){
                 self.callPreventVisibilitaWithCallback(function(callback){
                     if(callback){   
+                      self.pulsantiVisibiltà(self.getOwnerComponent().getModel("temp").getData().Visibilità);
                       self.callPositionNI(path);           
                     }
                 });    
               }
               else{ 
+                self.pulsantiVisibiltà(self.getOwnerComponent().getModel("temp").getData().Visibilità);
                 self.callPositionNI(path);
+              }
+            },
+
+            pulsantiVisibiltà: function (data) {
+              for (var d = 0; d < data.length; d++) {
+                  // if (data[d].ACTV_2 == "Z02") {
+                  //     this.getView().byId("editRow").setEnabled(true);
+                  // }
+                  // if (data[d].ACTV_4 == "Z04") {
+                  //     this.getView().byId("pressFirma").setEnabled(false);
+                  //     this.getView().byId("InviaNI").setEnabled(true);
+                  // }
+                  if (data[d].ACTV_4 === "Z21") {
+                    this.getView().byId("idFascicoloIconTab").setEnabled(true);
+                  }
               }
             },
 

@@ -79,81 +79,81 @@
                         <Label id="importoTot" text="{i18n>importoTot}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="importoTot1" text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true"/>
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 4 riga -->
                     <HBox>
-                        <Label id="Lifnr" text="{i18n>Lifnr}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="Lifnr" text="{i18n>Lifnr}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="Lifnr1" text="{EntityModel>/Header/Lifnr}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true"/>
                         </layoutData>
                     </HBox>
                     <HBox>  
-                        <Label id="Nome" text="{i18n>Nome}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="Nome" text="{i18n>Nome}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="Nome1" text="{EntityModel>/Header/LifnrDesc}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="Zwels" text="{i18n>Zwels}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="Zwels" text="{i18n>Zwels}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="Zwels1" text="{EntityModel>/Header/ModalitaPagamento}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 5 riga -->
                     <HBox>
-                        <Label id="CentroCosto" text="Centro di Costo: " design="Bold" class="lbl-header-margin-right"/>
-                        <Label id="CentroCosto1" text="{EntityModel>/Header/Cdc}"/>
+                        <Label id="CentroCosto" text="Centro di Costo: " design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                        <Label id="CentroCosto1" text="{EntityModel>/Header/Cdc}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true"/>
                         </layoutData>
                     </HBox>
                     <HBox>
                         <Label id="ConCoGe" text="Conto Co.Ge.: " design="Bold" class="lbl-header-margin-right"/>
                         <Label id="ConCoGe1" text="{EntityModel>/Header/Coge}"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="ImpLiq" text="Importo Liquidazione:" design="Bold" class="lbl-header-margin-right"/>
-                        <Label id="ImpLiq1"  text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}"/>
+                        <Label id="ImpLiq" text="Importo Liquidazione:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
+                        <Label id="ImpLiq1"  text="{path: 'EntityModel>/Header/ZimpoTotni', formatter:'.formatter.convertFormattedNumber'}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 6 riga -->
                     <HBox>
-                        <Label id="CodiceGes" text="{i18n>Zcodgest}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="CodiceGes" text="{i18n>Zcodgest}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="CodiceGes1" text="{EntityModel>/Header/CodiceGestionale}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true"/>
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="CausalePagamento" text="{i18n>Zcauspag}:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="CausalePagamento" text="{i18n>Zcauspag}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="CausalePagamento1" text="{EntityModel>/Header/CausalePagamento}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>
                     <!-- 7 riga -->
                     <HBox>
-                        <Label id="CodiceUff" text="Codice Ufficio:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="CodiceUff" text="Codice Ufficio:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="CodiceUff1" text="{EntityModel>/Header/CodiceUfficio}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" linebreak="true"/>
+                            <layout:GridData span="XL3 L3 M12 S12" linebreak="true"/>
                         </layoutData>
                     </HBox>
                     <HBox>
-                        <Label id="Dirigente" text="Dirigente/DirettoreFirmatario:" design="Bold" class="lbl-header-margin-right"/>
+                        <Label id="Dirigente" text="Dirigente/DirettoreFirmatario:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="Dirigente1" text="{EntityModel>/Header/Dirigente}" wrapping="true"/>
                         <layoutData>
-                            <layout:GridData span="XL3 L3 M6 S12" />
+                            <layout:GridData span="XL3 L3 M12 S12" />
                         </layoutData>
                     </HBox>    
                 </layout:Grid>

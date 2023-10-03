@@ -109,6 +109,9 @@ sap.ui.define(
                     if (data[d].ACTV_4 == "Z07") {
                         this.getView().byId("AnnullaNI2").setEnabled(true);
                     }
+                    if (data[d].ACTV_4 === "Z21") {
+                      this.getView().byId("idFascicoloIconTab").setEnabled(true);
+                    }
                 }
             },
 
@@ -902,7 +905,7 @@ sap.ui.define(
                         deepEntity.HeaderNISet.ZcodiStatoni = "01";
                         deepEntity.HeaderNISet.ZuffcontFirm = firmaSet.codiceUff;
                         deepEntity.HeaderNISet.ZdirncRich = firmaSet.dirigente;
-                        deepEntity.HeaderNISet.ZdataProtAmm = new Date(firmaSet.dataProtocollo);
+                        deepEntity.HeaderNISet.ZdataProtAmm = firmaSet.dataProtocollo ? new Date(firmaSet.dataProtocollo):null;
                         deepEntity.HeaderNISet.NProtocolloAmm = firmaSet.numProtocollo; 
 
                         oModel.create("/DeepZNIEntitySet", deepEntity, {

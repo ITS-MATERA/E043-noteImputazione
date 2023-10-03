@@ -73,7 +73,10 @@ sap.ui.define(
               for (var d = 0; d < data.length; d++) {
                 if (data[d].ACTV_4 == "Z18") {
                     this.getView().byId("SalvaNI").setEnabled(true);
-                }                  
+                } 
+                if (data[d].ACTV_4 == "Z21") {
+                  this.getView().byId("idFascicoloIconTabFilter").setEnabled(true);  
+                }               
               }
             },
 
@@ -538,14 +541,19 @@ sap.ui.define(
               self.getOwnerComponent().getModel().read(path, {
                 success: function (data) {
                   data["NProtocolloRag"] = self.getView().getModel(MODEL_ENTITY).getProperty("/Header/NProtocolloRag") === '0000000' ? null :  self.getView().getModel(MODEL_ENTITY).getProperty("/Header/NProtocolloRag");
+                  // data["ZdataProtRag"] = self.getView().getModel(MODEL_ENTITY).getProperty("/Header/ZdataProtRag") ? 
+                  //   self.formatter.convert(self.getView().getModel(MODEL_ENTITY).getProperty("/Header/ZdataProtRag")): null;
                   data["ZdataProtRag"] = self.getView().getModel(MODEL_ENTITY).getProperty("/Header/ZdataProtRag") ? 
-                    self.formatter.convert(self.getView().getModel(MODEL_ENTITY).getProperty("/Header/ZdataProtRag")): null;
+                    self.getView().getModel(MODEL_ENTITY).getProperty("/Header/ZdataProtRag"): null;  
 
                   //data.ZdatRilievo = data.ZdatRilievo ? self.formatter.convert(data.ZdatRilievo) : null;
                   // data.ZdatRilievo = data.ZdatRilievo ? data.ZdatRilievo : null;
                   self.getView().getModel(MODEL_ENTITY).setProperty("/Rilievi",data); 
                   var dataRilievoControl = self.getView().byId("dataRilievo");
-                  dataRilievoControl.setDateValue(data.ZdatRilievo) ;                
+                  dataRilievoControl.setDateValue(data.ZdatRilievo) ;       
+                  
+                  var dataProtocolloRGSControl = self.getView().byId("dataProtocolloRGS");
+                  dataProtocolloRGSControl.setDateValue(data.ZdataProtRag) ;     
                 },
                 error: function (error) {
                   console.log(error);

@@ -667,8 +667,8 @@ sap.ui.define([
                     var item = positionArray[i];
                     var titoloSelezionato = self.getTitoloSelezionato(titoliSelezionati, item.ZcodIsin);
                     var impRes = titoloSelezionato.ZimpoRes;
-                    impRes = impRes.replace(".","");
-                    impRes = impRes.replace(",",".");
+                    // impRes = impRes.replace(".","");
+                    // impRes = impRes.replace(",",".");
                     if(parseFloat(item.ZimpoTitolo) > parseFloat(impRes)){
                         i = positionArray.length;
                         mex = "L'importo del titolo non può superare l'importo residuo";
@@ -743,8 +743,12 @@ sap.ui.define([
                 var countValoriMinori = 0;
                 var isinString ="";
                 for(var i=0; i<positionArray.length;i++){
-                    var item = positionArray[i];                    
-                    if(parseFloat(item.ZimpoTitolo) < self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/rendicontazioneSumRowSelected")){
+                    var item = positionArray[i];  
+                    var titoloSelezionato = self.getTitoloSelezionato(titoliSelezionati, item.ZcodIsin);
+                    var impRes = titoloSelezionato.ZimpoRes;
+                    // impRes = impRes.replace(".","");
+                    // impRes = impRes.replace(",",".");                  
+                    if(parseFloat(item.ZimpoTitolo) < parseFloat(impRes)/*self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/rendicontazioneSumRowSelected")*/){
                         countValoriMinori++
                         isinString = isinString + "\n" + item.ZcodIsin;                    
                     }
