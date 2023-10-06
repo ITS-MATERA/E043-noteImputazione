@@ -20,7 +20,7 @@
                 <core:Title text=" " class="heightZero" />
                 <Label text="Nome" />
                 <Input id="inputNome" value="{EntityModel>/Detail/Nome}" type="Text" enabled="true" editable="false" />
-                <Label text="IBAN" required="true" />
+                <Label text="IBAN"  />
                 <Input id="inputIBAN" value="{EntityModel>/Detail/Iban}" maxLength="34" enabled="false"/>
                 <!-- <Input id="inputIBAN" type="Text" showValueHelp="true" enabled="true" showSuggestion="true" suggestionItems="{path: '/HeaderNISet', sorter: { path: 'Iban' }}"  value="{EntityModel>/Detail/Iban}">
                     <core:Item key="{Iban}" text="{Iban}" />

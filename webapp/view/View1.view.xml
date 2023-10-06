@@ -199,6 +199,7 @@
 										role= "{temp>/InitInfoMc/Role}"
 										fikrs="{temp>/InitInfoMc/Fikrs}"
 										prctr="{temp>/InitInfoMc/Prctr}"
+										semanticObject="ZS4_NOTEIMPUTAZIONI_SRV"
 										key="">                
 									</zprogrnilibrary:InputZProgressivo>  
 
@@ -233,9 +234,8 @@
 										/>
 									</Input> -->
 
-                  <!-- petrocelli -->
                   <zprogrnilibrary:InputZProgressivo  
-				  	id="progressivoNIA1"
+				  	        id="progressivoNIA1"
                     bukrs="{temp>/InitInfoMc/Bukrs}"
                     esercizio=""
                     amministrazione=""
@@ -246,6 +246,7 @@
                     role= "{temp>/InitInfoMc/Role}"
                     fikrs="{temp>/InitInfoMc/Fikrs}"
                     prctr="{temp>/InitInfoMc/Prctr}"
+					          semanticObject="ZS4_NOTEIMPUTAZIONI_SRV"
                     key="">                
                   </zprogrnilibrary:InputZProgressivo>  
 
@@ -281,8 +282,8 @@
 										/>
 									</Input> -->
 
-                  <!-- giannilecci   -->
                   <zNumeroNILibrary:InputZnumero  
+				  	        id="NumNIDa1"
                     bukrs="{temp>/InitInfoMc/Bukrs}"
                     esercizio=""
                     amministrazione=""
@@ -292,6 +293,7 @@
                     role= "{temp>/InitInfoMc/Role}"
                     fikrs="{temp>/InitInfoMc/Fikrs}"
                     prctr="{temp>/InitInfoMc/Prctr}"
+					          semanticObject="ZS4_NOTEIMPUTAZIONI_SRV"
                     key="">                
                   </zNumeroNILibrary:InputZnumero>  
 
@@ -305,7 +307,7 @@
 								label="{i18n>NumNIA}"
 							>
 								<fb:control>
-									<Input
+									<!-- <Input
 										showSuggestion="true"
 										id="NumNIA1"
 										showValueHelp="true"
@@ -324,7 +326,21 @@
 											key="{temp>ZchiaveSubni}"
 											text="{temp>ZchiaveSubni}"
 										/>
-									</Input>
+									</Input> -->
+									<zNumeroNILibrary:InputZnumero  
+										id="NumNIA1"
+										bukrs="{temp>/InitInfoMc/Bukrs}"
+										esercizio=""
+										amministrazione=""
+										ragioneria=""
+										progressivo=""
+										value="" 
+										role= "{temp>/InitInfoMc/Role}"
+										fikrs="{temp>/InitInfoMc/Fikrs}"
+										prctr="{temp>/InitInfoMc/Prctr}"
+										semanticObject="ZS4_NOTEIMPUTAZIONI_SRV"
+										key="">                
+									</zNumeroNILibrary:InputZnumero> 
 								</fb:control>
 							</fb:FilterGroupItem>
 							<fb:FilterGroupItem
