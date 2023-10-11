@@ -755,7 +755,7 @@ sap.ui.define(
                                 })
                             }
                             if (result.Msgty == 'S') {
-                                MessageBox.success("Nota di Imputazione " + header[indiceHeader].ZchiaveNi + " annullata correttamente", {
+                                MessageBox.success("Nota di Imputazione " + header.ZchiaveNi + " annullata correttamente", {
                                     title: "Esito Operazione",
                                     actions: [sap.m.MessageBox.Action.OK],
                                     emphasizedAction: MessageBox.Action.OK,

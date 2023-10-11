@@ -35,6 +35,9 @@ sap.ui.define([
                 self.loadPosizioneFinanziaria();
 
                 var  oModelJsonPreimpostazioneNi = new JSONModel({
+                    EnabledStep1:true,
+                    EnabledStep2:true,
+                    EnabledStep3:true,
                     ZgjahrEng:"",
                     meseValore:"",
                     meseDescrizione:"",
@@ -501,6 +504,8 @@ sap.ui.define([
                         self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep3Visible",false);  
                         self.getView().getModel(COMPONENT_MODEL).setProperty("/btnNextVisible",true);
                         self.getView().getModel(COMPONENT_MODEL).setProperty("/btnPreimpostaNiVisible",false);
+
+                        self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/EnabledStep1",false);
                         wizard.nextStep();
                         break;
                     case "2":
@@ -539,6 +544,7 @@ sap.ui.define([
                                     self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep3Visible",true);
                                     self.getView().getModel(COMPONENT_MODEL).setProperty("/btnNextVisible",false);
                                     self.getView().getModel(COMPONENT_MODEL).setProperty("/btnPreimpostaNiVisible",true);
+                                    self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/EnabledStep2",false);
                                     wizard.nextStep();
                                     return;
                                 }        
@@ -607,23 +613,35 @@ sap.ui.define([
             onBackButton:function(oEvent){
                 var self =this,
                     wizard = self.getView().byId("wizardPreimpostazioneNI"),
+                    tableTitoli = self.getView().byId("HeaderNIW"),
                     currentStep = self.getView().byId(wizard.getCurrentStep()).data("stepId");
 
                 switch(currentStep){
                     case "1":      
                         self.resetModelsForExitWizard(); 
+                        tableTitoli.removeSelections();
                         window.history.go(-1);   
                         return;               
                         break;
                     case "2":
                         self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep2Visible",false);  
                         self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep3Visible",false);  
+                        self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/EnabledStep1",true);
+
+                        /*Reimposta la selezione dei record selezionati*/
+                        var titoliSelezionati = self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/titoliSelezionati"),
+                          itemsSet = self.getModel("wizardEntitiesModel").getProperty("/RendicontazioneSet");                          
+                        for(var i=0; i< titoliSelezionati.length;i++){
+                          var index = itemsSet.findIndex(x=>x.__metadata.id === titoliSelezionati[i].__metadata.id );
+                          tableTitoli.getItems()[index].setSelected(true);
+                        }
                         break;
                     case "3":
                         self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep2Visible",true);
                         self.getView().getModel(COMPONENT_MODEL).setProperty("/headerStep3Visible",false);
                         self.getView().getModel(COMPONENT_MODEL).setProperty("/btnNextVisible",true);
                         self.getView().getModel(COMPONENT_MODEL).setProperty("/btnPreimpostaNiVisible",false);
+                        self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/EnabledStep2",true);
                         break;
                     default:
                         console.log("default");

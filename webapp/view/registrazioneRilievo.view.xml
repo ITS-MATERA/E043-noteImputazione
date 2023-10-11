@@ -182,7 +182,7 @@
                         <form:SimpleForm editable="true">
                 <Panel height="100%">
                   <content>
-                    <layout:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
+                    <layout:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0.1">
                         <!-- <layout:content> -->
                       <VBox >
                         <Label text="Nome:" required="true"/>

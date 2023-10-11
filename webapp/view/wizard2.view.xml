@@ -15,7 +15,7 @@
             </f:header>
             <f:content>
                 <Wizard id="wizardPreimpostazioneNI" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" showNextButton="false"
-                    navigationChange="handleNavigationChange" renderMode="Page" width="auto">
+                    navigationChange="handleNavigationChange" renderMode="Scroll" width="auto">
                         <WizardStep id="SelezioneTitoliStep" title="Selezione Titoli" validated="true" app:stepId="1">                            
                             <core:Fragment fragmentName="project1.fragment.wizardPreimpostazione.step1" type="XML" />                            
                         </WizardStep>    

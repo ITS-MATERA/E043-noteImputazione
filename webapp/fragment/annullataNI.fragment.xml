@@ -23,7 +23,7 @@
             </OverflowToolbar>
         </headerToolbar> -->
 		<columns>
-			<Column
+			<Column visible="{EntityModel>/includeCols}"
 				width="auto"
 				hAlign="Left"
 			>
@@ -68,12 +68,13 @@
 			<Column
 				width="auto"
 				hAlign="Left"
+        visible="{EntityModel>/includeCols}"
 			>
 				<Label text="Impegno"/>
 			</Column>
 		</columns>
 		<ColumnListItem>
-			<Text text="{EntityModel>ZchiaveSubni}"/>
+			<Text text="{EntityModel>ZchiaveSubni}" visible="{EntityModel>/includeCols}"/>
 			<Text text="{EntityModel>ZcodIsin}"/>
 			<Text text="{EntityModel>Ztipo}"/>
 			<Text text="{EntityModel>Zdescrizione}"/>
@@ -89,7 +90,7 @@
 				path: 'EntityModel>ZimpoRes',
 				formatter: '.formatter.convertFormattedNumber'
 			}"/>
-			<Text text="{EntityModel>ZCodCla}"/>
+			<Text text="{EntityModel>ZCodCla}" visible="{EntityModel>/includeCols}"/>
 		</ColumnListItem>
 	</Table>
 </core:FragmentDefinition>

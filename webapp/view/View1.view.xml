@@ -938,7 +938,9 @@
 								label="{i18n>autorizzazione}"
 							>
 								<fb:control>
-									<Select
+                  <Input id="autorizzazione1" maxLength="18"/>
+
+									<!-- <Select
 										id="autorizzazione1"
 										items="{
 											path: '/HeaderNISet',
@@ -951,7 +953,7 @@
 											key="{Zgeber}"
 											text="{Zgeber}"
 										/>
-									</Select>
+									</Select> -->
 								</fb:control>
 							</fb:FilterGroupItem>
 							<fb:FilterGroupItem

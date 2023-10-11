@@ -7,7 +7,7 @@
     xmlns:zcontrol="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfin.controls"
     height="100%">
     <Panel>
-        <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
+        <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0.1">
             <VBox>
                 <Label text="Struttura Amministrativa Responsabile:" required="true"/>
                 <!-- <Input id="strAmmResp" showSuggestion="true" maxLength="16" showValueHelp="true" suggestionItems="{path: 'temp>/HeaderNISet', sorter: { path: 'Fistl' }}"
@@ -18,7 +18,8 @@
                 </Input> -->
                 <zcontrolMatchSar:GestioneLogUser eos="S" id="idFilterStruttAmmResp" fase="GEST" entrata="X" reale="R"  maxLength="16"
                 anno="{preimpostazioneModel>/ZgjahrEng}" SEM_OBJ="Z_TEST_LIB"  versione="D" width="100%" placeholder="Scegli struttura amministrativa"
-                submit="strutturaAmministrativaLiveChange" liveChange="strutturaAmministrativaLiveChange" />
+                submit="strutturaAmministrativaLiveChange" liveChange="strutturaAmministrativaLiveChange" 
+                enabled="{preimpostazioneModel>/EnabledStep2}"/>
                 <layoutData>
                     <l:GridData span="XL12 L12 M12 S12" />
                 </layoutData>
@@ -33,7 +34,8 @@
                 </Input> -->
                 <zcontrol:InputPosizioneFinanziaria id="input_PF" fase="GEST" spesa="X" maxLength="24"
                  reale="R" anno="{preimpostazioneModel>/ZgjahrEng}" versione="D" maxSuggestionWidth="60%" submit="posizioneFinanziariaLiveChange" 
-                 liveChange="posizioneFinanziariaLiveChange"  width="100%"/>
+                 liveChange="posizioneFinanziariaLiveChange"  width="100%"
+                 enabled="{preimpostazioneModel>/EnabledStep2}"/>
                 <layoutData>
                     <l:GridData span="XL4 L4 M4 S4" linebreak="true" />
                 </layoutData>

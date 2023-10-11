@@ -34,6 +34,7 @@ sap.ui.define([
                 //this.prePosition()
 
                 var oModelJson = new JSONModel({
+                    includeCols:true,
                     Header:null,
                     annullataNI:[]              
                 });    
@@ -67,13 +68,15 @@ sap.ui.define([
                 if(!self.getOwnerComponent().getModel("temp").getData().Visibilità || 
                     self.getOwnerComponent().getModel("temp").getData().Visibilità === null){
                     self.callPreventVisibilitaWithCallback(function(callback){
-                        if(callback){     
-                            self.loadView(path);                      
+                        if(callback){   
+                          self.pulsantiVisibiltà(self.getOwnerComponent().getModel("temp").getData().Visibilità);  
+                          self.loadView(path);                      
                         }
                     });    
                 }
                 else{
-                    self.loadView(path);
+                  self.pulsantiVisibiltà(self.getOwnerComponent().getModel("temp").getData().Visibilità);
+                  self.loadView(path);
                 }    
             },
 
@@ -90,6 +93,7 @@ sap.ui.define([
                                 var item = callback.data[0];
                                 console.log(item);//TODO:da canc
                                 self.getView().getModel(MODEL_ENTITY).setProperty("/Header/ZcompRes",item.ZcompRes);
+                                self.getView().getModel(MODEL_ENTITY).setProperty("/includeCols",!item.ZchiaveSubni || item.ZchiaveSubni === null || item.ZchiaveSubni === "" ? false : true );
                                 self.getView().getModel(MODEL_ENTITY).setProperty("/annullataNI",callback.data);
                               }
                               self.callWorkflowSet(self.getView().getModel(MODEL_ENTITY).getProperty("/Header"), function(callbackWF){
@@ -137,10 +141,16 @@ sap.ui.define([
                   console.log(error);
                   callback({success:false,data:[]});  
                 }
-            });
-
-
+              });
             },
+
+            pulsantiVisibiltà: function (data) {
+              for (var d = 0; d < data.length; d++) {
+                  if (data[d].ACTV_4 == "Z21") {
+                    this.getView().byId("idFascicoloIconTabFilter").setEnabled(true);
+                }
+              }
+          },
 
 
             // prePosition: function(){

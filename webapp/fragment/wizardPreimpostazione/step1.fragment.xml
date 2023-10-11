@@ -11,7 +11,7 @@
             <VBox>
                 <Label text="Esercizio di Gestione:" required="true" />
                 <ComboBox id="es_gestione" width="100%" items="{path: 'wizardEntitiesModel>/ZgjahrEngNiSet', sorter: { path: 'ZgjahrEng' }}"
-                    selectionChange="esGestioneSelectionChange" selectedKey="{preimpostazioneModel>/ZgjahrEng}">                
+                    selectionChange="esGestioneSelectionChange" selectedKey="{preimpostazioneModel>/ZgjahrEng}" enabled="{preimpostazioneModel>/EnabledStep1}">                
                     <core:Item key="{wizardEntitiesModel>ZgjahrEng}" text="{wizardEntitiesModel>ZgjahrEng}"/>
                 </ComboBox>
                 <layoutData>
@@ -20,7 +20,8 @@
             </VBox>
              <VBox>
                 <Label text="Mese:" required="true" />
-                <ComboBox id="mese" width="50%" items="{path: 'wizardEntitiesModel>/ZmeseSet'}" selectionChange="meseSelectionChange" selectedKey="{preimpostazioneModel>/meseValore}">
+                <ComboBox id="mese" width="50%" items="{path: 'wizardEntitiesModel>/ZmeseSet'}" selectionChange="meseSelectionChange" 
+                    selectedKey="{preimpostazioneModel>/meseValore}" enabled="{preimpostazioneModel>/EnabledStep1}">
                     <core:Item key="{wizardEntitiesModel>Valore}" text="{wizardEntitiesModel>Descrizione}"/>
                 </ComboBox>
                 <layoutData>
@@ -29,46 +30,27 @@
             </VBox>
             <VBox>
                 <Label text="Sottotipologia primo livello:" />
-                <!-- <Input value="{preimpostazioneModel>/tipologiaDescrizione}" id="tipologia" width="100%" showSuggestion="false" showValueHelp="true" showClearIcon="true"
-                    valueHelpRequest="handleValueHelpZhfTipo" 
-                    suggestionItems="{path: 'wizardEntitiesModel>/ZhfTipo', sorter: { path: 'ZcodTipo' }}" 
-                    app:fieldName="tipologia" 
-                    app:filterTableField="tipologia"
-                    valueHelpOnly="true"
-                    liveChange="ZhfTipoOnDelete">
-                    <suggestionItems>
-                        <core:ListItem key="{wizardEntitiesModel>ZcodTipo}" text="{wizardEntitiesModel>Ztipo}"/>
-                    </suggestionItems>
-                </Input> -->
-
                 <zTipoLibrary:InputZTipo  
                   bukrs="{temp>/InitInfoMc/Bukrs}"
                   value="{preimpostazioneModel>/tipologiaDescrizione}" 
-                  key="{preimpostazioneModel>/tipologia}">                
+                  key="{preimpostazioneModel>/tipologia}"
+                  enabled="{preimpostazioneModel>/EnabledStep1}">                
                 </zTipoLibrary:InputZTipo>    
-
 
                 <layoutData>
                     <l:GridData span="XL3 L3 M6 S12" linebreak="true"/>
                 </layoutData>
             </VBox>
             <VBox>
-                <Label text="Sottotipologia secondo livello:" />
-                <!-- <ComboBox id="sottotipologia" width="100%" selectionChange="sottotipologiaSelectionChange"
-                    items ="{
-                    path: 'wizardEntitiesModel>/ZhfSottotipo'
-                    }">
-                    <core:ListItem key="{wizardEntitiesModel>ZhfSottotipo}" text="{wizardEntitiesModel>Zsottotipo}" additionalText = "{wizardEntitiesModel>ZcodSottotipo}"/>                                                    
-                </ComboBox> -->
-
+                <Label text="Sottotipologia secondo livello:" />                
                 <zTipoLibrary:InputZSottotipo  
                   bukrs="{temp>/InitInfoMc/Bukrs}"
                   zcodTipo="{preimpostazioneModel>/tipologia}"
                   ztipo="{preimpostazioneModel>/tipologiaDescrizione}"
                   value="{preimpostazioneModel>/sottotipologiaDescrizione}" 
-                  key="{preimpostazioneModel>/sottotipologia}">                
+                  key="{preimpostazioneModel>/sottotipologia}"
+                  enabled="{preimpostazioneModel>/EnabledStep1}">                
                 </zTipoLibrary:InputZSottotipo> 
-
 
                 <layoutData>
                     <l:GridData span="XL3 L3 M6 S12" />
@@ -76,7 +58,8 @@
             </VBox>
             <VBox>
                 <Label text="Competenza/Residui:" />
-                <ComboBox id="competenza" width="100%" items="{path: 'wizardEntitiesModel>/ZcompResNISet', sorter: { path: 'Descrizione' }}" selectedKey="{preimpostazioneModel>/competenza}" >
+                <ComboBox id="competenza" width="100%" items="{path: 'wizardEntitiesModel>/ZcompResNISet', sorter: { path: 'Descrizione' }}" 
+                  selectedKey="{preimpostazioneModel>/competenza}" enabled="{preimpostazioneModel>/EnabledStep1}">
                     <core:Item key="{wizardEntitiesModel>ZcompRes}" text="{wizardEntitiesModel>Descrizione}"/>
                 </ComboBox>
                 <layoutData>
@@ -84,7 +67,7 @@
                 </layoutData>
             </VBox> 
             <ToolbarSpacer />
-            <Button type="Emphasized" text="{i18n>submit}" press="onSearch" id="buttonSubmit" >
+            <Button type="Emphasized" text="{i18n>submit}" press="onSearch" id="buttonSubmit" enabled="{preimpostazioneModel>/EnabledStep1}">
                 <layoutData>
                     <l:GridData indent="XL9 L9 M6" span="XL3 L3 M6 S12" linebreak="true"/>
                 </layoutData>

@@ -5,14 +5,16 @@
 	height="100%"
 >
 	<Table
+		
 		class="sapUiSizeCompact"
 		id="HeaderNIW"
 		includeItemInSelection="true"
 		items="{wizardEntitiesModel>/RendicontazioneSet}"
-		mode="MultiSelect"
+    mode="{= ${preimpostazioneModel>/EnabledStep1} === true ? 'MultiSelect' :  'None' }"		
 		visible="true"
 		growing="true"
 	>
+  <!-- mode="{= ${preimpostazioneModel>/EnabledStep1} === true ? 'MultiSelect' :  'None' }" -->
 		<columns>
 			<Column
 				width="auto"

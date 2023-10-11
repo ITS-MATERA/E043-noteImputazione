@@ -30,7 +30,7 @@
                     <core:Item key="{Gjahr}" text="{Gjahr}"/>
                 </ComboBox>
                 <Label text="N. Decreto" class="sapUiTinyMarginBottom" labelFor="inputDecreto" />
-                <Input id="inputDecreto" type="Text" showValueHelp="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'Zcoddecr' }}" enabled="true" editable="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputDecreto" app:filterTableField="inputDecreto">
+                <Input id="inputDecreto" type="Text" showValueHelp="false" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'Zcoddecr' }}" enabled="true" editable="true" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputDecreto" app:filterTableField="inputDecreto">
                     <core:Item key="{Zcoddecr}" text="{Zcoddecr}"/>
                 </Input>
                 <core:Title text=" " />
@@ -39,7 +39,7 @@
                     <core:Item key="{Zamministr}" text="{Zamministr}"/>
                 </Input>
                 <Label text="IPE" class="sapUiTinyMarginBottom" />
-                <Input id="inputIPE" type="Text" showValueHelp="true" enabled="true" editable="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'ZCodIpe' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputIPE" app:filterTableField="inputIPE">
+                <Input id="inputIPE" type="Text" showValueHelp="false" enabled="true" editable="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'ZCodIpe' }}" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputIPE" app:filterTableField="inputIPE">
                     <core:Item key="{ZCodIpe}" text="{ZCodIpe}"/>
                 </Input>
                 <core:Title text=" " />
