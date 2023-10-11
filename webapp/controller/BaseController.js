@@ -360,7 +360,7 @@ sap.ui.define(
             columns: aCols,
             hierarchyLevel: "Level",
           },
-          dataSource: oRowBinding,
+          dataSource: data,
           fileName: fileName,
           worker: false, // We need to disable worker because we are using a MockServer as OData Service
         };
@@ -471,7 +471,9 @@ sap.ui.define(
 
       setFilterBT: function (aFilters, sPropertyModel, sValueFrom, sValueTo) {
         if (sValueFrom && sValueTo) {
-          aFilters.push(new Filter(sPropertyModel, FilterOperator.BT, sValueFrom, sValueTo));
+          aFilters.push(
+            new Filter(sPropertyModel, FilterOperator.BT, sValueFrom, sValueTo)
+          );
           return;
         }
         if (sValueFrom || sValueTo) {
@@ -481,18 +483,16 @@ sap.ui.define(
         }
       },
 
-      setInitInfoMC:function(data){
-        var self =this;
+      setInitInfoMC: function (data) {
+        var self = this;
         console.log(data);
         return {
           Bukrs: data.BUKRS,
           Role: data.AGR_NAME,
           Fikrs: data.FIKRS,
-          Prctr: data.PRCTR
-        }
+          Prctr: data.PRCTR,
+        };
       },
-
-
     });
   }
 );

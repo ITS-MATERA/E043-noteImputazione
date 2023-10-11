@@ -7,7 +7,7 @@ sap.ui.define(
     "sap/ui/model/FilterOperator",
     "sap/m/MessageBox",
     "sap/ui/export/Spreadsheet",
-    "project1/model/DateFormatter",
+    "../model/dateFormatter",
   ],
   function (
     ODataModel,
@@ -16,14 +16,14 @@ sap.ui.define(
     FilterOperator,
     MessageBox,
     Spreadsheet,
-    DateFormatter
+    dateFormatter
   ) {
     "use strict";
     var EdmType = sap.ui.export.EdmType;
 
     //popupino warning
     return BaseController.extend("project1.controller.View1", {
-      formatter: DateFormatter,
+      formatter: dateFormatter,
 
       onInit: function () {
         //console.log("onInit View1 controller")
@@ -188,9 +188,13 @@ sap.ui.define(
                 .getModel("temp")
                 .setProperty("/Visibilità", data.results);
 
-
-              self.getView().getModel("temp").setProperty("/InitInfoMc", self.setInitInfoMC(data.results[0]));  
-
+              self
+                .getView()
+                .getModel("temp")
+                .setProperty(
+                  "/InitInfoMc",
+                  self.setInitInfoMC(data.results[0])
+                );
 
               self.pulsantiVisibiltà(data.results);
               console.log(data.results);
@@ -201,8 +205,6 @@ sap.ui.define(
             },
           });
       },
-
-      
 
       pulsantiVisibiltà: function (data) {
         for (var d = 0; d < data.length; d++) {
@@ -412,6 +414,7 @@ sap.ui.define(
         oRowBinding = oTable.getBinding("items");
 
         var customList = oRowBinding.oList;
+
         var data = customList.map((x) => {
           var item = x;
           item.ZmeseDesc = self.formatter.getMonthName(item.Zmese);
@@ -429,7 +432,7 @@ sap.ui.define(
             columns: aCols,
             hierarchyLevel: "Level",
           },
-          dataSource: oRowBinding,
+          dataSource: data,
           fileName: "Esportazione NI",
           worker: false, // We need to disable worker because we are using a MockServer as OData Service
         };
@@ -1032,8 +1035,8 @@ sap.ui.define(
 
       onSearch: function (oEvent) {
         // this.getView().byId("PreimpostazioneNI").setEnabled(true);
-        var visibilità = this.getView().getModel("temp").getData()
-          .Visibilità[0];
+        var visibilità = this.getView().getModel("temp")?.getData()
+          ?.Visibilità[0];
 
         var esGestione = this.getView().byId("es_gestione");
         if (!esGestione || esGestione.getSelectedKey() === "") {
