@@ -455,7 +455,7 @@ sap.ui.define([
                 }
 
                 for (var i=0; i<positions.length;i++) {
-                    positions[i].Iban = impegnoValues.Iban;
+                    //positions[i].Iban = impegnoValues.Iban;
                     positions[i].Lifnr = impegnoValues.Lifnr;
                     positions[i].Zwels = impegnoValues.Zwels;
                     positions[i].Kostl = impegnoValues.Cdc;
