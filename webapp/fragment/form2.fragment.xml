@@ -41,7 +41,7 @@
                 <!-- <Input id="inputCoGe" type="Text" showValueHelp="true" suggestionItems="{path: '/Txt50IcSet', sorter: { path: 'Saknr' }}" enabled="true" editable="true" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCoGe" app:filterTableField="inputCoGe" value="">
                     <core:Item key="{Saknr}" text="{Saknr}" />
                 </Input> -->
-                <Input id="inputCoGe" value="{EntityModel>/Detail/Coge}" maxLength="10"/>
+                <Input id="inputCoGe" value="{EntityModel>/Detail/Coge}" enabled="{EntityModel>/Detail/CogeEnabled}" maxLength="10"/>
                 <core:Title text=" " class="heightZero"/>
                 <Label text="Descrizione" />
                 <Input id="DescCentroCosto" type="Text" editable="false" value="{EntityModel>/Detail/CdcDesc}"/>

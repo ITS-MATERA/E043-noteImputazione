@@ -29,14 +29,12 @@ sap.ui.define(
           ZdescwelsBniSet: [],
         });
 
-        // this.onCallImpegni()
         this.getOwnerComponent().getModel("temp");
-        // this.onCallKostl()
-        // //this.onCallLtextIc()
-        // this.onCallTxt50Ic()
 
+
+        self.acceptOnlyNumber("inputCodiceGest");
         self.getView().setModel(oModelJson, MODEL_ENTITY);
-        this.getRouter()
+        self.getRouter()
           .getRoute("aImpegno2")
           .attachPatternMatched(this._onObjectMatched, this);
       },
@@ -72,6 +70,7 @@ sap.ui.define(
           CdcDesc: null,
           Coge: null,
           CogeDesc: null,
+          CogeEnabled:true,
           ImportoLiquidazione: null,
           DataProtocollo: null,
           NProtocollo: null,
@@ -174,6 +173,8 @@ sap.ui.define(
                         .getView()
                         .getModel(MODEL_ENTITY)
                         .setProperty("/Header/ZcompRes", item.ZcompRes);
+
+                        self.getCogeImputazioneContabile(item.Ztipo);  
                     }
 
                     self.getView().setBusy(false);
@@ -187,6 +188,31 @@ sap.ui.define(
                 self.getView().setBusy(false);
               },
             });
+          });
+      },
+
+      getCogeImputazioneContabile:function(ztipo){
+        var self =this,
+          filters = [];
+        
+        filters.push(new sap.ui.model.Filter("Ztipo",sap.ui.model.FilterOperator.EQ,ztipo));
+        self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/Coge", null);
+        self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/CogeDesc", null);
+        self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/CogeEnabled", true);
+        
+        self.getView().getModel().read("/ImpContCoGeSet", {
+            filters: filters,
+            success: function (data) {
+              console.log(data);//TODO:da canc
+              if(data && data.results && data.results.length>0){
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/Coge", data.results[0].Saknr);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/CogeDesc", data.results[0].Txt50);
+                self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/CogeEnabled", false);
+              }
+            },
+            error: function (error) {
+              console.log(error);
+            },
           });
       },
 

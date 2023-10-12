@@ -483,6 +483,15 @@ sap.ui.define(
         }
       },
 
+      acceptOnlyNumber: function (sId) {
+        var oInput = this.getView().byId(sId);
+        oInput.attachBrowserEvent("keypress", function (oEvent) {
+          if (isNaN(oEvent.key)) {
+            oEvent.preventDefault();
+          }
+        });
+      },
+
       setInitInfoMC: function (data) {
         var self = this;
         console.log(data);
