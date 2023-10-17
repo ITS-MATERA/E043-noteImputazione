@@ -502,6 +502,45 @@ sap.ui.define(
           Prctr: data.PRCTR,
         };
       },
+
+      getRagioneria:function(gjahr){
+        var self =this,
+          filters = [];
+          
+        filters.push(new Filter({path: "FIKRS",operator: FilterOperator.EQ,value1: "S001"}));
+        filters.push(new Filter({path: "ANNO",operator: FilterOperator.EQ,value1: gjahr}));
+        filters.push(new Filter({path: "FASE",operator: FilterOperator.EQ,value1: "GEST"}));
+        filters.push(new Filter({path: "LOEKZ",operator: FilterOperator.EQ,value1: ""}));
+        filters.push(new Filter({path: "DATBIS",operator: FilterOperator.GE,value1: self.formatter.convertSimpleDate(new Date())}));
+        filters.push(new Filter({path: "DATAB",operator: FilterOperator.LE,value1: self.formatter.convertSimpleDate(new Date())}));
+        filters.push(new Filter({path: "MC",operator: FilterOperator.EQ,value1: "X"}));
+        filters.push(new Filter({path: "REALE",operator: FilterOperator.EQ,value1: "R"}));
+
+          
+        self.getOwnerComponent().getModel("ZSS4_CO_GEST_TIPOLOGICHE_SRV")
+          .read("/ZES_RAGIONERIA_SET", {
+            filters: filters,
+            success: function (data) {
+              console.log("success");
+              console.log(data);
+              // self
+              //   .getView()
+              //   .getModel(WIZARD_ENTITIES_MODEL)
+              //   .setProperty("/Visibilita", data.results);
+              // callback(true);
+              // self.getView().getModel("temp").setProperty('/Visibilita', data.results)
+              //self.pulsantiVisibiltà(data.results)
+            },
+            error: function (error) {
+              console.log(error);
+              // var e = error;
+              // callback(false);
+            },
+          });
+      }
+
+
+
     });
   }
 );

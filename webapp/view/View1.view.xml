@@ -15,8 +15,8 @@
 	xmlns:zcontrolMatchSar="zsap.com.r3.cobi.s4.custapiuser.z_s4_userlog.controls"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 
-  	xmlns:zNumeroNILibrary="custZnumeroNI.zNumeroNILibrary.controls"
-  	xmlns:zprogrnilibrary="custprogrni.zprogrnilibrary.controls"
+  xmlns:zNumeroNILibrary="custZnumeroNI.zNumeroNILibrary.controls"
+  xmlns:zprogrnilibrary="custprogrni.zprogrnilibrary.controls"
 
 	height="100%"
 	controllerName="project1.controller.View1"

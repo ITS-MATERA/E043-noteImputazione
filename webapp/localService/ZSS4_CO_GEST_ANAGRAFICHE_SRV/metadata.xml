@@ -1,0 +1,1138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZSS4_CO_GEST_ANAGRAFICHE_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZET_DENOM_STA" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_STD"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_STD" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA" Type="Edm.String" Nullable="false" MaxLength="1333" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DDTEXT" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MC" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_ELENCHI" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="PRCTR"/>
+                    <PropertyRef Name="NUMERO_ELENCO"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PRCTR" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NUMERO_ELENCO" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA" Type="Edm.String" Nullable="false" MaxLength="1333" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DDTEXT" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MC" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA_PRCTR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE_PRCTR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MC_AMM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_COD_GEST" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_GESTIONALE"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_GESTIONALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DDTEXT" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MC" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAV_CE3" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_CODGEST_CE3" FromRole="FromRole_ASS_CODGEST_CE3" ToRole="ToRole_ASS_CODGEST_CE3"/>
+            </EntityType>
+            <EntityType Name="ZET_CG_ASS_DEEP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_GESTIONALE"/>
+                    <PropertyRef Name="DATBIS"/>
+                    <PropertyRef Name="EOS"/>
+                </Key>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_GESTIONALE" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EOS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAV_CG_TO_EC3" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_CG_CE3" FromRole="FromRole_ASS_CG_CE3" ToRole="ToRole_ASS_CG_CE3"/>
+            </EntityType>
+            <EntityType Name="ZET_REL_CG_EC3" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_GESTIONALE"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Change Ind." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="FM Area" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE_TIT" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA_TIT" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE_CAT" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA_CAT" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_GESTIONALE" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE_CE2" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA_CE2" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE_CE3" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EOS" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_TITOLO" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA_CE3" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_CATEGORIA" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_CLAECO2" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_CLAECO3" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Deletion ind." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Created Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Changed by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_QCSS_SUP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="COD_QCSS_L1"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="FM Area" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_QCSS_L1" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_CONCATENATO" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LIVELLO" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Deletion ind." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Created Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Changed by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Change Ind." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAV_QCSS_SUP" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_QCSS_SUP" FromRole="FromRole_ASS_QCSS_SUP" ToRole="ToRole_ASS_QCSS_SUP"/>
+            </EntityType>
+            <EntityType Name="ZET_QCSS_LV1" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="COD_QCSS_L1"/>
+                    <PropertyRef Name="DATBIS"/>
+                    <PropertyRef Name="COD_QCSS_L2"/>
+                    <PropertyRef Name="COD_QCSS_L3"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_QCSS_L1" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_QCSS_L2" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_QCSS_L3" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_CONCATENATO" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LIVELLO" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_QCSS_L1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_QCSS_L2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_QCSS_L3" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAV_QCSS_LV1_LV2" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_QCSS_LV1_LV2" FromRole="FromRole_ASS_QCSS_LV1_LV2" ToRole="ToRole_ASS_QCSS_LV1_LV2"/>
+            </EntityType>
+            <EntityType Name="ZET_QCSS_LV2" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="COD_QCSS_L1"/>
+                    <PropertyRef Name="COD_QCSS_L2"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="FM Area" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_QCSS_L1" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_QCSS_L2" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_CONCATENATO" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LIVELLO" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Deletion ind." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Created Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Changed by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Change Ind." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAV_QCSS_LV2_LV3" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_QCSS_LV2_LV3" FromRole="FromRole_ASS_QCSS_LV2_LV3" ToRole="ToRole_ASS_QCSS_LV2_LV3"/>
+            </EntityType>
+            <EntityType Name="ZET_QCSS_LV3" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="COD_QCSS_L1"/>
+                    <PropertyRef Name="COD_QCSS_L2"/>
+                    <PropertyRef Name="COD_QCSS_L3"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="FM Area" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_QCSS_L1" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_QCSS_L2" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_QCSS_L3" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_CONCATENATO" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LIVELLO" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Deletion ind." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Created Time" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Changed by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Change Ind." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_TIPO_FOND" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODI_TIPOFONDO"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODI_TIPOFONDO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA" Type="Edm.String" Nullable="false" MaxLength="1333" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DDTEXT" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MC" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_ANAG_DEEP_SET" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAV_BIL_GEN" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_BIL_GEN" FromRole="FromRole_ASS_BIL_GEN" ToRole="ToRole_ASS_BIL_GEN"/>
+                <NavigationProperty Name="NAV_COD_AGGR" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COD_AGGR" FromRole="FromRole_ASS_COD_AGGR" ToRole="ToRole_ASS_COD_AGGR"/>
+                <NavigationProperty Name="NAV_COD_GEST" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COD_GEST" FromRole="FromRole_ASS_COD_GEST" ToRole="ToRole_ASS_COD_GEST"/>
+                <NavigationProperty Name="NAV_DENOMINAZIONI" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_DENOM" FromRole="FromRole_ASS_DENOM" ToRole="ToRole_ASS_DENOM"/>
+                <NavigationProperty Name="NAV_TIPO_FONDO" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_TIPOFONDO" FromRole="FromRole_ASS_TIPOFONDO" ToRole="ToRole_ASS_TIPOFONDO"/>
+                <NavigationProperty Name="NAV_ELENCHI" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_ELENCHI" FromRole="FromRole_ASS_ELENCHI" ToRole="ToRole_ASS_ELENCHI"/>
+            </EntityType>
+            <EntityType Name="ZET_COD_AGGR" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_AGGREGAZIONE"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_AGGREGAZIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MC" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_COFOG" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="COD_COFOG_L1"/>
+                    <PropertyRef Name="COD_COFOG_L2"/>
+                    <PropertyRef Name="COD_COFOG_L3"/>
+                    <PropertyRef Name="COD_COFOG_L4"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L3" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L4" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_CONCATENATO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LIVELLO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MC" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_COFOG_L1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_COFOG_L2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_COFOG_L3" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_COFOG_L4" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAV_COFOG_LV1_LV2" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COFOG_LV1_LV2" FromRole="FromRole_ASS_COFOG_LV1_LV2" ToRole="ToRole_ASS_COFOG_LV1_LV2"/>
+            </EntityType>
+            <EntityType Name="ZET_COFOG_LV2" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="COD_COFOG_L1"/>
+                    <PropertyRef Name="COD_COFOG_L2"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L4" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_CONCATENATO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LIVELLO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAV_COFOG_LV2_LV3" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COFOG_LV2_LV3" FromRole="FromRole_ASS_COFOG_LV2_LV3" ToRole="ToRole_ASS_COFOG_LV2_LV3"/>
+            </EntityType>
+            <EntityType Name="ZET_COFOG_LV3" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="COD_COFOG_L1"/>
+                    <PropertyRef Name="COD_COFOG_L2"/>
+                    <PropertyRef Name="COD_COFOG_L3"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L3" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L4" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_CONCATENATO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LIVELLO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAV_COFOG_LV3_AMM" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COFOG_LV3_AMM" FromRole="FromRole_ASS_COFOG_LV3_AMM" ToRole="ToRole_ASS_COFOG_LV3_AMM"/>
+                <NavigationProperty Name="NAV_COFOG_LV3_LV4" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COFOG_LV3_LV4" FromRole="FromRole_ASS_COFOG_LV3_LV4" ToRole="ToRole_ASS_COFOG_LV3_LV4"/>
+            </EntityType>
+            <EntityType Name="ZET_COFOG_LV4" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="COD_COFOG_L1"/>
+                    <PropertyRef Name="COD_COFOG_L2"/>
+                    <PropertyRef Name="COD_COFOG_L3"/>
+                    <PropertyRef Name="COD_COFOG_L4"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L3" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L4" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_CONCATENATO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LIVELLO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_COFOG_AMM" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="COD_COFOG_L1"/>
+                    <PropertyRef Name="COD_COFOG_L2"/>
+                    <PropertyRef Name="COD_COFOG_L3"/>
+                    <PropertyRef Name="PRCTR"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L3" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PRCTR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_CONCATENATO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LIVELLO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_PRCTR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_COFOG_SUP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="COD_COFOG_L1"/>
+                    <PropertyRef Name="COD_COFOG_L2"/>
+                    <PropertyRef Name="COD_COFOG_L3"/>
+                    <PropertyRef Name="COD_COFOG_L4"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L3" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_COFOG_L4" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COD_CONCATENATO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LIVELLO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAV_COFOG_SUP" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COFOG_SUP" FromRole="FromRole_ASS_COFOG_SUP" ToRole="ToRole_ASS_COFOG_SUP"/>
+            </EntityType>
+            <EntityType Name="ZET_MC_COD_GEST" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_GESTIONALE"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_GESTIONALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIZIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_MC_COD_AGGR" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_AGGREGAZIONE"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_AGGREGAZIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_MC_TIP_FON" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODI_TIPOFONDO"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODI_TIPOFONDO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_MC_DENOM" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_STD"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_STD" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_MC_ELENCHI" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="PRCTR"/>
+                    <PropertyRef Name="NUMERO_ELENCO"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PRCTR" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NUMERO_ELENCO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_MC_COFOG" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="COD_COFOG_L1"/>
+                </Key>
+                <Property Name="COD_COFOG_L1" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_ECOBIL_SUP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_ECOBILV1"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_ECOBILV1" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ROW_UPDATE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAV_ECOBILV1" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_ECOBILV1" FromRole="FromRole_ASS_ECOBILV1" ToRole="ToRole_ASS_ECOBILV1"/>
+            </EntityType>
+            <EntityType Name="ZET_ECOBILV1" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_ECOBILV1"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_ECOBILV1" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_ECOBILV2" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_ECOBILV3" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE_V1" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA_V1" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE_V2" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA_V2" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE_V3" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA_V3" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ROW_UPDATE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAV_ECOBILV2" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_ECOBILV2" FromRole="FromRole_ASS_ECOBILV2" ToRole="ToRole_ASS_ECOBILV2"/>
+            </EntityType>
+            <EntityType Name="ZET_ECOBILV2" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_ECOBILV1"/>
+                    <PropertyRef Name="CODICE_ECOBILV2"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_ECOBILV1" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_ECOBILV2" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ROW_UPDATE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAV_ECOBILV3" Relationship="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_ECOBILV3" FromRole="FromRole_ASS_ECOBILV3" ToRole="ToRole_ASS_ECOBILV3"/>
+            </EntityType>
+            <EntityType Name="ZET_ECOBILV3" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_ECOBILV1"/>
+                    <PropertyRef Name="CODICE_ECOBILV2"/>
+                    <PropertyRef Name="CODICE_ECOBILV3"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_ECOBILV1" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_ECOBILV2" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_ECOBILV3" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ROW_UPDATE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_BIL_GEN" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_BDG"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_BDG" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESC_BREVE" Type="Edm.String" Nullable="false" MaxLength="120" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ATTIVO" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATAB" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATA_LOEKZ" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERSDA" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CREATED_AT_TIME" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ERNAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAEDA" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AENAM" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DDTEXT" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MC" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CDCHNGIND" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZET_MC_BIL_GEN" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FIKRS"/>
+                    <PropertyRef Name="ANNO"/>
+                    <PropertyRef Name="FASE"/>
+                    <PropertyRef Name="REALE"/>
+                    <PropertyRef Name="VERSIONE"/>
+                    <PropertyRef Name="CODICE_BDG"/>
+                    <PropertyRef Name="DATBIS"/>
+                </Key>
+                <Property Name="FIKRS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ANNO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FASE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REALE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VERSIONE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CODICE_BDG" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DATBIS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCR_ESTESA" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LOEKZ" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="ASS_ECOBILV2" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ECOBILV1" Multiplicity="1" Role="FromRole_ASS_ECOBILV2"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ECOBILV2" Multiplicity="*" Role="ToRole_ASS_ECOBILV2"/>
+            </Association>
+            <Association Name="ASS_QCSS_SUP" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_QCSS_SUP" Multiplicity="1" Role="FromRole_ASS_QCSS_SUP"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_QCSS_LV1" Multiplicity="*" Role="ToRole_ASS_QCSS_SUP"/>
+            </Association>
+            <Association Name="ASS_COFOG_LV2_LV3" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG_LV2" Multiplicity="1" Role="FromRole_ASS_COFOG_LV2_LV3"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG_LV3" Multiplicity="*" Role="ToRole_ASS_COFOG_LV2_LV3"/>
+            </Association>
+            <Association Name="ASS_TIPOFONDO" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ANAG_DEEP_SET" Multiplicity="1" Role="FromRole_ASS_TIPOFONDO"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_TIPO_FOND" Multiplicity="*" Role="ToRole_ASS_TIPOFONDO"/>
+            </Association>
+            <Association Name="ASS_ELENCHI" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ANAG_DEEP_SET" Multiplicity="1" Role="FromRole_ASS_ELENCHI"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ELENCHI" Multiplicity="*" Role="ToRole_ASS_ELENCHI"/>
+            </Association>
+            <Association Name="ASS_DENOM" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ANAG_DEEP_SET" Multiplicity="1" Role="FromRole_ASS_DENOM"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_DENOM_STA" Multiplicity="*" Role="ToRole_ASS_DENOM"/>
+            </Association>
+            <Association Name="ASS_COD_GEST" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ANAG_DEEP_SET" Multiplicity="1" Role="FromRole_ASS_COD_GEST"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COD_GEST" Multiplicity="*" Role="ToRole_ASS_COD_GEST"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ASS_COD_GEST">
+                        <PropertyRef Name="FIKRS"/>
+                        <PropertyRef Name="REALE"/>
+                        <PropertyRef Name="VERSIONE"/>
+                        <PropertyRef Name="ANNO"/>
+                        <PropertyRef Name="FASE"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ASS_COD_GEST">
+                        <PropertyRef Name="FIKRS"/>
+                        <PropertyRef Name="REALE"/>
+                        <PropertyRef Name="VERSIONE"/>
+                        <PropertyRef Name="ANNO"/>
+                        <PropertyRef Name="FASE"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ASS_COD_AGGR" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ANAG_DEEP_SET" Multiplicity="1" Role="FromRole_ASS_COD_AGGR"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COD_AGGR" Multiplicity="*" Role="ToRole_ASS_COD_AGGR"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ASS_COD_AGGR">
+                        <PropertyRef Name="VERSIONE"/>
+                        <PropertyRef Name="REALE"/>
+                        <PropertyRef Name="FIKRS"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ASS_COD_AGGR">
+                        <PropertyRef Name="VERSIONE"/>
+                        <PropertyRef Name="REALE"/>
+                        <PropertyRef Name="FIKRS"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ASS_BIL_GEN" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ANAG_DEEP_SET" Multiplicity="1" Role="FromRole_ASS_BIL_GEN"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_BIL_GEN" Multiplicity="*" Role="ToRole_ASS_BIL_GEN"/>
+            </Association>
+            <Association Name="ASS_ECOBILV3" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ECOBILV2" Multiplicity="1" Role="FromRole_ASS_ECOBILV3"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ECOBILV3" Multiplicity="*" Role="ToRole_ASS_ECOBILV3"/>
+            </Association>
+            <Association Name="ASS_COFOG_LV1_LV2" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG" Multiplicity="1" Role="FromRole_ASS_COFOG_LV1_LV2"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG_LV2" Multiplicity="*" Role="ToRole_ASS_COFOG_LV1_LV2"/>
+            </Association>
+            <Association Name="ASS_QCSS_LV2_LV3" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_QCSS_LV2" Multiplicity="1" Role="FromRole_ASS_QCSS_LV2_LV3"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_QCSS_LV3" Multiplicity="*" Role="ToRole_ASS_QCSS_LV2_LV3"/>
+            </Association>
+            <Association Name="ASS_QCSS_LV1_LV2" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_QCSS_LV1" Multiplicity="1" Role="FromRole_ASS_QCSS_LV1_LV2"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_QCSS_LV2" Multiplicity="*" Role="ToRole_ASS_QCSS_LV1_LV2"/>
+            </Association>
+            <Association Name="ASS_CODGEST_CE3" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COD_GEST" Multiplicity="1" Role="FromRole_ASS_CODGEST_CE3"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_REL_CG_EC3" Multiplicity="*" Role="ToRole_ASS_CODGEST_CE3"/>
+            </Association>
+            <Association Name="ASS_COFOG_SUP" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG_SUP" Multiplicity="1" Role="FromRole_ASS_COFOG_SUP"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG" Multiplicity="*" Role="ToRole_ASS_COFOG_SUP"/>
+            </Association>
+            <Association Name="ASS_ECOBILV1" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ECOBIL_SUP" Multiplicity="1" Role="FromRole_ASS_ECOBILV1"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ECOBILV1" Multiplicity="*" Role="ToRole_ASS_ECOBILV1"/>
+            </Association>
+            <Association Name="ASS_CG_CE3" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_CG_ASS_DEEP" Multiplicity="1" Role="FromRole_ASS_CG_CE3"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_REL_CG_EC3" Multiplicity="*" Role="ToRole_ASS_CG_CE3"/>
+            </Association>
+            <Association Name="ASS_COFOG_LV3_AMM" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG_LV3" Multiplicity="1" Role="FromRole_ASS_COFOG_LV3_AMM"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG_AMM" Multiplicity="*" Role="ToRole_ASS_COFOG_LV3_AMM"/>
+            </Association>
+            <Association Name="ASS_COFOG_LV3_LV4" sap:content-version="1">
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG_LV3" Multiplicity="1" Role="FromRole_ASS_COFOG_LV3_LV4"/>
+                <End Type="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG_LV4" Multiplicity="*" Role="ToRole_ASS_COFOG_LV3_LV4"/>
+            </Association>
+            <EntityContainer Name="ZSS4_CO_GEST_ANAGRAFICHE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZES_DENOM_STA_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_DENOM_STA" sap:content-version="1"/>
+                <EntitySet Name="ZES_ELENCHI_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ELENCHI" sap:content-version="1"/>
+                <EntitySet Name="ZES_COD_GEST_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COD_GEST" sap:content-version="1"/>
+                <EntitySet Name="ZES_CG_ASS_DEEP_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_CG_ASS_DEEP" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_REL_CG_EC3_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_REL_CG_EC3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_QCSS_SUP_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_QCSS_SUP" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_QCSS_LV1_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_QCSS_LV1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_QCSS_LV2_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_QCSS_LV2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_QCSS_LV3_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_QCSS_LV3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_TIPO_FOND_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_TIPO_FOND" sap:content-version="1"/>
+                <EntitySet Name="ZES_ANAG_DEEP_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ANAG_DEEP_SET" sap:content-version="1"/>
+                <EntitySet Name="ZES_COD_AGGR_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COD_AGGR" sap:content-version="1"/>
+                <EntitySet Name="ZES_COFOG_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG" sap:content-version="1"/>
+                <EntitySet Name="ZES_COFOG_LV2_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG_LV2" sap:content-version="1"/>
+                <EntitySet Name="ZES_COFOG_LV3_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG_LV3" sap:content-version="1"/>
+                <EntitySet Name="ZES_COFOG_LV4_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG_LV4" sap:content-version="1"/>
+                <EntitySet Name="ZES_COFOG_AMM_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG_AMM" sap:content-version="1"/>
+                <EntitySet Name="ZES_COFOG_SUP_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_COFOG_SUP" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_MC_COD_GEST_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_MC_COD_GEST" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_MC_COD_AGGR_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_MC_COD_AGGR" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_MC_TIP_FON_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_MC_TIP_FON" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_MC_DENOM_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_MC_DENOM" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_MC_ELENCHI_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_MC_ELENCHI" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_MC_COFOG_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_MC_COFOG" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_ECOBIL_SUP_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ECOBIL_SUP" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_ECOBILV1_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ECOBILV1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_ECOBILV2_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ECOBILV2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_ECOBILV3_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_ECOBILV3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_BIL_GEN_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_BIL_GEN" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZES_MC_BIL_GEN_SET" EntityType="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ZET_MC_BIL_GEN" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="ASS_DENOM_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_DENOM" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_ANAG_DEEP_SET" Role="FromRole_ASS_DENOM"/>
+                    <End EntitySet="ZES_DENOM_STA_SET" Role="ToRole_ASS_DENOM"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_QCSS_SUP_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_QCSS_SUP" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_QCSS_SUP_SET" Role="FromRole_ASS_QCSS_SUP"/>
+                    <End EntitySet="ZES_QCSS_LV1_SET" Role="ToRole_ASS_QCSS_SUP"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_COFOG_LV2_LV3_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COFOG_LV2_LV3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_COFOG_LV2_SET" Role="FromRole_ASS_COFOG_LV2_LV3"/>
+                    <End EntitySet="ZES_COFOG_LV3_SET" Role="ToRole_ASS_COFOG_LV2_LV3"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_COD_AGGR_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COD_AGGR" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_ANAG_DEEP_SET" Role="FromRole_ASS_COD_AGGR"/>
+                    <End EntitySet="ZES_COD_AGGR_SET" Role="ToRole_ASS_COD_AGGR"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_CODGEST_CE3_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_CODGEST_CE3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_COD_GEST_SET" Role="FromRole_ASS_CODGEST_CE3"/>
+                    <End EntitySet="ZES_REL_CG_EC3_SET" Role="ToRole_ASS_CODGEST_CE3"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_QCSS_LV1_LV2_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_QCSS_LV1_LV2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_QCSS_LV1_SET" Role="FromRole_ASS_QCSS_LV1_LV2"/>
+                    <End EntitySet="ZES_QCSS_LV2_SET" Role="ToRole_ASS_QCSS_LV1_LV2"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_COFOG_LV3_AMM_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COFOG_LV3_AMM" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_COFOG_LV3_SET" Role="FromRole_ASS_COFOG_LV3_AMM"/>
+                    <End EntitySet="ZES_COFOG_AMM_SET" Role="ToRole_ASS_COFOG_LV3_AMM"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_CG_CE3_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_CG_CE3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_CG_ASS_DEEP_SET" Role="FromRole_ASS_CG_CE3"/>
+                    <End EntitySet="ZES_REL_CG_EC3_SET" Role="ToRole_ASS_CG_CE3"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_ECOBILV2_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_ECOBILV2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_ECOBILV1_SET" Role="FromRole_ASS_ECOBILV2"/>
+                    <End EntitySet="ZES_ECOBILV2_SET" Role="ToRole_ASS_ECOBILV2"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_ECOBILV3_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_ECOBILV3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_ECOBILV2_SET" Role="FromRole_ASS_ECOBILV3"/>
+                    <End EntitySet="ZES_ECOBILV3_SET" Role="ToRole_ASS_ECOBILV3"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_COD_GEST_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COD_GEST" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_ANAG_DEEP_SET" Role="FromRole_ASS_COD_GEST"/>
+                    <End EntitySet="ZES_COD_GEST_SET" Role="ToRole_ASS_COD_GEST"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_ELENCHI_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_ELENCHI" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_ANAG_DEEP_SET" Role="FromRole_ASS_ELENCHI"/>
+                    <End EntitySet="ZES_ELENCHI_SET" Role="ToRole_ASS_ELENCHI"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_QCSS_LV2_LV3_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_QCSS_LV2_LV3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_QCSS_LV2_SET" Role="FromRole_ASS_QCSS_LV2_LV3"/>
+                    <End EntitySet="ZES_QCSS_LV3_SET" Role="ToRole_ASS_QCSS_LV2_LV3"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_BIL_GEN_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_BIL_GEN" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_ANAG_DEEP_SET" Role="FromRole_ASS_BIL_GEN"/>
+                    <End EntitySet="ZES_BIL_GEN_SET" Role="ToRole_ASS_BIL_GEN"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_TIPOFONDO_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_TIPOFONDO" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_ANAG_DEEP_SET" Role="FromRole_ASS_TIPOFONDO"/>
+                    <End EntitySet="ZES_TIPO_FOND_SET" Role="ToRole_ASS_TIPOFONDO"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_COFOG_LV3_LV4_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COFOG_LV3_LV4" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_COFOG_LV3_SET" Role="FromRole_ASS_COFOG_LV3_LV4"/>
+                    <End EntitySet="ZES_COFOG_LV4_SET" Role="ToRole_ASS_COFOG_LV3_LV4"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_COFOG_LV1_LV2_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COFOG_LV1_LV2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_COFOG_SET" Role="FromRole_ASS_COFOG_LV1_LV2"/>
+                    <End EntitySet="ZES_COFOG_LV2_SET" Role="ToRole_ASS_COFOG_LV1_LV2"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_ECOBILV1_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_ECOBILV1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_ECOBIL_SUP_SET" Role="FromRole_ASS_ECOBILV1"/>
+                    <End EntitySet="ZES_ECOBILV1_SET" Role="ToRole_ASS_ECOBILV1"/>
+                </AssociationSet>
+                <AssociationSet Name="ASS_COFOG_SUP_AssocSet" Association="ZSS4_CO_GEST_ANAGRAFICHE_SRV.ASS_COFOG_SUP" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZES_COFOG_SUP_SET" Role="FromRole_ASS_COFOG_SUP"/>
+                    <End EntitySet="ZES_COFOG_SET" Role="ToRole_ASS_COFOG_SUP"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://l2vs2slass01.mef.gov.it:8000/sap/opu/odata/sap/ZSS4_CO_GEST_ANAGRAFICHE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://l2vs2slass01.mef.gov.it:8000/sap/opu/odata/sap/ZSS4_CO_GEST_ANAGRAFICHE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

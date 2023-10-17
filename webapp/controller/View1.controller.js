@@ -397,6 +397,7 @@ sap.ui.define(
           label: "Importo Totale NI",
           property: "ZimpoTotniString",
           type: EdmType.Number,
+          textAlign: 'end'
         });
 
         return aCols;
@@ -635,6 +636,8 @@ sap.ui.define(
             value1: Gjahr,
           })
         );
+
+        this.getRagioneria(Gjahr);
 
         if (Gjahr && Gjahr !== "") {
           this.getView()

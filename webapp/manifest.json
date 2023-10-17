@@ -21,7 +21,7 @@
                 "type": "OData",
                 "settings": {
                     "annotations": [],
-                    "localUri": "localService/metadata.xml",
+                    "localUri": "localService/mainService/metadata.xml",
                     "odataVersion": "2.0"
                 }
             },
@@ -31,6 +31,24 @@
                 "settings": {
                     "annotations": [],
                     "localUri": "localService/ZSS4_CA_CONI_VISIBILITA_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZSS4_CO_GEST_TIPOLOGICHE_SRV": {
+                "uri": "/sap/opu/odata/sap/ZSS4_CO_GEST_TIPOLOGICHE_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/ZSS4_CO_GEST_TIPOLOGICHE_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZSS4_CO_GEST_ANAGRAFICHE_SRV": {
+                "uri": "/sap/opu/odata/sap/ZSS4_CO_GEST_ANAGRAFICHE_SRV",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/ZSS4_CO_GEST_ANAGRAFICHE_SRV/metadata.xml",
                     "odataVersion": "2.0"
                 }
             }
@@ -69,10 +87,11 @@
                 "custlinksar.custlinksar": {},
                 "zsap.com.r3.cobi.s4.custposfin.z_s4_zposfin": {},
                 "zsap.com.r3.cobi.s4.custapiuser.z_s4_userlog": {},
-                "zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink":{},
-                "custZtipo.zTipoLibrary":{},
-                "custZnumeroNI.zNumeroNILibrary":{},    
-                "custprogrni.zprogrnilibrary":{}
+                "zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink": {},
+                "custZtipo.zTipoLibrary": {},
+                "custZnumeroNI.zNumeroNILibrary": {},
+                "custprogrni.zprogrnilibrary": {},
+                "acn.zmatchcodecross":{}
             }
         },
         "contentDensities": {
@@ -103,13 +122,37 @@
                     "defaultCountMode": "Inline",
                     "refreshAfterChange": false
                 }
+            },
+            "ZSS4_CO_GEST_TIPOLOGICHE_SRV": {
+                "dataSource": "ZSS4_CO_GEST_TIPOLOGICHE_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "ZSS4_CO_GEST_ANAGRAFICHE_SRV": {
+                "dataSource": "ZSS4_CO_GEST_ANAGRAFICHE_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
             }
         },
         "resources": {
             "css": [
                 {
-                  "uri": "css/style.css",
-                  "id": "stylecss"
+                    "uri": "css/style.css",
+                    "id": "stylecss"
                 }
             ]
         },

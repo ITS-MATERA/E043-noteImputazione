@@ -24,6 +24,7 @@ sap.ui.define(
       onInit() {
         var self = this;
         var oModelJson = new JSONModel({
+          viewId:null,
           Header: null,
           Detail: null,
           ZdescwelsBniSet: [],
@@ -86,6 +87,7 @@ sap.ui.define(
         self.getView().byId("DP2").setDateValue(null);
 
         self.getView().getModel(MODEL_ENTITY).setProperty("/Detail", detail);
+        self.getView().getModel(MODEL_ENTITY).setProperty("/viewId", self.getView().getId());
         self
           .getView()
           .getModel(MODEL_ENTITY)

@@ -31,12 +31,16 @@
             <VBox>
                 <Label text="Sottotipologia primo livello:" />
                 <zTipoLibrary:InputZTipo  
+                  id="inputZTipoWizard"
                   bukrs="{temp>/InitInfoMc/Bukrs}"
-                  value="{preimpostazioneModel>/tipologiaDescrizione}" 
+                  enabled="{preimpostazioneModel>/EnabledStep1}"
+                  enableMultiLineMode="true"
+                  keydesc="{preimpostazioneModel>/tipologiaDescrizione}"
                   key="{preimpostazioneModel>/tipologia}"
-                  enabled="{preimpostazioneModel>/EnabledStep1}">                
+                  >       
                 </zTipoLibrary:InputZTipo>    
-
+<!-- value="{preimpostazioneModel>/tipologiaDescrizione}"
+"  -->
                 <layoutData>
                     <l:GridData span="XL3 L3 M6 S12" linebreak="true"/>
                 </layoutData>
@@ -44,14 +48,16 @@
             <VBox>
                 <Label text="Sottotipologia secondo livello:" />                
                 <zTipoLibrary:InputZSottotipo  
+                  id="inputZSottotipoWizard"
                   bukrs="{temp>/InitInfoMc/Bukrs}"
                   zcodTipo="{preimpostazioneModel>/tipologia}"
                   ztipo="{preimpostazioneModel>/tipologiaDescrizione}"
-                  value="{preimpostazioneModel>/sottotipologiaDescrizione}" 
+                  enableMultiLineMode="true"                  
+                  keydesc="{preimpostazioneModel>/sottotipologiaDescrizione}"
                   key="{preimpostazioneModel>/sottotipologia}"
                   enabled="{preimpostazioneModel>/EnabledStep1}">                
                 </zTipoLibrary:InputZSottotipo> 
-
+<!-- value="{preimpostazioneModel>/sottotipologiaDescrizione}" -->
                 <layoutData>
                     <l:GridData span="XL3 L3 M6 S12" />
                 </layoutData>
