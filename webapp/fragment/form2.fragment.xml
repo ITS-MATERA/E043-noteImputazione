@@ -60,7 +60,7 @@
         <Panel headerText="Dati NI">
 				<l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0">
                     <!-- riga 1 -->
-                    <Label text="Data Protocollo" class="sapUiTinyMarginBottom">
+                    <Label text="Data Protocollo" class="sapUiTinyMarginBottom sapUiTinyMarginTop">
                         <layoutData>
                             <l:GridData span="XL2 L2 M6 S12" />
                         </layoutData>
@@ -72,7 +72,7 @@
                         </layoutData>
                     </DatePicker>
 
-                    <Label text="N. Protocollo" class="sapUiTinyMarginBottom">
+                    <Label text="N. Protocollo" class="sapUiTinyMarginBottom sapUiTinyMarginTop">
                         <layoutData>
                             <l:GridData span="XL2 L2 M6 S12" />
                         </layoutData>
@@ -90,23 +90,32 @@
                     </Input> -->
 
                     <!-- riga 2 -->
-                    <Label text="Codice Gestionale" required="true" class="sapUiTinyMarginBottom" >
+                    <Label text="Codice Gestionale" required="true" class="sapUiTinyMarginBottom sapUiTinyMarginTop" >
                         <layoutData>
                             <l:GridData span="XL2 L2 M6 S12" linebreak="true"/>
                         </layoutData>
                     </Label>
-                    <Input id="inputCodiceGest" value="{EntityModel>/Detail/CodiceGestionale}" maxLength="3">
+                    <!-- <Input id="inputCodiceGest" value="{EntityModel>/Detail/CodiceGestionale}" maxLength="3">
                         <layoutData>
                             <l:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
-                    </Input>    
-                    <!-- <Input id="inputCodiceGest" type="Text" editable="true" showValueHelp="false" showSuggestion="true" suggestionItems="{path: '/PositionNISet', sorter: { path: 'Zcodgest' }}" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCodiceGest" app:filterTableField="inputCodiceGest" value="001">
+                    </Input>     -->
+                    <Input id="inputCodiceGest" 
+                        type="Text" 
+                        editable="true" 
+                        showValueHelp="true" 
+                        valueHelpOnly="false" 
+                        valueHelpRequest="handleValueHelpZcodGest"                         
+                        maxLength="3"
+                        valueLiveUpdate="true"
+                        value="{EntityModel>/Detail/CodiceGestionale}"
+                        submit="onInputCodiceGestSubmit">          
                         <layoutData>
                             <l:GridData span="XL3 L3 M6 S12" />
                         </layoutData>
-                        <core:Item key="{Zcodgest}" text="{Zcodgest}" />
-                    </Input> -->
-                    <Label text="Descrizione" class="sapUiTinyMarginBottom">
+                    </Input>
+
+                    <Label text="Descrizione" class="sapUiTinyMarginBottom sapUiTinyMarginTop">
                         <layoutData>
                             <l:GridData span="XL2 L2 M6 S12" />
                         </layoutData>
@@ -118,7 +127,7 @@
                     </Input>
 
                     <!-- riga 3      -->
-                    <Label text="Località di pagamento" class="sapUiTinyMarginBottom" >
+                    <Label text="Località di pagamento" class="sapUiTinyMarginBottom sapUiTinyMarginTop" >
                         <layoutData>
                             <l:GridData span="XL2 L2 M6 S12" linebreak="true"/>
                         </layoutData>
@@ -139,7 +148,7 @@
                     </VBox>  
                     
                     <!-- riga 4 -->
-                    <Label text="Causale di pagamento" required="true" class="sapUiTinyMarginBottom" >
+                    <Label text="Causale di pagamento" required="true" class="sapUiTinyMarginBottom sapUiTinyMarginTop" >
                         <layoutData>
                             <l:GridData span="XL2 L2 M6 S12" linebreak="true"/>
                         </layoutData>
@@ -157,7 +166,7 @@
                     </Input> -->
 
                     <!-- riga 5 -->
-                    <Label text="Data esigibilità" class="sapUiTinyMarginBottom">
+                    <Label text="Data esigibilità" class="sapUiTinyMarginBottom sapUiTinyMarginTop">
                         <layoutData>
                             <l:GridData span="XL2 L2 M6 S12" linebreak="true"/>
                         </layoutData>
@@ -170,7 +179,7 @@
                         </layoutData>
                     </DatePicker>
 
-                    <Label text="Zona di intervento" class="sapUiTinyMarginBottom">
+                    <Label text="Zona di intervento" class="sapUiTinyMarginBottom sapUiTinyMarginTop">
                         <layoutData>
                             <l:GridData span="XL2 L2 M6 S12" />
                         </layoutData>

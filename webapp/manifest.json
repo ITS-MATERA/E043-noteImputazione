@@ -44,7 +44,7 @@
                 }
             },
             "ZSS4_CO_GEST_ANAGRAFICHE_SRV": {
-                "uri": "/sap/opu/odata/sap/ZSS4_CO_GEST_ANAGRAFICHE_SRV",
+                "uri": "/sap/opu/odata/sap/ZSS4_CO_GEST_ANAGRAFICHE_SRV/",
                 "type": "OData",
                 "settings": {
                     "annotations": [],

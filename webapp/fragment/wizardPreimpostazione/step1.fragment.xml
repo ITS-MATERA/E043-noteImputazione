@@ -36,8 +36,7 @@
                   enabled="{preimpostazioneModel>/EnabledStep1}"
                   enableMultiLineMode="true"
                   keydesc="{preimpostazioneModel>/tipologiaDescrizione}"
-                  key="{preimpostazioneModel>/tipologia}"
-                  >       
+                  key="{preimpostazioneModel>/tipologia}">       
                 </zTipoLibrary:InputZTipo>    
 <!-- value="{preimpostazioneModel>/tipologiaDescrizione}"
 "  -->

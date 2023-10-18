@@ -401,12 +401,14 @@ sap.ui.define(
           label: "Importo NI",
           property: "ZimpoTitoloString",
           type: EdmType.String,
+          textAlign: 'end'
         });
 
         aCols.push({
           label: "Importo Residuo",
           property: "ZimpoResString",
           type: EdmType.String,
+          textAlign: 'end'
         });
         return aCols;
       },
@@ -447,12 +449,14 @@ sap.ui.define(
           label: "Importo NI",
           property: "ZimpoTitoloString",
           type: EdmType.String,
+          textAlign: 'end'
         });
 
         aCols.push({
           label: "Importo Residuo",
           property: "ZimpoResString",
           type: EdmType.String,
+          textAlign: 'end'
         });
 
         aCols.push({
@@ -504,6 +508,10 @@ sap.ui.define(
       },
 
       getRagioneria:function(gjahr){
+        /*TODO:non è stato completato in quanto la ragioneria nella prima pagina relativa ai filtri,
+          non contempla il matchcode ma è un valore fisso in base all'utenza
+          LA FUNZIONE è PRONTA MA NON VIENE UTILIZZATA
+          */
         var self =this,
           filters = [];
           
@@ -523,13 +531,8 @@ sap.ui.define(
             success: function (data) {
               console.log("success");
               console.log(data);
-              // self
-              //   .getView()
-              //   .getModel(WIZARD_ENTITIES_MODEL)
-              //   .setProperty("/Visibilita", data.results);
-              // callback(true);
-              // self.getView().getModel("temp").setProperty('/Visibilita', data.results)
-              //self.pulsantiVisibiltà(data.results)
+              
+              
             },
             error: function (error) {
               console.log(error);

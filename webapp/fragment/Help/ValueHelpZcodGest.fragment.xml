@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+<SelectDialog
+		title="Codice Gestionale"
+    items="{
+			path: 'codiceGestionale>/codiceGestionale'
+		}"
+    search="_handleValueHelpSearch"
+		confirm="_handleValueHelpCloseZcodGest"
+		cancel="_handleValueHelpCloseZcodGest"
+		multiSelect="false">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+      title="{codiceGestionale>codGest}"
+			description="{codiceGestionale>descr}"		 />
+	</SelectDialog>
+</core:FragmentDefinition>

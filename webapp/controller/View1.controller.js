@@ -637,7 +637,7 @@ sap.ui.define(
           })
         );
 
-        this.getRagioneria(Gjahr);
+        //this.getRagioneria(Gjahr);
 
         if (Gjahr && Gjahr !== "") {
           this.getView()

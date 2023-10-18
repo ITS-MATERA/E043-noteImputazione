@@ -13,7 +13,7 @@
                     <!-- 1 riga -->
                     <HBox>   
                         <Label id="numNI" text="{i18n>ProgressivoNI}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
-                        <Label id="numNI1" text="{EntityModel>/Header/ZidNi}"/>   
+                        <Label id="numNI1" text="{EntityModel>/Header/ZchiaveNi}"/>   
                         <layoutData>
                             <layout:GridData span="XL3 L3 M6 S12" />
                         </layoutData>              

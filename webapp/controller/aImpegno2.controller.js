@@ -109,19 +109,19 @@ sap.ui.define(
         }
       },
 
-      loadIban: function () {
-        var self = this,
-          selezionati = self
-            .getView()
-            .getModel("temp")
-            .getProperty("/ImpegniSelezionati");
+      loadIban: function (array) {
+        var self = this;
+          // selezionati = self
+          //   .getView()
+          //   .getModel("temp")
+          //   .getProperty("/ImpegniSelezionati");
 
         self
           .getView()
           .getModel(MODEL_ENTITY)
-          .setProperty("/Detail/Iban", selezionati[0].Iban);
-        if (selezionati.length > 1) {
-          var found = selezionati.filter((x) => x.Iban !== selezionati[0].Iban);
+          .setProperty("/Detail/Iban", array[0].Iban);
+        if (array.length > 1) {
+          var found = array.filter((x) => x.Iban !== array[0].Iban);
           if (found && found.length > 0)
             self
               .getView()
@@ -150,7 +150,6 @@ sap.ui.define(
                   .setProperty("/Detail/ImportoLiquidazione", data.ZimpoTotni);
 
                 self.loadBeneficiario();
-                self.loadIban();
                 self.loadModalitaPagamento();
 
                 if (
@@ -170,6 +169,7 @@ sap.ui.define(
                 self.onModificaNISet(data, function (callback) {
                   if (callback.success) {
                     if (callback.data.length > 0) {
+                      self.loadIban(callback.data);
                       var item = callback.data[0];
                       self
                         .getView()
@@ -847,6 +847,123 @@ sap.ui.define(
           campo5: header.ZRagioCompe,
         });
       },
+
+      handleValueHelpZcodGest:function(oEvent){
+          var self =this;
+          if(!self._zcodgest){
+            self._zcodgest = sap.ui.core.Fragment.load({
+              id: self.getView().getId(),
+              name: "project1.fragment.Help.ValueHelpZcodGest",
+              controller: self
+            }).then(function(oDialog){
+              return oDialog;
+            }.bind(this));
+          }
+          self._zcodgest.then(function(oDialog){
+            var oDataModel = self.getView().getModel(),
+              filters=[];
+            self.getView().setBusy(true);
+
+            filters.push(new Filter({path: "FIKRS",operator: FilterOperator.EQ,value1: "S001"}));
+            filters.push(new Filter({path: "ANNO",operator: FilterOperator.EQ,value1: self.getModel(MODEL_ENTITY).getProperty("/Header/Gjahr")}));
+            filters.push(new Filter({path: "FASE",operator: FilterOperator.EQ,value1: "GEST"}));
+            filters.push(new Filter({path: "LOEKZ",operator: FilterOperator.EQ,value1: ""}));
+            filters.push(new Filter({path: "DATBIS",operator: FilterOperator.GE,value1: self.formatter.convertSimpleDate(new Date())}));
+            filters.push(new Filter({path: "DATAB",operator: FilterOperator.LE,value1: self.formatter.convertSimpleDate(new Date())}));
+            filters.push(new Filter({path: "MC",operator: FilterOperator.EQ,value1: "X"}));
+            filters.push(new Filter({path: "REALE",operator: FilterOperator.EQ,value1: "R"}));
+
+            var oModelGestAnag = self.getModel("ZSS4_CO_GEST_ANAGRAFICHE_SRV");
+            oModelGestAnag.read("/ZES_COD_GEST_SET", {
+              filters: filters,
+              success: function (data) {
+                var arrs = data.results.map(x=>{
+                  return {codGest: x.CODICE_GESTIONALE, descr: x.DESCRIZIONE}
+                });
+                console.log(arrs)
+                var oModelJson = new JSONModel({
+                  codiceGestionale:arrs
+                });
+                self.getView().setBusy(false);
+                oDialog.setModel(oModelJson, "codiceGestionale");
+                oDialog.open();                
+              },
+              error: function (error) {
+                console.log(error);
+                self.getView().setBusy(false);
+              },
+            });
+          });
+        },
+
+        _handleValueHelpCloseZcodGest:function(oEvent){
+          var self =this,
+            aSelectedItems = oEvent.getParameter("selectedItems"),
+            entityModel = self.getModel(MODEL_ENTITY);
+          if (aSelectedItems && aSelectedItems.length > 0) {
+            entityModel.setProperty("/Detail/CodiceGestionale", aSelectedItems[0].getTitle());
+            entityModel.setProperty("/Detail/Descrizione", aSelectedItems[0].getDescription());
+            oEvent.getSource().getBinding("items").filter([]);            
+          }
+        },
+
+        _handleValueHelpSearch:function(oEvent){
+          var self =this,
+            sValue = oEvent.getParameter("value");
+          var oFilter = new Filter("descr", FilterOperator.Contains, sValue);
+          oEvent.getSource().getBinding("items").filter([oFilter]);
+        },
+
+        onInputCodiceGestSubmit:function(oEvent){
+          var self =this,
+            filters=[],
+            entityModel = self.getModel(MODEL_ENTITY),
+            value = oEvent.getParameters().value;
+          if(!value || value === null || value === "")
+            return false;
+
+          self.getView().setBusy(true);
+
+          filters.push(new Filter({path: "FIKRS",operator: FilterOperator.EQ,value1: "S001"}));
+          filters.push(new Filter({path: "ANNO",operator: FilterOperator.EQ,value1: self.getModel(MODEL_ENTITY).getProperty("/Header/Gjahr")}));
+          filters.push(new Filter({path: "FASE",operator: FilterOperator.EQ,value1: "GEST"}));
+          filters.push(new Filter({path: "LOEKZ",operator: FilterOperator.EQ,value1: ""}));
+          filters.push(new Filter({path: "DATBIS",operator: FilterOperator.GE,value1: self.formatter.convertSimpleDate(new Date())}));
+          filters.push(new Filter({path: "DATAB",operator: FilterOperator.LE,value1: self.formatter.convertSimpleDate(new Date())}));
+          filters.push(new Filter({path: "MC",operator: FilterOperator.EQ,value1: "X"}));
+          filters.push(new Filter({path: "REALE",operator: FilterOperator.EQ,value1: "R"}));
+          filters.push(new Filter({path: "CODICE_GESTIONALE",operator: FilterOperator.EQ,value1: value}));
+
+          var oModelGestAnag = self.getModel("ZSS4_CO_GEST_ANAGRAFICHE_SRV");
+          oModelGestAnag.read("/ZES_COD_GEST_SET", {
+            filters: filters,
+            success: function (data) {
+              self.getView().setBusy(false);
+              if(data.results && data.results.length>0){
+                entityModel.setProperty("/Detail/CodiceGestionale", data.results[0].CODICE_GESTIONALE);
+                entityModel.setProperty("/Detail/Descrizione", data.results[0].DESCRIZIONE); 
+              }
+              else{
+                entityModel.setProperty("/Detail/CodiceGestionale", null);
+                entityModel.setProperty("/Detail/Descrizione", null); 
+                MessageBox.error("Codice gestionale inesistente", {
+                    actions: [sap.m.MessageBox.Action.OK],
+                    emphasizedAction: MessageBox.Action.OK,
+                })
+              }                           
+            },
+            error: function (error) {
+              console.log(error);
+              self.getView().setBusy(false);
+              entityModel.setProperty("/Detail/CodiceGestionale", null);
+              entityModel.setProperty("/Detail/Descrizione", null); 
+              MessageBox.error("Codice gestionale inesistente", {
+                actions: [sap.m.MessageBox.Action.OK],
+                emphasizedAction: MessageBox.Action.OK,
+            })
+            }
+          });
+        },
 
       // onSaveButton_old: function () {
       //     var beneficiario = this.getView().byId("inputBeneficiario").getValue()

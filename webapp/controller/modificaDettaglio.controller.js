@@ -321,7 +321,7 @@ sap.ui.define(
 
                             oModel.update(path, oEntry, {
                                 success: function (data) {
-                                    MessageBox.success("Nota di Imputazione "+ item.ZchiaveNi +" rettificata correttamente", {
+                                    MessageBox.success("Nota di Imputazione n."+ item.ZchiaveNi +" rettificata correttamente", {
                                         title:"Esito Operazione",
                                         actions: [sap.m.MessageBox.Action.OK],
                                         emphasizedAction: MessageBox.Action.OK,

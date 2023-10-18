@@ -18,13 +18,13 @@
 			<OverflowToolbar>
 				<content>
 					<ToolbarSpacer/>
-					<Button
+					<!-- <Button
 						type="Emphasized"
 						text="Modifica Dettaglio NI"
 						enabled="false"
 						press="onEditRow"
 						id="editRow"
-					/>
+					/> -->
 					<Button
 						icon="sap-icon://excel-attachment"
 						app:tableId="conferma"
@@ -53,10 +53,10 @@
 			<Column width="auto">
 				<Label text="Data Pagamento"/>
 			</Column>
-			<Column width="auto">
+			<Column width="auto" hAlign="Right">
 				<Label text="Importo NI"/>
 			</Column>
-			<Column width="auto">
+			<Column width="auto" hAlign="Right">
 				<Label text="Importo Residuo"/>
 			</Column>
 			<Column width="auto">

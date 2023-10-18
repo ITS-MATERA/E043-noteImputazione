@@ -21,7 +21,7 @@
                 submit="strutturaAmministrativaLiveChange" liveChange="strutturaAmministrativaLiveChange" 
                 enabled="{preimpostazioneModel>/EnabledStep2}"/>
                 <layoutData>
-                    <l:GridData span="XL12 L12 M12 S12" />
+                    <l:GridData span="XL4 L4 M4 S4" />
                 </layoutData>
             </VBox>
             <VBox>

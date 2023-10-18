@@ -138,7 +138,7 @@ sap.ui.define(
                             self.getView().getModel(MODEL_ENTITY).setProperty("/Header/CodiceUfficio",data.ZuffcontFirm);
                             self.getView().getModel(MODEL_ENTITY).setProperty("/Header/Dirigente",data.ZdirncRich);
                             self.getView().getModel(MODEL_ENTITY).setProperty("/Header/DataProtocollo",
-                              data.ZdataProtAmm ? self.formatter.convert(data.ZdataProtAmm) : null);
+                              data.ZdataProtAmm ? data.ZdataProtAmm : null);
                             self.getView().getModel(MODEL_ENTITY).setProperty("/Header/NumeroProtocollo",data.NProtocolloAmm === '0' ? null : data.NProtocolloAmm);
                           }
                           self.callWorkflowSet(data, function(callbackWF){

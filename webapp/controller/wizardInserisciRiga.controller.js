@@ -623,16 +623,29 @@ sap.ui.define([
 
           _getRendicontazione:function(){
               var self = this,
+                  arrs=[],
                   filters = [];
               
               filters.push(new Filter({ path: "Gjahr", operator: FilterOperator.EQ, value1: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng") }));
               filters.push(new Filter({ path: "Zmese", operator: FilterOperator.EQ, value1: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/meseValore") }));
 
-              if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/tipologia") !== "")
-                  filters.push(new Filter({ path: "ZcodTipo", operator: FilterOperator.EQ, value1: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/tipologia") }));
+              if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/tipologia") !== ""){
+                arrs = self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/tipologia").split(",");
+                for(var i=0; i<arrs.length;i++){
+                  var item = arrs[i];
+                  filters.push(new Filter({ path: "ZcodTipo", operator: FilterOperator.EQ, value1: item }));
+                }
+              }
+              //filters.push(new Filter({ path: "ZcodTipo", operator: FilterOperator.EQ, value1: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/tipologia") }));
               
-              if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/sottotipologia") !== "")
-                  filters.push(new Filter({ path: "ZcodSottotipo", operator: FilterOperator.EQ, value1: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/sottotipologia") }));
+              if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/sottotipologia") !== ""){
+                arrs = self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/sottotipologia").split(",");
+                for(var i=0; i<arrs.length;i++){
+                  var item = arrs[i];
+                  filters.push(new Filter({ path: "ZcodSottotipo", operator: FilterOperator.EQ, value1: item }));
+                }
+              }
+              //filters.push(new Filter({ path: "ZcodSottotipo", operator: FilterOperator.EQ, value1: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/sottotipologia") }));
               
               if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/competenza") !== "")
                   filters.push(new Filter({ path: "ZcompRes", operator: FilterOperator.EQ, value1: self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/competenza").toUpperCase() }));
@@ -754,7 +767,7 @@ sap.ui.define([
                         oDataModel.create("/DeepPositionNISet", deepEntity, {
                             success: function (result) {
                                 if(result.Msgty === 'S'){
-                                    MessageBox.success("Nota di Imputazione " + header.ZchiaveNi + " rettificata correttamente", {
+                                    MessageBox.success("Nota di Imputazione n." + header.ZchiaveNi + " rettificata correttamente", {
                                         title: "Esito Operazione",
                                         actions: [sap.m.MessageBox.Action.OK],
                                         emphasizedAction: MessageBox.Action.OK,

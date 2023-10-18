@@ -40,24 +40,19 @@
                                             </VBox>
                                             <VBox>
                                                 <Label text="Sottotipologia primo livello:" />
-                                                <!-- <Input value="{preimpostazioneModel>/tipologiaDescrizione}" 
-                                                    id="tipologia" width="100%" showSuggestion="false" showValueHelp="true" showClearIcon="true"
-                                                    valueHelpRequest="handleValueHelpZhfTipo" 
-                                                    suggestionItems="{path: 'EntityModel>/ZhfTipo', sorter: { path: 'ZcodTipo' }}" 
-                                                    app:fieldName="tipologia" 
-                                                    app:filterTableField="tipologia"
-                                                    valueHelpOnly="true"
-                                                    liveChange="ZhfTipoOnDelete">
-                                                    <suggestionItems>
-                                                        <core:ListItem key="{EntityModel>ZcodTipo}" text="{EntityModel>Ztipo}"/>
-                                                    </suggestionItems>
-                                                </Input> -->
-
                                                 <zTipoLibrary:InputZTipo  
+                                                  id="inputZTipoWizard"
+                                                  bukrs="{temp>/InitInfoMc/Bukrs}"
+                                                  enableMultiLineMode="true"
+                                                  keydesc="{preimpostazioneModel>/tipologiaDescrizione}"
+                                                  key="{preimpostazioneModel>/tipologia}"
+                                                  >       
+                                                </zTipoLibrary:InputZTipo>    
+                                                <!-- <zTipoLibrary:InputZTipo  
                                                   bukrs="{temp>/InitInfoMc/Bukrs}"
                                                   value="{preimpostazioneModel>/tipologiaDescrizione}" 
                                                   key="{preimpostazioneModel>/tipologia}">                
-                                                </zTipoLibrary:InputZTipo>  
+                                                </zTipoLibrary:InputZTipo>   -->
 
                                                 <layoutData>
                                                     <l:GridData span="XL3 L3 M12 S12" linebreak="true"/>
@@ -65,26 +60,33 @@
                                             </VBox>
                                             <VBox>
                                                 <Label text="Sottotipologia secondo livello:" />
-                                                <!-- <ComboBox id="sottotipologia" width="100%" selectionChange="sottotipologiaSelectionChange"
-                                                    items ="{
-                                                    path: 'EntityModel>/ZhfSottotipo'
-                                                    }">
-                                                    <core:ListItem key="{EntityModel>ZhfSottotipo}" text="{EntityModel>Zsottotipo}" additionalText = "{EntityModel>ZcodSottotipo}"/>                                                    
-                                                </ComboBox> -->
                                                 <zTipoLibrary:InputZSottotipo  
+                                                  id="inputZSottotipoWizard"
+                                                  bukrs="{temp>/InitInfoMc/Bukrs}"
+                                                  zcodTipo="{preimpostazioneModel>/tipologia}"
+                                                  ztipo="{preimpostazioneModel>/tipologiaDescrizione}"
+                                                  enableMultiLineMode="true"                  
+                                                  keydesc="{preimpostazioneModel>/sottotipologiaDescrizione}"
+                                                  key="{preimpostazioneModel>/sottotipologia}">                
+                                                </zTipoLibrary:InputZSottotipo> 
+
+                                                <!-- <zTipoLibrary:InputZSottotipo  
                                                   bukrs="{temp>/InitInfoMc/Bukrs}"
                                                   zcodTipo="{preimpostazioneModel>/tipologia}"
                                                   ztipo="{preimpostazioneModel>/tipologiaDescrizione}"
                                                   value="{preimpostazioneModel>/sottotipologiaDescrizione}" 
                                                   key="{preimpostazioneModel>/sottotipologia}">                
-                                                </zTipoLibrary:InputZSottotipo> 
+                                                </zTipoLibrary:InputZSottotipo>  -->
+
                                                 <layoutData>
                                                     <l:GridData span="XL3 L3 M12 S12" />
                                                 </layoutData>
                                             </VBox>
                                             <VBox>
                                                 <Label text="Competenza/Residui:" />
-                                                <ComboBox id="competenza" width="100%" items="{path: 'EntityModel>/ZcompResNISet', sorter: { path: 'Descrizione' }}" selectedKey="{preimpostazioneModel>/competenza}" >
+                                                <ComboBox id="competenza" width="100%" 
+                                                  items="{path: 'EntityModel>/ZcompResNISet', sorter: { path: 'Descrizione' }}" 
+                                                  selectedKey="{preimpostazioneModel>/competenza}">
                                                     <core:Item key="{EntityModel>ZcompRes}" text="{EntityModel>Descrizione}"/>
                                                 </ComboBox>
                                                 <layoutData>
@@ -92,43 +94,6 @@
                                                 </layoutData>
                                             </VBox> 
 
-                                            <!-- <VBox>
-                                                <Label text="Sottotipologia di primo livello:" />
-                                                <Input value="" id="tipologia" width="100%" showSuggestion="false" showValueHelp="true" showClearIcon="true"
-                                                    suggestionItems="{path: 'temp>/ZhfTipo', sorter: { path: 'ZcodTipo' }}" 
-                                                    valueHelpOnly="true"
-                                                    app:ZhfTipoKey="{temp>/ZhfTipoKey}"
-                                                    valueHelpRequest="handleValueHelpZhfTipo" app:fieldName="tipologia" app:filterTableField="tipologia">
-                                                    <suggestionItems>
-                                                        <core:ListItem key="{temp>ZcodTipo}" text="{temp>Ztipo}"/>
-                                                    </suggestionItems>
-                                                </Input>
-                                                <layoutData>
-                                                    <l:GridData span="L3 M3 S3" />
-                                                </layoutData>
-                                            </VBox>
-                                            <VBox>
-                                                <Label text="Sottotipologia di secondo livello:" />
-                                                <ComboBox id="sottotipologia" width="100%"
-                                                    items ="{
-                                                    path: 'temp>/ZhfSottotipo'
-                                                    }">
-                                                    <core:ListItem key="{temp>ZcodSottotipo}" text="{temp>Zsottotipo}" additionalText = "{temp>ZcodSottotipo}"/>                                                    
-                                                </ComboBox>
-                                                <layoutData>
-                                                    <l:GridData span="L3 M3 S3" />
-                                                </layoutData>
-                                            </VBox>
-                                            <VBox>
-                                                <Label text="Competenza/Residui:" />
-                                                <ComboBox id="competenza" width="100%" value="C">
-                                                    <core:Item text="C"/>
-                                                    <core:Item text="R"/>
-                                                </ComboBox>
-                                                <layoutData>
-                                                    <l:GridData span="L3 M3 S3" />
-                                              </layoutData>
-                                            </VBox> -->
                                         </l:content>
                                     </l:Grid>
                                 </content>
@@ -151,14 +116,14 @@
                                                     <Label text="Struttura Amministrativa Responsabile:" required="true"/>
                                                     <Input id="strAmmResp" value="{EntityModel>/Header/Fistl}" enabled="false"/>
                                                     <layoutData>
-                                                        <l:GridData span="L12 M12 S12" />
+                                                        <l:GridData span="XL4 L4 M4 S4" />
                                                     </layoutData>
                                                 </VBox>
                                                 <VBox>
                                                     <Label text="Posizione Finanziaria:" required="true" />
                                                     <Input id="input_PF" value="{EntityModel>/Header/Fipex}" enabled="false"/>
                                                     <layoutData>
-                                                        <l:GridData span="L4 M4 S4" />
+                                                        <l:GridData span="XL4 L4 M4 S4" />
                                                     </layoutData>
                                                 </VBox>
                                                 <VBox>
