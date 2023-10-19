@@ -36,7 +36,7 @@
                 <!-- <Input id="inputCentroCosto" type="Text" showValueHelp="false" suggestionItems="{path: '/LtextIcSet', sorter: { path: 'Kostl' }}" enabled="true" editable="true" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCentroCosto" app:filterTableField="inputCentroCosto">
                     <core:Item key="{Kostl}" text="{Kostl}" />
                 </Input> -->
-                <Input  id="inputCentroCosto" value="{EntityModel>/Detail/Cdc}" maxLength="10"/>
+                <Input  id="inputCentroCosto" value="{EntityModel>/Detail/Cdc}" enabled="{EntityModel>/Detail/CdcEnable}" maxLength="10"/>
                 <Label text="Conto Co. Ge." required="true" />
                 <!-- value="4011010101" -->
                 <!-- <Input id="inputCoGe" type="Text" showValueHelp="true" suggestionItems="{path: '/Txt50IcSet', sorter: { path: 'Saknr' }}" enabled="true" editable="true" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCoGe" app:filterTableField="inputCoGe" value="">
