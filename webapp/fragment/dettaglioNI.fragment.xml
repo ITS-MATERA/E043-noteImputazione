@@ -1,0 +1,104 @@
+<core:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	height="100%"
+>
+	<Table
+		class="sapUiSizeCompact"
+		id="richiamoNIRGS"
+		includeItemInSelection="true"
+		items="{
+			path: 'EntityModel>/PositionNI'
+		}"
+		visible="true"
+		growing="true"
+	>
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<ToolbarSpacer/>
+					<Button
+						icon="sap-icon://excel-attachment"
+						app:tableId="richiamoNIRGS"
+						app:filename="Esporta {EntityModel>/Header/ZcodiStatoniDesc}"
+						app:columnConfig="columnConfigProvvisoria"
+						press="onExportDetail"
+						type="Emphasized"
+						text="Esporta"
+					/>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Numero NI"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Codice ISIN"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Sottotipologia primo livello"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Descrizione"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Data Pagamento"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Right"
+			>
+				<Label text="Importo NI"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Right"
+			>
+				<Label text="Importo Residuo"/>
+			</Column>
+			<Column
+				width="auto"
+				hAlign="Left"
+			>
+				<Label text="Impegno"/>
+			</Column>
+		</columns>
+		<ColumnListItem>
+			<Text text="{EntityModel>ZchiaveSubni}"/>
+			<Text text="{EntityModel>ZcodIsin}"/>
+			<Text text="{EntityModel>Ztipo}"/>
+			<Text text="{EntityModel>Zdescrizione}"/>
+			<Text text="{
+				path: 'EntityModel>ZdataPag',
+				formatter: '.formatter.convert'
+			}"/>
+			<Text text="{
+				path: 'EntityModel>ZimpoTitolo',
+				formatter: '.formatter.convertFormattedNumber'
+			}"/>
+			<Text text="{
+				path: 'EntityModel>ZimpoRes',
+				formatter: '.formatter.convertFormattedNumber'
+			}"/>
+			<Text text="{EntityModel>ZCodCla}"/>
+		</ColumnListItem>
+	</Table>
+</core:FragmentDefinition>

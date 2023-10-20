@@ -35,27 +35,46 @@
                 </Input>
                 <core:Title text=" " />
                 <Label text="Amministrazione" class="sapUiTinyMarginBottom"/>
-                <Input id="inputAmm" type="Text" enabled="true" showValueHelp="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'Zamministr' }}">
+                <Input 
+                  id="inputAmm"
+                  enabled="true"
+                  maxLength="3" />
+                <!-- <Input id="inputAmm" type="Text" enabled="true" showValueHelp="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'Zamministr' }}">
                     <core:Item key="{Zamministr}" text="{Zamministr}"/>
-                </Input>
+                </Input> -->
                 <Label text="IPE" class="sapUiTinyMarginBottom" />
                 <Input id="inputIPE" type="Text" showValueHelp="false" enabled="true" editable="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'ZCodIpe' }}" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputIPE" app:filterTableField="inputIPE">
                     <core:Item key="{ZCodIpe}" text="{ZCodIpe}"/>
                 </Input>
                 <core:Title text=" " />
                 <Label text="Ufficio I Livello" class="sapUiTinyMarginbottom" required="false" />
-                <Input id="inputaUff" type="Text" enabled="true" showValueHelp="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'Zufficioliv1' }}" editable="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputaUff" app:filterTableField="inputaUff">
+                <Input id="inputaUff" 
+                  enabled="true" 
+                  editable="true"
+                  maxLength="4"
+                  app:fieldName="inputaUff" 
+                  app:filterTableField="inputaUff"
+                  />
+                <!-- <Input id="inputaUff" type="Text" enabled="true" showValueHelp="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'Zufficioliv1' }}" editable="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputaUff" app:filterTableField="inputaUff">
                     <core:Item key="{Zufficioliv1}" text="{Zufficioliv1}"/>
-                </Input>
+                </Input> -->
                 <Label text="N. Clausola" class="sapUiTinyMarginBottom" />
                 <Input id="inputClaus" type="Text" enabled="true" showValueHelp="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'ZNumCla' }}" editable="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputClaus" app:filterTableField="inputClaus">
                     <core:Item key="{ZNumCla}" text="{ZNumCla}"/>
                 </Input>
                 <core:Title text=" " />
                 <Label text="Ufficio II Livello" class="sapUiTinyMarginBottom" required="false"  />
-                <Input id="inputbUff" type="Text" enabled="true" showValueHelp="true" editable="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'Zufficioliv2' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputbUff" app:filterTableField="inputbUff">
+                <Input 
+                  id="inputbUff"
+                  enabled="true" 
+                  editable="true"
+                  maxLength="4"
+                  app:fieldName="inputbUff" 
+                  app:filterTableField="inputbUff"
+                />                
+                <!-- <Input id="inputbUff" type="Text" enabled="true" showValueHelp="true" editable="true" suggestionItems="{path: '/ZfmimpegniIpeSet', sorter: { path: 'Zufficioliv2' }}" valueHelpOnly="true" valueHelpRequest="handleValueHelp" app:fieldName="inputbUff" app:filterTableField="inputbUff">
                     <core:Item key="{Zufficioliv2}" text="{Zufficioliv2}"/>
-                </Input>
+                </Input> -->
             </f:content>
         </f:SimpleForm>
         <f:SimpleForm

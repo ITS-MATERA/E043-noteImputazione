@@ -7,7 +7,7 @@
     xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"  
     xmlns:zcontrollinkSar="custlinksar.custlinksar.controls"     
     height="100%"
-    controllerName="project1.controller.richiamoNIRGS">
+    controllerName="project1.controller.dettaglioNI">
     <f:DynamicPage id="dynamicPageId" showFooter="true">
         <f:header>
             <f:DynamicPageHeader pinnable="false">
@@ -164,7 +164,7 @@
             <IconTabBar id="richiamaNIRGSITB" class="sapUiResponsiveContentPadding" select="onSelect">
                 <items>
                     <IconTabFilter icon="sap-icon://detail-view" text="Dettaglio NI" key="ListaDettagli">  
-                        <core:Fragment fragmentName="project1.fragment.richiamoNIRGS" type="XML" />
+                        <core:Fragment fragmentName="project1.fragment.dettaglioNI" type="XML" />
                     </IconTabFilter>
                     <IconTabFilter icon="sap-icon://history" text="Workflow" key="Workflow">
                         <core:Fragment fragmentName="project1.fragment.workflow" type="XML"/>
@@ -178,9 +178,9 @@
         <f:footer>
             <OverflowToolbar>
                 <Button text="Indietro" type="Emphasized" press="onBackButton" />
-                <ToolbarSpacer />
+                <!-- <ToolbarSpacer />
                 <Button type="Emphasized" text="Richiama NI" press="onRichiamaNI" id="richiama2" enabled="false" />
-                <Button type="Emphasized" text="Revoca Validazione NI" press="onRevocaValidazione" id="RevocaValidazioneNI" enabled="false"/>
+                <Button type="Emphasized" text="Revoca Validazione NI" press="onRevocaValidazione" id="RevocaValidazioneNI" enabled="false"/> -->
             </OverflowToolbar>
         </f:footer>
     </f:DynamicPage>

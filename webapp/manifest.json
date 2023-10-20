@@ -314,6 +314,13 @@
                     "target": "TargetrichiamoNIRGS"
                 },
                 {
+                    "name": "dettaglioNI",
+                    "pattern": "dettaglioNI/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": "TargetdettaglioNI"
+                },
+                {
                     "name": "richiamoRilievoRegistrato",
                     "pattern": "richiamoRilievoRegistrato/{campo},{campo1},{campo2},{campo3},{campo4},{campo5}",
                     "titleTarget": "",
@@ -517,6 +524,14 @@
                     "clearControlAggregation": false,
                     "viewId": "richiamoNIRGS",
                     "viewName": "richiamoNIRGS",
+                    "viewLevel": 1
+                },
+                "TargetdettaglioNI": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "dettaglioNI",
+                    "viewName": "dettaglioNI",
                     "viewLevel": 1
                 },
                 "TargetrichiamoRilievoRegistrato": {

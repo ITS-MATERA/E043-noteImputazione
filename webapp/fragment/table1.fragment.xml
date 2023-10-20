@@ -43,43 +43,43 @@
 				demandPopin="true"
 				hAlign="Left"
 			>
-				<Label text="Progressivo NI "/>
+				<Label text="Progressivo NI" wrapping="true"/>
 			</Column>
 			<Column
 				demandPopin="true"
 				hAlign="Left"
 			>
-				<Label text="Struttura Amministrativa Responsabile"/>
+				<Label text="Struttura Amministrativa Responsabile" wrapping="true"/>
 			</Column>
 			<Column
 				demandPopin="true"
 				hAlign="Left"
 			>
-				<Label text="Posizione Finanziaria"/>
+				<Label text="Posizione Finanziaria" wrapping="true"/>
 			</Column>
 			<Column
 				demandPopin="true"
 				hAlign="Left"
 			>
-				<Label text="Oggetto della spesa"/>
+				<Label text="Oggetto della spesa" wrapping="true"/>
 			</Column>
 			<Column
 				demandPopin="true"
 				hAlign="Left"
 			>
-				<Label text="Mese"/>
+				<Label text="Mese" wrapping="true"/>
 			</Column>
 			<Column
 				demandPopin="true"
 				hAlign="Left"
 			>
-				<Label text="Stato NI"/>
+				<Label text="Stato NI" wrapping="true"/>
 			</Column>
 			<Column
 				demandPopin="true"
 				hAlign="Right"
 			>
-				<Label text="Importo Totale NI"/>
+				<Label text="Importo Totale NI" wrapping="true"/>
 			</Column>
 		</columns>
 		<ColumnListItem type="Active">

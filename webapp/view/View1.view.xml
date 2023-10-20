@@ -137,7 +137,13 @@
 								label="{i18n>capitolo}"
 							>
 								<fb:control>
-									<Input
+                  <Input 
+                    id="capitolo1"
+                    app:fieldName="capitolo1"
+										app:filterTableField="capitolo1"
+                    maxLength="4"
+                  />
+									<!-- <Input
 										showSuggestion="true"
 										id="capitolo1"
 										showValueHelp="true"
@@ -156,7 +162,7 @@
 											key="{temp>Zcapitolo}"
 											text="{temp>Zcapitolo}"
 										/>
-									</Input>
+									</Input> -->
 								</fb:control>
 							</fb:FilterGroupItem>
 							<fb:FilterGroupItem
@@ -473,8 +479,15 @@
 								groupName="Gruppo2"
 								label="{i18n>uff1Livello}"
 							>
-								<fb:control>
-									<Input
+                <fb:control>
+                  <Input 
+                    id="uff1Livello1"
+                    maxLength="4"
+                    app:fieldName="uff1Livello1"
+										app:filterTableField="uff1Livello1"
+                  />
+
+									<!-- <Input
 										showSuggestion="true"
 										id="uff1Livello1"
 										showValueHelp="true"
@@ -493,7 +506,7 @@
 											key="{Zufficioliv1}"
 											text="{Zufficioliv1}"
 										/>
-									</Input>
+									</Input> -->
 								</fb:control>
 							</fb:FilterGroupItem>
 							<fb:FilterGroupItem
@@ -504,7 +517,14 @@
 								label="{i18n>uff2Livello}"
 							>
 								<fb:control>
-									<Input
+                  <Input 
+                    id="uff2Livello2"
+                    app:fieldName="uff2Livello"
+										app:filterTableField="uff2Livello"
+                    maxLength="4"
+                  
+                  />
+									<!-- <Input
 										showSuggestion="true"
 										id="uff2Livello2"
 										showValueHelp="true"
@@ -523,7 +543,7 @@
 											key="{Zufficioliv2}"
 											text="{Zufficioliv2}"
 										/>
-									</Input>
+									</Input> -->
 								</fb:control>
 							</fb:FilterGroupItem>
 							<fb:FilterGroupItem
@@ -964,7 +984,13 @@
 								label="{i18n>EPR}"
 							>
 								<fb:control>
-									<Input
+                  <Input 
+                    id="EPR1"
+                    app:fieldName="EPR1"
+										app:filterTableField="EPR1"
+                    maxLength="4"
+                  />
+									<!-- <Input
 										id="EPR1"
 										showValueHelp="true"
 										suggestionItems="{
@@ -982,7 +1008,7 @@
 											key="{Epr}"
 											text="{Epr}"
 										/>
-									</Input>
+									</Input> -->
 								</fb:control>
 							</fb:FilterGroupItem>
 						</fb:filterGroupItems>

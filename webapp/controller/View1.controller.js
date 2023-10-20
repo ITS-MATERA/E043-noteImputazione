@@ -479,7 +479,7 @@ sap.ui.define(
           .getSelectedItem()
           .getBindingContext("HeaderNI")
           .getObject();
-
+          
         if (row.ZcodiStatoni === "00")
           //NI Preimpostata
           this.getOwnerComponent().getRouter().navTo("iconTabBar", {
@@ -591,6 +591,48 @@ sap.ui.define(
             campo4: row.ZidNi,
             campo5: row.ZRagioCompe,
           });
+
+          if (row.ZcodiStatoni === "12")
+          //NI Inviata in BdI
+          this.getOwnerComponent().getRouter().navTo("dettaglioNI", {
+            campo: row.Bukrs,
+            campo1: row.Gjahr,
+            campo2: row.Zamministr,
+            campo3: row.ZchiaveNi,
+            campo4: row.ZidNi,
+            campo5: row.ZRagioCompe,
+          });
+          if (row.ZcodiStatoni === "13")
+          //NI Esitata
+          this.getOwnerComponent().getRouter().navTo("dettaglioNI", {
+            campo: row.Bukrs,
+            campo1: row.Gjahr,
+            campo2: row.Zamministr,
+            campo3: row.ZchiaveNi,
+            campo4: row.ZidNi,
+            campo5: row.ZRagioCompe,
+          });
+          if (row.ZcodiStatoni === "14")
+          //NI Annullata per scarto BdI
+          this.getOwnerComponent().getRouter().navTo("dettaglioNI", {
+            campo: row.Bukrs,
+            campo1: row.Gjahr,
+            campo2: row.Zamministr,
+            campo3: row.ZchiaveNi,
+            campo4: row.ZidNi,
+            campo5: row.ZRagioCompe,
+          });
+          if (row.ZcodiStatoni === "15")
+          //NI con scarto parziale BdI
+          this.getOwnerComponent().getRouter().navTo("dettaglioNI", {
+            campo: row.Bukrs,
+            campo1: row.Gjahr,
+            campo2: row.Zamministr,
+            campo3: row.ZchiaveNi,
+            campo4: row.ZidNi,
+            campo5: row.ZRagioCompe,
+          });  
+
       },
 
       //CONTROLLO PER FAR VISUALIZZARE SOLO UN FILTRO NELLE COMBOBOX
