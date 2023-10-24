@@ -357,6 +357,15 @@ sap.ui.define([
                 self.getView().getModel(WIZARD_ENTITIES_MODEL).setProperty("/RendicontazioneSet",[]);
                 self.getView().getModel(WIZARD_ENTITIES_MODEL).setProperty("/ZhfTipo",[]);
                 self.getView().getModel(WIZARD_ENTITIES_MODEL).setProperty("/ZhfSottotipo",[]);
+
+                var inputZTipoWizard = self.getView().byId("inputZTipoWizard");
+                if(inputZTipoWizard)
+                  inputZTipoWizard.removeAllTokens("");
+
+                var inputZSottotipoWizard = self.getView().byId("inputZSottotipoWizard");
+                if(inputZSottotipoWizard)
+                  inputZSottotipoWizard.removeAllTokens("");  
+
             },
 
             /********************/
