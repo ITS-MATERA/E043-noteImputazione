@@ -10,15 +10,9 @@
         <l:Grid defaultSpan="XL12 L12 M12 S12" vSpacing="0.1">
             <VBox>
                 <Label text="Struttura Amministrativa Responsabile:" required="true"/>
-                <!-- <Input id="strAmmResp" showSuggestion="true" maxLength="16" showValueHelp="true" suggestionItems="{path: 'temp>/HeaderNISet', sorter: { path: 'Fistl' }}"
-                    liveChange="strutturaAmministrativaLiveChange">
-                    <suggestionItems>
-                        <core:ListItem text="{temp>Fistl}" />
-                    </suggestionItems>
-                </Input> -->
                 <zcontrolMatchSar:GestioneLogUser eos="S" id="idFilterStruttAmmResp" fase="GEST" entrata="X" reale="R"  maxLength="16"
                 anno="{preimpostazioneModel>/ZgjahrEng}" SEM_OBJ="Z_TEST_LIB"  versione="D" width="100%" placeholder="Scegli struttura amministrativa"
-                submit="strutturaAmministrativaLiveChange" liveChange="strutturaAmministrativaLiveChange" 
+                submit="strutturaAmministrativaSubmit" liveChange="strutturaAmministrativaLiveChange" 
                 enabled="{preimpostazioneModel>/EnabledStep2}"/>
                 <layoutData>
                     <l:GridData span="XL4 L4 M4 S4" />
@@ -26,14 +20,8 @@
             </VBox>
             <VBox>
                 <Label text="Posizione Finanziaria:" required="true"/>
-                <!-- <Input id="input_PF" showSuggestion="true" showValueHelp="true" suggestionItems="{path: 'temp>/HeaderNISet', sorter: { path: 'Fipex' }}" 
-                    liveChange="posizioneFinanziariaLiveChange">
-                    <suggestionItems>
-                        <core:ListItem text="{temp>Fipex}"/>
-                    </suggestionItems>
-                </Input> -->
                 <zcontrol:InputPosizioneFinanziaria id="input_PF" fase="GEST" spesa="X" maxLength="24"
-                 reale="R" anno="{preimpostazioneModel>/ZgjahrEng}" versione="D" maxSuggestionWidth="60%" submit="posizioneFinanziariaLiveChange" 
+                 reale="R" anno="{preimpostazioneModel>/ZgjahrEng}" versione="D" maxSuggestionWidth="60%" submit="posizioneFinanziariaSubmit" 
                  liveChange="posizioneFinanziariaLiveChange"  width="100%"
                  enabled="{preimpostazioneModel>/EnabledStep2}"/>
                 <layoutData>

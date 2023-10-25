@@ -540,8 +540,75 @@ sap.ui.define(
               // callback(false);
             },
           });
-      }
+      },
 
+      // cdcSubmit:function(oEvent){
+      //   var self =this,
+      //     value = oEvent.getParameters().value;
+        
+      //   if(value && value !== ""){
+      //     self.getOwnerComponent().getModel().callFunction("/ValidateField", {
+      //       method: "GET",
+      //       urlParameters: { 
+      //         "Field": "CDC", 
+      //         "Value": value, 
+      //         "Korks": self.getOwnerComponent().getModel("temp").getData().Visibilità[0].FIKRS
+      //       },
+      //       success: function (data, response) {
+      //         self.getView().setBusy(false);
+      //         if(data.Value === 'E'){
+      //           MessageBox.error(data.Message, {
+      //             title: "Esito Operazione",
+      //             actions: [sap.m.MessageBox.Action.OK],
+      //             emphasizedAction: MessageBox.Action.OK,
+      //           })
+      //           return;
+      //         }
+      //       },
+      //       error:function (oError) {
+      //         self.getView().setBusy(false);
+      //         MessageBox.error(oError.Message, {
+      //           title: "Esito Operazione",
+      //           actions: [sap.m.MessageBox.Action.OK],
+      //           emphasizedAction: MessageBox.Action.OK,
+      //         })
+      //         return;
+      //       }
+      //     });
+      //   }  
+      // },
+
+      // cogeSubmit:function(oEvent){
+      //   var self =this,
+      //     value = oEvent.getParameters().value;
+        
+      //   if(value && value !== ""){
+      //     self.getOwnerComponent().getModel().callFunction("/ValidateField", {
+      //       method: "GET",
+      //       urlParameters: { "Field": "COGE", "Value": value },
+      //       success: function (data, response) {
+      //         self.getView().setBusy(false);
+      //         if(data.Value === 'E'){
+      //           MessageBox.error(data.Message, {
+      //             title: "Esito Operazione",
+      //             actions: [sap.m.MessageBox.Action.OK],
+      //             emphasizedAction: MessageBox.Action.OK,
+      //           })
+      //           return;
+      //         }
+      //       },
+      //       error:function (oError) {
+      //         self.getView().setBusy(false);
+      //         MessageBox.error(oError.Message, {
+      //           title: "Esito Operazione",
+      //           actions: [sap.m.MessageBox.Action.OK],
+      //           emphasizedAction: MessageBox.Action.OK,
+      //         })
+      //         return;
+      //       }
+      //     });
+      //   }  
+      // }
 
 
     });

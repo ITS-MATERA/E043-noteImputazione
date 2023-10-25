@@ -2,6 +2,8 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
+  xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"  
+  xmlns:zcontrollinkSar="custlinksar.custlinksar.controls" 
 	height="100%"
 >
 	<Table
@@ -47,8 +49,17 @@
 			</Column>
 		</columns>
 		<ColumnListItem>
-			<Text text="{EntityModel>Fistl}"/>
-			<Text text="{EntityModel>Fipex}"/>
+      <zcontrollinkSar:LinkSar  anno="{EntityModel>/Header/Esercizio}" eos="E" fikrs="{EntityModel>Bukrs}" fase="GEST" SEM_OBJ="" reale="R" 
+                    versione="D" bilancio="" fictr="{EntityModel>Fistl}" datbis="99991231" text="{EntityModel>Fistl}"
+                    wrapping="true"/>
+      <zcontrolPosFin:LinkPosizioneFinanziaria  anno="{EntityModel>/Header/Esercizio}" eos="S" fikrs="{EntityModel>Bukrs}" fase="GEST" reale="R" 
+                    versione="D" fipex="{EntityModel>Fipex}" datbis="99991231" text="{EntityModel>Fipex}" semanticObject="ESAMINAMODIFICA"
+                    wrapping="true"/>
+
+
+
+			<!-- <Text text="{EntityModel>Fistl}"/>
+			<Text text="{EntityModel>Fipex}"/> -->
 			<Input
 				value="{EntityModel>ZoggSpesa}"
 				id="oggSpesaInput"

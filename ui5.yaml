@@ -17,7 +17,7 @@ server:
           - path: /sap/opu/odata/sap/ZSS4_CO_GEST_TIPOLOGICHE_SRV
             url: http://10.38.125.80:8000
             client: '100'
-          - path: /sap
+          - path: /sap/opu/odata/sap/ZS4_NOTEIMPUTAZIONI_SRV
             url: http://l2vs2slass01.mef.gov.it:8000
             client: '100'
           - path: /sap/opu/odata/sap/ZSS4_CO_GEST_ANAGRAFICHE_SRV

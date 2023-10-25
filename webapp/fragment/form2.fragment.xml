@@ -33,15 +33,10 @@
             <f:content>
                 <core:Title text=" " class=".heightZero" />
                 <Label text="Centro di Costo" required="true" />
-                <!-- <Input id="inputCentroCosto" type="Text" showValueHelp="false" suggestionItems="{path: '/LtextIcSet', sorter: { path: 'Kostl' }}" enabled="true" editable="true" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCentroCosto" app:filterTableField="inputCentroCosto">
-                    <core:Item key="{Kostl}" text="{Kostl}" />
-                </Input> -->
-                <Input  id="inputCentroCosto" value="{EntityModel>/Detail/Cdc}" enabled="{EntityModel>/Detail/CdcEnable}" maxLength="10"/>
+                
+                <Input  id="inputCentroCosto" value="{EntityModel>/Detail/Cdc}" enabled="{EntityModel>/Detail/CdcEnable}" maxLength="10" />
                 <Label text="Conto Co. Ge." required="true" />
-                <!-- value="4011010101" -->
-                <!-- <Input id="inputCoGe" type="Text" showValueHelp="true" suggestionItems="{path: '/Txt50IcSet', sorter: { path: 'Saknr' }}" enabled="true" editable="true" valueHelpOnly="false" valueHelpRequest="handleValueHelp" app:fieldName="inputCoGe" app:filterTableField="inputCoGe" value="">
-                    <core:Item key="{Saknr}" text="{Saknr}" />
-                </Input> -->
+                
                 <Input id="inputCoGe" value="{EntityModel>/Detail/Coge}" enabled="{EntityModel>/Detail/CogeEnabled}" maxLength="10"/>
                 <core:Title text=" " class="heightZero"/>
                 <Label text="Descrizione" />
@@ -141,6 +136,7 @@
                         maxLength="15"
                         whichMC="LocalitaPagamento" 
                         viewId="{EntityModel>/viewId}"
+                        valueHelpOnly="true" 
                       />
                       <layoutData>
                         <l:GridData span="XL3 L2 M6 S12" />
@@ -193,6 +189,7 @@
                         maxLength="50"
                         whichMC="ZonaIntervento" 
                         viewId="{EntityModel>/viewId}"
+                        valueHelpOnly="true"
                       />
                       <layoutData>
                         <l:GridData span="XL3 L3 M6 S12" />

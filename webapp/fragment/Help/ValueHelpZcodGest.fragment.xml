@@ -3,6 +3,65 @@
 	xmlns:core="sap.ui.core"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 >
+<Dialog title="Codice Gestionale" >
+  <content>
+    <Table 
+      id="_dialogCodiceGest"
+      class="sapUxAPObjectPageSubSectionAlignContent"
+      items="{
+        path: 'codiceGestionale>/codiceGestionale'
+      }"
+      mode="SingleSelectLeft"
+      includeItemInSelection="true"
+      growing="true"
+      width="auto"> 
+      <columns>
+        <Column><Text text="Codice" /></Column>
+        <Column><Text text="Descrizione" /></Column>     
+      </columns>
+      <items>
+        <ColumnListItem 
+          app:codGest="{codiceGestionale>codGest}"
+          app:descr="{codiceGestionale>descr}">
+          <Text text="{codiceGestionale>codGest}" />
+          <Text text="{codiceGestionale>descr}" />	          						
+        </ColumnListItem>
+      </items>
+    </Table>
+  </content>
+  <buttons>
+    <Button text="Chiudi" press="_handleValueHelpCloseZcodGest" />
+    <Button text="Conferma" press="_handleValueHelpConfirmZcodGest" />
+  </buttons>  
+</Dialog>
+<!-- <TableSelectDialog
+  title="Codice Gestionale"
+    items="{
+			path: 'codiceGestionale>/codiceGestionale'
+		}"
+    search="_handleValueHelpSearch"
+		confirm="_handleValueHelpCloseZcodGest"
+		cancel="_handleValueHelpCloseZcodGest"
+  >
+  <columns>
+    <Column><Text text="Codice" /></Column>
+    <Column><Text text="Descrizione" /></Column>          
+  </columns>
+  <items>
+    <ColumnListItem 
+      app:ZcodTipo="{EntityModelSottotipo>ZcodTipo}"
+      app:Ztipo="{EntityModelSottotipo>Ztipo}">
+      <Text text="{codiceGestionale>codGest}" />
+      <Text text="{codiceGestionale>descr}" />	
+    </ColumnListItem>
+  </items>
+</TableSelectDialog> -->
+<!-- app:ZcodTipo="{EntityModelSottotipo>ZcodTipo}"
+      app:Ztipo="{EntityModelSottotipo>Ztipo}"
+      app:ZcodSottotipo="{EntityModelSottotipo>ZcodSottotipo}"
+      app:Zsottotipo="{EntityModelSottotipo>Zsottotipo}" -->
+
+<!-- 
 <SelectDialog
 		title="Codice Gestionale"
     items="{
@@ -11,11 +70,11 @@
     search="_handleValueHelpSearch"
 		confirm="_handleValueHelpCloseZcodGest"
 		cancel="_handleValueHelpCloseZcodGest"
-		multiSelect="false">
+    multiSelect="false">
 		<StandardListItem
 			iconDensityAware="false"
 			iconInset="false"
       title="{codiceGestionale>codGest}"
 			description="{codiceGestionale>descr}"		 />
-	</SelectDialog>
+	</SelectDialog> -->
 </core:FragmentDefinition>

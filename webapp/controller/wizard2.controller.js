@@ -269,6 +269,45 @@ sap.ui.define([
                 var self = this;
                 self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/fistl",oEvent.getParameters().value);
             },
+
+            strutturaAmministrativaSubmit:function(oEvent){
+              var self = this,
+                value = oEvent.getParameters().value;
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/fistl",oEvent.getParameters().value);
+              if(value && value !== ""){
+                self.getOwnerComponent().getModel().callFunction("/ValidateField", {
+                  method: "GET",
+                  urlParameters: { 
+                      "Field": "FISTL", 
+                      "Value": value,
+                      "Fikrs": self.getView().getModel("temp").getProperty("/InitInfoMc/Fikrs"),
+                      "Anno" : oEvent.getSource().getProperty("anno"),  
+                      "Reale" : oEvent.getSource().getProperty("reale"),  
+                      "Versione" : oEvent.getSource().getProperty("versione")
+                    },
+                  success: function (data, response) {
+                    self.getView().setBusy(false);
+                    if(data.Value === 'E'){
+                      MessageBox.error(data.Message, {
+                        title: "Esito Operazione",
+                        actions: [sap.m.MessageBox.Action.OK],
+                        emphasizedAction: MessageBox.Action.OK,
+                      })
+                      return;
+                    }
+                  },
+                  error:function (oError) {
+                    self.getView().setBusy(false);
+                    MessageBox.error(oError.Message, {
+                      title: "Esito Operazione",
+                      actions: [sap.m.MessageBox.Action.OK],
+                      emphasizedAction: MessageBox.Action.OK,
+                    })
+                    return;
+                  }
+                });
+              }  
+            },
             
             posizioneFinanziariaLiveChange:function(oEvent) {
               var self = this;
@@ -291,6 +330,64 @@ sap.ui.define([
                   }
                 );
               }
+            },
+
+            posizioneFinanziariaSubmit:function(oEvent) {
+              var self = this;
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizioneCapitolo",null);
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizionePG",null);
+              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/fipex",oEvent.getParameters().value);
+              var value = oEvent.getParameters().value;
+
+              if(value && value !== ""){
+                self.getOwnerComponent().getModel().callFunction("/ValidateField", {
+                  method: "GET",
+                  urlParameters: { 
+                    "Field": "FISTL", 
+                    "Value": value, 
+                    "Fikrs": self.getView().getModel("temp").getProperty("/InitInfoMc/Fikrs"),
+                    "Anno" : oEvent.getSource().getProperty("anno"),  
+                    "Reale" : oEvent.getSource().getProperty("reale"),  
+                    "Versione" : oEvent.getSource().getProperty("versione")
+                  },
+                  success: function (data, response) {
+                    self.getView().setBusy(false);
+                    if(data.Value === 'E'){
+                      MessageBox.error(data.Message, {
+                        title: "Esito Operazione",
+                        actions: [sap.m.MessageBox.Action.OK],
+                        emphasizedAction: MessageBox.Action.OK,
+                      })
+                      return;
+                    }else{
+                      if(self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng") && 
+                        self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng") !== "" &&
+                        oEvent.getParameters().value !== ""){
+
+                        self.getDescCapDescPG(
+                          self.getView().getModel(PREIMPOSTAZIONENI_MODEL).getProperty("/ZgjahrEng"),
+                          oEvent.getParameters().value,
+                          function(callback){ 
+                            if(callback.success && callback.entity){
+                              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizioneCapitolo", callback.entity.DescCap);
+                              self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/descrizionePG",callback.entity.DescPg);
+                            }
+                          }
+                        );
+                      }
+                    }
+                  },
+                  error:function (oError) {
+                    self.getView().setBusy(false);
+                    MessageBox.error(oError.Message, {
+                      title: "Esito Operazione",
+                      actions: [sap.m.MessageBox.Action.OK],
+                      emphasizedAction: MessageBox.Action.OK,
+                    })
+                    return;
+                  }
+                });
+              }                
             },
 
             oggSpesaLiveChange:function(oEvent){
@@ -332,7 +429,8 @@ sap.ui.define([
 
 
             resetModelsForExitWizard:function(){
-                var self= this;
+                var self= this,
+                tableTitoli = self.getView().byId("HeaderNIW");
 
                 self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/ZgjahrEng","");
                 self.getView().getModel(PREIMPOSTAZIONENI_MODEL).setProperty("/meseValore","");
@@ -366,6 +464,16 @@ sap.ui.define([
                 if(inputZSottotipoWizard)
                   inputZSottotipoWizard.removeAllTokens("");  
 
+                tableTitoli.removeSelections();
+                tableTitoli.setSelectedContextPaths(null);
+
+                var idFilterStruttAmmResp = self.getView().byId("idFilterStruttAmmResp");
+                if(idFilterStruttAmmResp)
+                idFilterStruttAmmResp.setValue(null);  
+
+                var input_PF = self.getView().byId("input_PF");
+                if(input_PF)
+                input_PF.setValue(null);  
             },
 
             /********************/

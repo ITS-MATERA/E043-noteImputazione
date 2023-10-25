@@ -2,6 +2,8 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core"
+  xmlns:zcontrolPosFin="zsap.com.r3.cobi.s4.custposfin.z_s4_zposfinlink.controls"  
+  xmlns:zcontrollinkSar="custlinksar.custlinksar.controls" 
 	height="100%"
 >
 	<Table
@@ -84,8 +86,19 @@
 		</columns>
 		<ColumnListItem type="Active">
 			<Text text="{HeaderNI>ZchiaveNi}"/>
+      <zcontrollinkSar:LinkSar anno="{temp>/EsercizioGestioneMC}" eos="E" fikrs="{temp>/InitInfoMc/Fikrs}" fase="GEST" SEM_OBJ="" reale="R" 
+        versione="D" bilancio="" fictr="{HeaderNI>Fistl}" datbis="99991231" text="{HeaderNI>Fistl}"
+        wrapping="true"/>
+
+      <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesa" anno="{temp>/EsercizioGestioneMC}" eos="S" fikrs="{temp>/InitInfoMc/Fikrs}" fase="GEST" reale="R" 
+        versione="D" fipex="{HeaderNI>Fipex}" datbis="99991231" text="{HeaderNI>Fipex}" semanticObject="ESAMINAMODIFICA"
+        wrapping="true"/>
+
+
+
+<!-- 
 			<Text text="{HeaderNI>Fistl}"/>
-			<Text text="{HeaderNI>Fipex}"/>
+			<Text text="{HeaderNI>Fipex}"/> -->
 			<Text text="{HeaderNI>ZoggSpesa}"/>
 			<Text
 				text="{

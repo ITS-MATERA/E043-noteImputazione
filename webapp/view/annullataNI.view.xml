@@ -29,7 +29,7 @@
                     <HBox>
                         <Label id="SARW2" text="{i18n>SAR}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <Label id="SARWH2"/>
-                        <zcontrollinkSar:LinkSar id="linkSarBilancio" anno="{EntityModel>/Header/Esercizio}" eos="E" fikrs="S001" 
+                        <zcontrollinkSar:LinkSar id="linkSarBilancio" anno="{EntityModel>/Header/Esercizio}" eos="E" fikrs="{EntityModel>/Header/Bukrs}" 
                             fase="GEST" SEM_OBJ="" reale="R" 
                             versione="D" bilancio="" fictr="{EntityModel>/Header/Fistl}" 
                             datbis="99991231" 
@@ -41,7 +41,7 @@
                     <HBox>
                         <Label id="pos_FinW2" text="{i18n>PF}:" design="Bold" class="lbl-header-margin-right" wrapping="true"/>
                         <zcontrolPosFin:LinkPosizioneFinanziaria id="linkPosFinSpesa" anno="{EntityModel>/Header/Esercizio}" 
-                            eos="S" fikrs="S001" fase="GEST" reale="R" 
+                            eos="S" fikrs="{EntityModel>/Header/Bukrs}" fase="GEST" reale="R" 
                             versione="D" fipex="{EntityModel>/Header/Fipex}" 
                             datbis="99991231" text="{EntityModel>/Header/Fipex}" semanticObject="ESAMINAMODIFICA"/>
                         <layoutData>

@@ -128,7 +128,7 @@ sap.ui.define(
 
       setCdc:function(array){
         var self =this;
-        if (array.length > 1) {
+        if (array.length > 0) {
           var code = array[0].Ztipo.slice(-3);
           if(code ===  "001" || code === "002")
             self.getView().getModel(MODEL_ENTITY).setProperty("/Detail/CdcEnable", false);
@@ -681,16 +681,23 @@ sap.ui.define(
           });
         },
 
-        _handleValueHelpCloseZcodGest:function(oEvent){
+        _handleValueHelpConfirmZcodGest:function(oEvent){
           var self =this,
-            aSelectedItems = oEvent.getParameter("selectedItems"),
+            table = self.getView().byId("_dialogCodiceGest"),
+            selectedItem = table.getSelectedItem(),
             entityModel = self.getModel(MODEL_ENTITY);
-          if (aSelectedItems && aSelectedItems.length > 0) {
-            entityModel.setProperty("/Detail/CodiceGestionale", aSelectedItems[0].getTitle());
-            entityModel.setProperty("/Detail/Descrizione", aSelectedItems[0].getDescription());
-            oEvent.getSource().getBinding("items").filter([]);            
+          if (selectedItem) {
+            entityModel.setProperty("/Detail/CodiceGestionale", selectedItem.data("codGest"));
+            entityModel.setProperty("/Detail/Descrizione", selectedItem.data("descr"));
           }
+          oEvent.getSource().getParent().close();
         },
+
+        _handleValueHelpCloseZcodGest:function(oEvent){
+          var self = this;
+          oEvent.getSource().getParent().close();         
+        },
+
 
         _handleValueHelpSearch:function(oEvent){
           var self =this,
